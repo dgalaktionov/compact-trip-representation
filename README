@@ -1,0 +1,19 @@
+This is a trip:
+
+60:364,96:365,6:366
+
+They are separated by newlines. A trip is a comma-separated sequences of StopID:Time, so there is an associated timestamp for every stop we go through.
+There should be a valid collection sample in scripts.test/texts
+
+All you need to compile, build and query the index is done by shell scripts in scripts.test. They don't expect any argument and their names start with "go", following a convention set by Fari.
+	gocompile: Compiles the binaries
+	goBuildAll: Builds an index. Modify the script to change the source collection, the destination index or the psi factor of the underlying CSA
+	goGenQueries: Generated a bunch of queries using a python script called gen_q.py. Modify that python script if you want to change anything about the query generation.
+	goQuery: Pass a query file to the benchmark executable, for the experiments. Modify the script to change the index or the input queries.
+	goGenText: Used to generate the collections from various sources of data. I guess you're not interested in it.
+
+The most interesting source files in src:
+	benchmark.cpp: Where the queries are made
+	buildFacade.cpp: Functions to build our indexes and the query implementations
+	graphReader.c: Functions to read and sort our input collection
+

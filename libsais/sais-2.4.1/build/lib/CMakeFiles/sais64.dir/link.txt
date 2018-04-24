@@ -1,0 +1,2 @@
+/usr/bin/ar cr libsais64.a  CMakeFiles/sais64.dir/sais64.o
+/usr/bin/ranlib libsais64.a

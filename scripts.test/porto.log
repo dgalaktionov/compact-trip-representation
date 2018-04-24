@@ -1,0 +1,437 @@
+out file set to : ./indexes/porto32
+Read weeks=1
+parameters: "sPsi=32; nsHuff=16;psiSF=1"
+
+Number of nodes = 59618
+map_size 59618
+real nodes 59618  Number of times = 288
+map and unmap vocabulary arrays created sucessfully
+**** CREATING CSA-bottom-layer *****
+  parameters for iCSA: samplePsi=32
+               : nsHuff=16384, psiSearchFactor = 1 --> jump = 32
+  *BUILDING THE SUFFIX ARRAY over 106349821 integers... (with sais)
+
+  ...... ended.
+
+  Creating compressed Psi...
+  Creating compressed Psi HUFFMAN RLE...
+MALLOC FOR 16384
+
+MALLOC FOR 106349821
+
+    [3] diffsHT.total = 99522534 bits
+    [3]streamSize = 115384033 , index = 16384
+psi: pointersize = 27 bits, sampleSize=27 bits
+espacio para Sample-values-psi = 11216584 bytes
+espacio para Sample-values-psi** = 11216584 bytes
+espacio para Sample-pointers-psi = 11216584 bytes
+espacio para stream-psi = 14423008 bytes
+@@@@@@@@@ psi samaplePeriod= 32, ns=16384
+@@@@@@@@@ psi size= [samples = 11216584] bytes
+@@@@@@@@@ psi size= [pointers = 11216584] bytes
+@@@@@@@@@ psi size= [totalsize diffsHt.total  = 99522534] bits
+
+@@@@@@@@@ psi size= [streamsize+largevalues =14423008] bytes
+@@@@@@@@@ psi size= [sizeHuff tree = 65632] bytes
+
+Building Time Index...
+
+Done.
+ **** [iCSA built on 106349821 integers. Size = 50321506 bytes... RAM
+Test MAP/UNMAP (compressDictionary RRR) passed *OK*,
+Saving structures to disk: ./indexes/porto32.*
+Index saved !!
+Size of int index: 50321754 bytes (23.66% compression)
+
+Size of times index: 111873985 bytes (93.51% compression)
+Index occupied 162195739 bytes
+
+
+Size of int index: 50321754 bytes (23.66% compression)
+
+Size of times index: 111873985 bytes (93.51% compression)
+
+[destroying index] ...Freed 162195739 bytes... RAM
+ [destroying  iCSA: compressed PSI structure] ...Freed 36921936 bytes... RAM
+ [destroying  iCSA: D vector] ...Freed 13293728 bytes... RAM
+ **** [the whole iCSA ocuppied ... 50321506 bytes... RAM
+ **** iCSA size = 50321506 bytes
+
+  ## Building time (**parsing into integers + present_layer: 78.956 secs
+
+
+
+
+out file set to : ./indexes/porto128
+Read weeks=1
+parameters: "sPsi=128; nsHuff=16;psiSF=1"
+
+Number of nodes = 59618
+
+map_size 59618
+real nodes 59618  Number of times = 288
+map and unmap vocabulary arrays created sucessfully
+**** CREATING CSA-bottom-layer *****
+  parameters for iCSA: samplePsi=128
+               : nsHuff=16384, psiSearchFactor = 1 --> jump = 128
+  *BUILDING THE SUFFIX ARRAY over 106349821 integers... (with sais)
+
+  ...... ended.
+
+  Creating compressed Psi...
+  Creating compressed Psi HUFFMAN RLE...
+MALLOC FOR 16384
+
+MALLOC FOR 106349821
+
+    [3] diffsHT.total = 94652360 bits
+    [3]streamSize = 110920610 , index = 16384
+psi: pointersize = 27 bits, sampleSize=27 bits
+espacio para Sample-values-psi = 2804148 bytes
+espacio para Sample-values-psi** = 2804148 bytes
+espacio para Sample-pointers-psi = 2804152 bytes
+espacio para stream-psi = 13865080 bytes
+@@@@@@@@@ psi samaplePeriod= 128, ns=16384
+@@@@@@@@@ psi size= [samples = 2804148] bytes
+@@@@@@@@@ psi size= [pointers = 2804152] bytes
+@@@@@@@@@ psi size= [totalsize diffsHt.total  = 94652360] bits
+
+@@@@@@@@@ psi size= [streamsize+largevalues =13865080] bytes
+@@@@@@@@@ psi size= [sizeHuff tree = 65632] bytes
+
+Building Time Index...
+
+Done.
+ **** [iCSA built on 106349821 integers. Size = 32938710 bytes... RAM
+Test MAP/UNMAP (compressDictionary RRR) passed *OK*,
+Saving structures to disk: ./indexes/porto128.*
+Index saved !!
+Size of int index: 32938958 bytes (15.49% compression)
+
+Size of times index: 111873985 bytes (93.51% compression)
+Index occupied 144812943 bytes
+
+
+Size of int index: 32938958 bytes (15.49% compression)
+
+Size of times index: 111873985 bytes (93.51% compression)
+
+[destroying index] ...Freed 144812943 bytes... RAM
+ [destroying  iCSA: compressed PSI structure] ...Freed 19539140 bytes... RAM
+ [destroying  iCSA: D vector] ...Freed 13293728 bytes... RAM
+ **** [the whole iCSA ocuppied ... 32938710 bytes... RAM
+ **** iCSA size = 32938710 bytes
+
+
+  ## Building time (**parsing into integers + present_layer: 78.792 secs
+
+
+
+
+out file set to : ./indexes/porto512
+Read weeks=1
+parameters: "sPsi=512; nsHuff=16;psiSF=1"
+
+Number of nodes = 59618
+
+map_size 59618
+real nodes 59618  Number of times = 288
+map and unmap vocabulary arrays created sucessfully
+**** CREATING CSA-bottom-layer *****
+  parameters for iCSA: samplePsi=512
+               : nsHuff=16384, psiSearchFactor = 1 --> jump = 512
+  *BUILDING THE SUFFIX ARRAY over 106349821 integers... (with sais)
+
+  ...... ended.
+
+  Creating compressed Psi...
+  Creating compressed Psi HUFFMAN RLE...
+MALLOC FOR 16384
+
+MALLOC FOR 106349821
+
+    [3] diffsHT.total = 92179535 bits
+    [3]streamSize = 108630232 , index = 16384
+psi: pointersize = 27 bits, sampleSize=27 bits
+espacio para Sample-values-psi = 701040 bytes
+espacio para Sample-values-psi** = 701040 bytes
+espacio para Sample-pointers-psi = 701040 bytes
+espacio para stream-psi = 13578780 bytes
+@@@@@@@@@ psi samaplePeriod= 512, ns=16384
+@@@@@@@@@ psi size= [samples = 701040] bytes
+@@@@@@@@@ psi size= [pointers = 701040] bytes
+@@@@@@@@@ psi size= [totalsize diffsHt.total  = 92179535] bits
+
+@@@@@@@@@ psi size= [streamsize+largevalues =13578780] bytes
+@@@@@@@@@ psi size= [sizeHuff tree = 65624] bytes
+
+Building Time Index...
+
+Done.
+ **** [iCSA built on 106349821 integers. Size = 28446182 bytes... RAM
+Test MAP/UNMAP (compressDictionary RRR) passed *OK*,
+Saving structures to disk: ./indexes/porto512.*
+Index saved !!
+Size of int index: 28446430 bytes (13.37% compression)
+
+Size of times index: 111873985 bytes (93.51% compression)
+Index occupied 140320415 bytes
+
+
+Size of int index: 28446430 bytes (13.37% compression)
+
+Size of times index: 111873985 bytes (93.51% compression)
+
+[destroying index] ...Freed 140320415 bytes... RAM
+ [destroying  iCSA: compressed PSI structure] ...Freed 15046612 bytes... RAM
+ [destroying  iCSA: D vector] ...Freed 13293728 bytes... RAM
+ **** [the whole iCSA ocuppied ... 28446182 bytes... RAM
+ **** iCSA size = 28446182 bytes
+
+
+  ## Building time (**parsing into integers + present_layer: 77.156 secs
+
+
+5_HTRG32: 111873985 bytes (93.51% compression)
+5_HTRRR32: 122750696 bytes (102.60% compression)
+5_HTRRR64: 117579000 bytes (98.27% compression)
+5_HTRRR128: 114993000 bytes (96.11% compression)
+5_HTOPT64: 111172206 bytes (92.92% compression)
+30_HTRG32: 76588352 bytes (96.02% compression)
+30_HTRRR32: 82767708 bytes (103.77% compression)
+30_HTRRR64: 79024156 bytes (99.07% compression)
+30_HTRRR128: 77152376 bytes (96.73% compression)
+
+5_WMRG32: 123384451 bytes (103.13% compression)
+5_WMRRR32: 127869800 bytes (106.88% compression)
+5_WMRRR64: 121319908 bytes (101.40% compression)
+5_WMRRR128: 118044892 bytes (98.66% compression)
+30_WMRG32: 82255750 bytes (103.13% compression)
+30_WMRRR32: 85355376 bytes (107.01% compression)
+30_WMRRR64: 80965704 bytes (101.51% compression)
+30_WMRRR128: 78770820 bytes (98.76% compression)
+
+(diffs 1) ((1617776*9*2+18*59618*288)+14536895*8)/(106349821*9) = 48.48%
+
+(diffs ini gamma) ((1617776*9*2+18*59618*288)+37522655*8)/(106349821*9) = 66.69%
+(r2) ((1617776*9*2+18*59618*288)+39518183*8)/(106349821*9) = 68.36%
+(r1) ((1617776*9*2+18*59618*288)+27538178*8)/(106349821*9) = 58.35%
+
+(small k2) (1617776*9*2+26753533+300181244)/(106349821*9) = 31.20%
+(small k4) (1617776*9*2+30024477+300181244)/(106349821*9) = 37.74%
+(big k2) (1617776*17*2+555050637+300693082)/(106349821*17) = 50.37%
+
+(big r1 rrr) (1617776*17*2+297540587+220434911)/(106349821*17) = 31.69%
+(big r1 rrr sampled) (1617776*17*2+595939357+220434911)/(106349821*17) = 48.20%
+
+(big new) (1617776*17*2+368215106+220434911)/(106349821*17) = 35.60%
+(small new) (1617776*9*2+112301802+220305430)/(106349821*9) = 37.79%
+
+
+SPATIAL (psi=32)
+./queries/porto/10k-starts-with-x.txt	2279018	1000000	33665000	2.279018	0.067697
+./queries/porto/10k-ends-with-x.txt	1113482	1000000	17019000	1.113482	0.065426
+./queries/porto/10k-x-in-the-middle.txt	3521266	1000000	1332428000	3.521266	0.002643
+./queries/porto/10k-starts-or-ends-with-x.txt	3467106	1000000	51295000	3.467106	0.067592
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	5711059	1000000	23694000	5.711059	0.241034
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	5667680	1000000	18920000	5.667680	0.299560
+./queries/porto/10k-uses-x.txt	104193	1000000	1566978000	0.104193	0.000066
+./queries/porto/top-10.txt	114488	1000	20000	114.488000	5.724400
+./queries/porto/top-10-seq.txt	1084488	1000	20000	1084.488000	54.224400
+./queries/porto/top-10-starts.txt	235249	100	2000	2352.490000	117.624500
+./queries/porto/top-100.txt	247852	1000	200000	247.852000	1.239260
+./queries/porto/top-100-seq.txt	1089931	1000	200000	1089.931000	5.449655
+./queries/porto/top-100-starts.txt	795342	100	20000	7953.420000	39.767100
+SPATIAL (psi=128)
+./queries/porto/10k-starts-with-x.txt	5783515	1000000	33665000	5.783515	0.171796
+./queries/porto/10k-ends-with-x.txt	2075087	1000000	17027000	2.075087	0.121870
+./queries/porto/10k-x-in-the-middle.txt	7820050	1000000	1332428000	7.820050	0.005869
+./queries/porto/10k-starts-or-ends-with-x.txt	7917763	1000000	51295000	7.917763	0.154357
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	13674736	1000000	23694000	13.674736	0.577139
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	13563706	1000000	18920000	13.563706	0.716898
+./queries/porto/10k-uses-x.txt	102303	1000000	1566978000	0.102303	0.000065
+./queries/porto/top-10.txt	117027	1000	20000	117.027000	5.851350
+./queries/porto/top-10-seq.txt	1060608	1000	20000	1060.608000	53.030400
+./queries/porto/top-10-starts.txt	583777	100	2000	5837.770000	291.888500
+./queries/porto/top-100.txt	259289	1000	200000	259.289000	1.296445
+./queries/porto/top-100-seq.txt	1072356	1000	200000	1072.356000	5.361780
+./queries/porto/top-100-starts.txt	1965790	100	20000	19657.900000	98.289500
+SPATIAL (psi=512)
+./queries/porto/10k-starts-with-x.txt	19829091	1000000	33665000	19.829091	0.589012
+./queries/porto/10k-ends-with-x.txt	4513592	1000000	17027000	4.513592	0.265084
+./queries/porto/10k-x-in-the-middle.txt	23977796	1000000	1332428000	23.977796	0.017996
+./queries/porto/10k-starts-or-ends-with-x.txt	24232054	1000000	51295000	24.232054	0.472406
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	43102193	1000000	23694000	43.102193	1.819118
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	43588152	1000000	18920000	43.588152	2.303814
+./queries/porto/10k-uses-x.txt	97704	1000000	1566978000	0.097704	0.000062
+./queries/porto/top-10.txt	111177	1000	20000	111.177000	5.558850
+./queries/porto/top-10-seq.txt	1066265	1000	20000	1066.265000	53.313250
+./queries/porto/top-10-starts.txt	2009131	100	2000	20091.310000	1004.565500
+./queries/porto/top-100.txt	246682	1000	200000	246.682000	1.233410
+./queries/porto/top-100-seq.txt	1076510	1000	200000	1076.510000	5.382550
+./queries/porto/top-100-starts.txt	6979193	100	20000	69791.930000	348.959650
+
+
+SPATIOTEMPORAL (psi=32 times=5_HTRG32)
+./queries/porto/10k-starts-with-x.txt	2440884	1000000	1990000	2.440884	1.226575
+./queries/porto/10k-ends-with-x.txt	1487209	1000000	318000	1.487209	4.676758
+./queries/porto/10k-x-in-the-middle.txt	5210830	1000000	64128000	5.210830	0.081257
+./queries/porto/10k-starts-or-ends-with-x.txt	4084722	1000000	1716000	4.084722	2.380374
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	7486598	1000000	392000	7.486598	19.098464
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	7820449	1000000	2489000	7.820449	3.142004
+./queries/porto/10k-uses-x.txt	1026201	1000000	62206000	1.026201	0.016497
+./queries/porto/10k-uses-t.txt	1253691	1000000	2002047320	1.253691	0.000626
+./queries/porto/top-10-times.txt	294395	10000	200000	29.439500	1.471975
+SPATIOTEMPORAL (psi=32 times=5_HTRRR32)
+./queries/porto/10k-starts-with-x.txt	2511721	1000000	1990000	2.511721	1.262171
+./queries/porto/10k-ends-with-x.txt	1613275	1000000	318000	1.613275	5.073192
+./queries/porto/10k-x-in-the-middle.txt	5803174	1000000	64128000	5.803174	0.090494
+./queries/porto/10k-starts-or-ends-with-x.txt	4233545	1000000	1716000	4.233545	2.467101
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	7916342	1000000	392000	7.916342	20.194750
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	8384414	1000000	2489000	8.384414	3.368587
+./queries/porto/10k-uses-x.txt	1355142	1000000	62206000	1.355142	0.021785
+./queries/porto/10k-uses-t.txt	1394788	1000000	2002047320	1.394788	0.000697
+./queries/porto/top-10-times.txt	474380	10000	200000	47.438000	2.371900
+SPATIOTEMPORAL (psi=32 times=5_HTRRR64)
+./queries/porto/10k-starts-with-x.txt	2495223	1000000	1990000	2.495223	1.253881
+./queries/porto/10k-ends-with-x.txt	1665233	1000000	318000	1.665233	5.236582
+./queries/porto/10k-x-in-the-middle.txt	5955608	1000000	64128000	5.955608	0.092871
+./queries/porto/10k-starts-or-ends-with-x.txt	4305570	1000000	1716000	4.305570	2.509073
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	8134951	1000000	392000	8.134951	20.752426
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	8572608	1000000	2489000	8.572608	3.444198
+./queries/porto/10k-uses-x.txt	1475516	1000000	62206000	1.475516	0.023720
+./queries/porto/10k-uses-t.txt	1635841	1000000	2002047320	1.635841	0.000817
+./queries/porto/top-10-times.txt	482991	10000	200000	48.299100	2.414955
+SPATIOTEMPORAL (psi=32 times=5_HTRRR128)
+./queries/porto/10k-starts-with-x.txt	2633971	1000000	1990000	2.633971	1.323604
+./queries/porto/10k-ends-with-x.txt	1683289	1000000	318000	1.683289	5.293362
+./queries/porto/10k-x-in-the-middle.txt	6288640	1000000	64128000	6.288640	0.098064
+./queries/porto/10k-starts-or-ends-with-x.txt	4458058	1000000	1716000	4.458058	2.597936
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	8224932	1000000	392000	8.224932	20.981969
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	8887059	1000000	2489000	8.887059	3.570534
+./queries/porto/10k-uses-x.txt	1715128	1000000	62206000	1.715128	0.027572
+./queries/porto/10k-uses-t.txt	2214366	1000000	2002047320	2.214366	0.001106
+./queries/porto/top-10-times.txt	497167	10000	200000	49.716700	2.485835
+
+SPATIOTEMPORAL (psi=32 times=5_WMRG32)
+./queries/porto/10k-starts-with-x.txt	2465587	1000000	2241000	2.465587	1.100217
+./queries/porto/10k-ends-with-x.txt	1570888	1000000	725000	1.570888	2.166742
+./queries/porto/10k-x-in-the-middle.txt	5768232	1000000	65610000	5.768232	0.087917
+./queries/porto/10k-starts-or-ends-with-x.txt	4226430	1000000	2304000	4.226430	1.834388
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	8262143	1000000	652000	8.262143	12.671998
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	10415744	1000000	2737000	10.415744	3.805533
+./queries/porto/10k-uses-x.txt	1116126	1000000	64426000	1.116126	0.017324
+./queries/porto/10k-uses-t.txt	1222794	1000000	2008967320	1.222794	0.000609
+./queries/porto/top-10-times.txt	631897	10000	200000	63.189700	3.159485
+SPATIOTEMPORAL (psi=32 times=5_WMRRR32)
+./queries/porto/10k-starts-with-x.txt	2597189	1000000	2241000	2.597189	1.158942
+./queries/porto/10k-ends-with-x.txt	1808378	1000000	725000	1.808378	2.494314
+./queries/porto/10k-x-in-the-middle.txt	6646325	1000000	65610000	6.646325	0.101300
+./queries/porto/10k-starts-or-ends-with-x.txt	4712372	1000000	2304000	4.712372	2.045300
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	9343523	1000000	652000	9.343523	14.330557
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	12591661	1000000	2737000	12.591661	4.600534
+./queries/porto/10k-uses-x.txt	1710244	1000000	64426000	1.710244	0.026546
+./queries/porto/10k-uses-t.txt	1429817	1000000	2008967320	1.429817	0.000712
+./queries/porto/top-10-times.txt	907480	10000	200000	90.748000	4.537400
+SPATIOTEMPORAL (psi=32 times=5_WMRRR64)
+./queries/porto/10k-starts-with-x.txt	2587629	1000000	2241000	2.587629	1.154676
+./queries/porto/10k-ends-with-x.txt	1877953	1000000	725000	1.877953	2.590280
+./queries/porto/10k-x-in-the-middle.txt	6856187	1000000	65610000	6.856187	0.104499
+./queries/porto/10k-starts-or-ends-with-x.txt	4895248	1000000	2304000	4.895248	2.124674
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	9650599	1000000	652000	9.650599	14.801532
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	13250392	1000000	2737000	13.250392	4.841210
+./queries/porto/10k-uses-x.txt	1865738	1000000	64426000	1.865738	0.028959
+./queries/porto/10k-uses-t.txt	1647205	1000000	2008967320	1.647205	0.000820
+./queries/porto/top-10-times.txt	1013830	10000	200000	101.383000	5.069150
+SPATIOTEMPORAL (psi=32 times=5_WMRRR128)
+./queries/porto/10k-starts-with-x.txt	2657243	1000000	2241000	2.657243	1.185740
+./queries/porto/10k-ends-with-x.txt	1938440	1000000	725000	1.938440	2.673710
+./queries/porto/10k-x-in-the-middle.txt	7212467	1000000	65610000	7.212467	0.109929
+./queries/porto/10k-starts-or-ends-with-x.txt	4906058	1000000	2304000	4.906058	2.129365
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	10248709	1000000	652000	10.248709	15.718879
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	14930099	1000000	2737000	14.930099	5.454914
+./queries/porto/10k-uses-x.txt	2031589	1000000	64426000	2.031589	0.031534
+./queries/porto/10k-uses-t.txt	2221004	1000000	2008967320	2.221004	0.001106
+./queries/porto/top-10-times.txt	1269634	10000	200000	126.963400	6.348170
+
+
+SPATIOTEMPORAL (psi=32 times=30_HTRG32)
+./queries/porto/10k-starts-with-x.txt	2377344	1000000	2780000	2.377344	0.855160
+./queries/porto/10k-ends-with-x.txt	1379500	1000000	675000	1.379500	2.043704
+./queries/porto/10k-x-in-the-middle.txt	4584589	1000000	88345000	4.584589	0.051894
+./queries/porto/10k-starts-or-ends-with-x.txt	3971887	1000000	2443000	3.971887	1.625824
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	7106923	1000000	755000	7.106923	9.413143
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	7324287	1000000	2960000	7.324287	2.474421
+./queries/porto/10k-uses-x.txt	751091	1000000	88420000	0.751091	0.008495
+./queries/porto/10k-uses-t.txt	710457	1000000	1799778040	0.710457	0.000395
+./queries/porto/top-10-times.txt	42379	10000	200000	4.237900	0.211895
+SPATIOTEMPORAL (psi=32 times=30_HTRRR32)
+./queries/porto/10k-starts-with-x.txt	2387323	1000000	2780000	2.387323	0.858749
+./queries/porto/10k-ends-with-x.txt	1479307	1000000	675000	1.479307	2.191566
+./queries/porto/10k-x-in-the-middle.txt	4953464	1000000	88345000	4.953464	0.056070
+./queries/porto/10k-starts-or-ends-with-x.txt	4039840	1000000	2443000	4.039840	1.653639
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	7551964	1000000	755000	7.551964	10.002601
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	7880610	1000000	2960000	7.880610	2.662368
+./queries/porto/10k-uses-x.txt	966456	1000000	88420000	0.966456	0.010930
+./queries/porto/10k-uses-t.txt	724785	1000000	1799778040	0.724785	0.000403
+./queries/porto/top-10-times.txt	43235	10000	200000	4.323500	0.216175
+SPATIOTEMPORAL (psi=32 times=30_HTRRR64)
+./queries/porto/10k-starts-with-x.txt	2473732	1000000	2780000	2.473732	0.889832
+./queries/porto/10k-ends-with-x.txt	1520620	1000000	675000	1.520620	2.252770
+./queries/porto/10k-x-in-the-middle.txt	5043145	1000000	88345000	5.043145	0.057085
+./queries/porto/10k-starts-or-ends-with-x.txt	4054457	1000000	2443000	4.054457	1.659622
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	7593137	1000000	755000	7.593137	10.057135
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	7728042	1000000	2960000	7.728042	2.610825
+./queries/porto/10k-uses-x.txt	1016848	1000000	88420000	1.016848	0.011500
+./queries/porto/10k-uses-t.txt	824261	1000000	1799778040	0.824261	0.000458
+./queries/porto/top-10-times.txt	46659	10000	200000	4.665900	0.233295
+SPATIOTEMPORAL (psi=32 times=30_HTRRR128)
+./queries/porto/10k-starts-with-x.txt	2447762	1000000	2780000	2.447762	0.880490
+./queries/porto/10k-ends-with-x.txt	1550596	1000000	675000	1.550596	2.297179
+./queries/porto/10k-x-in-the-middle.txt	5263382	1000000	88345000	5.263382	0.059578
+./queries/porto/10k-starts-or-ends-with-x.txt	4151015	1000000	2443000	4.151015	1.699147
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	7702991	1000000	755000	7.702991	10.202637
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	8061307	1000000	2960000	8.061307	2.723415
+./queries/porto/10k-uses-x.txt	1141434	1000000	88420000	1.141434	0.012909
+./queries/porto/10k-uses-t.txt	1165267	1000000	1799778040	1.165267	0.000647
+./queries/porto/top-10-times.txt	57604	10000	200000	5.760400	0.288020
+SPATIOTEMPORAL (psi=32 times=30_WMRG32)
+./queries/porto/10k-starts-with-x.txt	2400135	1000000	2999000	2.400135	0.800312
+./queries/porto/10k-ends-with-x.txt	1446244	1000000	1069000	1.446244	1.352894
+./queries/porto/10k-x-in-the-middle.txt	4752403	1000000	89356000	4.752403	0.053185
+./queries/porto/10k-starts-or-ends-with-x.txt	3892403	1000000	3045000	3.892403	1.278293
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	7687086	1000000	1094000	7.687086	7.026587
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	8851754	1000000	3123000	8.851754	2.834375
+./queries/porto/10k-uses-x.txt	763758	1000000	90062000	0.763758	0.008480
+./queries/porto/10k-uses-t.txt	697291	1000000	1803348040	0.697291	0.000387
+./queries/porto/top-10-times.txt	96222	10000	200000	9.622200	0.481110
+SPATIOTEMPORAL (psi=32 times=30_WMRRR32)
+./queries/porto/10k-starts-with-x.txt	2460365	1000000	2999000	2.460365	0.820395
+./queries/porto/10k-ends-with-x.txt	1607338	1000000	1069000	1.607338	1.503590
+./queries/porto/10k-x-in-the-middle.txt	5097757	1000000	89356000	5.097757	0.057050
+./queries/porto/10k-starts-or-ends-with-x.txt	4223123	1000000	3045000	4.223123	1.386904
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	8142166	1000000	1094000	8.142166	7.442565
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	10138561	1000000	3123000	10.138561	3.246417
+./queries/porto/10k-uses-x.txt	1018390	1000000	90062000	1.018390	0.011308
+./queries/porto/10k-uses-t.txt	663249	1000000	1803348040	0.663249	0.000368
+./queries/porto/top-10-times.txt	94931	10000	200000	9.493100	0.474655
+SPATIOTEMPORAL (psi=32 times=30_WMRRR64)
+./queries/porto/10k-starts-with-x.txt	2458197	1000000	2999000	2.458197	0.819672
+./queries/porto/10k-ends-with-x.txt	1655851	1000000	1069000	1.655851	1.548972
+./queries/porto/10k-x-in-the-middle.txt	5341578	1000000	89356000	5.341578	0.059779
+./queries/porto/10k-starts-or-ends-with-x.txt	4219323	1000000	3045000	4.219323	1.385656
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	8407691	1000000	1094000	8.407691	7.685275
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	10578986	1000000	3123000	10.578986	3.387443
+./queries/porto/10k-uses-x.txt	1136876	1000000	90062000	1.136876	0.012623
+./queries/porto/10k-uses-t.txt	837856	1000000	1803348040	0.837856	0.000465
+./queries/porto/top-10-times.txt	110766	10000	200000	11.076600	0.553830
+SPATIOTEMPORAL (psi=32 times=30_WMRRR128)
+./queries/porto/10k-starts-with-x.txt	2534952	1000000	2999000	2.534952	0.845266
+./queries/porto/10k-ends-with-x.txt	1727628	1000000	1069000	1.727628	1.616116
+./queries/porto/10k-x-in-the-middle.txt	5723518	1000000	89356000	5.723518	0.064053
+./queries/porto/10k-starts-or-ends-with-x.txt	4385646	1000000	3045000	4.385646	1.440278
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	9028432	1000000	1094000	9.028432	8.252680
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	11756460	1000000	3123000	11.756460	3.764476
+./queries/porto/10k-uses-x.txt	1339683	1000000	90062000	1.339683	0.014875
+./queries/porto/10k-uses-t.txt	1194082	1000000	1803348040	1.194082	0.000662
+./queries/porto/top-10-times.txt	155427	10000	200000	15.542700	0.777135

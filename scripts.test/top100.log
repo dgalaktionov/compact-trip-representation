@@ -1,0 +1,82 @@
+HT TIMES madrid8_5 top-10-times
+./queries/madrid/top-10-times.txt	1757120	10000	200000	175.712000	8.785600
+./queries/madrid/top-10-times.txt	2168354	10000	200000	216.835400	10.841770
+./queries/madrid/top-10-times.txt	2277013	10000	200000	227.701300	11.385065
+./queries/madrid/top-10-times.txt	2388906	10000	200000	238.890600	11.944530
+WM TIMES madrid8_5 top-10-times
+./queries/madrid/top-10-times.txt	3175654	10000	200000	317.565400	15.878270
+./queries/madrid/top-10-times.txt	3835581	10000	200000	383.558100	19.177905
+./queries/madrid/top-10-times.txt	4428094	10000	200000	442.809400	22.140470
+./queries/madrid/top-10-times.txt	5162238	10000	200000	516.223800	25.811190
+HT TIMES madrid8_30 top-10-times
+./queries/madrid/top-10-times.txt	194004	10000	200000	19.400400	0.970020
+./queries/madrid/top-10-times.txt	253169	10000	200000	25.316900	1.265845
+./queries/madrid/top-10-times.txt	277071	10000	200000	27.707100	1.385355
+./queries/madrid/top-10-times.txt	283028	10000	200000	28.302800	1.415140
+WM TIMES madrid8_30 top-10-times
+./queries/madrid/top-10-times.txt	445400	10000	200000	44.540000	2.227000
+./queries/madrid/top-10-times.txt	534536	10000	200000	53.453600	2.672680
+./queries/madrid/top-10-times.txt	648661	10000	200000	64.866100	3.243305
+./queries/madrid/top-10-times.txt	789262	10000	200000	78.926200	3.946310
+HT TIMES madrid8_5 top-100-times
+./queries/madrid/top-100-times.txt	1929859	10000	2000000	192.985900	0.964929
+./queries/madrid/top-100-times.txt	2351254	10000	2000000	235.125400	1.175627
+./queries/madrid/top-100-times.txt	2378848	10000	2000000	237.884800	1.189424
+./queries/madrid/top-100-times.txt	2655768	10000	2000000	265.576800	1.327884
+WM TIMES madrid8_5 top-100-times
+./queries/madrid/top-100-times.txt	3411837	10000	2000000	341.183700	1.705918
+./queries/madrid/top-100-times.txt	4073125	10000	2000000	407.312500	2.036563
+./queries/madrid/top-100-times.txt	4587480	10000	2000000	458.748000	2.293740
+./queries/madrid/top-100-times.txt	5371110	10000	2000000	537.111000	2.685555
+HT TIMES madrid8_30 top-100-times
+./queries/madrid/top-100-times.txt	258044	10000	2000000	25.804400	0.129022
+./queries/madrid/top-100-times.txt	362629	10000	2000000	36.262900	0.181314
+./queries/madrid/top-100-times.txt	375185	10000	2000000	37.518500	0.187592
+./queries/madrid/top-100-times.txt	397798	10000	2000000	39.779800	0.198899
+WM TIMES madrid8_30 top-100-times
+./queries/madrid/top-100-times.txt	601245	10000	2000000	60.124500	0.300623
+./queries/madrid/top-100-times.txt	779503	10000	2000000	77.950300	0.389751
+./queries/madrid/top-100-times.txt	865625	10000	2000000	86.562500	0.432812
+./queries/madrid/top-100-times.txt	1108532	10000	2000000	110.853200	0.554266
+
+
+HT TIMES porto5 top-10-times
+./queries/madrid/top-10-times.txt	293586	10000	200000	29.358600	1.467930
+./queries/madrid/top-10-times.txt	393543	10000	200000	39.354300	1.967715
+./queries/madrid/top-10-times.txt	410491	10000	200000	41.049100	2.052455
+./queries/madrid/top-10-times.txt	456250	10000	200000	45.625000	2.281250
+WM TIMES porto5 top-10-times
+./queries/madrid/top-10-times.txt	653979	10000	200000	65.397900	3.269895
+./queries/madrid/top-10-times.txt	813884	10000	200000	81.388400	4.069420
+./queries/madrid/top-10-times.txt	917295	10000	200000	91.729500	4.586475
+./queries/madrid/top-10-times.txt	1207389	10000	200000	120.738900	6.036945
+HT TIMES porto30 top-10-times
+./queries/madrid/top-10-times.txt	39916	10000	200000	3.991600	0.199580
+./queries/madrid/top-10-times.txt	43432	10000	200000	4.343200	0.217160
+./queries/madrid/top-10-times.txt	46826	10000	200000	4.682600	0.234130
+./queries/madrid/top-10-times.txt	58109	10000	200000	5.810900	0.290545
+WM TIMES porto30 top-10-times
+./queries/madrid/top-10-times.txt	96296	10000	200000	9.629600	0.481480
+./queries/madrid/top-10-times.txt	92722	10000	200000	9.272200	0.463610
+./queries/madrid/top-10-times.txt	109466	10000	200000	10.946600	0.547330
+./queries/madrid/top-10-times.txt	153941	10000	200000	15.394100	0.769705
+HT TIMES porto5 top-100-times
+./queries/madrid/top-100-times.txt	327909	10000	2000000	32.790900	0.163955
+./queries/madrid/top-100-times.txt	448983	10000	2000000	44.898300	0.224492
+./queries/madrid/top-100-times.txt	462343	10000	2000000	46.234300	0.231172
+./queries/madrid/top-100-times.txt	504938	10000	2000000	50.493800	0.252469
+WM TIMES porto5 top-100-times
+./queries/madrid/top-100-times.txt	702096	10000	2000000	70.209600	0.351048
+./queries/madrid/top-100-times.txt	868835	10000	2000000	86.883500	0.434418
+./queries/madrid/top-100-times.txt	986169	10000	2000000	98.616900	0.493084
+./queries/madrid/top-100-times.txt	1223839	10000	2000000	122.383900	0.611919
+HT TIMES porto30 top-100-times
+./queries/madrid/top-100-times.txt	50340	10000	2000000	5.034000	0.025170
+./queries/madrid/top-100-times.txt	50427	10000	2000000	5.042700	0.025213
+./queries/madrid/top-100-times.txt	54677	10000	2000000	5.467700	0.027339
+./queries/madrid/top-100-times.txt	65427	10000	2000000	6.542700	0.032713
+WM TIMES porto30 top-100-times
+./queries/madrid/top-100-times.txt	104454	10000	2000000	10.445400	0.052227
+./queries/madrid/top-100-times.txt	102756	10000	2000000	10.275600	0.051378
+./queries/madrid/top-100-times.txt	126488	10000	2000000	12.648800	0.063244
+./queries/madrid/top-100-times.txt	168027	10000	2000000	16.802700	0.084014

@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: sais64
+Description: Induced-Sorting based linear suffix sorting library
+Version: 2.4.1
+URL: http://sites.google.com/site/yuta256/sais/
+Libs: -L${libdir} -lsais64
+Cflags: -I${includedir}

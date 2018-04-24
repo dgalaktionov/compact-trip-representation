@@ -1,0 +1,7 @@
+IMPORTANT: the library is not completely cleaned up and a lot of documentation is missing. If you have any question/doubt our you find any error (which is most likely), 
+just contact me (alberto.ordonez@udc.es) and I will try to fix it as soon as I can. 
+
+To compile: 
+	At the root directory, type make DEBUG={TRUE,FALSE} to compile with DEBUG flags set on/off respectively. 
+To tests: 
+	There are some tests in directory tests. Particularly, you can find testBitSequence.cpp, that contains an example of how to build a grammar compressed bitvector. 

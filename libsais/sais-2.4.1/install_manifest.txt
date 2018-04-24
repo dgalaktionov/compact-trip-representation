@@ -1,0 +1,4 @@
+/usr/local/lib/pkgconfig/libsais.pc
+/usr/local/include/sais.h
+/usr/local/include/sais.hxx
+/usr/local/lib/libsais.a

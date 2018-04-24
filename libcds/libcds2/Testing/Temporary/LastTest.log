@@ -1,0 +1,206 @@
+Start testing: Jan 07 15:42 CET
+----------------------------------------------------------
+1/6 Testing: TestMultiAryHuffman
+1/6 Test: TestMultiAryHuffman
+Command: "/home/dgalaktionov/Documents/trayectorias/libcds2/testMultiAryHuffman"
+Directory: /home/dgalaktionov/Documents/trayectorias/libcds2
+"TestMultiAryHuffman" start time: Jan 07 15:42 CET
+Output:
+----------------------------------------------------------
+Running main() from gtest_main.cc
+[==========] Running 2 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 2 tests from MultiAryHuffmanTest
+[ RUN      ] MultiAryHuffmanTest.Test_binary
+[       OK ] MultiAryHuffmanTest.Test_binary (0 ms)
+[ RUN      ] MultiAryHuffmanTest.Test_arity_4
+[       OK ] MultiAryHuffmanTest.Test_arity_4 (0 ms)
+[----------] 2 tests from MultiAryHuffmanTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test case ran. (0 ms total)
+[  PASSED  ] 2 tests.
+
+  YOU HAVE 1 DISABLED TEST
+
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"TestMultiAryHuffman" end time: Jan 07 15:42 CET
+"TestMultiAryHuffman" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/6 Testing: TestSequences
+2/6 Test: TestSequences
+Command: "/home/dgalaktionov/Documents/trayectorias/libcds2/testSequences"
+Directory: /home/dgalaktionov/Documents/trayectorias/libcds2
+"TestSequences" start time: Jan 07 15:42 CET
+Output:
+----------------------------------------------------------
+Running main() from gtest_main.cc
+[==========] Running 8 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 8 tests from Sequence
+[ RUN      ] Sequence.WaveletMatrixMini
+[       OK ] Sequence.WaveletMatrixMini (2 ms)
+[ RUN      ] Sequence.WaveletMatrixHuffMini
+Warning: the bitmap is too small (len=13). We are compressing it with RRR(33)
+Warning: the bitmap is too small (len=13). We are compressing it with RRR(33)
+Warning: the bitmap is too small (len=10). We are compressing it with RRR(33)
+Warning: the bitmap is too small (len=2). We are compressing it with RRR(33)
+[       OK ] Sequence.WaveletMatrixHuffMini (2 ms)
+[ RUN      ] Sequence.SequenceAlphPartMini
+[       OK ] Sequence.SequenceAlphPartMini (1 ms)
+[ RUN      ] Sequence.SequenceAlphPartMiniWithCut
+[       OK ] Sequence.SequenceAlphPartMiniWithCut (0 ms)
+[ RUN      ] Sequence.WaveletMatrix
+[       OK ] Sequence.WaveletMatrix (2920 ms)
+[ RUN      ] Sequence.WaveletMatrixHuff
+Warning: the bitmap is too small (len=70). We are compressing it with RRR(33)
+[       OK ] Sequence.WaveletMatrixHuff (3114 ms)
+[ RUN      ] Sequence.SequenceAlphPartNoCut
+[       OK ] Sequence.SequenceAlphPartNoCut (1873 ms)
+[ RUN      ] Sequence.SequenceAlphPartWithCut
+[       OK ] Sequence.SequenceAlphPartWithCut (1865 ms)
+[----------] 8 tests from Sequence (9777 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 1 test case ran. (9777 ms total)
+[  PASSED  ] 8 tests.
+
+  YOU HAVE 5 DISABLED TESTS
+
+<end of output>
+Test time =   9.81 sec
+----------------------------------------------------------
+Test Passed.
+"TestSequences" end time: Jan 07 15:42 CET
+"TestSequences" time elapsed: 00:00:09
+----------------------------------------------------------
+
+3/6 Testing: TestBWTBuilder
+3/6 Test: TestBWTBuilder
+Command: "/home/dgalaktionov/Documents/trayectorias/libcds2/testBWTBuilder"
+Directory: /home/dgalaktionov/Documents/trayectorias/libcds2
+"TestBWTBuilder" start time: Jan 07 15:42 CET
+Output:
+----------------------------------------------------------
+Running main() from gtest_main.cc
+[==========] Running 4 tests from 2 test cases.
+[----------] Global test environment set-up.
+[----------] 2 tests from BWT_BUILDER_CHAR
+[ RUN      ] BWT_BUILDER_CHAR.SA_CORRECT
+[       OK ] BWT_BUILDER_CHAR.SA_CORRECT (8 ms)
+[ RUN      ] BWT_BUILDER_CHAR.BWT_CORRECT
+[       OK ] BWT_BUILDER_CHAR.BWT_CORRECT (0 ms)
+[----------] 2 tests from BWT_BUILDER_CHAR (8 ms total)
+
+[----------] 2 tests from BWT_BUILDER_INTS
+[ RUN      ] BWT_BUILDER_INTS.SA_CORRECT_INTS
+[       OK ] BWT_BUILDER_INTS.SA_CORRECT_INTS (4 ms)
+[ RUN      ] BWT_BUILDER_INTS.BWT_CORRECT_INTS
+[       OK ] BWT_BUILDER_INTS.BWT_CORRECT_INTS (0 ms)
+[----------] 2 tests from BWT_BUILDER_INTS (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 4 tests from 2 test cases ran. (12 ms total)
+[  PASSED  ] 4 tests.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"TestBWTBuilder" end time: Jan 07 15:42 CET
+"TestBWTBuilder" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/6 Testing: InBuffer
+4/6 Test: InBuffer
+Command: "/home/dgalaktionov/Documents/trayectorias/libcds2/InBuffer"
+Directory: /home/dgalaktionov/Documents/trayectorias/libcds2
+"InBuffer" start time: Jan 07 15:42 CET
+Output:
+----------------------------------------------------------
+Running main() from gtest_main.cc
+[==========] Running 10 tests from 2 test cases.
+[----------] Global test environment set-up.
+[----------] 9 tests from InBuffer
+[ RUN      ] InBuffer.AccessBeforeEndFirstBlock
+[       OK ] InBuffer.AccessBeforeEndFirstBlock (3 ms)
+[ RUN      ] InBuffer.Access2Blocks
+[       OK ] InBuffer.Access2Blocks (56 ms)
+[ RUN      ] InBuffer.AccessOperator
+[       OK ] InBuffer.AccessOperator (26 ms)
+[ RUN      ] InBuffer.TwoEdges
+[       OK ] InBuffer.TwoEdges (31 ms)
+[ RUN      ] InBuffer.RandomAccess
+[       OK ] InBuffer.RandomAccess (1134 ms)
+[ RUN      ] InBuffer.EndOperator
+[       OK ] InBuffer.EndOperator (0 ms)
+[ RUN      ] InBuffer.ReverseBuffer
+[       OK ] InBuffer.ReverseBuffer (0 ms)
+[ RUN      ] InBuffer.ZigZagRead
+[       OK ] InBuffer.ZigZagRead (0 ms)
+[ RUN      ] InBuffer.Restart
+[       OK ] InBuffer.Restart (15 ms)
+[----------] 9 tests from InBuffer (1265 ms total)
+
+[----------] 1 test from OutBuffer
+[ RUN      ] OutBuffer.Write
+[       OK ] OutBuffer.Write (0 ms)
+[----------] 1 test from OutBuffer (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 10 tests from 2 test cases ran. (1266 ms total)
+[  PASSED  ] 10 tests.
+<end of output>
+Test time =   1.27 sec
+----------------------------------------------------------
+Test Passed.
+"InBuffer" end time: Jan 07 15:42 CET
+"InBuffer" time elapsed: 00:00:01
+----------------------------------------------------------
+
+5/6 Testing: Testsss
+5/6 Test: Testsss
+Command: "/home/dgalaktionov/Documents/trayectorias/libcds2/sssTest"
+Directory: /home/dgalaktionov/Documents/trayectorias/libcds2
+"Testsss" start time: Jan 07 15:42 CET
+Output:
+----------------------------------------------------------
+Running main() from gtest_main.cc
+[==========] Running 1 test from 1 test case.
+[----------] Global test environment set-up.
+[----------] 1 test from SSS
+[ RUN      ] SSS.SortEmpty
+[       OK ] SSS.SortEmpty (0 ms)
+[----------] 1 test from SSS (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test case ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"Testsss" end time: Jan 07 15:42 CET
+"Testsss" time elapsed: 00:00:00
+----------------------------------------------------------
+
+Unable to find executable: bitStreamTests
+6/6 Testing: BitStreamTests
+6/6 Test: BitStreamTests
+Command: ""
+Directory: /home/dgalaktionov/Documents/trayectorias/libcds2
+"BitStreamTests" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"BitStreamTests" end time: Jan 07 15:42 CET
+"BitStreamTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jan 07 15:42 CET

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/static/mapper/MapperRev.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/mapper/Mapper.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/mapper/MapperCont.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/mapper/MapperNone.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/rmq/RMQ_succinct.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/rmq/RMQ.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/rmq/RMQ_succinct.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/rmq/RMQ.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/permutation/PermutationMRRR.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/permutation/Permutation.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/permutation/PermutationWT.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/permutation/PermutationBuilderWT.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/permutation/perm.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/permutation/PermutationBuilderMRRR.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBuilderRG.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceRPSC.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceRG.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBRW32.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/sdarraySadakane.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceDArray.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBuilderPlain.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBuilderRPSN.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/TableOffsetRRR.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBuilderSDArray.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBG.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceSDArray.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBuilderDArray.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceRPSN.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequence.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBuilderRRR.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBuilderRPSC.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceRRR.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBuilderDelta.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequencePlain.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceBuilderBG.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/bitsequence/BitSequenceDelta.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/coders/HuffmanCoder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/coders/huff.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingWMBlocksBuilder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderGMRChunk.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingWMBS.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_coder_binary.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/BlockGraphBuilder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceRepairSN.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderWaveletTree.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/Tuple.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderSequenceRepairSC.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderAlphPart.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingWMBSBuilder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_coder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceGMR.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/htwt/huTuckerPerm.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/htwt/HuTuckerPermPtrs.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/htwt/hu-tucker/basicsHT.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/htwt/hu-tucker/hutucker.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/htwt/hu-tucker/binarynode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/htwt/hu-tucker/bitStringHT.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/htwt/PermWT.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/htwt/huTuckerNode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderWaveletMatrixHuff.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceGMRChunk.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderSequenceWTRP.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingSymbols.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderCanonicalWTNoptrs.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderWaveletMatrix.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderNaive.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderWaveletTreeNoptrs.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceMatrix.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingPermutations.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_coder_SubOptimalAdd.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceWTRP.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/WaveletTree.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingWM.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderSequenceRepairSN.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceAlphPart.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingWMBMP.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_coder_huff_can.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingWMBSCBuilder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderSequenceMatrix.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceAlphPartRep.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_node_internal.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderWTRPHeur.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceRepairSC.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderGMR.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_coder_huff.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_coder_Suboptimal.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/WaveletMatrix.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_coder_Pmin.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingTable.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/CanonicalWTNoptrs.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBinary.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceRepair.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/WaveletTreeNoptrs.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingWMBSC.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_coder_hutucker.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/BitmapsSequence.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MappingWMBlocks.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceAlphPartRepReg.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_coder_Balanced.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_coder_SubOptimalMult.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderAlphPartRep.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_node.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/Sequence.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/wt_node_leaf.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MultiArity/MultiArityInternalNode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MultiArity/MultiArityNode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MultiArity/MultiArityCoder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MultiArity/MultiArityLeafNode.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MultiArity/SequenceBuilderMultiArityWT.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MultiArity/MultiArityCanonicalHuffman.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MultiArity/MultiArityCoderFixed.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MultiArity/MultiArityWTHelper.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/MultiArity/MultiArityWT.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderBinary.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/WaveletMatrixHuff.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/sequence/SequenceBuilderStr.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/DictionaryRPBuilderTabei.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/basicsRepair.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/hash.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/array.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/records.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/DictionaryRPTabei.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/DictionaryRPBuilderPlain.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/DictionaryRP.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/RepairDN.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/heap.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/DictionaryRPPlain.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/grammar/Repair.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/text_indexes/fmi.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/text_indexes/BWTBuilder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/trees/BP.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/trees/CartesianTree.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/trees/bp-utils.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/trees/GCT.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/trees/Parentheses.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/trees/bp.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/trees/bp-darray.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/trees/BPNaive.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/trees/bp-core.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/direct_access/DAC.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/direct_access/DirectAccess.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/direct_access/ArrayDA.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/direct_access/DACe.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/static/direct_access/DACInc.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/utils/BitString.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/utils/timing.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/utils/Array.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/utils/cppUtils.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/utils/Tuples.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/utils/StringUtils.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/TestSequences.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/TestMultiAryHuffman.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/testBitSequence.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/InBuffer.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/utils/TestSparseSuffixSort.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/utils/BitStreamTests.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/testBWTBuilder.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/includes/sequence/MappingTableAcelerators.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/includes/utils/BitStreamIterator.h" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/local/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.8/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/local/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>

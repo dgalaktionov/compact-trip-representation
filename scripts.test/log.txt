@@ -1,0 +1,124 @@
+1617775 trips
+
+
+
+313 stops in 23 lines
+mean 11.81 stops/trip
+uncompressed txt: 4770057046
+
+voc_stops: 314, 9 bits
+voc_times: 1920, 11 bits
+
+ideal size stops: 9  * 640591406 = 720665331.75 bytes
+ideal size times: 12 * 590591406 = 885887109 bytes
+ideal total size: 1606552440.75 bytes
+(~1.6066 GB)
+
+
+sPsi=16:
+**** [iCSA built on 640591406 integers. Size = 489762502 bytes... RAM 67.96%
+Size of times index: 908347335 bytes 
+Index saved !! Index occupied 1398110197 bytes, 2 extra mallocs = 8
+
+sPsi=64:
+**** [iCSA built on 640591406 integers. Size = 261246070 bytes... RAM 36.25%
+Size of times index: 908347335 bytes
+Index saved !! Index occupied 1169593765 bytes, 2 extra mallocs = 8
+
+sPsi=256:
+**** [iCSA built on 640591406 integers. Size = 202485154 bytes... RAM 28.10%
+Size of times index: 908347335 bytes
+Index saved !! Index occupied 1110832849 bytes, 2 extra mallocs = 8
+
+
+gzip:  421234515 58.45%
+bzip2: 250008017 34.69%
+p7zip: 302374093 41.96%
+
+Ordenadas:
+gzip:  28449118 2.73%
+bzip2: 14887396 1.43%
+p7zip: 14778340 1.42%
+
+
+All times measured with 10K queries, in a Intel(R) Core(TM) i5-4440 CPU @ 3.10GHz with 4 GB DDR3:
+
+
+SPATIAL:
+
+sPsi=16:
+starts with X: 6.03 microsecs/query
+ends with X: 4.73 microsecs/query
+X in the middle: 13.41 microsecs/query
+starts or ends with X: 12.76 microsecs/query
+
+starts with X ends with Y: 11.24 microsecs/query
+
+sPsi=64:
+starts with X: 8.22 microsecs/query
+ends with X: 4.61 microsecs/query
+X in the middle: 15.76 microsecs/query
+starts or ends with X: 15.12 microsecs/query
+
+starts with X ends with Y: 16.68 microsecs/query
+
+sPsi=256:
+starts with X: 18.78 microsecs/query
+ends with X: 5.69 microsecs/query
+X in the middle: 27.67 microsecs/query
+starts or ends with X: 26.80 microsecs/query
+
+starts with X ends with Y: 38.82 microsecs/query
+
+ANY sPsi:
+uses X (no time): 0.3902 microsecs/query
+
+sequential TopK 10: 50.42 microsecs/query
+sequential TopK 100: 62.79 microsecs/query
+
+binary TopK 10: 39.36 microsecs/query
+binary TopK 100: 75.09 microsecs/query
+
+
+
+TEMPORAL:
+uses T: 1.37 microsecs/query
+Top 10 times: 64.90 microsecs/query
+Top 1000 times: 167.34 microsecs/query
+
+
+
+
+ST:
+
+sPsi=16:
+starts with X: 8.34 microsecs/query
+ends with X: 7.44 microsecs/query
+X in the middle: 21.13 microsecs/query
+starts or ends with X: 18.41 microsecs/query
+
+starts with X ends with Y (STR): 22.42 microsecs/query
+starts with X ends with Y (WEA): 18.95 microsecs/query
+
+
+sPsi=64:
+starts with X: 11.21 microsecs/query
+ends with X: 7.83 microsecs/query
+X in the middle: 23.89 microsecs/query
+starts or ends with X: 20.69 microsecs/query
+
+starts with X ends with Y (STR): 28.07 microsecs/query
+starts with X ends with Y (WEA): 24.32 microsecs/query
+
+
+sPsi=256:
+starts with X: 21.68 microsecs/query
+ends with X: 8.58 microsecs/query
+X in the middle: 35.22 microsecs/query
+starts or ends with X: 32.71 microsecs/query
+
+starts with X ends with Y (STR): 49.98 microsecs/query
+starts with X ends with Y (WEA): 46.50 microsecs/query
+
+ANY sPsi:
+uses X: 2.08 microsecs/query

@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/examples/unbwt.c
+sais_config.h
+/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/examples/sais_config.h
+stdio.h
+-
+stdlib.h
+-
+memory.h
+-
+string.h
+-
+strings.h
+-
+io.h
+-
+fcntl.h
+-
+time.h
+-
+sys/types.h
+-
+inttypes.h
+-
+lfs.h
+/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/examples/lfs.h
+sais.h
+/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/examples/sais.h
+
+examples/../include/lfs.h
+
+examples/../include/sais.h
+inttypes.h
+-
+
+examples/../include/sais_config.h
+

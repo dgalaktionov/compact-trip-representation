@@ -1,0 +1,76 @@
+SPATIAL (psi=32)
+indexes/porto32	./queries/porto/10k-starts-with-x.txt	2236961	1000000	33665000	2.236961	0.066448
+indexes/porto32	./queries/porto/10k-ends-with-x.txt	1114798	1000000	17019000	1.114798	0.065503
+indexes/porto32	./queries/porto/10k-x-in-the-middle.txt	3459364	1000000	1332428000	3.459364	0.002596
+indexes/porto32	./queries/porto/10k-starts-or-ends-with-x.txt	3455241	1000000	51295000	3.455241	0.067360
+indexes/porto32	./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	5669014	1000000	23694000	5.669014	0.239259
+indexes/porto32	./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	5603301	1000000	18920000	5.603301	0.296158
+indexes/porto32	./queries/porto/10k-uses-x.txt	102090	1000000	1566978000	0.102090	0.000065
+indexes/porto32	./queries/porto/top-10.txt	10692	100	2000	106.920000	5.346000
+indexes/porto32	./queries/porto/top-10-seq.txt	104346	100	2000	1043.460000	52.173000
+indexes/porto32	./queries/porto/top-10-starts.txt	237989	100	2000	2379.890000	118.994500
+indexes/porto32	./queries/porto/top-100.txt	23467	100	20000	234.670000	1.173350
+indexes/porto32	./queries/porto/top-100-seq.txt	105543	100	20000	1055.430000	5.277150
+indexes/porto32	./queries/porto/top-100-starts.txt	770537	100	20000	7705.370000	38.526850
+
+SPATIOTEMPORAL (psi=32)
+indexes/porto32	./queries/porto/10k-starts-with-x.txt	2464862	1000000	2241000	2.464862	1.099894
+indexes/porto32	./queries/porto/10k-ends-with-x.txt	1626017	1000000	725000	1.626017	2.242782
+indexes/porto32	./queries/porto/10k-x-in-the-middle.txt	5532828	1000000	65610000	5.532828	0.084329
+indexes/porto32	./queries/porto/10k-starts-or-ends-with-x.txt	4179946	1000000	2304000	4.179946	1.814213
+indexes/porto32	./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	6969728	1000000	0	6.969728	inf
+indexes/porto32	./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	7480124	1000000	1173000	7.480124	6.376917
+indexes/porto32	./queries/porto/10k-uses-x.txt	1227099	1000000	64426000	1.227099	0.019047
+indexes/porto32	./queries/porto/10k-uses-t.txt	1292933	1000000	2008967320	1.292933	0.000644
+
+
+SPATIAL (psi=128)
+indexes/porto128	./queries/porto/10k-starts-with-x.txt	5795890	1000000	33665000	5.795890	0.172164
+indexes/porto128	./queries/porto/10k-ends-with-x.txt	2138859	1000000	17027000	2.138859	0.125616
+indexes/porto128	./queries/porto/10k-x-in-the-middle.txt	7849789	1000000	1332428000	7.849789	0.005891
+indexes/porto128	./queries/porto/10k-starts-or-ends-with-x.txt	7935417	1000000	51295000	7.935417	0.154702
+indexes/porto128	./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	13532105	1000000	23694000	13.532105	0.571119
+indexes/porto128	./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	13664301	1000000	18920000	13.664301	0.722215
+indexes/porto128	./queries/porto/10k-uses-x.txt	104526	1000000	1566978000	0.104526	0.000067
+indexes/porto128	./queries/porto/top-10.txt	10935	100	2000	109.350000	5.467500
+indexes/porto128	./queries/porto/top-10-seq.txt	104504	100	2000	1045.040000	52.252000
+indexes/porto128	./queries/porto/top-10-starts.txt	537277	100	2000	5372.770000	268.638500
+indexes/porto128	./queries/porto/top-100.txt	23813	100	20000	238.130000	1.190650
+indexes/porto128	./queries/porto/top-100-seq.txt	106410	100	20000	1064.100000	5.320500
+indexes/porto128	./queries/porto/top-100-starts.txt	1894292	100	20000	18942.920000	94.714600
+
+SPATIOTEMPORAL (psi=128)
+indexes/porto128	./queries/porto/10k-starts-with-x.txt	6006198	1000000	2241000	6.006198	2.680142
+indexes/porto128	./queries/porto/10k-ends-with-x.txt	2600205	1000000	725000	2.600205	3.586490
+indexes/porto128	./queries/porto/10k-x-in-the-middle.txt	9887658	1000000	65610000	9.887658	0.150704
+indexes/porto128	./queries/porto/10k-starts-or-ends-with-x.txt	8654644	1000000	2304000	8.654644	3.756356
+indexes/porto128	./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	15883846	1000000	0	15.883846	inf
+indexes/porto128	./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	16561206	1000000	1173000	16.561206	14.118675
+indexes/porto128	./queries/porto/10k-uses-x.txt	1250208	1000000	64426000	1.250208	0.019405
+indexes/porto128	./queries/porto/10k-uses-t.txt	1306046	1000000	2008967320	1.306046	0.000650
+
+
+SPATIAL (psi=512)
+indexes/porto512	./queries/porto/10k-starts-with-x.txt	19508971	1000000	33665000	19.508971	0.579503
+indexes/porto512	./queries/porto/10k-ends-with-x.txt	4415937	1000000	17027000	4.415937	0.259349
+indexes/porto512	./queries/porto/10k-x-in-the-middle.txt	23596701	1000000	1332428000	23.596701	0.017710
+indexes/porto512	./queries/porto/10k-starts-or-ends-with-x.txt	23978952	1000000	51295000	23.978952	0.467472
+indexes/porto512	./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	42465332	1000000	23694000	42.465332	1.792240
+indexes/porto512	./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	42958719	1000000	18920000	42.958719	2.270545
+indexes/porto512	./queries/porto/10k-uses-x.txt	105172	1000000	1566978000	0.105172	0.000067
+indexes/porto512	./queries/porto/top-10.txt	10969	100	2000	109.690000	5.484500
+indexes/porto512	./queries/porto/top-10-seq.txt	109283	100	2000	1092.830000	54.641500
+indexes/porto512	./queries/porto/top-10-starts.txt	1960439	100	2000	19604.390000	980.219500
+indexes/porto512	./queries/porto/top-100.txt	23374	100	20000	233.740000	1.168700
+indexes/porto512	./queries/porto/top-100-seq.txt	114133	100	20000	1141.330000	5.706650
+indexes/porto512	./queries/porto/top-100-starts.txt	6992549	100	20000	69925.490000	349.627450
+
+SPATIOTEMPORAL (psi=512)
+indexes/porto512	./queries/porto/10k-starts-with-x.txt	19970440	1000000	2241000	19.970440	8.911397
+indexes/porto512	./queries/porto/10k-ends-with-x.txt	4938331	1000000	725000	4.938331	6.811491
+indexes/porto512	./queries/porto/10k-x-in-the-middle.txt	26327520	1000000	65610000	26.327520	0.401273
+indexes/porto512	./queries/porto/10k-starts-or-ends-with-x.txt	25239084	1000000	2304000	25.239084	10.954464
+indexes/porto512	./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	48648161	1000000	0	48.648161	inf
+indexes/porto512	./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	49430608	1000000	1173000	49.430608	42.140331
+indexes/porto512	./queries/porto/10k-uses-x.txt	1236675	1000000	64426000	1.236675	0.019195
+indexes/porto512	./queries/porto/10k-uses-t.txt	1288029	1000000	2008967320	1.288029	0.000641

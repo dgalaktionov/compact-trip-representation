@@ -1,0 +1,20 @@
+
+
+SPATIAL porto32 porto5_WMRG32
+./queries/madrid/top-10-starts.txt	16705055	100	1000	167050.550000	16705.055000
+./queries/madrid/top-100-starts.txt	16846115	100	10000	168461.150000	1684.611500
+SPATIAL porto128 porto5_WMRG32
+./queries/madrid/top-10-starts.txt	41880303	100	1000	418803.030000	41880.303000
+./queries/madrid/top-100-starts.txt	41962262	100	10000	419622.620000	4196.226200
+SPATIAL porto512 porto5_WMRG32
+./queries/madrid/top-10-starts.txt	151383931	100	1000	1513839.310000	151383.931000
+./queries/madrid/top-100-starts.txt	153806884	100	10000	1538068.840000	15380.688400
+SPATIAL madrid32 madrid8_5_WMRG32
+./queries/madrid/top-10-starts.txt	58844	100	1000	588.440000	58.844000
+./queries/madrid/top-100-starts.txt	66381	100	10000	663.810000	6.638100
+SPATIAL madrid128 madrid8_5_WMRG32
+./queries/madrid/top-10-starts.txt	135647	100	1000	1356.470000	135.647000
+./queries/madrid/top-100-starts.txt	127952	100	10000	1279.520000	12.795200
+SPATIAL madrid512 madrid8_5_WMRG32
+./queries/madrid/top-10-starts.txt	391626	100	1000	3916.260000	391.626000
+./queries/madrid/top-100-starts.txt	375163	100	10000	3751.630000	37.516300

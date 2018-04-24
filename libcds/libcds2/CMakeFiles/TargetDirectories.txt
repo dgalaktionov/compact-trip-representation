@@ -1,0 +1,8 @@
+/home/dgalaktionov/Documents/trayectorias/libcds2/CMakeFiles/BitStreamTests.dir
+/home/dgalaktionov/Documents/trayectorias/libcds2/CMakeFiles/InBuffer.dir
+/home/dgalaktionov/Documents/trayectorias/libcds2/CMakeFiles/cds.dir
+/home/dgalaktionov/Documents/trayectorias/libcds2/CMakeFiles/sssTest.dir
+/home/dgalaktionov/Documents/trayectorias/libcds2/CMakeFiles/testBWTBuilder.dir
+/home/dgalaktionov/Documents/trayectorias/libcds2/CMakeFiles/testBitSequence.dir
+/home/dgalaktionov/Documents/trayectorias/libcds2/CMakeFiles/testMultiAryHuffman.dir
+/home/dgalaktionov/Documents/trayectorias/libcds2/CMakeFiles/testSequences.dir

@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"path": "/home/alberto/research/libcds",
+			"name": "libcds"
+		}
+	],
+	"settings":
+	{
+		"sublimeclang_options":
+		[
+			"-I/home/alberto/research/libcds/includes/",
+			"-I/usr/include/x86_64-linux-gnu/c++/4.7/bits/"
+		]
+	}
+}

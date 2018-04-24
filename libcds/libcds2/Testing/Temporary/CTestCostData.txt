@@ -1,0 +1,8 @@
+TestMultiAryHuffman 1 0.0326071
+TestSequences 1 9.81243
+TestBWTBuilder 1 0.031492
+InBuffer 1 1.26723
+Testsss 1 0.0016551
+BitStreamTests 0 0
+---
+BitStreamTests

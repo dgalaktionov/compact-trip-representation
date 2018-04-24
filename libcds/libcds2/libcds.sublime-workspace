@@ -1,0 +1,1517 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"out",
+				"output	uint *"
+			],
+			[
+				"pattern",
+				"patterns_count	uint **"
+			],
+			[
+				"fmi",
+				"fmi(ifstream &fp)	constructor"
+			],
+			[
+				"sa",
+				"sampleHuff	uint"
+			],
+			[
+				"setsam",
+				"set_samplesuff(uint sample)	cds_static::fmi *"
+			],
+			[
+				"se",
+				"set_samplepos(uint sample)	cds_static::fmi *"
+			],
+			[
+				"patter",
+				"patterns_count	uint **"
+			],
+			[
+				"set",
+				"setMarksBuilder(cds_static::BitSequenceBuilder *bsb)	cds_static::SequenceLZBlock *"
+			],
+			[
+				"SequenceL",
+				"SequenceLZBlock(uint *symbols, size_t n, uint b, uint groupSize, uint nLevels)	constructor"
+			],
+			[
+				"SequenceLZ",
+				"SequenceLZBlock	class"
+			],
+			[
+				"rank_off",
+				"rank_offset	size_t"
+			],
+			[
+				"rank_bloc",
+				"rank_block_ini	size_t"
+			],
+			[
+				"accessRa",
+				"accessRanksOffsets(uint level, uint symbol, size_t pos) const	size_t"
+			],
+			[
+				"j",
+				"j	size_t"
+			],
+			[
+				"block",
+				"ranksBlocksDA	cds_static::DirectAccess ***"
+			],
+			[
+				"RPS",
+				"RPSNS"
+			],
+			[
+				"RP",
+				"RPSCS"
+			],
+			[
+				"tech",
+				"technique"
+			],
+			[
+				"re",
+				"rebuildMarksBitmap(cds_static::BitSequenceBuilder *bsb)	void"
+			],
+			[
+				"mark",
+				"marks	cds_static::BitSequence **"
+			],
+			[
+				"get",
+				"getLength() const	uint"
+			],
+			[
+				"len",
+				"len	uint"
+			],
+			[
+				"seq",
+				"seq	Sequence *"
+			],
+			[
+				"sample",
+				"sample"
+			],
+			[
+				"input",
+				"input_text"
+			],
+			[
+				"Bit",
+				"BitSequenceRG"
+			],
+			[
+				"getSiz",
+				"getSizeVerbose"
+			],
+			[
+				"offset",
+				"offsetsBack"
+			],
+			[
+				"first",
+				"firstLevel"
+			],
+			[
+				"Sequence",
+				"SequenceLZBlock"
+			],
+			[
+				"RRR",
+				"RRR	TECHNIQUE"
+			],
+			[
+				"querie",
+				"queries_access	size_t *"
+			],
+			[
+				"queries",
+				"queries_rank	pair<size_t,uint> "
+			],
+			[
+				"queri",
+				"queries_rank	pair<size_t,uint> "
+			],
+			[
+				"blockLe",
+				"blockLength	size_t"
+			],
+			[
+				"samples",
+				"nSamplesBlockDA"
+			],
+			[
+				"ge",
+				"getLength() const	uint"
+			],
+			[
+				"BitSeq",
+				"BitSequence	class"
+			],
+			[
+				"getSize",
+				"getSizeVerbose() const	size_t"
+			],
+			[
+				"ranksOffse",
+				"ranksOffsetsDA"
+			],
+			[
+				"ranksBloc",
+				"ranksBlocksDA"
+			],
+			[
+				"degree",
+				"degreeLevel	uint *"
+			],
+			[
+				"marks",
+				"bsb_marks	cds_static::BitSequenceBuilder *"
+			],
+			[
+				"BitSequence",
+				"BitSequenceBuilder	class"
+			],
+			[
+				"length",
+				"length	size_t"
+			],
+			[
+				"DAC_",
+				"DAC_INC_HDR	macro"
+			],
+			[
+				"ARRAY",
+				"ARRAY_DA_HDR	macro"
+			],
+			[
+				"ARRA",
+				"ARRAY_DA_HDR	macro"
+			],
+			[
+				"blocLen",
+				"blockLengthLevel	uint *"
+			],
+			[
+				"ranks",
+				"ranksBlocksDA	cds_static::DirectAccess ***"
+			],
+			[
+				"ranksOff",
+				"ranksOffsetsDA	cds_static::DirectAccess ***"
+			],
+			[
+				"poin",
+				"pointersMarks	uint *"
+			],
+			[
+				"seqs_test",
+				"sequences_test	uint **"
+			],
+			[
+				"ranksBlo",
+				"ranksBlocksDA	cds_static::DirectAccess ***"
+			],
+			[
+				"offsets",
+				"offsetsUnmarked	vector<uint> *&"
+			],
+			[
+				"pointer",
+				"pointersUnmarked	vector<uint> *&"
+			],
+			[
+				"pointers",
+				"pointersUnmarked	vector<uint> "
+			],
+			[
+				"comput",
+				"computeH_RK(size_t base, size_t m, size_t q)	size_t"
+			],
+			[
+				"LZBase",
+				"LZBaseStrategy	class"
+			],
+			[
+				"LZb",
+				"LZBaseStrategy	class"
+			],
+			[
+				"LZB",
+				"LZBaseStragegy"
+			],
+			[
+				"lzbase",
+				"LZBaseStragegy"
+			],
+			[
+				"base",
+				"BASE_LENGTH	cds_static::base_algorithm"
+			],
+			[
+				"ranksOf",
+				"ranksOffsets	vector<uint> **"
+			],
+			[
+				"ranksB",
+				"ranksBlocksDA	cds_static::DACInc ***"
+			],
+			[
+				"ranksBlocks",
+				"ranksBlocksDAC	cds_static::DACInc ***"
+			],
+			[
+				"superSAmp",
+				"superSampleVector(uint **samples, uint nsamples, uint max_v, uint **&ssamples, uint &nssamples, uint ss)	uint"
+			],
+			[
+				"counter",
+				"countersOffset	uint *"
+			],
+			[
+				"cou",
+				"countersOffset	uint *"
+			],
+			[
+				"bloc",
+				"block_end_pos	uint"
+			],
+			[
+				"poi",
+				"pointersUnmarked	uint **"
+			],
+			[
+				"BitSequen",
+				"BitSequenceBuilderRG(uint factor)	constructor"
+			],
+			[
+				"index",
+				"indexPointersUnmarked	uint *"
+			],
+			[
+				"g",
+				"getFirstOcc()	size_t"
+			],
+			[
+				"initia",
+				"initialO	uint **"
+			],
+			[
+				"node",
+				"node_and_depth_left"
+			],
+			[
+				"la",
+				"LAQs"
+			],
+			[
+				"rabinK",
+				"rabinKarpRoll(uint leaving, uint comming, size_t hash_block, size_t h, size_t base, size_t modulo)	size_t"
+			],
+			[
+				"do_test",
+				"do_testGrammar(int argc, char **argv)	int"
+			],
+			[
+				"do",
+				"do	Do While Loop"
+			],
+			[
+				"hash",
+				"hash_block	size_t"
+			],
+			[
+				"i",
+				"i	uint"
+			],
+			[
+				"ending",
+				"ending_positions	uint *"
+			],
+			[
+				"intern",
+				"internal_child_right"
+			],
+			[
+				"anyNode",
+				"anyNode_left"
+			],
+			[
+				"inter",
+				"internal_child_left"
+			],
+			[
+				"NSI",
+				"NSIBLING"
+			],
+			[
+				"dic",
+				"dicSize	uint"
+			],
+			[
+				"BitS",
+				"BitSequence	class"
+			],
+			[
+				"fp",
+				"fp	ifstream &"
+			],
+			[
+				"intera",
+				"internal_child_right"
+			],
+			[
+				"internal",
+				"internal_child_left"
+			],
+			[
+				"endings",
+				"endingsArray	cds_utils::Array *"
+			],
+			[
+				"samp",
+				"samp	uint"
+			],
+			[
+				"ba",
+				"ba	base_algorithm"
+			],
+			[
+				"ssamples",
+				"ssamplesVerb	uint **"
+			],
+			[
+				"ssampl",
+				"ssamplesVerb	uint **"
+			],
+			[
+				"BitSe",
+				"BitSequence	class"
+			],
+			[
+				"SEQUENCE",
+				"SEQUENCE_LZEND_HDR	macro"
+			],
+			[
+				"SEQUENCE_LZEND_",
+				"SEQUENCE_LZEND_BASE_HDR	macro"
+			],
+			[
+				"SEQUENCE_LZ",
+				"SEQUENCE_LZEND_BASE_HDR	macro"
+			],
+			[
+				"rd",
+				"random_data	struct"
+			],
+			[
+				"trailing",
+				"trailing_char	uint"
+			],
+			[
+				"max_v",
+				"max_v_base	uint"
+			],
+			[
+				"uint",
+				"uint	macro"
+			],
+			[
+				"explici",
+				"explicity_rank0_end	uint"
+			],
+			[
+				"explic",
+				"explicity_rank0_end	uint"
+			],
+			[
+				"sele",
+				"select1(const size_t i) const	size_t"
+			],
+			[
+				"Wavele",
+				"WaveletMatrix(uint *symbols, size_t n, cds_static::BitSequenceBuilder *bmb, cds_static::Mapper *am)	constructor"
+			],
+			[
+				"ref",
+				"ref	uint"
+			],
+			[
+				"phras",
+				"phrase_end	uint"
+			],
+			[
+				"acce",
+				"accessSample(uint pos, uint symbol)	uint"
+			],
+			[
+				"pos",
+				"pos	size_t"
+			],
+			[
+				"selec",
+				"select1(const size_t i) const	size_t"
+			],
+			[
+				"sequence",
+				"sequence	uint *"
+			],
+			[
+				"Wavel",
+				"WaveletMatrix(const cds_utils::Array &symbols2, cds_static::BitSequenceBuilder *bmb, cds_static::Mapper *am)	constructor"
+			],
+			[
+				"extractBase",
+				"extractBaseByLength(uint *input, cds_static::BitSequence *marks, cds_utils::Array *pointers, cds_utils::Array *lengths, char *trail, uint beta)	uint"
+			],
+			[
+				"pinte",
+				"pointerSeq	uint"
+			],
+			[
+				"ns",
+				"nsamples	uint"
+			],
+			[
+				"createEmp",
+				"createEmptyBitmap(uint **bmp, uint nbits)	int"
+			],
+			[
+				"createE",
+				"createEmptyBitmap(uint **bmp, uint nbits)	int"
+			],
+			[
+				"Mappercont",
+				"MapperCont(const uint *A, const size_t len, const cds_static::BitSequenceBuilder &bsb)	constructor"
+			],
+			[
+				"set_sa",
+				"set_samplesuff(uint sample)	cds_static::fmi *"
+			],
+			[
+				"rec",
+				"recInsertKey"
+			],
+			[
+				"Seque",
+				"SequenceLZEend"
+			],
+			[
+				"SequenceLZEnd",
+				"SequenceLZEnd"
+			],
+			[
+				"tree",
+				"treeLen"
+			],
+			[
+				"extr",
+				"extractSegmentA"
+			]
+		]
+	},
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 117.0,
+		"selected_items":
+		[
+			[
+				"Snippet: do",
+				"Snippet: Do While Loop"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"csv",
+				"Sort Lines (Case Sensitive)"
+			],
+			[
+				"Snippet: ",
+				"Snippet: main()"
+			],
+			[
+				"latextoo",
+				"LaTeXTools: Reconfigure and migrate settings"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"Snippet: mai",
+				"Snippet: main()"
+			],
+			[
+				"packag",
+				"Package Control: List Packages"
+			],
+			[
+				"control",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"addre",
+				"Package Control: Add Repository"
+			],
+			[
+				"con",
+				"Package Control: Add Repository"
+			],
+			[
+				"package control",
+				"Package Control: Install Package"
+			],
+			[
+				"contro",
+				"Package Control: Install Package"
+			],
+			[
+				"cont",
+				"Package Control: Remove Package"
+			],
+			[
+				"Packag",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 266.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/alberto/Downloads/lzisa/algorithm/lzisa.h",
+		"/home/alberto/Downloads/lzisa/algorithm/lzisa.cpp",
+		"/home/alberto/Downloads/lzisa/algorithm/rle_lf.h",
+		"/home/alberto/Downloads/lzisa/algorithm/rmq_tree.h",
+		"/home/alberto/Downloads/lzisa/algorithm/sparse_lf.h",
+		"/home/alberto/Downloads/lzisa/examples/count.cpp",
+		"/home/alberto/Downloads/lzisa/examples/LZISA.h",
+		"/home/alberto/.cache/.fr-rwAQr2/libcds/external/libdivsufsort-2.0.1/CMakeLists.txt",
+		"/home/alberto/.cache/.fr-FtA375/libcds/external/libdivsufsort-2.0.1/CMakeLists.txt",
+		"/home/alberto/.cache/.fr-QMu8tm/lzisa/examples/count.cpp",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/timeMeasure.h",
+		"/home/alberto/.cache/.fr-AMjCM2/libcds/tests/test_array.cpp",
+		"/home/alberto/.cache/.fr-AMjCM2/libcds/tests/untitled",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/libcds/src/static/sequence/SequenceLZBlock.cpp",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/libcds/src/static/sequence/SequenceLZBlock.h",
+		"/home/alberto/Downloads/lzisa/examples/gensa.cpp",
+		"/home/alberto/Downloads/lzisa/README",
+		"/home/alberto/research/libcds/src/static/sequence/WaveletMatrixHuff.h",
+		"/home/alberto/.cache/.fr-N2wUP4/libcds/src/static/bitsequence/BitSequence.cpp",
+		"/home/alberto/Downloads/libcds/libcds/CMakeLists.txt",
+		"/home/alberto/research/libcds/tests/testCount.cpp",
+		"/home/alberto/Downloads/libcds/libcds/tests/test_array2.cpp",
+		"/home/alberto/Downloads/libcds/libcds/tests/testArray.cpp",
+		"/home/alberto/Downloads/libcds/libcds/tests/test_array.cpp",
+		"/home/alberto/research/libcds/tests/testMisc.cpp",
+		"/home/alberto/research/libcds/tests/Makefile",
+		"/home/alberto/research/libcds/external/gtest-1.7.0/README",
+		"/home/alberto/research/libcds/src/Makefile",
+		"/home/alberto/research/libcds/Makefile",
+		"/home/alberto/Downloads/lzisa/LICENSE",
+		"/home/alberto/Downloads/lzisa/CHANGELOG",
+		"/home/alberto/Downloads/lzisa/AUTHORS",
+		"/home/alberto/.cache/.fr-UQ6mPj/lzisa/examples/Makefile",
+		"/home/alberto/.cache/.fr-HEK5wL/lzisa/examples/common.h",
+		"/home/alberto/.cache/.fr-kCiOqo/lzisa/examples/common.cpp",
+		"/home/alberto/.cache/.fr-Lfi8jV/lzisa/algorithm/lzisa.cpp",
+		"/home/alberto/.cache/.fr-S9INwk/lzisa/algorithm/rmq_tree.h",
+		"/home/alberto/research/libcds/src/static/sequence/CanonicalWTNoptrs.h",
+		"/home/alberto/.clion10/system/cmake/generated/179dccf0/179dccf0/Debug/Makefile",
+		"/home/alberto/research/rlfmi/extractBWT.cpp",
+		"/home/alberto/research/blockGraphs/indexing/rlfm/mainRLFM.cpp",
+		"/home/alberto/research/blockGraphs/indexing/rlfm/Makefile",
+		"/home/alberto/research/rlfmi/Makefile",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/scriptSequences.sh",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/lzisa/examples/scriptNumberPhrasesLZ77.sh",
+		"/home/alberto/.cache/.fr-1bhAIH/libcds/CMakeLists.txt",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/scriptBitVectors.sh",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/utils/convertBitmap2Binary.cpp",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/utils/convertBitmap2Text.cpp",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/utils/Makefile",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/scriptFMIndex.sh",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/utils/extractQueriesFMIndex.cpp",
+		"/home/alberto/research/libcds/src/static/sequence/SequenceLZBlock.cpp",
+		"/home/alberto/research/libcds/src/static/sequence/SequenceLZEnd.cpp",
+		"/home/alberto/research/blockGraphs/indexing/rlfm/RLFM.cpp",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/testFMIndex.cpp",
+		"/home/alberto/Downloads/libcds/libcds/src/static/sequence/Sequence.cpp",
+		"/home/alberto/Downloads/libcds/libcds/README",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/scriptNumberPhrasesLZ77.sh",
+		"/home/alberto/research/lzisa/README",
+		"/home/alberto/research/lz77index/test_index.cpp",
+		"/home/alberto/.cache/.fr-7Sguzs/lzisa/examples/encode.cpp",
+		"/home/alberto/.cache/.fr-M2hpCW/lzisa/examples/common.cpp",
+		"/home/alberto/research/blockGraphs/indexing/rlfm/interface.h",
+		"/home/alberto/research/libcds/src/static/sequence/SequenceBuilderLZBlock.cpp",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/libcds/src/static/text_indexes/fmi.cpp",
+		"/home/alberto/research/libcds/src/static/text_indexes/fmi.cpp",
+		"/home/alberto/research/blockGraphs/indexing/rlfm/mainQueries.cpp",
+		"/home/alberto/research/blockGraphs/indexing/rlfm/BSGAP.h",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/utils/scriptExtractQueriesFMIndex.sh",
+		"/home/alberto/research/blockGraphs/tests/Makefile",
+		"/home/alberto/research/libcds/src/static/sequence/SequenceBuilderLZBlock.h",
+		"/home/alberto/research/libcds/src/static/sequence/SequenceBuilder.h",
+		"/home/alberto/research/libcds/src/static/text_indexes/fmi.h",
+		"/home/alberto/research/blockGraphs/tests/testSequences.cpp",
+		"/home/alberto/research/libcds/tutorial/ssa/rlfm.cpp",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/utils/extractQueriesRSA.cpp",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/utils/scriptExtractQueriesRSA.sh",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/outputSequences.txt",
+		"/home/alberto/research/blockGraphs/tests/testFMIndexes.cpp",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/Makefile",
+		"/home/alberto/research/reviews/STACS2015/reviewSTACS2015.txt",
+		"/home/alberto/research/libcds/src/static/sequence/SequenceBuilderWaveletTree.cpp",
+		"/home/alberto/research/libcds/src/static/sequence/Sequence.h",
+		"/home/alberto/research/libcds/src/static/sequence/SequenceBuilderLZBLock.h",
+		"/home/alberto/research/libcds/includes/SequenceBuilderGMR.h",
+		"/home/alberto/research/libcds/src/static/sequence/SequenceBuilderGMR.cpp",
+		"/home/alberto/research/libcds/includes/SequenceBuilderBlockGraph.h",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/testSequences.cpp",
+		"/home/alberto/research/libcds/tutorial/ssa/test_count.cpp",
+		"/home/alberto/research/libcds/tests/test_count.cpp",
+		"/home/alberto/research/blockGraphs/indexing/libcds/tutorial/ssa/rlfm.cpp",
+		"/home/alberto/research/blockGraphs/indexing/libcds/tutorial/ssa/rlfm.h",
+		"/home/alberto/research/jsea/paper_sumbited/paper.tex",
+		"/home/alberto/research/libcds/src/static/sequence/WaveletTree.cpp",
+		"/home/alberto/research/libcds/src/static/sequence/SequenceLZBlock.h",
+		"/home/alberto/research/blockGraphs/charts/sequences/influ/wthcm.access",
+		"/home/alberto/research/blockGraphs/charts/sequences/influ/BG.access",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/outputBitVectors.txt",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/tests/bitVectors.cpp",
+		"/home/alberto/.gvfs/SFTP on 193.144.51.236/home/alberto/blockGraphs/libcds.tgz",
+		"/home/alberto/Downloads/N2-Vuelo-Facturas y justificantes-P0-2014-10-18-Reserva_ 36X6YX.eml",
+		"/home/alberto/research/libcds/src/static/sequence/SequenceLZEndBase.cpp",
+		"/home/alberto/.config/sublime-text-2/Packages/SublimeClang/SublimeClang.sublime-settings",
+		"/home/alberto/Desktop/TODO.txt",
+		"/home/alberto/Desktop/tmp.txt",
+		"/home/alberto/Dropbox/Petrozavodsk/petrozavodsk.tex",
+		"/home/alberto/Dropbox/Petrozavodsk/petrozavodsk.log",
+		"/home/alberto/Downloads/clion-138.2344.17/Install-Linux-tar.txt",
+		"/home/alberto/research/reviews.txt",
+		"/home/alberto/research/blockGraphs/charts/sequences/splitAndBuild.sh",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/splitAndBuild.sh",
+		"/home/alberto/research/libcds/src/static/bitsequence/BitSequenceBuilderPlain.cpp",
+		"/home/alberto/research/libcds/src/static/bitsequence/BitSequencePlain.cpp",
+		"/home/alberto/research/libcds/src/static/bitsequence/BitSequencePlain.h",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/dna.0001/select.gplt",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/dna.0001/rank.gplt",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/dna.001/select.gplt",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/dna.001/rank.gplt",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/eins/select.gplt",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/eins/rank.gplt",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/influ/rank.gplt",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/influ/select.gplt",
+		"/home/alberto/research/blockGraphs/tests/make",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/dna.0001/access.gplt",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/eins/access.gplt",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/influst/select.gplt",
+		"/home/alberto/research/blockGraphs/charts/bitvectors/influst/rank.gplt"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"largest",
+			"libcds",
+			".o\"",
+			"				",
+			"				.o ",
+			" ",
+			"static",
+			"static/",
+			"=",
+			"				",
+			"				 ",
+			"static/",
+			"		",
+			" ",
+			"static/",
+			" \\",
+			"static/",
+			" \\",
+			"static/",
+			"utils/",
+			"utils",
+			"Utils",
+			"utils",
+			"\" ",
+			"Binary",
+			"extractQueriesFMIndex",
+			"influenza",
+			"CFLAGS",
+			"outputSequences",
+			"blockGraphs",
+			"uint",
+			"though",
+			"testSequences",
+			"wthcm",
+			"SB-SLP",
+			"extractQueriesRSA",
+			"patterns_count",
+			"queries_rank",
+			"ACCESS",
+			"access",
+			"ACCESS",
+			"access",
+			"ACCESS",
+			"queries_rank",
+			"fmi",
+			"seq",
+			"testSequences",
+			"SequenceBuilderBlockGraph",
+			"SequenceBuilderBlockGraph_H",
+			"SequenceBuilderGMR",
+			"SequenceBuilder",
+			"SequenceBuilderBlockGraph",
+			"SequenceBuilderGMR",
+			"test_count",
+			"fmi",
+			"_ssa",
+			"ssa",
+			"testMisc",
+			"\"technique\")",
+			"warning: wt_coder::load() is not weel implemented",
+			"\"technique\")",
+			"level:",
+			"level: 0",
+			"Starting...",
+			"warning: wt_coder::load() is not weel implemented",
+			"levelplus1",
+			"block_pos_leaves",
+			"levelplus1",
+			"acum_off",
+			"index_leaves",
+			"rank_off_pointed_block",
+			"rank_pos",
+			"block",
+			"rank_off",
+			"		\n",
+			"while",
+			"input",
+			"sequences_test",
+			"uint",
+			"SN sampleC",
+			"SN sampleC\n",
+			"\"technique\")",
+			"warning: wt_coder::load() is not weel implemented\n",
+			"SN sampleC",
+			";AND",
+			"warning: wt_coder::load() is not weel implemented\n",
+			"SN sampleC",
+			"rank",
+			"access",
+			"rank",
+			"access",
+			"extractQueriesBitVectors",
+			"bitVectors",
+			".parentheses.bitmap",
+			"\"einstein.de.txt\" \"influenza\" \"dna.001\" \"dna.0001\"",
+			"true",
+			"binary_input = true;",
+			"binary_input = false;",
+			"{",
+			")){\n",
+			"{",
+			"DNA0001",
+			"char",
+			".parentheses.bitmap",
+			"bitVectors",
+			"HashTable",
+			"cerr",
+			"cout",
+			"uint i=0",
+			"i=ret->firstLevel",
+			"uint i=0",
+			"cerr",
+			"firstLevel",
+			"in",
+			"OP_TYPE",
+			"cerr << \"Time",
+			"cerr << \"Time access: \"",
+			"bmp",
+			"/nqueries",
+			"rank",
+			"new_bmp",
+			"of",
+			"remplace0",
+			"HashTableBG",
+			"cerr << endl;",
+			"HashTable",
+			"i=0;i<nLevels",
+			"seq_tests"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": true,
+		"replace_history":
+		[
+			"_samples",
+			"1",
+			"'0');",
+			"1",
+			"			insertDatabase(COL_ID,delta,bs,operation,totalSize_bpe,((timeEnd-timeIni)/(nqueries*REP))*1000000,iteration,1);\n1",
+			"			insertDatabase(COL_ID,delta,bs,operation,totalSize_bpe,((timeEnd-timeIni)/(nqueries*REP))*1000000,iteration,1);\n",
+			"1",
+			",'0');",
+			"1",
+			"",
+			"-1",
+			"\\\"iteration\\\",\\\"technique\\\")",
+			"cout << \"\\'1\\');\"<<endl;",
+			"cout << \"\\'0\\',\\'1\\');\"<<endl;",
+			"cout << \"\\'1\\',\\'1\\');\"<<endl;",
+			"\\\"technique\\\",\\\"iteration\\\")",
+			"\\\"iteration\\\",\\\"technique\\\")",
+			"cout << \"\\'\" << ITERATION << \"\\',\"<<endl;\n            cout << \"\\'1\\');\"<<endl;",
+			"\\\"iteration\\\",\\\"technique\\\")",
+			"0.000001",
+			"-1",
+			"npar",
+			"",
+			"Fiwiki",
+			"Fiwikitags",
+			"Influenza",
+			"fwdExcess",
+			"GCT",
+			"bits",
+			"GCT",
+			"DisjointSet2",
+			"BinaryTree",
+			"DisjointSet2",
+			"content->id",
+			"dest",
+			"smallerSet",
+			"content",
+			"BinaryTree",
+			"docarray",
+			"extractMutu"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.clang":
+	{
+		"height": 100.0
+	},
+	"output.exec":
+	{
+		"height": 106.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"testmisc.cpp",
+				"tests/testMisc.cpp"
+			],
+			[
+				"sequencelzend.cpp",
+				"src/static/sequence/SequenceLZEnd.cpp"
+			],
+			[
+				"sequencelzblock.cpp",
+				"src/static/sequence/SequenceLZBlock.cpp"
+			],
+			[
+				"make",
+				"Makefile"
+			],
+			[
+				"fmi.cpp",
+				"src/static/text_indexes/fmi.cpp"
+			],
+			[
+				"fmi.",
+				"src/static/text_indexes/fmi.cpp"
+			],
+			[
+				"fmi.h",
+				"src/static/text_indexes/fmi.h"
+			],
+			[
+				"testmic",
+				"tests/testMisc.cpp"
+			],
+			[
+				"sequencebuilder.h",
+				"src/static/sequence/SequenceBuilder.h"
+			],
+			[
+				"sequencebuilderwavelettree.cpp",
+				"src/static/sequence/SequenceBuilderWaveletTree.cpp"
+			],
+			[
+				"sequencebuilderlzblock.cpp",
+				"src/static/sequence/SequenceBuilderLZBlock.cpp"
+			],
+			[
+				"sequencebuilderlzblock.h",
+				"src/static/sequence/SequenceBuilderLZBlock.h"
+			],
+			[
+				"sequencebulder.h",
+				"src/static/sequence/SequenceBuilder.h"
+			],
+			[
+				"sequencebuilderlzblo",
+				"src/static/sequence/SequenceBuilderLZBlock.h"
+			],
+			[
+				"sequence.h",
+				"src/static/sequence/Sequence.h"
+			],
+			[
+				"makefile",
+				"src/Makefile"
+			],
+			[
+				"sequencebuildergmr.cpp",
+				"src/static/sequence/SequenceBuilderGMR.cpp"
+			],
+			[
+				"sequencelzblock.",
+				"src/static/sequence/SequenceLZBlock.cpp"
+			],
+			[
+				"sequencebuilder",
+				"includes/SequenceBuilderGMR.h"
+			],
+			[
+				"testmisc",
+				"tests/testMisc.cpp"
+			],
+			[
+				"testcount.cpp",
+				"tests/testCount.cpp"
+			],
+			[
+				"makef",
+				"tests/Makefile"
+			],
+			[
+				"rlfm",
+				"tutorial/ssa/rlfm.cpp"
+			],
+			[
+				"wavelettree.cpp",
+				"src/static/sequence/WaveletTree.cpp"
+			],
+			[
+				"sequencelzblock.h",
+				"src/static/sequence/SequenceLZBlock.h"
+			],
+			[
+				"bitsequenceplain.h",
+				"src/static/bitsequence/BitSequencePlain.h"
+			],
+			[
+				"bitsequenceplain.cpp",
+				"src/static/bitsequence/BitSequencePlain.cpp"
+			],
+			[
+				"bitsequencebuilderplain",
+				"src/static/bitsequence/BitSequenceBuilderPlain.cpp"
+			],
+			[
+				"sequencelzbloc.cpp",
+				"src/static/sequence/SequenceLZBlock.cpp"
+			],
+			[
+				"sequencelzblo",
+				"src/static/sequence/SequenceLZBlock.h"
+			],
+			[
+				"direc",
+				"includes/DirectAccess.h"
+			],
+			[
+				"sequencerepairsc.h",
+				"src/static/sequence/SequenceRepairSC.h"
+			],
+			[
+				"hashtable.h",
+				"src/utils/HashTable.h"
+			],
+			[
+				"hashtableb",
+				"src/utils/HashTableBG.h"
+			],
+			[
+				"sequencelzbl",
+				"src/static/sequence/SequenceLZBlock.cpp"
+			],
+			[
+				"sequencelzbloc",
+				"src/static/sequence/SequenceLZBlock.h"
+			],
+			[
+				"sequenceblock",
+				"src/static/sequence/SequenceLZBlock.cpp"
+			],
+			[
+				"bitsequencerpsc",
+				"src/static/bitsequence/BitSequenceRPSC.cpp"
+			],
+			[
+				"bitsequencerpsc.cpp",
+				"src/static/bitsequence/BitSequenceRPSC.cpp"
+			],
+			[
+				"time",
+				"tests/timeMeasure.h"
+			],
+			[
+				"mae",
+				"src/Makefile"
+			],
+			[
+				"hash",
+				"src/utils/HashTable.h"
+			],
+			[
+				"wt_node_internal.h",
+				"includes/wt_node_internal.h"
+			],
+			[
+				"wt_node_internal.cpp",
+				"src/static/sequence/wt_node_internal.cpp"
+			],
+			[
+				"wt_inte",
+				"src/static/sequence/wt_node_internal.cpp"
+			],
+			[
+				"wt_coder_bina",
+				"src/static/sequence/wt_coder_binary.cpp"
+			],
+			[
+				"hashtable",
+				"src/utils/HashTable.h"
+			],
+			[
+				"stringut",
+				"src/utils/StringUtils.h"
+			],
+			[
+				"sequencelzendbase.cpp",
+				"src/static/sequence/SequenceLZEndBase.cpp"
+			],
+			[
+				"arrayda.cpp",
+				"src/static/direct_access/ArrayDA.cpp"
+			],
+			[
+				"arrayda.",
+				"src/static/direct_access/ArrayDA.h"
+			],
+			[
+				"dac.h",
+				"src/static/direct_access/DAC.h"
+			],
+			[
+				"dac.cpp",
+				"src/static/direct_access/DAC.cpp"
+			],
+			[
+				"dacinc.cpp",
+				"src/static/direct_access/DACInc.cpp"
+			],
+			[
+				"dacinc",
+				"src/static/direct_access/DACInc.h"
+			],
+			[
+				"directacc",
+				"src/static/direct_access/DirectAccess.cpp"
+			],
+			[
+				"lzbasecopy",
+				"src/static/sequence/LZBaseCopyOptimal.cpp"
+			],
+			[
+				"repair.cpp",
+				"src/static/grammar/Repair.cpp"
+			],
+			[
+				"delta",
+				"src/static/bitsequence/BitSequenceDelta.cpp"
+			],
+			[
+				"bitsequencebuilder.h",
+				"src/static/bitsequence/BitSequenceBuilder.h"
+			],
+			[
+				"bitsequencebuilderdelta.h",
+				"src/static/bitsequence/BitSequenceBuilderDelta.h"
+			],
+			[
+				"sequencelzend.h",
+				"src/static/sequence/SequenceLZEnd.h"
+			],
+			[
+				"bitsequencebuilder",
+				"includes/BitSequenceBuilderPlain.h"
+			],
+			[
+				"bitsequencedelta.",
+				"includes/BitSequenceDelta.h"
+			],
+			[
+				"bitsequence.cpp",
+				"src/static/bitsequence/BitSequence.cpp"
+			],
+			[
+				"bitsequence.h",
+				"src/static/bitsequence/BitSequence.h"
+			],
+			[
+				"bitsequen",
+				"includes/BitSequence.h"
+			],
+			[
+				"sequencealphpartrep",
+				"src/static/sequence/SequenceAlphPartRep.cpp"
+			],
+			[
+				"sequencelzblockcpp",
+				"src/static/sequence/SequenceLZBlock.cpp"
+			],
+			[
+				"sequencebuilderrpsn",
+				"includes/SequenceBuilderSequenceRepairSN.h"
+			],
+			[
+				"sequencebuilderrpsn.h",
+				"includes/BitSequenceBuilderRPSN.h"
+			],
+			[
+				"bitsequencerpsn",
+				"includes/BitSequenceRPSN.h"
+			],
+			[
+				"sequencebuilderrpsc",
+				"includes/BitSequenceBuilderRPSC.h"
+			],
+			[
+				"makefie",
+				"src/Makefile"
+			],
+			[
+				"lzbaselimithop",
+				"src/static/sequence/LZBaseLimitHops.h"
+			],
+			[
+				"sequencelzend.",
+				"src/static/sequence/SequenceLZEnd.h"
+			],
+			[
+				"lzbaselimi",
+				"src/static/sequence/LZBaseLimitHops.cpp"
+			],
+			[
+				"lzbasestra",
+				"src/static/sequence/LZBaseStrategy.h"
+			],
+			[
+				"sequencelzendbase",
+				"src/static/sequence/SequenceLZEndBase.h"
+			],
+			[
+				"lzbasest",
+				"src/static/sequence/LZBaseStrategy.h"
+			],
+			[
+				"lzbasestr",
+				"src/static/sequence/LZBaseStrategy.cpp"
+			],
+			[
+				"lzstra",
+				"src/static/sequence/LZBaseStrategy.h"
+			],
+			[
+				"lzbase",
+				"includes/LZBaseLimitHops.h"
+			],
+			[
+				"sequencelzendb",
+				"src/static/sequence/SequenceLZEndBase.h"
+			],
+			[
+				"makefi",
+				"src/Makefile"
+			],
+			[
+				"sequencelzbloc.h",
+				"src/static/sequence/SequenceLZBlock.h"
+			],
+			[
+				"sequencelzblc",
+				"src/static/sequence/SequenceLZBlock.cpp"
+			],
+			[
+				"dacinc.h",
+				"src/static/sequence/DACInc.h"
+			],
+			[
+				"dacinc.",
+				"src/static/sequence/DACInc.cpp"
+			],
+			[
+				"directa",
+				"src/static/sequence/DirectAccess.cpp"
+			],
+			[
+				"array.cpp",
+				"src/utils/Array.cpp"
+			],
+			[
+				"array.h",
+				"includes/Array.h"
+			],
+			[
+				"direct",
+				"src/static/sequence/DirectAccess.h"
+			],
+			[
+				"stringutl",
+				"src/utils/StringUtils.h"
+			],
+			[
+				"wavletmatrix.cpp",
+				"tests/WaveletMatrix.cpp"
+			],
+			[
+				"waveletmatrix",
+				"includes/WaveletMatrix.h"
+			],
+			[
+				"dacin",
+				"src/static/sequence/DACInc.cpp"
+			],
+			[
+				"libcdsbasi",
+				"src/utils/libcdsBasics.h"
+			],
+			[
+				"libcdsbasic.",
+				"src/utils/libcdsBasics.h"
+			],
+			[
+				"libcdsbasics",
+				"includes/libcdsBasics.h"
+			],
+			[
+				"sequenceblock.",
+				"src/static/sequence/SequenceLZBlock.cpp"
+			],
+			[
+				"stringuti",
+				"includes/StringUtils.h"
+			],
+			[
+				"lzbaselen",
+				"src/static/sequence/LZBaseLength.cpp"
+			],
+			[
+				"lzbaselength.cpp",
+				"src/static/sequence/LZBaseLength.cpp"
+			],
+			[
+				"waveletmatrix.h",
+				"includes/WaveletMatrix.h"
+			],
+			[
+				"wt_coder_bala",
+				"src/static/sequence/wt_coder_Balanced.cpp"
+			],
+			[
+				"subot",
+				"src/static/sequence/wt_coder_SubOptimalAdd.cpp"
+			],
+			[
+				"sequence.cpp",
+				"src/static/sequence/Sequence.cpp"
+			],
+			[
+				"permutation.h",
+				"includes/Permutation.h"
+			],
+			[
+				"dictionaryrp.h",
+				"includes/DictionaryRP.h"
+			],
+			[
+				"testmisc.pp",
+				"tests/testMisc.cpp"
+			],
+			[
+				"sequencelzendbase.h",
+				"src/static/sequence/SequenceLZEndBase.h"
+			],
+			[
+				"wavelettree.h",
+				"src/static/sequence/WaveletTree.h"
+			],
+			[
+				"directac",
+				"src/static/sequence/DirectAccess.cpp"
+			],
+			[
+				"dac.",
+				"src/static/sequence/DAC.h"
+			],
+			[
+				"wt_coder_",
+				"includes/wt_coder_binary.h"
+			],
+			[
+				"testmis",
+				"tests/testMisc.cpp"
+			],
+			[
+				"waveletmatrix.cpp",
+				"src/static/sequence/WaveletMatrix.cpp"
+			],
+			[
+				"sequencelzenbase.h",
+				"src/static/sequence/SequenceLZEndBase.h"
+			],
+			[
+				"sequencelzbase.cpp",
+				"src/static/sequence/SequenceLZEndBase.cpp"
+			],
+			[
+				"sa_sort.h",
+				"tutorial/ssa/sa_sort.h"
+			],
+			[
+				"huff.cpp",
+				"src/static/coders/huff.cpp"
+			],
+			[
+				"gct.cpp",
+				"src/static/trees/GCT.cpp"
+			],
+			[
+				"testgct",
+				"tests/testGCT.cpp"
+			],
+			[
+				"gct.h",
+				"src/static/trees/GCT.h"
+			],
+			[
+				"dictio",
+				"src/static/grammar/DictionaryRP.h"
+			],
+			[
+				"dictionar",
+				"src/static/grammar/DictionaryRP.cpp"
+			],
+			[
+				"sequencelzendba",
+				"src/static/sequence/SequenceLZEndBase.h"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 197.0,
+	"status_bar_visible": true
+}

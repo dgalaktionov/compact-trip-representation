@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wall -m64 -Wunused-variable  -std=c++0x -Wall -O9 -DNDEBUG    CMakeFiles/testBitSequence.dir/tests/testBitSequence.cpp.o  -o testBitSequence  -L/home/dgalaktionov/Documents/trayectorias/libcds2/../libdivsufsort-2.0.1/lib -rdynamic libcds.a -Wl,-rpath,/home/dgalaktionov/Documents/trayectorias/libcds2/../libdivsufsort-2.0.1/lib 
