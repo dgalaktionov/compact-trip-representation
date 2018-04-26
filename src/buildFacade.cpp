@@ -269,6 +269,7 @@ int build_baseline(void *index) {
 		new std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > ();
 	std::pair<uint, uint> pair = std::make_pair((uint) 0, (uint) 0);
 	std::pair<uint, uint> tpair = std::make_pair((uint) 0, (uint) 0);
+	const std::pair<uint, uint> spair = std::make_pair(wcsa->maxtime+1, wcsa->maxtime+1);
 
 	for (i = 0; i < n; i++) {
 		if (s[i] < n_traj) {
@@ -280,18 +281,19 @@ int build_baseline(void *index) {
 				tpair.first = ta;
 				tpair.second = tz;
 
-				if (fromXtoY->count(pair)) {
-					if (fromXtoY->at(pair).count(tpair)) {
-						fromXtoY->at(pair)[tpair]++;
-					} else {
-						fromXtoY->at(pair)[tpair] = 1;
-					}
-
-				} else {
+				if (fromXtoY->count(pair) == 0) {
 					std::map<std::pair<uint, uint>, uint32_t> times;
-					times[tpair] = 1;
+					times[spair] = 0;
 					fromXtoY->insert(std::make_pair(pair, times));
 				}
+
+				if (fromXtoY->at(pair).count(tpair)) {
+					fromXtoY->at(pair)[tpair]++;
+				} else {
+					fromXtoY->at(pair)[tpair] = 1;
+				}
+
+				fromXtoY->at(pair)[spair]++;
 			}
 
 			a = 0;
@@ -1235,6 +1237,11 @@ int get_from_x_to_y(void *index, TimeQuery *query) {
 	uint v = mapID(g, query->values[1], NODE);
 	uint pattern[3] = {v, 0, u};
 
+	if (g->baseline) {
+		const std::pair<uint, uint> spair = std::make_pair(g->maxtime+1, g->maxtime+1);
+		return g->baseline->fromXtoY->at(std::make_pair(u,v))[spair];
+	}
+
 	ulong numocc, lu, ru;
 	countIntIndex(g->myicsa, pattern, 3, &numocc, &lu, &ru);
 	// printf("%lu %lu %lu\n", numocc, lu, ru);
@@ -1260,8 +1267,30 @@ int get_from_x_to_y_strong(void *index, TimeQuery *query) {
 	uint pattern[3] = {v, 0, u};
 	int start_time = query->time->h_start;
 	int end_time = query->time->h_end;
-
 	ulong numocc, lu, ru, lu0, ru0;
+
+	if (g->baseline) {
+		const std::map<std::pair<uint, uint>, uint32_t> &times = g->baseline->fromXtoY->at(std::make_pair(u,v));
+		auto ta = times.lower_bound(std::make_pair(start_time, start_time));
+		const auto &tz = times.upper_bound(std::make_pair(end_time, end_time));
+		numocc = 0;
+
+		if (end_time < start_time) {
+			for (;ta!=times.cend();ta++) {
+				numocc += ta->second;
+			}
+
+			for (ta=times.begin();ta!=tz;ta++) {
+				numocc += ta->second;
+			}
+		} else {
+			for (;ta!=tz;ta++) {
+				numocc += ta->second;
+			}
+		}
+
+		return numocc;
+	}
 
 	// First we get the Y$X range
 	countIntIndex(g->myicsa, pattern, 3, &numocc, &lu, &ru);
@@ -1338,6 +1367,31 @@ int get_from_x_to_y_weak(void *index, TimeQuery *query) {
 
 	ulong numocc, lu, ru, lu0, ru0;
 
+	if (g->baseline) {
+		const std::map<std::pair<uint, uint>, uint32_t> &times = g->baseline->fromXtoY->at(std::make_pair(u,v));
+		auto ta = times.lower_bound(std::make_pair(start_time, start_time));
+		const auto &tz = times.upper_bound(std::make_pair(end_time, end_time));
+		numocc = 0;
+
+		if (end_time < start_time) {
+			for (ta=times.begin();ta!=times.cend();ta++) {
+				if (ta->first.second >= start_time)
+					numocc += ta->second;
+			}
+
+			for (ta=times.begin();ta!=tz;ta++) {
+				numocc += ta->second;
+			}
+		} else {
+			for (ta=times.begin();ta!=tz;ta++) {
+				if (ta->first.second >= start_time)
+					numocc += ta->second;
+			}
+		}
+
+		return numocc;
+	}
+
 	// First we get the Y$X range
 	countIntIndex(g->myicsa, pattern, 3, &numocc, &lu, &ru);
 	// printf("%lu %lu\n", u, v);
@@ -1365,7 +1419,7 @@ int get_from_x_to_y_weak(void *index, TimeQuery *query) {
 			addTime(start_time, -1, TIMES_WEEK),
 			true, res)) {
 
-			//... while ending AFTER the end time
+			//... while ending AFTER the start time
 			numocc += res->at(1).first ? getRange(g,
 				lu + res->at(0).first - lu0,
 				lu + res->at(1).first - lu0,
