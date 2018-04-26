@@ -126,6 +126,8 @@ using namespace cds_utils;
 
 typedef struct {
 	std::vector<std::vector<uint32_t>> *usesX;
+	std::vector<std::vector<uint32_t>> *startsX;
+	std::vector<std::vector<uint32_t>> *endsX;
 	std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *fromXtoY;
 } tbaseline;
 

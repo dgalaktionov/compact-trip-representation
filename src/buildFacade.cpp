@@ -264,6 +264,8 @@ int build_baseline(void *index) {
 	a = 0;
 
 	std::vector<std::vector<uint32_t>> *usesX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
+	std::vector<std::vector<uint32_t>> *startsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
+	std::vector<std::vector<uint32_t>> *endsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
 
 	std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *fromXtoY = 
 		new std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > ();
@@ -294,6 +296,8 @@ int build_baseline(void *index) {
 				}
 
 				fromXtoY->at(pair)[spair]++;
+				startsX->at(a)[ta]++;
+				endsX->at(z)[tz]++;
 			}
 
 			a = 0;
@@ -312,7 +316,7 @@ int build_baseline(void *index) {
 		}
 	}
 
-	wcsa->baseline = new tbaseline{usesX, fromXtoY};
+	wcsa->baseline = new tbaseline{usesX, startsX, endsX, fromXtoY};
 
 	return 0;
 }
@@ -456,6 +460,14 @@ int save_index (void *index, char *filename) {
 			write(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
 		}
 
+		for (auto const &times : *(wcsa->baseline->startsX)) {
+			write(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
+		}
+
+		for (auto const &times : *(wcsa->baseline->endsX)) {
+			write(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
+		}
+
 		for(const auto &p : *(wcsa->baseline->fromXtoY)) {
 			const size_t n = p.second.size();
 
@@ -560,7 +572,9 @@ int free_index(void *index){
 		delete ((Sequence *) wcsa->myTimesIndex);
 
 	if (wcsa->baseline) {
-		delete ((std::vector<uint32_t> *) wcsa->baseline->usesX);
+		delete ((std::vector<std::vector<uint32_t>> *) wcsa->baseline->usesX);
+		delete ((std::vector<std::vector<uint32_t>> *) wcsa->baseline->startsX);
+		delete ((std::vector<std::vector<uint32_t>> *) wcsa->baseline->endsX);
 		delete ((std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *) wcsa->baseline->fromXtoY);
 		delete ((tbaseline *) wcsa->baseline);
 	}
@@ -908,6 +922,8 @@ int loadBaseline(twcsa *wcsa, char *basename) {
 	}
 
 	std::vector<std::vector<uint32_t>> *usesX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
+	std::vector<std::vector<uint32_t>> *startsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
+	std::vector<std::vector<uint32_t>> *endsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
 
 	std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *fromXtoY = 
 		new std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > ();
@@ -915,6 +931,14 @@ int loadBaseline(twcsa *wcsa, char *basename) {
 	std::pair<uint, uint> tpair = std::make_pair((uint) 0, (uint) 0);
 
 	for (auto &times : *(usesX)) {
+		read(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
+	}
+
+	for (auto &times : *(startsX)) {
+		read(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
+	}
+
+	for (auto &times : *(endsX)) {
 		read(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
 	}
 
@@ -946,7 +970,7 @@ int loadBaseline(twcsa *wcsa, char *basename) {
 
 	close(file);
 
-	wcsa->baseline = new tbaseline{usesX, fromXtoY};
+	wcsa->baseline = new tbaseline{usesX, startsX, endsX, fromXtoY};
 }
 
 twcsa *loadWCSA(char *filename, char *timesFile) {
@@ -1184,6 +1208,21 @@ int get_starts_with_x(void *index, TimeQuery *query) {
 	twcsa *g = (twcsa *)index;
 	ulong numocc, lu, ru;
 
+	if (g->baseline) {
+		const auto u = mapID(g, query->values[0], NODE);
+		const auto &times = g->baseline->startsX->at(u);
+
+		if (query->time) {
+			for (size_t i = query->time->h_start; i <= query->time->h_end; i++) {
+				numocc += times[i];
+			}
+		} else {
+			numocc = times[0];
+		}
+
+		return numocc;
+	}
+
 	if (query->type->nValues) {
 		uint u = mapID(g, query->values[0], NODE);
 		uint pattern[2] = {0, u};
@@ -1212,8 +1251,23 @@ int get_ends_with_x(void *index, TimeQuery *query) {
 	twcsa *g = (twcsa *)index;
 	uint u = mapID(g, query->values[0], NODE);
 	uint pattern[2] = {u, 0};
-
 	ulong numocc, lu, ru;
+
+	if (g->baseline) {
+		const auto u = mapID(g, query->values[0], NODE);
+		const auto &times = g->baseline->endsX->at(u);
+
+		if (query->time) {
+			for (size_t i = query->time->h_start; i <= query->time->h_end; i++) {
+				numocc += times[i];
+			}
+		} else {
+			numocc = times[0];
+		}
+
+		return numocc;
+	}
+
 	countIntIndex(g->myicsa, pattern, 2, &numocc, &lu, &ru);
 
 	// printf("%lu %lu %lu\n", numocc, lu, ru);
