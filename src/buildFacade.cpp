@@ -639,6 +639,30 @@ int index_size(void *index, ulong *size) {
 		*size += timesBytes;
 	}
 
+	if (wcsa->baseline) {
+		//MemTrack::TrackDumpBlocks();
+		MemTrack::TrackListMemoryUsage();
+		size_t bytes = sizeof(*(wcsa->baseline->usesX));
+
+		bytes += (wcsa->nodes) * (bytes + (wcsa->maxtime + 2) * sizeof(uint32_t));
+		
+		fprintf(stderr,"\nSize of baseline (uses X): %zu bytes\n", bytes);
+		*size += 3*bytes;
+
+		bytes = sizeof(*(wcsa->baseline->fromXtoY));
+
+		for (const auto &p : *wcsa->baseline->fromXtoY) {
+			bytes += sizeof(p) + 36;
+
+			for (const auto &t : p.second) {
+				bytes += sizeof(t) + 36;
+			}
+		}
+
+		fprintf(stderr,"\nSize of baseline (from X to Y): %zu bytes\n", bytes);
+		*size += bytes;
+	}
+
 	return 0;
 }
 
@@ -971,6 +995,7 @@ int loadBaseline(twcsa *wcsa, char *basename) {
 	close(file);
 
 	wcsa->baseline = new tbaseline{usesX, startsX, endsX, fromXtoY};
+	//wcsa->baseline = new tbaseline{NULL, NULL, NULL, fromXtoY};
 }
 
 twcsa *loadWCSA(char *filename, char *timesFile) {

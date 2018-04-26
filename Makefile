@@ -7,7 +7,7 @@ CC          = g++
 ## Uncomment for using a dictionary represented as a bitmap-RRR
 #export CXXFLAGS  = -std=c++11 -O9 -m64 -DNDEBUG  -DDICTIONARY_RRR -I libcds/includes/
 export CXXFLAGS  = -std=c++11 -O9 -m64 -DNDEBUG -DEXPERIMENTS -DDICTIONARY_RRR -I libcds/includes/
-#export CXXFLAGS  = -std=c++11 -g -O0 -m64 -Wall  -DDICTIONARY_RRR -I libcds/includes/
+#export CXXFLAGS  = -std=c++11 -g -O0 -m64 -Wall -DEXPERIMENTS -DDICTIONARY_RRR -I libcds/includes/
 
 
 #######################################################################
@@ -31,9 +31,9 @@ SRCDIRLIBCDS = ./src/libcds
 all: clean buildAll benchmark cleanO
 
 wsi: intIndexPackage buildFacade.o parameters.o basics.o \
-		bitmap.o huff.o fileInfo.o graphReader.o delta.o #icsa.o
+		bitmap.o huff.o fileInfo.o graphReader.o delta.o MemTrack.o #icsa.o
 	ar rc $(LIBINTINDEX) parameters.o buildFacade.o basics.o \
-		bitmap.o huff.o fileInfo.o graphReader.o delta.o
+		bitmap.o huff.o fileInfo.o graphReader.o delta.o MemTrack.o
 	#ar q $(LIBINDEX) icsa.o psiHuffmanRLE.o psiDeltaCode.o psiGonzalo.o  ##they are included by icsa.a
 	mv $(LIBINTINDEX) $(LIBINDEX)
 
@@ -47,7 +47,7 @@ buildAll:  wsi
 	$(CC) -DFACADEWITHMAIN $(CXXFLAGS) -o BUILDALL$(NAMEINDEX) $(SRCDIR)/buildAll.c $(LIBINDEX) $(LIBCDS) $(LIBSAIS)
 
 buildFacade.o: parameters.o basics.o bitmap.o \
-		 huff.o fileInfo.o delta.o $(LIBINTINDEX)
+		 huff.o fileInfo.o delta.o MemTrack.o $(LIBINTINDEX)
 	 $(CC) $(CXXFLAGS) -c  $(SRCDIR)/buildFacade.cpp $(LIBCDS) $(LIBSAIS)
 
 
@@ -113,6 +113,9 @@ graphReader.o:
 
 delta.o:
 	$(CC) $(CXXFLAGS) -c $(SRCDIR)/$(SRCDIRUTILS)/delta.c
+
+MemTrack.o:
+	$(CC) $(CXXFLAGS) -c $(SRCDIR)/MemTrack.cpp
 
 
 ############################ CLEANING #################################
