@@ -259,20 +259,58 @@ int build_baseline(void *index) {
 	
 	uint *s = wcsa->s;
 	size_t i;
+	uint a,z,ta,tz;
+
+	a = 0;
 
 	std::vector<std::vector<uint32_t>> *usesX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
+
+	std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *fromXtoY = 
+		new std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > ();
+	std::pair<uint, uint> pair = std::make_pair((uint) 0, (uint) 0);
+	std::pair<uint, uint> tpair = std::make_pair((uint) 0, (uint) 0);
 
 	for (i = 0; i < n; i++) {
 		if (s[i] < n_traj) {
 			s[i] = 0;
+
+			if (a > 0) {
+				pair.first = a;
+				pair.second = z;
+				tpair.first = ta;
+				tpair.second = tz;
+
+				if (fromXtoY->count(pair)) {
+					if (fromXtoY->at(pair).count(tpair)) {
+						fromXtoY->at(pair)[tpair]++;
+					} else {
+						fromXtoY->at(pair)[tpair] = 1;
+					}
+
+				} else {
+					std::map<std::pair<uint, uint>, uint32_t> times;
+					times[tpair] = 1;
+					fromXtoY->insert(std::make_pair(pair, times));
+				}
+			}
+
+			a = 0;
 		} else {
 			s[i] -= n_traj-1;
-		}
 
-		usesX->at(s[i])[times[i]]++;
+			z = s[i];
+			tz = times[i];
+
+			if (a == 0) {
+				a = z;
+				ta = tz;
+			}
+
+			usesX->at(z)[tz]++;
+		}
 	}
 
-	wcsa->baseline = new tbaseline{usesX};
+	wcsa->baseline = new tbaseline{usesX, fromXtoY};
 
 	return 0;
 }
@@ -416,6 +454,20 @@ int save_index (void *index, char *filename) {
 			write(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
 		}
 
+		for(const auto &p : *(wcsa->baseline->fromXtoY)) {
+			const size_t n = p.second.size();
+
+			write(file, &p.first.first, sizeof(uint));
+			write(file, &p.first.second, sizeof(uint));
+			write(file, &n, sizeof(size_t));
+
+			for (const auto &t : p.second) {
+				write(file, &t.first.first, sizeof(uint));
+				write(file, &t.first.second, sizeof(uint));
+				write(file, &t.second, sizeof(uint32_t));
+			}
+		}
+
 		close(file);
 	}
 
@@ -507,6 +559,7 @@ int free_index(void *index){
 
 	if (wcsa->baseline) {
 		delete ((std::vector<uint32_t> *) wcsa->baseline->usesX);
+		delete ((std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *) wcsa->baseline->fromXtoY);
 		delete ((tbaseline *) wcsa->baseline);
 	}
 
@@ -852,13 +905,46 @@ int loadBaseline(twcsa *wcsa, char *basename) {
 		exit(0);
 	}
 
-	wcsa->baseline = new tbaseline{new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1))};
+	std::vector<std::vector<uint32_t>> *usesX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
 
-	for (auto &times : *(wcsa->baseline->usesX)) {
+	std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *fromXtoY = 
+		new std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > ();
+	std::pair<uint, uint> pair = std::make_pair((uint) 0, (uint) 0);
+	std::pair<uint, uint> tpair = std::make_pair((uint) 0, (uint) 0);
+
+	for (auto &times : *(usesX)) {
 		read(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
 	}
 
+	uint a,z,ta,tz;
+	uint32_t c;
+	size_t i,n;
+	
+
+	while (read(file, &a, sizeof(uint))) {
+		read(file, &z, sizeof(uint));
+		read(file, &n, sizeof(size_t));
+
+		pair.first = a;
+		pair.second = z;
+		std::map<std::pair<uint, uint>, uint32_t> times;
+
+		for (i = 0; i < n; i++) {
+			read(file, &ta, sizeof(uint));
+			read(file, &tz, sizeof(uint));
+			read(file, &c, sizeof(uint32_t));
+
+			tpair.first = ta;
+			tpair.second = tz;
+			times[tpair] = c;
+		}
+
+		fromXtoY->insert(std::make_pair(pair, times));
+	}
+
 	close(file);
+
+	wcsa->baseline = new tbaseline{usesX, fromXtoY};
 }
 
 twcsa *loadWCSA(char *filename, char *timesFile) {
@@ -867,9 +953,9 @@ twcsa *loadWCSA(char *filename, char *timesFile) {
 	wcsa = (twcsa *) my_malloc (sizeof (twcsa) * 1);
 	wcsa->n=0;
 
-	//loadIntIndex(filename, (void **)&wcsa->myicsa);
+	// loadIntIndex(filename, (void **)&wcsa->myicsa);
 	loadStructs(wcsa,filename);
-	//loadTimeIndex(wcsa,timesFile);
+	// loadTimeIndex(wcsa,timesFile);
 	loadBaseline(wcsa, filename);
 
 
@@ -1624,9 +1710,10 @@ int get_uses_x(void *index, TimeQuery *query) {
 				numocc += times[i];
 			}
 		} else {
-			for (auto const &v : times) {
-				numocc += v;
-			}
+			numocc = times[0];
+			// for (auto const &v : times) {
+			// 	numocc += v;
+			// }
 		}
 
 		return numocc;

@@ -43,6 +43,7 @@
 #include <queue>
 #include <vector>
 #include <map>
+#include <utility>
 
 #include "utils/defValues.h"
 #include "utils/fileInfo.h"
@@ -125,6 +126,7 @@ using namespace cds_utils;
 
 typedef struct {
 	std::vector<std::vector<uint32_t>> *usesX;
+	std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *fromXtoY;
 } tbaseline;
 
 	/**the WCSA index structures... */
