@@ -267,8 +267,7 @@ int build_baseline(void *index) {
 	std::vector<std::vector<uint32_t>> *startsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
 	std::vector<std::vector<uint32_t>> *endsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
 
-	std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *fromXtoY = 
-		new std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > ();
+	matrix_map *fromXtoY = new matrix_map();
 	std::pair<uint, uint> pair = std::make_pair((uint) 0, (uint) 0);
 	std::pair<uint, uint> tpair = std::make_pair((uint) 0, (uint) 0);
 	const std::pair<uint, uint> spair = std::make_pair(wcsa->maxtime+1, wcsa->maxtime+1);
@@ -575,7 +574,7 @@ int free_index(void *index){
 		delete ((std::vector<std::vector<uint32_t>> *) wcsa->baseline->usesX);
 		delete ((std::vector<std::vector<uint32_t>> *) wcsa->baseline->startsX);
 		delete ((std::vector<std::vector<uint32_t>> *) wcsa->baseline->endsX);
-		delete ((std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *) wcsa->baseline->fromXtoY);
+		delete ((matrix_map *) wcsa->baseline->fromXtoY);
 		delete ((tbaseline *) wcsa->baseline);
 	}
 
@@ -949,8 +948,7 @@ int loadBaseline(twcsa *wcsa, char *basename) {
 	std::vector<std::vector<uint32_t>> *startsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
 	std::vector<std::vector<uint32_t>> *endsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
 
-	std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *fromXtoY = 
-		new std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > ();
+	matrix_map *fromXtoY = new matrix_map();
 	std::pair<uint, uint> pair = std::make_pair((uint) 0, (uint) 0);
 	std::pair<uint, uint> tpair = std::make_pair((uint) 0, (uint) 0);
 

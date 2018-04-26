@@ -44,6 +44,7 @@
 #include <vector>
 #include <map>
 #include <utility>
+#include <unordered_map>
 
 #include "utils/defValues.h"
 #include "utils/fileInfo.h"
@@ -126,11 +127,20 @@ using namespace cds_utils;
 #define BUILD_FACADE_TYPES
 #define MAX_ENTRIES 10
 
+struct pair_hash {
+    template <class T1, class T2>
+    std::size_t operator () (const std::pair<T1,T2> &p) const {
+        return p.first*10000 + p.second;  
+    }
+};
+
+typedef std::unordered_map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t>, pair_hash > matrix_map;
+
 typedef struct {
 	std::vector<std::vector<uint32_t>> *usesX;
 	std::vector<std::vector<uint32_t>> *startsX;
 	std::vector<std::vector<uint32_t>> *endsX;
-	std::map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t> > *fromXtoY;
+	matrix_map *fromXtoY;
 } tbaseline;
 
 	/**the WCSA index structures... */
