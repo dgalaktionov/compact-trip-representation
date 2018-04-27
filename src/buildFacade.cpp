@@ -263,9 +263,9 @@ int build_baseline(void *index) {
 
 	a = 0;
 
-	std::vector<std::vector<uint32_t>> *usesX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
-	std::vector<std::vector<uint32_t>> *startsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
-	std::vector<std::vector<uint32_t>> *endsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
+	std::vector<std::map<uint,uint32_t>> *usesX = new std::vector<std::map<uint,uint32_t>>(wcsa->nodes, std::map<uint,uint32_t>());
+	std::vector<std::map<uint,uint32_t>> *startsX = new std::vector<std::map<uint,uint32_t>>(wcsa->nodes, std::map<uint,uint32_t>());
+	std::vector<std::map<uint,uint32_t>> *endsX = new std::vector<std::map<uint,uint32_t>>(wcsa->nodes, std::map<uint,uint32_t>());
 
 	matrix_map *fromXtoY = new matrix_map();
 	std::pair<uint, uint> pair = std::make_pair((uint) 0, (uint) 0);
@@ -295,8 +295,16 @@ int build_baseline(void *index) {
 				}
 
 				fromXtoY->at(pair)[spair]++;
-				startsX->at(a)[ta]++;
-				endsX->at(z)[tz]++;
+
+				if (startsX->at(a).count(ta))
+					startsX->at(a)[ta]++;
+				else
+					startsX->at(a)[ta] = 1;
+				
+				if (endsX->at(a).count(ta))
+					endsX->at(a)[ta]++;
+				else
+					endsX->at(a)[ta] = 1;
 			}
 
 			a = 0;
@@ -311,7 +319,10 @@ int build_baseline(void *index) {
 				ta = tz;
 			}
 
-			usesX->at(z)[tz]++;
+			if (usesX->at(a).count(ta))
+				usesX->at(a)[ta]++;
+			else
+				usesX->at(a)[ta] = 1;
 		}
 	}
 
@@ -456,15 +467,30 @@ int save_index (void *index, char *filename) {
 		}
 
 		for (auto const &times : *(wcsa->baseline->usesX)) {
-			write(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
+			const size_t n = times.size();
+			write(file, &n, sizeof(n));
+
+			for (const auto &t : times) {
+				write(file, &t, sizeof(t));
+			}
 		}
 
 		for (auto const &times : *(wcsa->baseline->startsX)) {
-			write(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
+			const size_t n = times.size();
+			write(file, &n, sizeof(n));
+
+			for (const auto &t : times) {
+				write(file, &t, sizeof(t));
+			}
 		}
 
 		for (auto const &times : *(wcsa->baseline->endsX)) {
-			write(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
+			const size_t n = times.size();
+			write(file, &n, sizeof(n));
+
+			for (const auto &t : times) {
+				write(file, &t, sizeof(t));
+			}
 		}
 
 		for(const auto &p : *(wcsa->baseline->fromXtoY)) {
@@ -571,9 +597,9 @@ int free_index(void *index){
 		delete ((Sequence *) wcsa->myTimesIndex);
 
 	if (wcsa->baseline) {
-		delete ((std::vector<std::vector<uint32_t>> *) wcsa->baseline->usesX);
-		delete ((std::vector<std::vector<uint32_t>> *) wcsa->baseline->startsX);
-		delete ((std::vector<std::vector<uint32_t>> *) wcsa->baseline->endsX);
+		delete ((std::vector<std::map<uint,uint32_t>> *) wcsa->baseline->usesX);
+		delete ((std::vector<std::map<uint,uint32_t>> *) wcsa->baseline->startsX);
+		delete ((std::vector<std::map<uint,uint32_t>> *) wcsa->baseline->endsX);
 		delete ((matrix_map *) wcsa->baseline->fromXtoY);
 		delete ((tbaseline *) wcsa->baseline);
 	}
@@ -643,10 +669,27 @@ int index_size(void *index, ulong *size) {
 		//MemTrack::TrackListMemoryUsage();
 		size_t bytes = sizeof(*(wcsa->baseline->usesX));
 
-		bytes += (wcsa->nodes) * (bytes + (wcsa->maxtime + 2) * sizeof(uint32_t));
+		for (const auto &times : *(wcsa->baseline->usesX)) {
+			bytes += sizeof(times) + (sizeof(std::pair<uint,uint32_t>) + 36) * times.size();
+		}
+		
+		//bytes += (wcsa->nodes) * (bytes + (wcsa->maxtime + 2) * sizeof(uint32_t));
 		
 		fprintf(stderr,"\nSize of baseline (uses X): %zu bytes\n", bytes);
-		*size += 3*bytes;
+		
+		bytes += sizeof(*(wcsa->baseline->startsX));
+
+		for (const auto &times : *(wcsa->baseline->startsX)) {
+			bytes += sizeof(times) + (sizeof(std::pair<uint,uint32_t>) + 36) * times.size();
+		}
+
+		bytes += sizeof(*(wcsa->baseline->endsX));
+
+		for (const auto &times : *(wcsa->baseline->endsX)) {
+			bytes += sizeof(times) + (sizeof(std::pair<uint,uint32_t>) + 36) * times.size();
+		}
+
+		*size += bytes;
 
 		bytes = sizeof(*(wcsa->baseline->fromXtoY));
 		bytes += (sizeof(size_t) + sizeof(void *)) * wcsa->baseline->fromXtoY->bucket_count();
@@ -945,29 +988,47 @@ int loadBaseline(twcsa *wcsa, char *basename) {
 		exit(0);
 	}
 
-	std::vector<std::vector<uint32_t>> *usesX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
-	std::vector<std::vector<uint32_t>> *startsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
-	std::vector<std::vector<uint32_t>> *endsX = new std::vector<std::vector<uint32_t>>(wcsa->nodes, std::vector<uint32_t>(wcsa->maxtime+1, 0));
+	std::vector<std::map<uint,uint32_t>> *usesX = new std::vector<std::map<uint,uint32_t>>(wcsa->nodes, std::map<uint,uint32_t>());
+	std::vector<std::map<uint,uint32_t>> *startsX = new std::vector<std::map<uint,uint32_t>>(wcsa->nodes, std::map<uint,uint32_t>());
+	std::vector<std::map<uint,uint32_t>> *endsX = new std::vector<std::map<uint,uint32_t>>(wcsa->nodes, std::map<uint,uint32_t>());
 
 	matrix_map *fromXtoY = new matrix_map();
 	std::pair<uint, uint> pair = std::make_pair((uint) 0, (uint) 0);
 	std::pair<uint, uint> tpair = std::make_pair((uint) 0, (uint) 0);
 
+	size_t n;
+	std::pair<uint,uint32_t> tpair2;
+
 	for (auto &times : *(usesX)) {
-		read(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
+		read(file, &n, sizeof(n));
+
+		for (;n > 0;n--) {
+			read(file, &tpair2, sizeof(tpair2));
+			times[tpair2.first] = tpair2.second;
+		}
 	}
 
 	for (auto &times : *(startsX)) {
-		read(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
+		read(file, &n, sizeof(n));
+
+		for (;n > 0;n--) {
+			read(file, &tpair2, sizeof(tpair2));
+			times[tpair2.first] = tpair2.second;
+		}
 	}
 
 	for (auto &times : *(endsX)) {
-		read(file, times.data(), sizeof(uint32_t) * (wcsa->maxtime+1));
+		read(file, &n, sizeof(n));
+
+		for (;n > 0;n--) {
+			read(file, &tpair2, sizeof(tpair2));
+			times[tpair2.first] = tpair2.second;
+		}
 	}
 
 	uint a,z,ta,tz;
 	uint32_t c;
-	size_t i,n;
+	size_t i;
 	
 
 	while (read(file, &a, sizeof(uint))) {
@@ -1239,13 +1300,25 @@ int get_starts_with_x(void *index, TimeQuery *query) {
 		const auto &times = g->baseline->startsX->at(u);
 
 		if (query->time) {
-			for (size_t i = query->time->h_start; i <= query->time->h_end; i++) {
-				numocc += times[i];
+			numocc = 0;
+			
+			if (query->time->h_end < query->time->h_start) {
+				for (auto i = times.begin(); i != times.upper_bound(query->time->h_end); i++) {
+					numocc += i->second;
+				}
+
+				for (auto i = times.lower_bound(query->time->h_start); i != times.end(); i++) {
+					numocc += i->second;
+				}
+			} else {
+				for (auto i = times.lower_bound(query->time->h_start); i != times.upper_bound(query->time->h_end); i++) {
+					numocc += i->second;
+				}
 			}
 		} else {
-			numocc = times[0];
+			numocc = times.size() > 0 ? times.begin()->second : 0;
 		}
-
+		
 		return numocc;
 	}
 
@@ -1284,11 +1357,23 @@ int get_ends_with_x(void *index, TimeQuery *query) {
 		const auto &times = g->baseline->endsX->at(u);
 
 		if (query->time) {
-			for (size_t i = query->time->h_start; i <= query->time->h_end; i++) {
-				numocc += times[i];
+			numocc = 0;
+			
+			if (query->time->h_end < query->time->h_start) {
+				for (auto i = times.begin(); i != times.upper_bound(query->time->h_end); i++) {
+					numocc += i->second;
+				}
+
+				for (auto i = times.lower_bound(query->time->h_start); i != times.end(); i++) {
+					numocc += i->second;
+				}
+			} else {
+				for (auto i = times.lower_bound(query->time->h_start); i != times.upper_bound(query->time->h_end); i++) {
+					numocc += i->second;
+				}
 			}
 		} else {
-			numocc = times[0];
+			numocc = times.size() > 0 ? times.begin()->second : 0;
 		}
 
 		return numocc;
@@ -1840,14 +1925,23 @@ int get_uses_x(void *index, TimeQuery *query) {
 		const auto &times = g->baseline->usesX->at(u);
 
 		if (query->time) {
-			for (size_t i = query->time->h_start; i <= query->time->h_end; i++) {
-				numocc += times[i];
+			numocc = 0;
+			
+			if (query->time->h_end < query->time->h_start) {
+				for (auto i = times.begin(); i != times.upper_bound(query->time->h_end); i++) {
+					numocc += i->second;
+				}
+
+				for (auto i = times.lower_bound(query->time->h_start); i != times.end(); i++) {
+					numocc += i->second;
+				}
+			} else {
+				for (auto i = times.lower_bound(query->time->h_start); i != times.upper_bound(query->time->h_end); i++) {
+					numocc += i->second;
+				}
 			}
 		} else {
-			numocc = times[0];
-			// for (auto const &v : times) {
-			// 	numocc += v;
-			// }
+			numocc = times.size() > 0 ? times.begin()->second : 0;
 		}
 
 		return numocc;

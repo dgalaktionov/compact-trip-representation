@@ -1,0 +1,25 @@
+SPATIAL madrid
+./queries/madrid/10k-starts-with-x.txt	55613	1000000	1575088	0.055613	0.035308
+./queries/madrid/10k-ends-with-x.txt	88751	1000000	4712523	0.088751	0.018833
+./queries/madrid/10k-uses-x.txt	57020	1000000	35568707	0.057020	0.001603
+./queries/madrid/10k-starts-with-x-ends-with-y-strong.txt	295943	1000000	-1717744296	0.295943	-0.000172
+./queries/madrid/10k-starts-with-x-ends-with-y-weak.txt	304348	1000000	-1362758296	0.304348	-0.000223
+SPATIOTEMPORAL madrid
+./queries/madrid/10k-starts-with-x.txt	66719	1000000	-432805313	0.066719	-0.000154
+./queries/madrid/10k-ends-with-x.txt	98653	1000000	-438966413	0.098653	-0.000225
+./queries/madrid/10k-uses-x.txt	66986	1000000	-2113264545	0.066986	-0.000032
+./queries/madrid/10k-starts-with-x-ends-with-y-strong.txt	430142	1000000	108517000	0.430142	0.003964
+./queries/madrid/10k-starts-with-x-ends-with-y-weak.txt	5184160	1000000	93220000	5.184160	0.055612
+
+SPATIAL porto
+./queries/porto/10k-starts-with-x.txt	88255	1000000	74000	0.088255	1.192635
+./queries/porto/10k-ends-with-x.txt	126380	1000000	31000	0.126380	4.076774
+./queries/porto/10k-uses-x.txt	87582	1000000	3721000	0.087582	0.023537
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	240413	1000000	23694000	0.240413	0.010147
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	255066	1000000	18920000	0.255066	0.013481
+SPATIOTEMPORAL porto
+./queries/porto/10k-starts-with-x.txt	102371	1000000	-609654672	0.102371	-0.000168
+./queries/porto/10k-ends-with-x.txt	140744	1000000	-611192672	0.140744	-0.000230
+./queries/porto/10k-uses-x.txt	98818	1000000	62701000	0.098818	0.001576
+./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	264468	1000000	1786000	0.264468	0.148078
+./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	331048	1000000	2200000	0.331048	0.150476

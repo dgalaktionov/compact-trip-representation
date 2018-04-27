@@ -66,7 +66,7 @@
 #include "interface.h"
 #include "utils/delta.h"
 
-//#include "MemTrack.h"
+// #include "MemTrack.h"
 
 using namespace std;
 using namespace cds_static;
@@ -137,9 +137,9 @@ struct pair_hash {
 typedef std::unordered_map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t>, pair_hash > matrix_map;
 
 typedef struct {
-	std::vector<std::vector<uint32_t>> *usesX;
-	std::vector<std::vector<uint32_t>> *startsX;
-	std::vector<std::vector<uint32_t>> *endsX;
+	std::vector<std::map<uint,uint32_t>> *usesX;
+	std::vector<std::map<uint,uint32_t>> *startsX;
+	std::vector<std::map<uint,uint32_t>> *endsX;
 	matrix_map *fromXtoY;
 } tbaseline;
 
