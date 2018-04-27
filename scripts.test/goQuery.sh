@@ -122,9 +122,18 @@
 #../benchmark indexes/london ./queries/london/1k-starts-with-x-ends-with-y-weak.txt 3 280 400
 #../benchmark indexes/london ./queries/london/top-k.txt 3 280 400
 
-../benchmark indexes/madrid_baseline indexes/madrid_baseline ./queries/madrid/10k-starts-with-x.txt 0
-#../benchmark indexes/madrid_baseline indexes/madrid_baseline ./queries/madrid/10k-ends-with-x.txt 0
-#../benchmark indexes/madrid_baseline indexes/madrid_baseline ./queries/madrid/10k-uses-x.txt 0
-#../benchmark indexes/madrid_baseline indexes/madrid_baseline ./queries/madrid/10k-starts-with-x-ends-with-y-strong.txt 0
-#../benchmark indexes/madrid_baseline indexes/madrid_baseline ./queries/madrid/10k-starts-with-x-ends-with-y-weak.txt 0
+echo 'SPATIAL '$1''
+../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-starts-with-x.txt 1
+../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-ends-with-x.txt 1
+../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-uses-x.txt 1
+../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-starts-with-x-ends-with-y-strong.txt 1
+../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-starts-with-x-ends-with-y-weak.txt 1
+
+echo 'SPATIOTEMPORAL '$1''
+../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-starts-with-x.txt 0
+../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-ends-with-x.txt 0
+../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-uses-x.txt 0
+../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-starts-with-x-ends-with-y-strong.txt 0
+../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-starts-with-x-ends-with-y-weak.txt 0
+
 #../benchmark1 indexes/madrid_ex indexes/madrid_ex5_HTRG32 ./queries/madrid/10k-starts-with-x-ends-with-y-strong.txt 1

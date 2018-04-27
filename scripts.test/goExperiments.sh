@@ -63,3 +63,7 @@
 # ./goQueryFari.sh madrid_ex30 benchmark6 madrid_ex30 10k-uses-t5
 # ./goQueryFari.sh madrid_ex30 benchmark6 madrid_ex30 10k-uses-t60
 # ./goQueryFari.sh madrid_ex30 benchmark6 madrid_ex30 10k-uses-t600
+
+./goQuery.sh madrid
+echo ''
+./goQuery.sh porto
