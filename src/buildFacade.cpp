@@ -665,45 +665,68 @@ int index_size(void *index, ulong *size) {
 	}
 
 	if (wcsa->baseline) {
+		const uint bits_node = bits(wcsa->nodes);
+		const uint bits_time = bits(wcsa->maxtime);
+		uint max_count = 0;
+
+		for (const auto &times : *(wcsa->baseline->usesX)) {
+			for (const auto &t : times) {
+				max_count = max(max_count, t.second);
+			}
+		}
+
+		for (const auto &times : *(wcsa->baseline->fromXtoY)) {
+			for (const auto &t : times.second) {
+				max_count = max(max_count, t.second);
+			}
+		}
+
+		const uint bits_count = bits(max_count);
+		const uint bits_map_overhead = 32*8; // WHY???
+		
 		//MemTrack::TrackDumpBlocks();
 		//MemTrack::TrackListMemoryUsage();
 		size_t bytes = sizeof(*(wcsa->baseline->usesX));
 
 		for (const auto &times : *(wcsa->baseline->usesX)) {
-			bytes += sizeof(times) + (sizeof(std::pair<uint,uint32_t>) + 36) * times.size();
+			bytes += sizeof(times) + (bits_time + bits_count + bits_map_overhead) * times.size() / 8;
 		}
 		
 		//bytes += (wcsa->nodes) * (bytes + (wcsa->maxtime + 2) * sizeof(uint32_t));
 		
 		fprintf(stderr,"\nSize of baseline (uses X): %zu bytes\n", bytes);
 		
-		bytes += sizeof(*(wcsa->baseline->startsX));
+		*size += bytes;
+		bytes = sizeof(*(wcsa->baseline->startsX));
 
 		for (const auto &times : *(wcsa->baseline->startsX)) {
-			bytes += sizeof(times) + (sizeof(std::pair<uint,uint32_t>) + 36) * times.size();
+			bytes += sizeof(times) + (bits_time + bits_count + bits_map_overhead) * times.size() / 8;
 		}
 
-		bytes += sizeof(*(wcsa->baseline->endsX));
+		fprintf(stderr,"\nSize of baseline (starts with X): %zu bytes\n", bytes);
+
+		*size += bytes;
+		bytes = sizeof(*(wcsa->baseline->endsX));
 
 		for (const auto &times : *(wcsa->baseline->endsX)) {
-			bytes += sizeof(times) + (sizeof(std::pair<uint,uint32_t>) + 36) * times.size();
+			bytes += sizeof(times) + (bits_time + bits_count + bits_map_overhead) * times.size() / 8;
 		}
+
+		fprintf(stderr,"\nSize of baseline (ends with X): %zu bytes\n", bytes);
 
 		*size += bytes;
 		bytes = sizeof(*(wcsa->baseline->fromXtoY));
 		bytes += (sizeof(size_t) + sizeof(void *)) * wcsa->baseline->fromXtoY->bucket_count();
 
 		for (const auto &p : *wcsa->baseline->fromXtoY) {
-			bytes += sizeof(p) + sizeof(void *);
-
-			for (const auto &t : p.second) {
-				bytes += sizeof(t) + 36;
-			}
+			bytes += (bits_node*2)/8 + sizeof(void *) + sizeof(p.second);
+			bytes += ((bits_time*2 + bits_count + bits_map_overhead) * p.second.size())/8;
 		}
+
 		fprintf(stderr,"\nSize of baseline (from X to Y): %zu bytes\n", bytes);
 		*size += bytes;
 
-		size_t se_size = wcsa->n * (bits(wcsa->nodes) + bits(wcsa->maxtime)) / 8;
+		size_t se_size = wcsa->n * (bits_node + bits_time) / 8;
 		fprintf(stderr,"\nSize of baseline (total): %zu bytes (%.2f%% compression)\n", *size, 
 			100*(*size)/((float) se_size));
 	}
