@@ -649,9 +649,10 @@ int index_size(void *index, ulong *size) {
 		*size += 3*bytes;
 
 		bytes = sizeof(*(wcsa->baseline->fromXtoY));
+		bytes += (sizeof(size_t) + sizeof(void *)) * wcsa->baseline->fromXtoY->bucket_count();
 
 		for (const auto &p : *wcsa->baseline->fromXtoY) {
-			bytes += sizeof(p) + 36;
+			bytes += sizeof(p) + sizeof(void *);
 
 			for (const auto &t : p.second) {
 				bytes += sizeof(t) + 36;
@@ -989,6 +990,8 @@ int loadBaseline(twcsa *wcsa, char *basename) {
 
 		fromXtoY->insert(std::make_pair(pair, times));
 	}
+
+	fromXtoY->reserve(fromXtoY->size());
 
 	close(file);
 

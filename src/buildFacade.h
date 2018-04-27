@@ -128,10 +128,10 @@ using namespace cds_utils;
 #define MAX_ENTRIES 10
 
 struct pair_hash {
-    template <class T1, class T2>
-    std::size_t operator () (const std::pair<T1,T2> &p) const {
-        return p.first*10000 + p.second;  
-    }
+	template <class T1, class T2>
+	std::size_t operator () (const std::pair<T1,T2> &p) const {
+		return p.first*10000 + p.second;
+	}
 };
 
 typedef std::unordered_map< std::pair<uint, uint>, std::map<std::pair<uint, uint>, uint32_t>, pair_hash > matrix_map;
