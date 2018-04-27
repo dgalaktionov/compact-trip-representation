@@ -1,25 +1,27 @@
-SPATIAL madrid
+SPATIAL madrid					
 ./queries/madrid/10k-starts-with-x.txt	59512	1000000	3325881	0.059512	0.017894
-./queries/madrid/10k-ends-with-x.txt	91660	1000000	3325861	0.091660	0.027560
+./queries/madrid/10k-ends-with-x.txt	91660	1000000	3325861	0.09166	0.02756
 ./queries/madrid/10k-uses-x.txt	60595	1000000	38220467	0.060595	0.001585
 ./queries/madrid/10k-starts-with-x-ends-with-y-strong.txt	289188	1000000	-1717744296	0.289188	-0.000168
 ./queries/madrid/10k-starts-with-x-ends-with-y-weak.txt	288269	1000000	-1362758296	0.288269	-0.000212
-SPATIOTEMPORAL madrid
+SPATIOTEMPORAL madrid					
 ./queries/madrid/10k-starts-with-x.txt	858345	1000000	384309596	0.858345	0.002233
 ./queries/madrid/10k-ends-with-x.txt	1048119	1000000	534164644	1.048119	0.001962
 ./queries/madrid/10k-uses-x.txt	807234	1000000	-1424348328	0.807234	-0.000567
 ./queries/madrid/10k-starts-with-x-ends-with-y-strong.txt	413165	1000000	108517000	0.413165	0.003807
 ./queries/madrid/10k-starts-with-x-ends-with-y-weak.txt	4882304	1000000	93220000	4.882304	0.052374
-
-SPATIAL porto
+Size of baseline (total): 237931256 bytes (23.21% compression)					
+					
+SPATIAL porto					
 ./queries/porto/10k-starts-with-x.txt	74555	1000000	333000	0.074555	0.223889
 ./queries/porto/10k-ends-with-x.txt	112838	1000000	289000	0.112838	0.390443
 ./queries/porto/10k-uses-x.txt	74105	1000000	26079000	0.074105	0.002842
 ./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	249166	1000000	23694000	0.249166	0.010516
 ./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	248307	1000000	18920000	0.248307	0.013124
-SPATIOTEMPORAL porto
-./queries/porto/10k-starts-with-x.txt	93620	1000000	2241000	0.093620	0.041776
+SPATIOTEMPORAL porto					
+./queries/porto/10k-starts-with-x.txt	93620	1000000	2241000	0.09362	0.041776
 ./queries/porto/10k-ends-with-x.txt	133712	1000000	726000	0.133712	0.184176
 ./queries/porto/10k-uses-x.txt	94414	1000000	137078000	0.094414	0.000689
 ./queries/porto/10k-starts-with-x-ends-with-y-strong.txt	263639	1000000	1786000	0.263639	0.147614
 ./queries/porto/10k-starts-with-x-ends-with-y-weak.txt	325561	1000000	2200000	0.325561	0.147982
+Size of baseline (total): 239082172 bytes (28.10% compression)					

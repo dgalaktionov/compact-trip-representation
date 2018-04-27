@@ -137,5 +137,5 @@ echo 'SPATIOTEMPORAL '$1''
 ../benchmark indexes/$1_baseline indexes/$1_baseline ./queries/$1/10k-starts-with-x-ends-with-y-weak.txt 0
 
 #../benchmark1 indexes/madrid_ex indexes/madrid_ex5_HTRG32 ./queries/madrid/10k-starts-with-x-ends-with-y-strong.txt 1
-#../benchmark indexes/porto_baseline indexes/porto_baseline ./queries/porto/10k-starts-with-x.txt 0
-#../benchmark indexes/madrid_baseline indexes/madrid_baseline ./queries/madrid/10k-starts-with-x.txt 0
+# ../benchmark indexes/porto_baseline indexes/porto_baseline ./queries/porto/10k-starts-with-x.txt 0
+# ../benchmark indexes/madrid_baseline indexes/madrid_baseline ./queries/madrid/10k-starts-with-x.txt 0

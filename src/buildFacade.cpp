@@ -690,7 +690,6 @@ int index_size(void *index, ulong *size) {
 		}
 
 		*size += bytes;
-
 		bytes = sizeof(*(wcsa->baseline->fromXtoY));
 		bytes += (sizeof(size_t) + sizeof(void *)) * wcsa->baseline->fromXtoY->bucket_count();
 
@@ -701,9 +700,12 @@ int index_size(void *index, ulong *size) {
 				bytes += sizeof(t) + 36;
 			}
 		}
-
 		fprintf(stderr,"\nSize of baseline (from X to Y): %zu bytes\n", bytes);
 		*size += bytes;
+
+		size_t se_size = wcsa->n * sizeof(uint) * 2;
+		fprintf(stderr,"\nSize of baseline (total): %zu bytes (%.2f%% compression)\n", *size, 
+			100*(*size)/((float) se_size));
 	}
 
 	return 0;
