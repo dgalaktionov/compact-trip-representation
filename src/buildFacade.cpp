@@ -703,7 +703,7 @@ int index_size(void *index, ulong *size) {
 		fprintf(stderr,"\nSize of baseline (from X to Y): %zu bytes\n", bytes);
 		*size += bytes;
 
-		size_t se_size = wcsa->n * sizeof(uint) * 2;
+		size_t se_size = wcsa->n * (bits(wcsa->nodes) + bits(wcsa->maxtime)) / 8;
 		fprintf(stderr,"\nSize of baseline (total): %zu bytes (%.2f%% compression)\n", *size, 
 			100*(*size)/((float) se_size));
 	}
