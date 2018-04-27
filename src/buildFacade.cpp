@@ -640,7 +640,7 @@ int index_size(void *index, ulong *size) {
 
 	if (wcsa->baseline) {
 		//MemTrack::TrackDumpBlocks();
-		MemTrack::TrackListMemoryUsage();
+		//MemTrack::TrackListMemoryUsage();
 		size_t bytes = sizeof(*(wcsa->baseline->usesX));
 
 		bytes += (wcsa->nodes) * (bytes + (wcsa->maxtime + 2) * sizeof(uint32_t));

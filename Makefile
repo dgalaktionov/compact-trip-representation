@@ -31,9 +31,9 @@ SRCDIRLIBCDS = ./src/libcds
 all: clean buildAll benchmark cleanO
 
 wsi: intIndexPackage buildFacade.o parameters.o basics.o \
-		bitmap.o huff.o fileInfo.o graphReader.o delta.o MemTrack.o #icsa.o
+		bitmap.o huff.o fileInfo.o graphReader.o delta.o #icsa.o
 	ar rc $(LIBINTINDEX) parameters.o buildFacade.o basics.o \
-		bitmap.o huff.o fileInfo.o graphReader.o delta.o MemTrack.o
+		bitmap.o huff.o fileInfo.o graphReader.o delta.o
 	#ar q $(LIBINDEX) icsa.o psiHuffmanRLE.o psiDeltaCode.o psiGonzalo.o  ##they are included by icsa.a
 	mv $(LIBINTINDEX) $(LIBINDEX)
 
@@ -47,7 +47,7 @@ buildAll:  wsi
 	$(CC) -DFACADEWITHMAIN $(CXXFLAGS) -o BUILDALL$(NAMEINDEX) $(SRCDIR)/buildAll.c $(LIBINDEX) $(LIBCDS) $(LIBSAIS)
 
 buildFacade.o: parameters.o basics.o bitmap.o \
-		 huff.o fileInfo.o delta.o MemTrack.o $(LIBINTINDEX)
+		 huff.o fileInfo.o delta.o $(LIBINTINDEX)
 	 $(CC) $(CXXFLAGS) -c  $(SRCDIR)/buildFacade.cpp $(LIBCDS) $(LIBSAIS)
 
 
