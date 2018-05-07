@@ -668,12 +668,38 @@ int index_size(void *index, ulong *size) {
 		const uint bits_node = bits(wcsa->nodes);
 		const uint bits_time = bits(wcsa->maxtime);
 		uint max_count = 0;
+		uint spatial_max_count = 0;
+		uint spatial_count = 0;
+
+		fprintf(stderr,"\nPURE SPATIAL STATS:");
+		fprintf(stderr,"\n%zu different X to Y", wcsa->baseline->fromXtoY->size());
+		
 
 		for (const auto &times : *(wcsa->baseline->fromXtoY)) {
+			spatial_count = 0;
+
 			for (const auto &t : times.second) {
 				max_count = max(max_count, t.second);
+				spatial_count += t.second;
 			}
+
+			spatial_max_count = max(spatial_max_count, spatial_count);
 		}
+
+		fprintf(stderr,"\nMax count (from X to Y, no times): %zu (%zu bits)", spatial_max_count, bits(spatial_max_count));
+
+		for (const auto &times : *(wcsa->baseline->usesX)) {
+			spatial_count = 0;
+			for (const auto &t : times) {
+				spatial_count += t.second;
+			}
+			spatial_max_count = max(spatial_max_count, spatial_count);
+		}
+
+		fprintf(stderr,"\nMax count (uses X, no times): %zu (%zu bits)", spatial_max_count, bits(spatial_max_count));
+
+
+		fprintf(stderr,"\n\n\nSPATIOTEMPORAL STATS:");
 
 		fprintf(stderr,"\nMax count (from X to Y, with times): %zu (%zu bits)", max_count, bits(max_count));
 
