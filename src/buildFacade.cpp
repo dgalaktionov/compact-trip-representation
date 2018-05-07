@@ -669,17 +669,21 @@ int index_size(void *index, ulong *size) {
 		const uint bits_time = bits(wcsa->maxtime);
 		uint max_count = 0;
 
+		for (const auto &times : *(wcsa->baseline->fromXtoY)) {
+			for (const auto &t : times.second) {
+				max_count = max(max_count, t.second);
+			}
+		}
+
+		fprintf(stderr,"\nMax count (from X to Y, with times): %zu (%zu bits)", max_count, bits(max_count));
+
 		for (const auto &times : *(wcsa->baseline->usesX)) {
 			for (const auto &t : times) {
 				max_count = max(max_count, t.second);
 			}
 		}
 
-		for (const auto &times : *(wcsa->baseline->fromXtoY)) {
-			for (const auto &t : times.second) {
-				max_count = max(max_count, t.second);
-			}
-		}
+		fprintf(stderr,"\nMax count (uses X, with times): %zu (%zu bits)", max_count, bits(max_count));
 
 		const uint bits_count = bits(max_count);
 		const uint bits_map_overhead = 32*8; // WHY???
@@ -717,6 +721,9 @@ int index_size(void *index, ulong *size) {
 		*size += bytes;
 		bytes = sizeof(*(wcsa->baseline->fromXtoY));
 		bytes += (sizeof(size_t) + sizeof(void *)) * wcsa->baseline->fromXtoY->bucket_count();
+
+		fprintf(stderr,"\nSize of baseline (SPATIAL from X to Y): %zu bytes\n", bytes 
+			+ wcsa->baseline->fromXtoY->size() * (bits_node*2 + sizeof(void *)*8 + bits_count)/8);
 
 		for (const auto &p : *wcsa->baseline->fromXtoY) {
 			bytes += (bits_node*2)/8 + sizeof(void *) + sizeof(p.second);
