@@ -290,15 +290,18 @@ def main(argv):
 	while i < n_traj:
 		origin = roulette_select(stops, network.maxFreq)
 		next = network.stops[choice_next([], list(origin.connections))]
-		trajectory = [origin.id, next.id]
+		#trajectory = [origin.id, next.id]
+		trajectory = [origin.id]
 		current_line = random.choice(list(origin.lines.intersection(next.lines)))
 		cur_changes = 0
 		current_time = getRandomTime()
-		times = [current_time, current_time + 5]
+		#times = [current_time, current_time + 5]
+		times = [current_time]
 		current_day = current_time.day
 		current_time = current_time + 10
 		prob_next = 0.0
 		#prob_next = 0.02
+		lines = [current_line]
 
 		if current_time.day > current_day:
 			continue
@@ -317,20 +320,26 @@ def main(argv):
 						next = network.stops[choice_next(trajectory, connections)]
 					else:
 						current_line = random.choice(list(next.lines))
+						lines.append(current_line)
+						trajectory.append(next.id)
+						times.append(current_time)
 						cur_changes += 1
 						break
 
-				trajectory.append(next.id)
-				times.append(current_time)
 				current_time = current_time + 5
 
 				if current_time.day > current_day:
 					continue
 		except IndexError:
 			pass
+		
+		if (trajectory[-1] != next.id):
+			trajectory.append(next.id)
+			times.append(current_time)
+			lines.append(current_line)
 
 		unused_stops.difference_update(trajectory)
-		trajectory[:] = map(lambda (s,t): str(stops_dict[s]) + ":" + str(t), zip(trajectory, times))
+		trajectory[:] = map(lambda (l,s,t): "%s:%s:%s" % (l,str(stops_dict[s]),str(t)), zip(lines, trajectory, times))
 		loops = min(int(random.expovariate(0.5)) + 1, n_traj-i)
 
 		for _ in xrange(loops):
