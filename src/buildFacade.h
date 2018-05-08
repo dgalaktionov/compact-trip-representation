@@ -45,6 +45,7 @@
 #include <map>
 #include <utility>
 #include <unordered_map>
+#include <string>
 
 #include "utils/defValues.h"
 #include "utils/fileInfo.h"
@@ -171,6 +172,8 @@ typedef struct {
 		void *myTimesIndex; // usually a WT for times
 
 		tbaseline *baseline;
+
+		std::map<std::string, uint16_t> *lines; // lines in our structure
 	} twcsa;
 
 

@@ -6,8 +6,8 @@ CC          = g++
 
 ## Uncomment for using a dictionary represented as a bitmap-RRR
 #export CXXFLAGS  = -std=c++11 -O9 -m64 -DNDEBUG  -DDICTIONARY_RRR -I libcds/includes/
-export CXXFLAGS  = -std=c++11 -O9 -m64 -DNDEBUG -DEXPERIMENTS -DDICTIONARY_RRR -I libcds/includes/
-#export CXXFLAGS  = -std=c++11 -g -O0 -m64 -Wall -DEXPERIMENTS -DDICTIONARY_RRR -I libcds/includes/
+#export CXXFLAGS  = -std=c++11 -O9 -m64 -DNDEBUG -DEXPERIMENTS -DDICTIONARY_RRR -I libcds/includes/
+export CXXFLAGS  = -std=c++11 -g -O0 -m64 -Wall -DEXPERIMENTS -DDICTIONARY_RRR -I libcds/includes/
 
 
 #######################################################################
@@ -109,7 +109,7 @@ bitmap.o:
 	$(CC) $(CXXFLAGS) -c $(SRCDIR)/$(SRCDIRUTILS)/bitmap.cpp
 
 graphReader.o:
-	$(CC) $(CXXFLAGS) -c $(SRCDIR)/graphReader.c
+	$(CC) $(CXXFLAGS) -c $(SRCDIR)/graphReader.cpp
 
 delta.o:
 	$(CC) $(CXXFLAGS) -c $(SRCDIR)/$(SRCDIRUTILS)/delta.c

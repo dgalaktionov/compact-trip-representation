@@ -349,10 +349,10 @@ int build_index (struct graphDB *graph, char *build_options, void **index) {
 		returnvalue = build_baseline(*index);
 	}
 
-    // if (!returnvalue)
-    // 	returnvalue = build_iCSA (build_options,*index);
+    if (!returnvalue)
+    	returnvalue = build_iCSA (build_options,*index);
 
-    // buildTimesIndex(graph, build_options, index);
+    buildTimesIndex(graph, build_options, index);
 
 
 
@@ -455,7 +455,7 @@ int save_index (void *index, char *filename) {
 		close(file);
 	}
 
-	if (wcsa->baseline) {
+	if (wcsa->baseline && 0) {
 		strcpy(outfilename, basename);
 		strcat(outfilename, ".");
 		strcat(outfilename, "baseline");
@@ -517,6 +517,20 @@ int save_index (void *index, char *filename) {
 		unlink(outfilename);
 		std::ofstream ofs(outfilename, std::ofstream::out);
 		((Sequence *)wcsa->myTimesIndex)->save(ofs);
+		ofs.close();
+	}
+
+	if (wcsa->lines) {
+		strcpy(outfilename, basename);
+		strcat(outfilename, ".");
+		strcat(outfilename, "lines");
+		unlink(outfilename);
+		std::ofstream ofs(outfilename, std::ofstream::out);
+	
+		for (const auto &line : *wcsa->lines) {
+			ofs << line.first << std::endl;
+		}
+
 		ofs.close();
 	}
 
@@ -889,8 +903,11 @@ int build_WCSA (struct graphDB *graph, char *build_options, void **index) {
 	wcsa->nweeks   = graph->nweeks;
 	wcsa->weeks   = graph->weeks;
 
+	wcsa->lines = graph->lines;
+
 	printf("\n Number of nodes = %u", wcsa->nodes);
 	printf("\n Number of times = %u", wcsa->maxtime+1);
+	printf("\n Number of lines = %zu", wcsa->lines->size());
 
 
 	/** creates the vocabulary of "used values" **/
@@ -937,7 +954,7 @@ int build_WCSA (struct graphDB *graph, char *build_options, void **index) {
 
 	for (i=1; i< map_size; i++) {
 		if (wordscount[i]==0) {
-			fprintf(stderr,"\n Warning: unused word %zu", i);
+			// fprintf(stderr,"\n Warning: unused word %zu", i);
 			map[i]=map[i-1];
 		}
 	}
@@ -1124,10 +1141,10 @@ twcsa *loadWCSA(char *filename, char *timesFile) {
 	wcsa = (twcsa *) my_malloc (sizeof (twcsa) * 1);
 	wcsa->n=0;
 
-	// loadIntIndex(filename, (void **)&wcsa->myicsa);
+	loadIntIndex(filename, (void **)&wcsa->myicsa);
 	loadStructs(wcsa,filename);
-	// loadTimeIndex(wcsa,timesFile);
-	loadBaseline(wcsa, filename);
+	loadTimeIndex(wcsa,timesFile);
+	// loadBaseline(wcsa, filename);
 
 
 	return wcsa;
@@ -1217,6 +1234,22 @@ twcsa *loadWCSA(char *filename, char *timesFile) {
 		read_err = read(file, wcsa->unmap, sizeof(uint) * wcsa->nodes);
 
 		close(file);
+	}
+
+	{
+		strcpy(filename, basename);
+		strcat(filename, ".");
+		strcat(filename, "lines");
+		std::ifstream ifs(filename, std::ifstream::in);
+		std::string line;
+
+		wcsa->lines = new std::map<std::string, uint16_t>();
+
+		while (std::getline(ifs, line)) {
+			wcsa->lines->emplace(line, wcsa->lines->size());
+		}
+
+		ifs.close();
 	}
 
 	wcsa->s= NULL;

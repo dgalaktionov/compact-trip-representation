@@ -2,6 +2,7 @@
 
 #define SAMPLES 6
 #define PERIOD 28800
+#define STOPS_LINE 100
 
 uint GLOBAL_SORT_TIMES = 0;
 
@@ -34,6 +35,8 @@ int gr_readHeader (struct graphDB *graph, FILE *f) {
 	graph->nweeks = i;
 	graph->weeks = (uint *) realloc(graph->weeks, graph->nweeks * sizeof(uint));
 	assert(graph->maxtime == j);
+
+	graph->lines = new std::map<std::string, uint16_t>();
 	return 0;
 }
 
@@ -45,6 +48,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 	size_t nbits = 0;
 	uint prev_time = -1;
 	uint dummy;
+	std::string line(128,0);
 
 	uint *s = (uint *) my_malloc (graph->n * sizeof(uint));
 	uint *times = (uint *) my_malloc (graph->n * sizeof(uint));
@@ -64,15 +68,19 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 	//traj[j++] = i;
 
 	while(read_result != EOF) {
-		fscanf(f,"%u", &data);
-		fscanf(f, "%c", &separator);
-		read_result = fscanf(f,"%u", &t);
+		memset(&line[0], 0, line.capacity());
+		read_result = fscanf(f, "%100[^:]:%u:%u", &line[0], &data, &t);
 		// t = (t % PERIOD)/SAMPLES;
 
 		if (read_result == EOF){
 			break;
 		}
 
+		if (graph->lines->count(line) == 0) {
+			graph->lines->emplace(line, graph->lines->size());
+		}
+
+		data = data * STOPS_LINE + (graph->lines->at(line));
 		times[i] = t;
 		s[i++]=data;
 

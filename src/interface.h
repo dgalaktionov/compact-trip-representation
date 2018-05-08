@@ -23,6 +23,10 @@
  *
  */
 
+#include <map>
+#include <utility>
+#include <string>
+
 /* General interface for using the compressed temporal graph */
 
 #ifndef uchar
@@ -53,6 +57,7 @@
   uint *weeks;  // time cycles
   uint nweeks;  // number of cycles
   //uint n_times; // should be the same as n
+  std::map<std::string, uint16_t> *lines; // lines in our structure
 };
 
 
