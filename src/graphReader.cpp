@@ -80,7 +80,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 			graph->lines->emplace(line, graph->lines->size());
 		}
 
-		data = data * STOPS_LINE + (graph->lines->at(line));
+		data = data * STOPS_LINE + graph->lines->at(line);
 		times[i] = t;
 		s[i++]=data;
 
@@ -100,6 +100,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 		separator = fgetc(f);
 
 		if (separator == '\n') {
+			s[i-1] = (s[i-1] - graph->lines->at(line))/STOPS_LINE;
 			times[i] = no_val;
 			s[i] = 0;
 			traj[j++] = i++;
