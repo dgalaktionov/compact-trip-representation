@@ -1,1 +1,0 @@
-/usr/bin/cc   -Wall -O3 -DNDEBUG -fomit-frame-pointer    CMakeFiles/bwt.dir/bwt.o  -o bwt  -L/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/examples/../lib -rdynamic ../lib/libsais.a -Wl,-rpath,/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/examples/../lib 

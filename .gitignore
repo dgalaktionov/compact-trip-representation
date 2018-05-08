@@ -53,4 +53,4 @@ libcds/libcds2/testMultiAryHuffman
 libcds/libcds2/testSequences
 CMakeFiles/
 libsais/sais-2.4.1/build/
-
+libcds/libcds2/BitStreamTests

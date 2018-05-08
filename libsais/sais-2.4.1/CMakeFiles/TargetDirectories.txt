@@ -1,5 +1,0 @@
-/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/examples/CMakeFiles/bwt.dir
-/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/lib/CMakeFiles/sais.dir
-/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/examples/CMakeFiles/suftest.dir
-/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/examples/CMakeFiles/unbwt.dir
-/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/CMakeFiles/uninstall.dir

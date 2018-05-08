@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wall -m64 -Wunused-variable  -std=c++0x -Wall -O9 -DNDEBUG    CMakeFiles/InBuffer.dir/tests/InBuffer.cpp.o  -o InBuffer  -L/home/dgalaktionov/Documents/trayectorias/libcds2/../libdivsufsort-2.0.1/lib -rdynamic libcds.a -lgtest -lgtest_main -Wl,-rpath,/home/dgalaktionov/Documents/trayectorias/libcds2/../libdivsufsort-2.0.1/lib 

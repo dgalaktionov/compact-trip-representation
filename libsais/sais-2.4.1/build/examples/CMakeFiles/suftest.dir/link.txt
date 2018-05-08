@@ -1,1 +1,0 @@
-/usr/bin/cc   -Wall -O3 -DNDEBUG -fomit-frame-pointer    CMakeFiles/suftest.dir/suftest.o  -o suftest  -L/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/build/examples/../lib -rdynamic ../lib/libsais.a -Wl,-rpath,/home/dgalaktionov/Documents/trayectorias/new_shit/sais-2.4.1/build/examples/../lib 
