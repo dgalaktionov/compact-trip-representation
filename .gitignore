@@ -33,8 +33,8 @@
 
 
 # NEW SHIT
-BUILDALL*
-benchmark*
+/BUILDALL*
+/benchmark*
 scripts.test/indexes/
 scripts.test/texts/
 scripts.test/Porto_beta.txt
@@ -42,3 +42,15 @@ scripts.test/*.zip
 scripts.test/*.dat
 scripts.test/*.csv
 scripts.test/madrid_with_lines.txt.gz
+CMakeCache.txt
+libcds/libcds2/InBuffer
+libcds/libcds2/Makefile
+cmake_install.cmake
+libcds/libcds2/sssTest
+libcds/libcds2/testBWTBuilder
+libcds/libcds2/testBitSequence
+libcds/libcds2/testMultiAryHuffman
+libcds/libcds2/testSequences
+CMakeFiles/
+libsais/sais-2.4.1/build/
+libcds/libcds2/BitStreamTests
