@@ -19,6 +19,9 @@ class Line():
 
 	def add_stop(self, stop):
 		if self.stops:
+			if stop in self.stops:
+				return
+
 			self.stops[-1].connect(stop)
 		self.stops.append(stop)
 		stop.lines.add(self.id)
@@ -169,20 +172,20 @@ def parse_madrid(file_in, network = None):
 				stop = network.add_stop(Stop(stop_id))
 				line.add_stop(stop)
 
-def parse_gtfs(file_in, file_out, file_freqs = None):
+def parse_gtfs(file_in, file_out, file_freqs = None, network = Network()):
 	loader = transitfeed.Loader(file_in, problems = transitfeed.problems.ProblemReporter())
 	sched = loader.Load()
-	network = Network()
 
 	for trip in sched.GetTripList():
 
-		if trip.route_id not in network.lines:
-			network.lines[trip.route_id] = Line(trip.route_id)
+		route_id = trip.route_id + "d" + trip.direction_id
+		if route_id not in network.lines:
+			network.lines[route_id] = Line(route_id)
 
-		line = network.lines[trip.route_id]
+		line = network.lines[route_id]
 
 		for stop_time in trip.GetStopTimes():
-			stop = network.add_stop(Stop(stop_time.stop_id, stop_time.stop.stop_name))
+			stop = network.add_stop(Stop(stop_time.stop_id))
 			line.add_stop(stop)
 
 	if file_freqs:
@@ -199,6 +202,8 @@ def parse_gtfs(file_in, file_out, file_freqs = None):
 	file = open(file_out, "w")
 	pickle.dump(network, file)
 	file.close()
+
+	return network
 
 def load_gtfs(file_in):
 	file = open(file_in)
@@ -263,22 +268,24 @@ def load_subway(prefix, network):
 			st2.lines.add(line.id)
 
 def main(argv):
-	n_traj = 10000000
+	#n_traj = 10000000
+	n_traj = 100
 	change_probs = [0.50, 0.90, 0.95, 0.98, 1.0]
 	#change_probs = [0.80, 0.90, 0.95, 0.98, 1.0]
 	changes = collections.Counter()
 	lengths = collections.Counter()
 
-	#parse_gtfs("GB.zip", "gb.dat")
-	#network = load_gtfs("gb.dat")
+	network = parse_gtfs("madrid_emt.zip", "madrid_bus.dat")
+	network = parse_gtfs("madrid_bus.zip", "madrid_bus.dat", network=network)
+	network = load_gtfs("madrid_bus.dat")
 	#load_subway("london", network)
 
 	#parse_gtfs("Madrid.zip", "madrid.dat")
 	#network = load_gtfs("madrid.dat")
 
-	network = Network()
-	parse_madrid("Madrid_1.rdf", network)
-	parse_madrid("Madrid_2.rdf", network)
+	#network = Network()
+	#parse_madrid("Madrid_1.rdf", network)
+	#parse_madrid("Madrid_2.rdf", network)
 
 	#print len(network.lines.keys())
 	#network.assign_freqs()
@@ -298,7 +305,7 @@ def main(argv):
 		#times = [current_time, current_time + 5]
 		times = [current_time]
 		current_day = current_time.day
-		current_time = current_time + 10
+		current_time = current_time + 5
 		prob_next = 0.0
 		#prob_next = 0.02
 		lines = [current_line]

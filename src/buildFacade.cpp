@@ -648,19 +648,19 @@ int index_size(void *index, ulong *size) {
 	//INTEGERS in map
 	//*size += sizeof(uint) * (wcsa->map_size);  //all values
 
-/*
-#ifdef DICTIONARY_HUFFRLE
-	//** vocabulary AS bitmap for "map", plus compressed representacion (huffman+rle+---) for cunmap
-	//COMPRESSED UNMAP
-	*size += wcsa->cunmap.totalMem;
-	//BITMAP  n + o(n)
-	 *size += wcsa->map_size/8 + (wcsa->map_size/256 * sizeof(uint))   +   ((wcsa->map_size/32) * sizeof(char));
-#else
-	//** vocabulary as a bitmapRRR.
-	if (wcsa->bmap)
-		*size +=wcsa->bmap->getSize();
-#endif
-*/
+
+	#ifdef DICTIONARY_HUFFRLE
+		//** vocabulary AS bitmap for "map", plus compressed representacion (huffman+rle+---) for cunmap
+		//COMPRESSED UNMAP
+		*size += wcsa->cunmap.totalMem;
+		//BITMAP  n + o(n)
+		*size += wcsa->map_size/8 + (wcsa->map_size/256 * sizeof(uint))   +   ((wcsa->map_size/32) * sizeof(char));
+	#else
+		//** vocabulary as a bitmapRRR.
+		if (wcsa->bmap)
+			*size +=wcsa->bmap->getSize();
+	#endif
+
 
 	if (wcsa->myicsa) {
 		size_t nbytes;
