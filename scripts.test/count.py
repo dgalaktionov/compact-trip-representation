@@ -13,7 +13,7 @@ def main(argv):
 	#print sum([len(filter(None, re.split(',|\$|\n', line))) for line in data])/float(len(data))
 
 	for line in data[1:]:
-		counter.update(map(int, [x[0] for x in [y.split(":") for y in filter(None, re.split('\$|\n|,', line))]]))
+		counter.update(map(int, [x[2] for x in [y.split(":") for y in filter(None, re.split('\$|\n|,', line))]]))
 
 	for k,v in iter(sorted(counter.iteritems())):
 		print "%s %s" % (k,v)

@@ -10,6 +10,8 @@ import transitfeed
 import pickle
 import datetime
 import csv
+from pyqtree import Index
+import utm
 
 class Line():
 
@@ -28,12 +30,13 @@ class Line():
 
 class Stop():
 
-	def __init__(self, id, name = ""):
+	def __init__(self, id, name = "", lat = 0, lng = 0):
 		self.id = id
 		self.lines = set()
 		self.connections = set()
 		self.freq = 0
 		self.name = name
+		(self.x, self.y) = (lat, lng)
 
 	def connect(self, stop):
 		stop.connections.add(self.id)
@@ -46,6 +49,9 @@ class Stop():
 			return self.id[:-1] + "S"
 		else:
 			return None
+	
+	def __str__(self):
+		return str(self.id)
 
 class Network():
 
@@ -54,6 +60,7 @@ class Network():
 		self.stops = {}
 		self.maxFreq = 0
 		self.stops_by_name = {}
+		self.spindex = Index(bbox=(331792, 4317252, 586592, 4540683))
 
 	def assign_freqs(self):
 		H = get_harmonic(len(self.stops))
@@ -63,18 +70,31 @@ class Network():
 
 		for k, stop in enumerate(stops):
 			stop.freq = get_zipf(H, k+1)
+	
+	def find_near_stops(self, stop, d):
+		return [s for s in \
+			self.spindex.intersect((stop.x-d, stop.y-d, stop.x+d, stop.y+d)) \
+			if (s.x-stop.x)**2 + (s.y-stop.y)**2 < d*d]
 
 	def add_stop(self, stop):
 		if stop.id not in self.stops:
 			self.stops[stop.id] = stop
 			self.stops_by_name[stop.name] = stop
+
+			(stop.x, stop.y, _, _) = utm.from_latlon(stop.x, stop.y)
+			for s in self.find_near_stops(stop, 100):
+				s.connect(stop)
+			
+			self.spindex.insert(stop, (stop.x, stop.y, stop.x, stop.y))
 		else:
 			stop = self.stops[stop.id]
 
 		return stop
 
+
 minutes_sample = 5
 hours_day = 24
+days_cycle = 31
 
 class TDay():
 	Low = 0
@@ -89,16 +109,17 @@ class TDay():
 		self.type = Type
 
 	def val(self):
-		return self.season * 4 + self.type
+		return self.season * days_cycle + self.type
 
 	def __eq__(self, y):
 		return self.val() == y.val()
 
 	def next(self):
-		return TDay(self.season, (self.type + 1) % 4)
+		return TDay(self.season, (self.type + 1) % days_cycle)
 
 def getRandomDay():
-		return TDay(random.randint(0,1), random.randint(0,3))
+		#return TDay(random.randint(0,1), random.randint(0,3))
+		return TDay(0, random.randint(0,days_cycle-1))
 
 class TTime():
 	def __init__(self, day, hour, minute):
@@ -185,7 +206,8 @@ def parse_gtfs(file_in, file_out, file_freqs = None, network = Network()):
 		line = network.lines[route_id]
 
 		for stop_time in trip.GetStopTimes():
-			stop = network.add_stop(Stop(stop_time.stop_id))
+			stop = sched.GetStop(stop_time.stop_id)
+			stop = network.add_stop(Stop(stop.stop_id, lat=stop.stop_lat, lng=stop.stop_lon))
 			line.add_stop(stop)
 
 	if file_freqs:
@@ -268,15 +290,15 @@ def load_subway(prefix, network):
 			st2.lines.add(line.id)
 
 def main(argv):
-	#n_traj = 10000000
-	n_traj = 100
-	change_probs = [0.50, 0.90, 0.95, 0.98, 1.0]
-	#change_probs = [0.80, 0.90, 0.95, 0.98, 1.0]
+	n_traj = 10000000
+	#change_probs = [0.50, 0.90, 0.95, 0.98, 1.0]
+	change_probs = [0.90, 0.92, 0.98, 1.0]
 	changes = collections.Counter()
 	lengths = collections.Counter()
 
-	network = parse_gtfs("madrid_emt.zip", "madrid_bus.dat")
-	network = parse_gtfs("madrid_bus.zip", "madrid_bus.dat", network=network)
+	#network = parse_gtfs("madrid_emt.zip", "madrid_bus.dat")
+	#network = parse_gtfs("madrid_bus.zip", "madrid_bus.dat", network=network)
+	#network.spindex = None
 	network = load_gtfs("madrid_bus.dat")
 	#load_subway("london", network)
 
@@ -296,7 +318,8 @@ def main(argv):
 
 	while i < n_traj:
 		origin = roulette_select(stops, network.maxFreq)
-		next = network.stops[choice_next([], list(origin.connections))]
+		next = network.stops[choice_next([], \
+			[c for c in origin.connections if len(origin.lines.intersection(network.stops[c].lines)) > 0])]
 		#trajectory = [origin.id, next.id]
 		trajectory = [origin.id]
 		current_line = random.choice(list(origin.lines.intersection(next.lines)))
@@ -305,7 +328,7 @@ def main(argv):
 		#times = [current_time, current_time + 5]
 		times = [current_time]
 		current_day = current_time.day
-		current_time = current_time + 5
+		current_time = current_time + minutes_sample
 		prob_next = 0.0
 		#prob_next = 0.02
 		lines = [current_line]
@@ -320,7 +343,7 @@ def main(argv):
 				next = network.stops[choice_next(trajectory, connections)]
 
 				while current_line not in next.lines:
-					if cur_changes >= 4:
+					if cur_changes >= 3:
 							connections.remove(next.id)
 
 					if random.random() < change_probs[cur_changes]:
@@ -333,7 +356,7 @@ def main(argv):
 						cur_changes += 1
 						break
 
-				current_time = current_time + 5
+				current_time = current_time + minutes_sample
 
 				if current_time.day > current_day:
 					continue
