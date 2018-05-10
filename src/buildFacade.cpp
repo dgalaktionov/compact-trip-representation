@@ -345,9 +345,9 @@ int build_index (struct graphDB *graph, char *build_options, void **index) {
 
     returnvalue = build_WCSA (graph, build_options, index);
 
-	if (!returnvalue) {
-		returnvalue = build_baseline(*index);
-	}
+	// if (!returnvalue) {
+	// 	returnvalue = build_baseline(*index);
+	// }
 
     if (!returnvalue)
     	returnvalue = build_iCSA (build_options,*index);

@@ -2,7 +2,7 @@
 
 #define SAMPLES 6
 #define PERIOD 28800
-#define STOPS_LINE 100
+#define STOPS_LINE 1050
 
 uint GLOBAL_SORT_TIMES = 0;
 
