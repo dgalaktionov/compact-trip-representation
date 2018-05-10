@@ -13,26 +13,11 @@ import csv
 from pyqtree import Index
 import utm
 
-class Line():
-
-	def __init__(self, id):
-		self.id = id
-		self.stops = []
-
-	def add_stop(self, stop):
-		if self.stops:
-			if stop in self.stops:
-				return
-
-			self.stops[-1].connect(stop)
-		self.stops.append(stop)
-		stop.lines.add(self.id)
-
 class Stop():
 
 	def __init__(self, id, name = "", lat = 0, lng = 0):
 		self.id = id
-		self.lines = set()
+		self.routes = set()
 		self.connections = set()
 		self.freq = 0
 		self.name = name
@@ -41,22 +26,32 @@ class Stop():
 	def connect(self, stop):
 		stop.connections.add(self.id)
 		self.connections.add(stop.id)
-
-	def get_complimentary_id(self):
-		if self.id.endswith("S"):
-			return self.id[:-1] + "N"
-		elif self.id.endswith("N"):
-			return self.id[:-1] + "S"
-		else:
-			return None
 	
 	def __str__(self):
 		return str(self.id)
 
+class Trip():
+
+	def __init__(self, route, days):
+		self.route = route
+		self.start_time = 0
+		self.end_time = 0
+		self.days = days
+		self.stops = []
+
+	def add_stop(self, start_time, end_time, stop):
+		self.start_time = min(self.start_time, end_time)
+		self.end_time = max(self.end_time, start_time)
+
+		if self.stops:
+			self.stops[-1][2].connect(stop)
+		self.stops.append((start_time,end_time,stop))
+		stop.routes.add(self.route)
+
 class Network():
 
 	def __init__(self):
-		self.lines = {}
+		self.trips = [{}]
 		self.stops = {}
 		self.maxFreq = 0
 		self.stops_by_name = {}
@@ -90,6 +85,21 @@ class Network():
 			stop = self.stops[stop.id]
 
 		return stop
+	
+	def add_trip(self, trip):
+		for day in [d[0] for d in enumerate(trip.days) if d[1]]:
+			for _,end_time,stop in trip.stops:
+				if stop.id in self.trips[day]:
+					self.trips[day][stop.id].append((end_time, trip))
+				else:
+					self.trips[day][stop.id] = [(end_time, trip)]
+		
+		return trip
+
+	def sort_trips(self):
+		for day in self.trips:
+			for trips in day.values():
+				trips.sort()
 
 
 minutes_sample = 5
@@ -193,22 +203,24 @@ def parse_madrid(file_in, network = None):
 				stop = network.add_stop(Stop(stop_id))
 				line.add_stop(stop)
 
+def parse_time(time_str):
+	time_val = [int(t) for t in time_str.split(":")]
+	return TTime(TDay(0,time_val[0]/24), time_val[0] % 24, time_val[1])
+
 def parse_gtfs(file_in, file_out, file_freqs = None, network = Network()):
 	loader = transitfeed.Loader(file_in, problems = transitfeed.problems.ProblemReporter())
 	sched = loader.Load()
 
-	for trip in sched.GetTripList():
+	for t in sched.GetTripList():
 
-		route_id = trip.route_id + "d" + trip.direction_id
-		if route_id not in network.lines:
-			network.lines[route_id] = Line(route_id)
+		route_id = t.route_id + "d" + t.direction_id
+		days = sched.GetServicePeriod(t.service_id).day_of_week
+		trip = network.add_trip(Trip(route_id, days))
 
-		line = network.lines[route_id]
-
-		for stop_time in trip.GetStopTimes():
-			stop = sched.GetStop(stop_time.stop_id)
-			stop = network.add_stop(Stop(stop.stop_id, lat=stop.stop_lat, lng=stop.stop_lon))
-			line.add_stop(stop)
+		for stop_time in t.GetStopTimes():
+			s = sched.GetStop(stop_time.stop_id)
+			stop = network.add_stop(Stop(s.stop_id, lat=s.stop_lat, lng=s.stop_lon))
+			trip.add_stop(parse_time(stop_time.arrival_time).val(), parse_time(stop_time.departure_time).val(), stop)
 
 	if file_freqs:
 		file = open(file_freqs)
@@ -290,15 +302,17 @@ def load_subway(prefix, network):
 			st2.lines.add(line.id)
 
 def main(argv):
-	n_traj = 10000000
+	n_traj = 0
+	#n_traj = 10000000
 	#change_probs = [0.50, 0.90, 0.95, 0.98, 1.0]
 	change_probs = [0.90, 0.92, 0.98, 1.0]
 	changes = collections.Counter()
 	lengths = collections.Counter()
 
-	#network = parse_gtfs("madrid_emt.zip", "madrid_bus.dat")
-	#network = parse_gtfs("madrid_bus.zip", "madrid_bus.dat", network=network)
-	#network.spindex = None
+	network = parse_gtfs("madrid_emt.zip", "madrid_bus.dat")
+	network = parse_gtfs("madrid_bus.zip", "madrid_bus.dat", network=network)
+	network.spindex = None
+	network.sort_trips()
 	network = load_gtfs("madrid_bus.dat")
 	#load_subway("london", network)
 
