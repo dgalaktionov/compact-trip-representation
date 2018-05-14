@@ -91,7 +91,8 @@ void createCompressedBitmapRRR (void *index){
 		bitset(data,wcsa->unmap[i]);
 
 	BitSequenceBuilder *bs;
-	bs = new BitSequenceBuilderRRR(DEFAULT_SAMPLING);  //DEFAULT_SAMPLING=32
+	//bs = new BitSequenceBuilderRRR(DEFAULT_SAMPLING);  //DEFAULT_SAMPLING=32
+	bs = new BitSequenceBuilderSDArray();
 
 	wcsa->bmap =bs->build(data,numbits);
 
@@ -357,13 +358,13 @@ int build_index (struct graphDB *graph, char *build_options, void **index) {
 
 
 #ifdef DICTIONARY_HUFFRLE
-	// uint samplingUnmap=32;
-	// uint nsHUFF= 16384;
-	// createCompressedDictionary(*index,  samplingUnmap, nsHUFF);
-	// checkCompressedDictionary(*index,  samplingUnmap, nsHUFF);
+	uint samplingUnmap=32;
+	uint nsHUFF= 16384;
+	createCompressedDictionary(*index,  samplingUnmap, nsHUFF);
+	checkCompressedDictionary(*index,  samplingUnmap, nsHUFF);
 #else
-	// createCompressedBitmapRRR(*index);
-	// checkCompressedBitmapRRR(*index);
+	createCompressedBitmapRRR(*index);
+	checkCompressedBitmapRRR(*index);
 #endif
 
     return returnvalue;
@@ -914,9 +915,7 @@ int build_WCSA (struct graphDB *graph, char *build_options, void **index) {
 	// map, unmap, map_size, zeronode are set, and entries in s[] are remapped.
 	//uint map_size = wcsa->gaps[wcsa->nEntries];
 	uint map_size = wcsa->nodes;
-	fprintf(stderr,"\n map_size %u ",map_size);
 	uint *wordscount = (uint *) my_malloc(sizeof(uint) * map_size);
-	uint *map        = (uint *) my_malloc(sizeof(uint) * map_size);
 
 	for (i=0; i< map_size; i++) wordscount[i]=0;
 
@@ -925,10 +924,34 @@ int build_WCSA (struct graphDB *graph, char *build_options, void **index) {
 
 
 	wcsa->nodes=0;
-	for (i=0; i< map_size; i++)
+	wcsa->max_lines = 0;
+	uint16_t max_lines = 0;
+
+	for (i=0; i< map_size; i++) {
 		if (wordscount[i]!=0) wcsa->nodes++;
 
+		if (i > STOPS) {
+			if (i % STOPS_LINE == 0) {
+				if (max_lines > wcsa->max_lines) {
+					wcsa->max_lines = max_lines;
+				}
+
+				max_lines = 0;
+			}
+
+			if (wordscount[i]!=0) max_lines++;
+		}
+	}
+
+	if (max_lines > wcsa->max_lines) {
+		wcsa->max_lines = max_lines;
+	}
+
+
+	fprintf(stderr,"\n max_lines %u ",wcsa->max_lines);
 	fprintf(stderr,"\n real nodes %u ",wcsa->nodes);
+	fprintf(stderr,"\n map_size %u ",map_size);
+	uint *map        = (uint *) my_malloc(sizeof(uint) * map_size);
 	uint *unmap = (uint *) my_malloc(sizeof(uint) * wcsa->nodes);
 	uint mapcount=0;
 

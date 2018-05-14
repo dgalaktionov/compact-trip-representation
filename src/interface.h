@@ -99,6 +99,8 @@ typedef struct {
 } SpatialBinTopK_Item;
 
 #define BUFFER 1024*1024*10
+#define STOPS_LINE 1050
+#define STOPS 100000
 
 
 /* Error management */

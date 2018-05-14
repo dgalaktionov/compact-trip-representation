@@ -2,7 +2,6 @@
 
 #define SAMPLES 6
 #define PERIOD 28800
-#define STOPS_LINE 1050
 
 uint GLOBAL_SORT_TIMES = 0;
 
@@ -82,7 +81,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 			graph->lines->emplace(line, graph->lines->size());
 		}
 
-		data = data * STOPS_LINE + graph->lines->at(line);
+		data = STOPS - STOPS_LINE + data * STOPS_LINE + graph->lines->at(line);
 		times[i] = t;
 		s[i++]=data;
 
@@ -102,7 +101,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 		separator = fgetc(f);
 
 		if (separator == '\n') {
-			s[i-1] = (s[i-1] - graph->lines->at(line))/STOPS_LINE;
+			s[i-1] = (s[i-1] - graph->lines->at(line) + STOPS_LINE - STOPS)/STOPS_LINE;
 			times[i] = no_val;
 			s[i] = 0;
 			traj[j++] = i++;
@@ -235,7 +234,6 @@ int dollarCmp(const size_t a_start, const size_t b_start) {
 			if (gr_graph->times[a_start] < gr_graph->times[b_start]) {
 				return -1;
 			} else {
-				GLOBAL_SORT_TIMES++;
 				 if (gr_graph->times[a_start] > gr_graph->times[b_start])
 					return +1;
 				else
@@ -276,7 +274,6 @@ void gr_sortRecords(struct graphDB *graph) {
 	gr_graph = graph;
 	// Don't touch the last trajectory
 	qsort(graph->traj, graph->n_traj-1, sizeof(uint), gr_graphsuffixCmp);
-	fprintf(stderr,"\n\n %u TIMES THAT START TIME AFFECTED THE SORTING\n\n", GLOBAL_SORT_TIMES);
 
 	uint i = 0, j = 0, z = 0;
 
