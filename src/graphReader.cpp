@@ -11,14 +11,16 @@ uint GLOBAL_SORT_TIMES = 0;
 int gr_readHeader (struct graphDB *graph, FILE *f) {
 	uint i = 0, j=0, week;
 	char separator = ' ';
-	fscanf(f, "%u", &graph->maxtime);
+	// fscanf(f, "%u", &graph->maxtime);
 	// graph->maxtime = PERIOD/SAMPLES;
 	// graph->maxtime = graph->maxtime/SAMPLES;
-	separator = fgetc(f);
-	graph->nweeks = 10;
-	graph->weeks = (uint *) malloc(graph->nweeks * sizeof(uint));
+	// separator = fgetc(f);
+	//graph->nweeks = 10;
+	//graph->weeks = (uint *) malloc(graph->nweeks * sizeof(uint));
+	graph->nweeks = 0;
+	graph->weeks = NULL;
 
-	while (separator != '\n') {
+/* 	while (separator != '\n') {
 		fscanf(f, "%u", &week);
 		// week = PERIOD/SAMPLES;
 		// week = week/SAMPLES;
@@ -30,11 +32,11 @@ int gr_readHeader (struct graphDB *graph, FILE *f) {
 			graph->nweeks *= 2;
 			graph->weeks = (uint *) realloc(graph->weeks, graph->nweeks * sizeof(uint));
 		}
-	}
+	} */
 
-	graph->nweeks = i;
-	graph->weeks = (uint *) realloc(graph->weeks, graph->nweeks * sizeof(uint));
-	assert(graph->maxtime == j);
+	// graph->nweeks = i;
+	// graph->weeks = (uint *) realloc(graph->weeks, graph->nweeks * sizeof(uint));
+	// assert(graph->maxtime == j);
 
 	graph->lines = new std::map<std::string, uint16_t>();
 	return 0;
@@ -60,7 +62,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 	int read_result = 0;
 	char separator;
 
-	const uint no_val = graph->maxtime;
+	const uint no_val = 0;//graph->maxtime;
 
 	s[i] = 0;
 	times[0] = no_val;
