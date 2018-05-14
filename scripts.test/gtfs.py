@@ -13,6 +13,9 @@ import csv
 from pyqtree import Index
 import utm
 
+seconds_day = 24*60*60
+days_cycle = 31
+
 def parse_time(time_str):
 	time_val = [int(t) for t in time_str.split(":")]
 	return time_val[2] + time_val[1]*60 + time_val[0]*3600
@@ -43,7 +46,7 @@ class Trip():
 		self.id = id
 		self.route = route
 		self.direction = direction
-		self.start_time = 0
+		self.start_time = 2*seconds_day
 		self.end_time = 0
 		self.days = days
 		self.stops = []
@@ -138,16 +141,12 @@ class Network():
 				else:
 					tripCounter[line] = 1
 				
-				tripsByDay[day][(line, t.start_time)] = c
+				tripsByDay[day][(line, trip.start_time)] = c
 
 				# print trip.get_line() + ": "
 				# print ",".join(["%s-%s" % (encode_time(s[0]), stop_dict[s[2]]) for s in trip.stops])
 
 		return tripsByDay
-
-
-seconds_day = 24*60*60
-days_cycle = 31
 
 class TDay():
 	def __init__(self, day):
@@ -163,7 +162,7 @@ class TDay():
 		return TDay((self.day + 1) % days_cycle)
 
 def getRandomDay():
-		return TDay(random.randint(0,days_cycle-1))
+	return TDay(random.randint(0,days_cycle-1))
 
 class TTime():
 	def __init__(self, day, second):
@@ -195,9 +194,8 @@ def parse_gtfs(file_in, file_out, file_freqs = None, network = Network()):
 
 	for t in sched.GetTripList():
 
-		route_id = t.route_id
 		days = sched.GetServicePeriod(t.service_id).day_of_week
-		trip = Trip(t.trip_id, route_id, t.direction_id, days)
+		trip = Trip(t.trip_id, t.route_id, t.direction_id, days)
 
 		for stop_time in t.GetStopTimes():
 			s = sched.GetStop(stop_time.stop_id)
@@ -295,8 +293,8 @@ def main(argv):
 	changes = collections.Counter()
 	lengths = collections.Counter()
 
-	# network = parse_gtfs("madrid_emt.zip", None)
-	# network = parse_gtfs("madrid_bus.zip", "madrid_bus.dat", network=network)
+	#network = parse_gtfs("madrid_emt.zip", None)
+	#network = parse_gtfs("madrid_bus.zip", "madrid_bus.dat", network=network)
 	network = load_gtfs("madrid_bus.dat")
 	tripsByStop = network.compute_trips_by_stop()
 	#load_subway("london", network)
@@ -323,7 +321,7 @@ def main(argv):
 		origin = network.stops[random.choice(tripsByStop[current_day.val() % 7].keys())]
 		(t, trip_id) = random.choice(tripsByStop[current_day.val() % 7][origin.id])
 		current_trip = network.trips[trip_id]
-		next_stops = [s for s in reversed(current_trip.stops) if s[1] > t]
+		next_stops = [s for s in reversed(current_trip.stops) if s[1] > t and s[2] != origin]
 		
 		if len(next_stops) == 0:
 			continue
@@ -332,10 +330,11 @@ def main(argv):
 		current_line = current_trip.get_line()
 		cur_changes = 0
 		current_time = TTime(current_day, 0) + t
-		times = [tripsByDay[current_time.day.val() % days_cycle][(current_line, current_trip.start_time)]]
+		times = [tripsByDay[current_time.day.val()][(current_line, current_trip.start_time)]]
 		prob_next = 0.0
 		lines = [current_line]
 		(t,_,next) = next_stops.pop()
+		complete_trajectory = [origin.id, next]
 
 		try:
 			while random.random() > prob_next:
@@ -348,20 +347,23 @@ def main(argv):
 
 					prev = next
 					prev_t = t
-					connections = list(network.stops[next].connections)
+					connections = [s for s in network.stops[next].connections if s not in complete_trajectory]
 					current_time = TTime(current_day, 0) + t
 
 					while len(connections) > 0:
-						next = choice_next(trajectory, connections)
-						possible_trips = [(ttrip[0], network.trips[ttrip[1]]) for ttrip in \
-							tripsByStop[current_time.day.val() % 7][next] \
-							if t <= ttrip[0] <= t + max_waiting_time \
-							and network.trips[ttrip[1]].route != current_trip.route\
-							and len([s for s in network.trips[ttrip[1]].stops if s[1] > ttrip[0]]) > 1]
+						try:
+							next = random.choice(connections)
+							possible_trips = [(ttrip[0], network.trips[ttrip[1]]) for ttrip in \
+								tripsByStop[current_time.day.val() % 7][next] \
+								if t <= ttrip[0] <= t + max_waiting_time \
+								and network.trips[ttrip[1]].route != current_trip.route\
+								and len([s for s in network.trips[ttrip[1]].stops if s[1] > ttrip[0]]) > 1]
 
-						if len(possible_trips) > 0:
-							break
-						else:
+							if len(possible_trips) > 0:
+								break
+							else:
+								connections.remove(next)
+						except IndexError:
 							connections.remove(next)
 
 					if len(connections) == 0:
@@ -377,24 +379,33 @@ def main(argv):
 						lines.append(current_line)
 						trajectory.append(next)
 						times.append(tripsByDay[current_time.day.val()][(current_line, current_trip.start_time)])
+						complete_trajectory.append(next)
 				else:
 					(t,_,next) = next_stops.pop()
+					complete_trajectory.append(next)
 			
 			if len(next_stops) > 0:
 				(t,_,next) = next_stops.pop()
+				complete_trajectory.append(next)
 
 		except IndexError:
 			err += 1
+			continue
 		
 		if (trajectory[-1] != next):
 			trajectory.append(next)
 			times.append(tripsByDay[current_time.day.val()][(current_line, current_trip.start_time)])
 			lines.append(current_line)
 
+		if len(trajectory) == 1:
+			# Just discard this piece of shit
+			err += 1
+			continue
+
 		unused_stops.difference_update(trajectory)
 		trajectory[:] = map(lambda (l,s,t): "%s:%s:%s" % (l,str(stops_dict[s]),str(t)), zip(lines, trajectory, times))
-		# loops = min(int(random.expovariate(0.5)) + 1, n_traj-i)
-		loops = 1
+		loops = min(int(random.expovariate(0.5)) + 1, n_traj-i)
+		# loops = 1
 
 		for _ in xrange(loops):
 			changes.update([cur_changes])
