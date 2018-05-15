@@ -927,7 +927,7 @@ int build_WCSA (struct graphDB *graph, char *build_options, void **index) {
 
 	wcsa->nodes=0;
 	wcsa->n_stops = 0;
-	uint16_t max_stop = 0;
+	uint32_t max_stop = 0;
 
 	for (i=0; i< map_size; i++) {
 		if (wordscount[i]!=0) wcsa->nodes++;

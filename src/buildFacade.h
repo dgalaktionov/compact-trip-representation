@@ -174,7 +174,7 @@ typedef struct {
 		tbaseline *baseline;
 
 		std::map<std::string, uint16_t> *lines; // lines in our structure
-		uint16_t n_stops; // max id for a stop (before lines)
+		uint32_t n_stops; // max id for a stop (before lines)
 	} twcsa;
 
 
