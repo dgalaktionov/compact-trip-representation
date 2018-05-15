@@ -91,7 +91,7 @@ void createCompressedBitmapRRR (void *index){
 		bitset(data,wcsa->unmap[i]);
 
 	BitSequenceBuilder *bs;
-	//bs = new BitSequenceBuilderRRR(DEFAULT_SAMPLING);  //DEFAULT_SAMPLING=32
+	//bs = new BitSequenceBuilderRRR(1024);  //DEFAULT_SAMPLING=32
 	bs = new BitSequenceBuilderSDArray();
 
 	wcsa->bmap =bs->build(data,numbits);
@@ -235,12 +235,12 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 
 		fprintf(stderr,"\n Building Time Index...\n");
 		// WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, 1, new BitSequenceBuilderRG(32), mapper,false);
-    // WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRG(32), mapper,false);
-    // WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRRR(128), mapper,false);
+		// WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRG(32), mapper,false);
+		WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRRR(128), mapper,false);
 		uint *freqs = new uint[maxtime](); // zero initialized!
 		for (size_t i = 0; i < wcsa->n; i++) freqs[wcsa->times[i]]++;
 		// WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), NULL, mapper);
-		WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRG(32), mapper);
+		// WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRG(32), mapper);
 		// WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRRR(128), mapper);
 		//WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRPSN(new BitSequenceBuilderRG(32), 8, 4, 64u), mapper);
 		//for (size_t i = 0; i < wcsa->n; i++) assert(timesWM->access(i) == wcsa->times[i]);
@@ -906,9 +906,11 @@ int build_WCSA (struct graphDB *graph, char *build_options, void **index) {
 
 	wcsa->lines = graph->lines;
 
+	const auto n_lines = wcsa->lines->size();
+
 	printf("\n Number of nodes = %u", wcsa->nodes);
 	printf("\n Number of times = %u", wcsa->maxtime+1);
-	printf("\n Number of lines = %zu", wcsa->lines->size());
+	printf("\n Number of lines = %zu", n_lines);
 
 
 	/** creates the vocabulary of "used values" **/
@@ -924,32 +926,40 @@ int build_WCSA (struct graphDB *graph, char *build_options, void **index) {
 
 
 	wcsa->nodes=0;
-	wcsa->max_lines = 0;
-	uint16_t max_lines = 0;
+	wcsa->n_stops = 0;
+	uint16_t max_stop = 0;
 
 	for (i=0; i< map_size; i++) {
 		if (wordscount[i]!=0) wcsa->nodes++;
-
-		if (i > STOPS) {
-			if (i % STOPS_LINE == 0) {
-				if (max_lines > wcsa->max_lines) {
-					wcsa->max_lines = max_lines;
-				}
-
-				max_lines = 0;
-			}
-
-			if (wordscount[i]!=0) max_lines++;
-		}
 	}
 
-	if (max_lines > wcsa->max_lines) {
-		wcsa->max_lines = max_lines;
+	for (i=0; i < STOPS; i++) {
+		if (wordscount[i]!=0) max_stop = i;
 	}
 
+	wcsa->n_stops = max_stop+1;
 
-	fprintf(stderr,"\n max_lines %u ",wcsa->max_lines);
+	fprintf(stderr,"\n n_stops %u ",wcsa->n_stops);
 	fprintf(stderr,"\n real nodes %u ",wcsa->nodes);
+
+	// for (i=0; i< map_size; i++) wordscount[i]=0;
+	// map_size = 0;
+
+	// for (i=0; i< wcsa->n ; i++) {
+	// 	const auto stop = wcsa->s[i];
+
+	// 	if (stop >= STOPS) {
+	// 		assert(stop >= STOPS + STOPS_LINE);
+	// 		wcsa->s[i] = wcsa->n_stops + ((stop-STOPS)/STOPS_LINE - 1) * n_lines + (stop % STOPS_LINE);
+	// 	}
+
+	// 	wordscount[wcsa->s[i]]++;
+
+	// 	if (wcsa->s[i] >= map_size) {
+	// 		map_size = wcsa->s[i]+1;
+	// 	}
+	// }
+
 	fprintf(stderr,"\n map_size %u ",map_size);
 	uint *map        = (uint *) my_malloc(sizeof(uint) * map_size);
 	uint *unmap = (uint *) my_malloc(sizeof(uint) * wcsa->nodes);
