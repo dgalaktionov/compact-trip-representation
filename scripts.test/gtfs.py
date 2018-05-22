@@ -286,8 +286,8 @@ def load_subway(prefix, network):
 			st2.lines.add(line.id)
 
 def main(argv):
-	n_traj = 100000
-	#n_traj = 10000000
+	#n_traj = 100000
+	n_traj = 10000000
 	#change_probs = [0.50, 0.90, 0.95, 0.98, 1.0]
 	change_probs = [0.98, 0.98, 0.99, 1.0]
 	changes = collections.Counter()
@@ -410,8 +410,8 @@ def main(argv):
 
 		unused_stops.difference_update(trajectory)
 		trajectory[:] = map(lambda (l,s,t): "%s:%s:%s" % (l,str(stops_dict[s]),str(t)), zip(lines, trajectory, times))
-		loops = min(int(random.expovariate(0.5)) + 1, n_traj-i)
-		# loops = 1
+		# loops = min(int(random.expovariate(0.5)) + 1, n_traj-i)
+		loops = 1
 
 		for _ in xrange(loops):
 			changes.update([cur_changes])
