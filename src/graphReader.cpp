@@ -50,12 +50,13 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 	uint prev_time = -1;
 	uint dummy;
 	std::string line(128,0);
+	uint traj_len = 0;
 
 	uint *s = (uint *) my_malloc (graph->n * sizeof(uint));
 	uint *times = (uint *) my_malloc (graph->n * sizeof(uint));
 	uint *traj = (uint *) my_malloc(graph->n_traj * sizeof(uint));
 
-	size_t to_read = 5000000;
+	size_t to_read = 10000000;
 	uint i=0, j=0;
 	uint data, t;
 	int read_result = 0;
@@ -77,20 +78,17 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 			break;
 		}
 
-		if (graph->lines->count(line) == 0) {
-			graph->lines->emplace(line, graph->lines->size());
+		traj_len++;
+		
+		if (traj_len % 2 == 1) {
+			if (graph->lines->count(line) == 0) {
+				graph->lines->emplace(line, graph->lines->size());
+			}
+
+			data = STOPS + data * STOPS_LINE + graph->lines->at(line);
+			times[i] = t;
+			s[i++]=data;
 		}
-
-		data = STOPS + data * STOPS_LINE + graph->lines->at(line);
-		times[i] = t;
-		s[i++]=data;
-
-		if (t < prev_time)
-			prev_time = t;
-
-		// nbits += encodeGamma(&dummy, 0, t-prev_time+1);
-		// nbits += riceSize(t-prev_time, 1);
-		//prev_time = t;
 
 		if (data >= graph->nodes)
 			graph->nodes = data+1;
@@ -101,11 +99,11 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 		separator = fgetc(f);
 
 		if (separator == '\n') {
-			s[i-1] = (s[i-1] - STOPS)/STOPS_LINE;
-			times[i] = no_val;
+			times[i] = t;
+			s[i++]=data;
 			s[i] = 0;
 			traj[j++] = i++;
-			prev_time = -1;
+			traj_len = 0;
 		}
 
 		if(j%5000==0) fprintf(stderr, "Processing %.1f%%\r", (float)j/to_read*100);

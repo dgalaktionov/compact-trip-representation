@@ -611,7 +611,7 @@ int free_index(void *index){
 	if (wcsa->myTimesIndex)
 		delete ((Sequence *) wcsa->myTimesIndex);
 
-	if (wcsa->baseline) {
+	if (wcsa->baseline && 0) {
 		delete ((std::vector<std::map<uint,uint32_t>> *) wcsa->baseline->usesX);
 		delete ((std::vector<std::map<uint,uint32_t>> *) wcsa->baseline->startsX);
 		delete ((std::vector<std::map<uint,uint32_t>> *) wcsa->baseline->endsX);
@@ -679,7 +679,7 @@ int index_size(void *index, ulong *size) {
 		*size += timesBytes;
 	}
 
-	if (wcsa->baseline) {
+	if (wcsa->baseline && 0) {
 		const uint bits_node = bits(wcsa->nodes);
 		const uint bits_time = bits(wcsa->maxtime);
 		uint max_count = 0;
