@@ -236,12 +236,12 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 		fprintf(stderr,"\n Building Time Index...\n");
 		// WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, 1, new BitSequenceBuilderRG(32), mapper,false);
 		// WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRG(32), mapper,false);
-		WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRRR(128), mapper,false);
+		// WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRRR(128), mapper,false);
 		uint *freqs = new uint[maxtime](); // zero initialized!
 		for (size_t i = 0; i < wcsa->n; i++) freqs[wcsa->times[i]]++;
 		// WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), NULL, mapper);
 		// WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRG(32), mapper);
-		// WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRRR(128), mapper);
+		WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRRR(128), mapper);
 		//WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRPSN(new BitSequenceBuilderRG(32), 8, 4, 64u), mapper);
 		//for (size_t i = 0; i < wcsa->n; i++) assert(timesWM->access(i) == wcsa->times[i]);
 		delete[] freqs;
