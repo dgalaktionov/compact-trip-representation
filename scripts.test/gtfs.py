@@ -286,8 +286,8 @@ def load_subway(prefix, network):
 			st2.lines.add(line.id)
 
 def main(argv):
-	#n_traj = 10000
-	n_traj = 10000000
+	n_traj = 100000
+	#n_traj = 10000000
 	#change_probs = [0.50, 0.90, 0.95, 0.98, 1.0]
 	change_probs = [0.98, 0.98, 0.99, 1.0]
 	changes = collections.Counter()
@@ -373,9 +373,15 @@ def main(argv):
 					else:
 						(t, current_trip) = random.choice(possible_trips)
 						next_stops = [s for s in reversed(current_trip.stops) if s[1] > t]
+
+						lines.append(current_line)
+						trajectory.append(prev)
+						times.append(times[-1])
+
 						current_line = current_trip.get_line()
 						current_time = TTime(current_day, 0) + t
 						cur_changes += 1
+
 						lines.append(current_line)
 						trajectory.append(next)
 						times.append(tripsByDay[current_time.day.val()][(current_line, current_trip.start_time)])
@@ -397,7 +403,7 @@ def main(argv):
 			times.append(tripsByDay[current_time.day.val()][(current_line, current_trip.start_time)])
 			lines.append(current_line)
 
-		if len(trajectory) == 1:
+		if len(trajectory) % 2 == 1:
 			# Just discard this piece of shit
 			err += 1
 			continue
