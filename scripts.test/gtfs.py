@@ -286,7 +286,7 @@ def load_subway(prefix, network):
 			st2.lines.add(line.id)
 
 def main(argv):
-	#n_traj = 100000
+	#n_traj = 0
 	n_traj = 10000000
 	#change_probs = [0.50, 0.90, 0.95, 0.98, 1.0]
 	change_probs = [0.98, 0.98, 0.99, 1.0]
