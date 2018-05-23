@@ -251,9 +251,9 @@ int gr_graphtimeCmp(const size_t a_start, const size_t b_start) {
 		a++; b++;
 	}
 
-	if (gr_graph->s[a] < gr_graph->s[b])
+	if (gr_graph->times[a] < gr_graph->times[b])
 		return -1;
-	else if (gr_graph->s[a] > gr_graph->s[b])
+	else if (gr_graph->times[a] > gr_graph->times[b])
 		return +1;
 	else
 		return 0;
@@ -270,11 +270,11 @@ int gr_graphsuffixCmp(const void *arg1, const void *arg2) {
 
 	while(gr_graph->s[a] == gr_graph->s[b]) {
 		if (gr_graph->s[a] == 0 && a != a_start) {
-			// a = getTrajectoryStart(a);
-			// b = getTrajectoryStart(b);
+			a = getTrajectoryStart(a);
+			b = getTrajectoryStart(b);
 			// return gr_graphtimeCmp(a+1, b+1);
-			// return dollarCmp(a+1,b+1);
-			return 0;
+			return dollarCmp(a+1,b+1);
+			// return 0;
 		}
 
 		a++; b++;
