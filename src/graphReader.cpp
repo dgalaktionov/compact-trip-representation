@@ -241,6 +241,24 @@ int dollarCmp(const size_t a_start, const size_t b_start) {
 	}
 }
 
+int gr_graphtimeCmp(const size_t a_start, const size_t b_start) {
+	register size_t a,b;
+
+	a = a_start;
+	b = b_start;
+
+	while(gr_graph->times[a] == gr_graph->times[b] && gr_graph->times[a] > 0) {
+		a++; b++;
+	}
+
+	if (gr_graph->s[a] < gr_graph->s[b])
+		return -1;
+	else if (gr_graph->s[a] > gr_graph->s[b])
+		return +1;
+	else
+		return 0;
+}
+
 int gr_graphsuffixCmp(const void *arg1, const void *arg2) {
 
 	size_t a_start = *((uint *) arg1);
@@ -251,13 +269,12 @@ int gr_graphsuffixCmp(const void *arg1, const void *arg2) {
 	b=b_start;
 
 	while(gr_graph->s[a] == gr_graph->s[b]) {
-		if (gr_graph->s[a] == 0) {
-			if (a != a_start) {
-				a = getTrajectoryStart(a);
-				b = getTrajectoryStart(b);
-			}
-
-			return dollarCmp(a+1,b+1);
+		if (gr_graph->s[a] == 0 && a != a_start) {
+			// a = getTrajectoryStart(a);
+			// b = getTrajectoryStart(b);
+			// return gr_graphtimeCmp(a+1, b+1);
+			// return dollarCmp(a+1,b+1);
+			return 0;
 		}
 
 		a++; b++;
@@ -265,7 +282,7 @@ int gr_graphsuffixCmp(const void *arg1, const void *arg2) {
 
 	if (gr_graph->s[a] < gr_graph->s[b])
 		return -1;
-	return +1; // If they were equal, 0 is returned by dollarCmp
+	return +1;
 }
 
 void gr_sortRecords(struct graphDB *graph) {
