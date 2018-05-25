@@ -15,6 +15,7 @@ def encode_time(t):
 def main(argv):
 	counter = collections.Counter()
 	current_line = None
+	day = 0
 
 	for line in sys.stdin:
 		day_match = re.match("DAY (\d+)", line)
@@ -22,12 +23,11 @@ def main(argv):
 		time_match = re.match("^([0-9:]+)-", line)
 
 		if day_match:
-			pass
+			day = int(day_match.group(1))
 		elif line_match:
 			current_line = line_match.group(1)
-			counter.update([current_line])
 		elif time_match:
-			print("%s,%d,%d" % (current_line, counter[current_line], parse_time(time_match.group(1))))
+			print("%s:%d" % (current_line, day*24*60*60 + parse_time(time_match.group(1))))
 
 if __name__ == "__main__":
 	main(sys.argv)
