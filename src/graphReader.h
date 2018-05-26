@@ -19,6 +19,10 @@ struct graphDB {
 #include "utils/basics.h"
 #include "buildFacade.h"
 #include "utils/delta.h"
+void readLines(struct graphDB *graph, FILE *f);
+void readStops(struct graphDB *graph, FILE *f);
+void readAvgTimes(struct graphDB *graph, FILE *f);
+void readInitialTimes(struct graphDB *graph, FILE *f);
 int gr_readHeader (struct graphDB *graph, FILE *f);
 int gr_readRecords(struct graphDB *graph, FILE *f);
 void gr_printRecords(struct graphDB *graph);

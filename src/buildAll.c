@@ -83,6 +83,11 @@ double getTime(void);
 	graph.nEntries = 0; // number of gaps (TODO read dynamically)
 	graph.gaps = NULL;
 
+	readLines(&graph, fopen("texts/lineStops.txt", "r"));
+	readStops(&graph, fopen("texts/stopLines.txt", "r"));
+	readAvgTimes(&graph, fopen("texts/avgTimes.txt", "r"));
+	readInitialTimes(&graph, fopen("texts/initialTimes.txt", "r"));
+
 	error = gr_readHeader(&graph, f);
 	IFERROR(error);
 	fprintf(stderr, "\nRead weeks=%u\n", graph.nweeks);

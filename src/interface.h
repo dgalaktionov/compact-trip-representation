@@ -24,6 +24,7 @@
  */
 
 #include <map>
+#include <vector>
 #include <utility>
 #include <string>
 
@@ -58,6 +59,10 @@
   uint nweeks;  // number of cycles
   //uint n_times; // should be the same as n
   std::map<std::string, uint16_t> *lines; // lines in our structure
+  std::vector< std::vector<uint32_t> > *lineStops;
+  std::vector< std::vector<uint16_t> > *stopLines;
+  std::vector< std::vector<uint16_t> > *avgTimes;
+  std::vector< std::vector<uint32_t> > *initialTimes;
 };
 
 

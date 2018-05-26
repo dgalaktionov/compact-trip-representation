@@ -7,6 +7,122 @@ uint GLOBAL_SORT_TIMES = 0;
 
 // ***********************************************************************
 
+void readLines (struct graphDB *graph, FILE *f) {
+	graph->lines = new std::map<std::string, uint16_t>();
+	graph->lineStops = new std::vector< std::vector<uint32_t> >();
+
+	char line[128];
+	size_t lineId;
+	uint32_t data;
+	int read_result = 0;
+	char separator = '\0';
+
+	while (read_result != EOF) {
+		separator = '\0';
+		read_result = fscanf(f, "%100[^:]: ", &line[0]);
+
+		if (read_result == EOF){
+			break;
+		}
+
+		lineId = graph->lines->size();
+		graph->lines->emplace(line, lineId);
+		graph->lineStops->push_back(std::vector<uint32_t>());
+
+		while (separator != '\n') {
+			read_result = fscanf(f, "%u", &data);
+
+			if (data >= graph->nodes)
+				graph->nodes = data+1;
+
+			graph->lineStops->at(lineId).push_back(data);
+			separator = fgetc(f);
+		}
+	}
+
+	fclose(f);
+}
+
+void readStops (struct graphDB *graph, FILE *f) {
+	graph->stopLines = new std::vector< std::vector<uint16_t> >(graph->nodes, std::vector<uint16_t>());
+
+	char line[128];
+	size_t lineId;
+	uint32_t data;
+	int read_result = 0;
+	char separator = '\0';
+
+	while (read_result != EOF) {
+		separator = '\0';
+		read_result = fscanf(f, "%u: ", &data);
+
+		if (read_result == EOF){
+			break;
+		}
+
+		while (separator != '\n') {
+			read_result = fscanf(f, "%100[^,\n]", &line[0]);
+			graph->stopLines->at(data).push_back(graph->lines->at(line));
+			separator = fgetc(f);
+		}
+	}
+
+	fclose(f);
+}
+
+void readAvgTimes (struct graphDB *graph, FILE *f) {
+	graph->avgTimes = new std::vector< std::vector<uint16_t> >(graph->lines->size(), std::vector<uint16_t>());
+
+	char line[128];
+	size_t lineId;
+	uint32_t data;
+	int read_result = 0;
+	char separator = '\0';
+
+	while (read_result != EOF) {
+		separator = '\0';
+		read_result = fscanf(f, "%100[^:]: ", &line[0]);
+
+		if (read_result == EOF){
+			break;
+		}
+
+		lineId = graph->lines->at(line);
+
+		while (separator != '\n') {
+			read_result = fscanf(f, "%u", &data);
+			graph->avgTimes->at(lineId).push_back(data);
+			separator = fgetc(f);
+		}
+	}
+
+	fclose(f);
+}
+
+void readInitialTimes (struct graphDB *graph, FILE *f) {
+	graph->initialTimes = new std::vector< std::vector<uint32_t> >(graph->lines->size(), std::vector<uint32_t>());
+
+	char line[128];
+	size_t lineId;
+	uint32_t data;
+	int read_result = 0;
+	char separator = '\0';
+
+	while (read_result != EOF) {
+		separator = '\0';
+		read_result = fscanf(f, "%100[^:]:%u\n", &line[0], &data);
+
+		if (read_result == EOF){
+			break;
+		}
+
+		graph->initialTimes->at(graph->lines->at(line)).push_back(data);
+	}
+
+	fclose(f);
+}
+
+
 int gr_readHeader (struct graphDB *graph, FILE *f) {
 	uint i = 0, j=0, week;
 	char separator = ' ';
@@ -37,7 +153,7 @@ int gr_readHeader (struct graphDB *graph, FILE *f) {
 	// graph->weeks = (uint *) realloc(graph->weeks, graph->nweeks * sizeof(uint));
 	// assert(graph->maxtime == j);
 
-	graph->lines = new std::map<std::string, uint16_t>();
+	// graph->lines = new std::map<std::string, uint16_t>();
 	return 0;
 }
 
