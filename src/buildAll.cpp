@@ -128,19 +128,20 @@ double getTime(void);
 		//	build_WCSA (inputBuffer, finsize, stopwordsfile, NULL,outbasename);
 
 		build_index (&graph, params,  &Index);  /** building the index */
+		copy_commons(&graph, Index);
 		end = getTime();
 		free(graph.traj);
 
 
 		/** saving the index to disk*/
 
-		save_index (Index, outfile);
+		//save_index (Index, outfile);
 		fprintf(stderr,"Index saved !! ");
 
 		/** tells the mem used by the index */
 		ulong indexsize;
 		index_size(Index, &indexsize);
-		fprintf(stderr,"Index occupied %lu bytes\n\n", indexsize);
+		fprintf(stderr,"\nIndex occupied %lu bytes\n\n", indexsize);
 
 		/** freeing the index */
 		free_index(Index);

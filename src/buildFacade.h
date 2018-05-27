@@ -175,6 +175,10 @@ typedef struct {
 
 		std::map<std::string, uint16_t> *lines; // lines in our structure
 		uint32_t n_stops; // max id for a stop (before lines)
+		std::vector< std::vector<uint32_t> > *lineStops;
+		std::vector< std::vector<uint16_t> > *stopLines;
+		std::vector< std::vector<uint16_t> > *avgTimes;
+		std::vector< std::vector<uint32_t> > *initialTimes;
 	} twcsa;
 
 
@@ -203,6 +207,7 @@ char *error_index (int e);
           The returned index is ready to be queried. */
 
 int build_index (struct graphDB *graph, char *build_options, void **index) ;
+void copy_commons (struct graphDB *graph, void *index);
 
         /*  Saves index on disk by using single or multiple files, having
           proper extensions. */

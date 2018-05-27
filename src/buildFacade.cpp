@@ -619,6 +619,22 @@ int free_index(void *index){
 		delete ((tbaseline *) wcsa->baseline);
 	}
 
+	if (wcsa->lineStops) {
+		delete wcsa->lineStops;
+	}
+
+	if (wcsa->stopLines) {
+		delete wcsa->stopLines;
+	}
+
+	if (wcsa->avgTimes) {
+		delete wcsa->avgTimes;
+	}
+
+	if (wcsa->initialTimes) {
+		delete wcsa->initialTimes;
+	}
+
 #ifdef DICTIONARY_HUFFRLE
 	destroyHuffmanCompressedPsi(&(wcsa->cunmap));
 #else
@@ -677,6 +693,52 @@ int index_size(void *index, ulong *size) {
 		fprintf(stderr,"\nSize of times index: %zu bytes (%.2f%% compression)\n",
 			timesBytes, 100*timesBytes*8/(float)(bits(wcsa->maxtime)*wcsa->n));
 		*size += timesBytes;
+	}
+
+	size_t commonBytes = 0;
+
+	if (wcsa->lineStops) {
+		commonBytes = sizeof(size_t) * wcsa->lineStops->size();
+
+		for (const auto &vec : *wcsa->lineStops) {
+			commonBytes += sizeof(uint32_t) * vec.size();
+		}
+		
+		fprintf(stderr,"\nSize of lineStops: %zu bytes", commonBytes);
+		*size += commonBytes;
+	}
+
+	if (wcsa->stopLines) {
+		commonBytes = sizeof(size_t) * wcsa->stopLines->size();
+
+		for (const auto &vec : *wcsa->stopLines) {
+			commonBytes += sizeof(uint16_t) * vec.size();
+		}
+		
+		fprintf(stderr,"\nSize of stopLines: %zu bytes", commonBytes);
+		*size += commonBytes;
+	}
+
+	if (wcsa->avgTimes) {
+		commonBytes = sizeof(size_t) * wcsa->avgTimes->size();
+
+		for (const auto &vec : *wcsa->avgTimes) {
+			commonBytes += sizeof(uint16_t) * vec.size();
+		}
+		
+		fprintf(stderr,"\nSize of avgTimes: %zu bytes", commonBytes);
+		*size += commonBytes;
+	}
+
+	if (wcsa->initialTimes) {
+		commonBytes = sizeof(size_t) * wcsa->initialTimes->size();
+
+		for (const auto &vec : *wcsa->initialTimes) {
+			commonBytes += sizeof(uint32_t) * vec.size();
+		}
+		
+		fprintf(stderr,"\nSize of initialTimes: %zu bytes", commonBytes);
+		*size += commonBytes;
 	}
 
 	if (wcsa->baseline && 0) {
@@ -906,6 +968,12 @@ int build_WCSA (struct graphDB *graph, char *build_options, void **index) {
 
 	wcsa->lines = graph->lines;
 
+	wcsa->baseline = nullptr;
+	wcsa->lineStops = nullptr;
+	wcsa->stopLines = nullptr;
+	wcsa->avgTimes = nullptr;
+	wcsa->initialTimes = nullptr;
+
 	const auto n_lines = wcsa->lines->size();
 
 	printf("\n Number of nodes = %u", wcsa->nodes);
@@ -1053,6 +1121,14 @@ int build_iCSA (char *build_options, void *index)
 		printf("\n\t**** [iCSA built on %zu integers. Size = %zu bytes... RAM",(size_t) wcsa->n, total);
 	}
 	return 0;
+}
+
+void copy_commons (struct graphDB *graph, void *index) {
+	twcsa *wcsa = (twcsa *) index;
+	wcsa->lineStops = graph->lineStops;
+	wcsa->stopLines = graph->stopLines;
+	wcsa->avgTimes = graph->avgTimes;
+	wcsa->initialTimes = graph->initialTimes;
 }
 
 

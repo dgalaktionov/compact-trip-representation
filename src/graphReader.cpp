@@ -165,7 +165,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 	size_t nbits = 0;
 	uint prev_time = -1;
 	uint dummy;
-	std::string line(128,0);
+	char line[128];
 	uint traj_len = 0;
 
 	uint *s = (uint *) my_malloc (graph->n * sizeof(uint));
@@ -186,7 +186,6 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 	//traj[j++] = i;
 
 	while(read_result != EOF) {
-		memset(&line[0], 0, line.capacity());
 		read_result = fscanf(f, "%100[^:]:%u:%u", &line[0], &data, &t);
 		// t = (t % PERIOD)/SAMPLES;
 
@@ -197,10 +196,6 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 		traj_len++;
 		
 		if (traj_len % 2 == 1) {
-			if (graph->lines->count(line) == 0) {
-				graph->lines->emplace(line, graph->lines->size());
-			}
-
 			data = STOPS + data * STOPS_LINE + graph->lines->at(line);
 			times[i] = t;
 			s[i++]=data;
