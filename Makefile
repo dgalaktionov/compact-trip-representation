@@ -44,7 +44,7 @@ exp-query: wsi
 	 $(CC) $(CXXFLAGS) -o  exp-query $(SRCDIR)/exp-query.cpp $(LIBINDEX)  -lrt
 
 buildAll:  wsi
-	$(CC) -DFACADEWITHMAIN $(CXXFLAGS) -o BUILDALL$(NAMEINDEX) $(SRCDIR)/buildAll.c $(LIBINDEX) $(LIBCDS) $(LIBSAIS)
+	$(CC) -DFACADEWITHMAIN $(CXXFLAGS) -o BUILDALL$(NAMEINDEX) $(SRCDIR)/buildAll.cpp $(LIBINDEX) $(LIBCDS) $(LIBSAIS)
 
 buildFacade.o: parameters.o basics.o bitmap.o \
 		 huff.o fileInfo.o delta.o $(LIBINTINDEX)

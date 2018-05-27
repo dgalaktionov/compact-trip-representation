@@ -1069,6 +1069,11 @@ int build_WCSA (struct graphDB *graph, char *build_options, void **index) {
 		//printf("\n s[i]=%u", wcsa->s[i]);
 		//printf("\n mu[i]=%u\n", unmap[map[wcsa->s[i]]]);
 		assert (wcsa->s[i] == unmap[map[wcsa->s[i]]]);
+
+		if (i < 100) {
+			// std::cout << wcsa->s[i] << ' ';
+		}
+
 		wcsa->s[i] = map[wcsa->s[i]];
 
 		// Assign a unique ID to each 0
@@ -1125,6 +1130,7 @@ int build_iCSA (char *build_options, void *index)
 
 void copy_commons (struct graphDB *graph, void *index) {
 	twcsa *wcsa = (twcsa *) index;
+	wcsa->lines = graph->lines;
 	wcsa->lineStops = graph->lineStops;
 	wcsa->stopLines = graph->stopLines;
 	wcsa->avgTimes = graph->avgTimes;
@@ -1598,14 +1604,15 @@ int get_x_in_the_middle(void *index, TimeQuery *query) {
 // Purely spatial from x to y
 int get_from_x_to_y(void *index, TimeQuery *query) {
 	twcsa *g = (twcsa *)index;
-	uint u = mapID(g, query->values[0], NODE);
-	uint v = mapID(g, query->values[1], NODE);
-	uint pattern[3] = {v, 0, u};
+	const auto n_lines = g->lines->size();
+	uint u = mapID(g, STOPS + query->values[1] * STOPS_LINE + query->values[0], NODE);
+	uint v = mapID(g, query->values[3], NODE);
+	//std::cout << u << ' ' << STOPS + query->values[1] * STOPS_LINE + query->values[0] << ' ' << unmapID(g,u,NODE_REV) << std::endl;
+	//std::cout << unmapID(g,u+1,NODE_REV) << std::endl;
+	assert(unmapID(g, v, NODE_REV) == query->values[3]);
+	assert(unmapID(g, u, NODE_REV) == STOPS + query->values[1] * STOPS_LINE + query->values[0]);
 
-	if (g->baseline) {
-		const std::pair<uint, uint> spair = std::make_pair(g->maxtime+1, g->maxtime+1);
-		return g->baseline->fromXtoY->at(std::make_pair(u,v))[spair];
-	}
+	uint pattern[3] = {v, 0, u};
 
 	ulong numocc, lu, ru;
 	countIntIndex(g->myicsa, pattern, 3, &numocc, &lu, &ru);

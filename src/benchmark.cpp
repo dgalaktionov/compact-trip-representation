@@ -16,6 +16,7 @@
 #include "debug.h"
 
  #include "arraysort.c"  //@@
+ #include "graphReader.h"
 
 /*
 FIXME: Non soporta un numero de nodos maior que MAX_INT.
@@ -25,7 +26,7 @@ pode haber repetidos)
 */
 
 
-QueryType queryTypes[15] = {
+QueryType queryTypes[16] = {
   {0, 1, false, get_starts_with_x},
   {1, 1, false, get_ends_with_x},
   {2, 1, false, get_x_in_the_middle},
@@ -40,7 +41,8 @@ QueryType queryTypes[15] = {
   {11, 1, true, get_top_k_times},
   {12, 1, true, get_top_k2},
   {13, 1, true, get_top_k_starts_seq},
-  {14, 0, false, get_starts_with_x}
+  {14, 0, false, get_starts_with_x},
+  {15, 4, false, get_from_x_to_y}
 };
 
 
@@ -87,22 +89,26 @@ void compareResShowPosFari(unsigned int * l1, unsigned int * l2) {
 
 
 #define MAX_QUERIES 10000
-TimeQuery * readQueries(char * filename, int * nqueries, int ignoreTimes) {
+TimeQuery * readQueries(void *index, char * filename, int * nqueries, int ignoreTimes) {
+        twcsa *g = (twcsa *)index;
         TimeQuery * ret = (TimeQuery *) malloc(MAX_QUERIES*sizeof(TimeQuery));
         FILE * queryFile = fopen(filename, "r");
         int curn = 0;
         int start_hour = -1;
+        char line[128];
         while(curn < MAX_QUERIES) {
                 TimeQuery *query = &ret[curn];
                 query->type = (QueryType *) malloc(sizeof(QueryType));
                 int res = EOF;
-                res = fscanf(queryFile, "%d", &(query->type->type));
+                res = fscanf(queryFile, "%d ", &(query->type->type));
                 if (res == EOF) break;
                 query->type = &(queryTypes[query->type->type]);
                 query->values = (uint *) malloc(sizeof(uint) * query->type->nValues);
 
-                for (int i = 0; i < query->type->nValues; i++) {
-                  res = fscanf(queryFile, "%d", &query->values[i]);
+                for (int i = 0; i < query->type->nValues; i+=2) {
+                  res = fscanf(queryFile, "%100[^:]:", &line[0]);
+                  query->values[i] = g->lines->at(line);
+                  res = fscanf(queryFile, "%d ", &query->values[i+1]);
                 }
 
                 fscanf(queryFile, "%d", &start_hour);
@@ -186,12 +192,21 @@ int main(int argc, char ** argv) {
         int error= load_index (fileName, timesFile, &index);
         IFERROR (error);
         //printInfo(index);
+
+        struct graphDB graph;
+        readLines(&graph, fopen("texts/lineStops.txt", "r"));
+	readStops(&graph, fopen("texts/stopLines.txt", "r"));
+	readAvgTimes(&graph, fopen("texts/avgTimes.txt", "r"));
+	readInitialTimes(&graph, fopen("texts/initialTimes.txt", "r"));
+        copy_commons(&graph, index);
+
+
     error = index_size(index, &Index_size);
     IFERROR (error);
     error = get_length(index, &Text_length);
     Text_length *= sizeof(uint);
     IFERROR (error);
-    fprintf(stderr, "Index size = %lu b\n", Index_size);
+    fprintf(stderr, "\nIndex size = %lu b\n", Index_size);
       //@@
 
         gotreslist = (uint*)malloc(sizeof(unsigned int)*BUFFER);
@@ -202,7 +217,7 @@ int main(int argc, char ** argv) {
         }
 
         int nqueries = 0;
-        TimeQuery * queries = readQueries(argv[3], &nqueries, ignore_times);
+        TimeQuery * queries = readQueries(index, argv[3], &nqueries, ignore_times);
         int executed_queries = LOOPS;
 
         if (argc > 5) {
@@ -220,6 +235,7 @@ int main(int argc, char ** argv) {
         for (i = 0; i < executed_queries; i++) {
             // printf("%i\n", i);
                 TimeQuery query = queries[i%nqueries];
+                // printQuery(query);
 
                 if (query.type->resultIsArray)
                     query.res = gotreslist;

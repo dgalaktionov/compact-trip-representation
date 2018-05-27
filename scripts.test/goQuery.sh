@@ -140,4 +140,6 @@
 # ../benchmark indexes/porto_baseline indexes/porto_baseline ./queries/porto/10k-starts-with-x.txt 0
 # ../benchmark indexes/madrid_baseline indexes/madrid_baseline ./queries/madrid/10k-starts-with-x.txt 0
 
-../benchmark indexes/madrid_lines indexes/madrid_lines ./queries/madrid/top-100.txt 0 1000
+#../benchmark indexes/madrid_lines indexes/madrid_lines ./queries/madrid/top-100.txt 0 1000
+
+../benchmark indexes/madrid_lines indexes/madrid_lines ./queries/madrid/10k-starts-with-x-ends-with-y.txt 0
