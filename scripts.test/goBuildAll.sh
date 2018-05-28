@@ -26,10 +26,12 @@ mkdir indexes
 # cat ./texts/madrid.txt | ../BUILDALLwcsa stdin ./indexes/madrid512 "sPsi=512; nsHuff=16;psiSF=1"
 #zcat ./texts/porto.txt.gz | ../BUILDALLwcsa stdin ./indexes/porto512 "sPsi=512; nsHuff=16;psiSF=1"
 #cat ./texts/porto_big.txt | ../BUILDALLwcsa stdin ./indexes/porto512 "sPsi=512; nsHuff=16;psiSF=1"
-cat ./texts/madrid_flat.txt | ../BUILDALLwcsa stdin ./indexes/madrid_flat "sPsi=512; nsHuff=16;psiSF=1"
+#cat ./texts/madrid_flat.txt | ../BUILDALLwcsa stdin ./indexes/madrid_flat "sPsi=512; nsHuff=16;psiSF=1"
 
 # ssh bichogrande "cd HDD3/spire/scripts.test; cat ./texts/madrid.txt | ../BUILDALLwcsa stdin ./indexes/madrid_16 \"sPsi=16; nsHuff=16;psiSF=4\"; \\
 # 	cat ./texts/madrid.txt | ../BUILDALLwcsa stdin ./indexes/madrid_64 \"sPsi=64; nsHuff=16;psiSF=4\"; \\
 # 	cat ./texts/madrid.txt | ../BUILDALLwcsa stdin ./indexes/madrid_256 \"sPsi=256; nsHuff=16;psiSF=4\""
 
-#cat ./texts/madrid_lines.txt | ../BUILDALLwcsa stdin ./indexes/madrid "sPsi=64; nsHuff=16;psiSF=4"
+zcat ./texts/madrid_lines.txt.gz | ../BUILDALLwcsa stdin ./indexes/madrid_lines32 "sPsi=32; nsHuff=16;psiSF=1"
+zcat ./texts/madrid_lines.txt.gz | ../BUILDALLwcsa stdin ./indexes/madrid_lines128 "sPsi=128; nsHuff=16;psiSF=1"
+zcat ./texts/madrid_lines.txt.gz | ../BUILDALLwcsa stdin ./indexes/madrid_lines512 "sPsi=512; nsHuff=16;psiSF=1"

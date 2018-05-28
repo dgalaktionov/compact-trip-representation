@@ -659,7 +659,7 @@ int countIntIndex(void *index, uint *pattern, uint length, ulong *numocc, ulong 
 	register unsigned long l, r, i, lv, rv, k;
 	//unsigned long sl, sr;
 
-	if (!*left == 0) {
+	if (*left == 0) {
 		*left = locateSymbol(myicsa, pattern[length-1]);
 	}
 

@@ -1516,12 +1516,14 @@ int get_starts_with_x(void *index, TimeQuery *query) {
 		if (numocc) {
 			const auto lineStops = &(g->lineStops->at(lineId));
 			const auto initialTimes = &(g->initialTimes->at(lineId));
-			const auto i = std::find(lineStops->begin(), lineStops->end(), stopId);
-			const auto offset = g->avgTimes->at(lineId)[i - lineStops->begin()];
+			const auto i = std::find(lineStops->begin(), lineStops->end(), stopId) - lineStops->begin();
+			const uint second = g->avgTimes->at(lineId)[i];
+			const auto offset = std::min(second, query->time->h_start-1);
 			const auto h_start = 
-				std::upper_bound(initialTimes->begin(), initialTimes->end(), query->time->h_start - offset) - initialTimes->begin();
+				std::lower_bound(initialTimes->begin(), initialTimes->end(), query->time->h_start - offset) - initialTimes->begin();
 			const auto h_end = 
-				std::lower_bound(initialTimes->begin(), initialTimes->end(), query->time->h_end - offset) - initialTimes->begin();
+				std::upper_bound(initialTimes->begin(), initialTimes->end(), query->time->h_end - offset) - initialTimes->begin();
+
 			numocc = getRange(g, lu, ru, h_start, h_end);
 		}
 	}
@@ -1614,11 +1616,12 @@ int get_from_x_to_y(void *index, TimeQuery *query) {
 
 			if (n && (query->subtype & XY_TIME)) {
 				const auto initialTimes = &(g->initialTimes->at(lineId));
-				const auto offset = g->avgTimes->at(lineId)[i];
+				const uint second = g->avgTimes->at(lineId)[i];
+				const auto offset = std::min(second, query->time->h_start-1);
 				const auto h_start = 
-					std::upper_bound(initialTimes->begin(), initialTimes->end(), query->time->h_start - offset) - initialTimes->begin();
+					std::lower_bound(initialTimes->begin(), initialTimes->end(), query->time->h_start - offset) - initialTimes->begin();
 				const auto h_end = 
-					std::lower_bound(initialTimes->begin(), initialTimes->end(), query->time->h_end - offset) - initialTimes->begin();
+					std::upper_bound(initialTimes->begin(), initialTimes->end(), query->time->h_end - offset) - initialTimes->begin();
 				n = getRange(g, lu2, ru2, h_start, h_end);
 			}
 

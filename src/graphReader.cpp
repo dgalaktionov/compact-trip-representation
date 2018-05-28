@@ -10,6 +10,7 @@ uint GLOBAL_SORT_TIMES = 0;
 void readLines (struct graphDB *graph, FILE *f) {
 	graph->lines = new std::map<std::string, uint16_t>();
 	graph->lineStops = new std::vector< std::vector<uint32_t> >();
+	graph->nodes = 0;
 
 	char line[128];
 	size_t lineId;
