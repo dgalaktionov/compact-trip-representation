@@ -224,89 +224,90 @@ int main(int argc, char ** argv) {
           executed_queries = atoi(argv[5]);
         }
 
-        int i;
+        int i,j;
 
 #ifndef EXPERIMENTS
   printf("We are checking the results... Experiments mode off.\n");
 #endif
 
+        for (j = 0; j < 4; j++) {
+                totalres = 0;
+                startClockTime();
+                        for (i = 0; i < executed_queries; i++) {
+                        // printf("%i\n", i);
+                                TimeQuery query = queries[i%nqueries];
+                                // printQuery(query);
 
-  startClockTime();
-        for (i = 0; i < executed_queries; i++) {
-            // printf("%i\n", i);
-                TimeQuery query = queries[i%nqueries];
-                // printQuery(query);
+                                if (query.type->resultIsArray)
+                                query.res = gotreslist;
+                                query.subtype = j;
+                                gotres = query.type->callback(index, &query);
+                                totalres += gotres;
+                                //printf("%i %u %u\n%u\n", query.type->type, query.values[0], query.values[1], gotres);
 
-                if (query.type->resultIsArray)
-                    query.res = gotreslist;
+                #ifndef EXPERIMENTS
 
-                gotres = query.type->callback(index, &query);
-                totalres += gotres;
-                //printf("%i %u %u\n%u\n", query.type->type, query.values[0], query.values[1], gotres);
+                //                //Comentar para medir tiempos:
+                                if (CHECK_RESULTS) {
 
-#ifndef EXPERIMENTS
+                                int failcompare = 0;
+                                if (!query.type->resultIsArray) {
+                                failcompare = (gotres != query.expectednres);
+                                } else {
 
-//                //Comentar para medir tiempos:
-                if (CHECK_RESULTS) {
+                        //@@ fari ... sort reversed neighbors
+                                //qsort(&gotreslist[1],gotreslist[0], sizeof(uint) ,qsortcompareuintAsc );
+                                //@@
 
-                  int failcompare = 0;
-                  if (!query.type->resultIsArray) {
-                    failcompare = (gotres != query.expectednres);
-                  } else {
+                                failcompare = compareRes(gotreslist, query.expectedres);
+                                gotres = gotreslist[0];
+                                }
 
-            //@@ fari ... sort reversed neighbors
-                      //qsort(&gotreslist[1],gotreslist[0], sizeof(uint) ,qsortcompareuintAsc );
-                      //@@
+                                if (failcompare) {
+                                printf("\n --------------\n");
+                                printf("query :"); printQuery(query);
+                                printf("count: got %d expected %d\n", gotres, query.expectednres);
 
-                    failcompare = compareRes(gotreslist, query.expectedres);
-                    gotres = gotreslist[0];
-                  }
+                //      compareResShowPosFari(gotreslist, query.expectedres);
 
-                  if (failcompare) {
-                    printf("\n --------------\n");
-                    printf("query :"); printQuery(query);
-                    printf("count: got %d expected %d\n", gotres, query.expectednres);
+                        if (query.type->resultIsArray) {
+                                printf("expected: "); print_arraysort(query.expectedres);
+                                printf("got     : "); print_arraysort(gotreslist);
+                        }
+                        //exit(1);
+                                }
+                                //totalres += gotres;
+                                }
 
-    //      compareResShowPosFari(gotreslist, query.expectedres);
-
-          if (query.type->resultIsArray) {
-                printf("expected: "); print_arraysort(query.expectedres);
-                printf("got     : "); print_arraysort(gotreslist);
-            }
-          //exit(1);
-                  }
-                  //totalres += gotres;
-                }
-
-#else
-                // totalres += *gotreslist;
-#endif
+                #else
+                                // totalres += *gotreslist;
+                #endif
 
 
 
 
+                        }
+
+                        ulong microsecs = endClockTime()/1000; //to microsecs
+
+                //  printf("time = (%lf), %d queries, %lf micros/query, %lf micros/arista\n",
+                //                 difftime, nqueries,
+                //                 difftime/nqueries, difftime/totalres);
+
+                        //printf("time = %lf (%ld) (%lf), %d queries, %lf micros/query, %lf micros/arista\n",
+                        //      timeFromBegin(), realTimeFromBegin(), difftime, nqueries,
+                        //     difftime/nqueries, difftime/totalres);
+
+
+                        // spatial_index temporal_index query_input num_queries totaloutput timeperquery timeperoutput
+                        // printf("%s\t%s\t%s\t%ld\t%d\t%d\t%lf\t%lf\n", argv[1], argv[2], argv[3],
+                        //                microsecs, executed_queries, totalres, (double)microsecs/executed_queries, (double)microsecs/totalres);
+                        // query_input num_queries totaloutput timeperquery timeperoutput
+                        printf("%s\t%ld\t%d\t%d\t%lf\t%lf\n", argv[3],
+                                microsecs, executed_queries, totalres, (double)microsecs/executed_queries, (double)microsecs/totalres);
+
+                        //destroyK2Tree(tree);
         }
-
-        ulong microsecs = endClockTime()/1000; //to microsecs
-
-//  printf("time = (%lf), %d queries, %lf micros/query, %lf micros/arista\n",
-//                 difftime, nqueries,
-//                 difftime/nqueries, difftime/totalres);
-
-          //printf("time = %lf (%ld) (%lf), %d queries, %lf micros/query, %lf micros/arista\n",
-           //      timeFromBegin(), realTimeFromBegin(), difftime, nqueries,
-            //     difftime/nqueries, difftime/totalres);
-
-
-        // spatial_index temporal_index query_input num_queries totaloutput timeperquery timeperoutput
-        // printf("%s\t%s\t%s\t%ld\t%d\t%d\t%lf\t%lf\n", argv[1], argv[2], argv[3],
-        //                microsecs, executed_queries, totalres, (double)microsecs/executed_queries, (double)microsecs/totalres);
-        // query_input num_queries totaloutput timeperquery timeperoutput
-        printf("%s\t%ld\t%d\t%d\t%lf\t%lf\n", argv[3],
-                       microsecs, executed_queries, totalres, (double)microsecs/executed_queries, (double)microsecs/totalres);
-
-        //destroyK2Tree(tree);
-
 
 
 //fclose(flog );

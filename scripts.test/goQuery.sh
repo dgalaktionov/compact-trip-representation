@@ -142,4 +142,4 @@
 
 #../benchmark indexes/madrid_lines indexes/madrid_lines ./queries/madrid/top-100.txt 0 1000
 
-../benchmark indexes/madrid_lines indexes/madrid_lines ./queries/madrid/10k-starts-with-x-ends-with-y.txt 0
+../benchmark indexes/madrid_lines indexes/madrid_lines ./queries/madrid/10k-starts-with-x-ends-with-y.txt 0 1000

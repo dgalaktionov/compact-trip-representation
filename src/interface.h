@@ -40,6 +40,13 @@
 #define ulong unsigned long
 #endif
 
+#define XY_ANY 0
+#define XY_LINE_START 1
+#define XY_LINE_END 2
+#define XY_TIME_START 4
+#define XY_TIME_END 8
+#define XY_TOTAL 16
+
 
  struct graphDB {
   uint nEntries;  // number of gaps
@@ -88,6 +95,7 @@ struct squery {
         unsigned int expectednres;
         unsigned int * expectedres;
         TimeRange *time;
+        uint subtype;
 };
 
 typedef struct {

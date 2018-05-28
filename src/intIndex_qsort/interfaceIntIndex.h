@@ -61,7 +61,7 @@ void dumpICSASequence(void *index, uint **data, size_t *len);
 	//Number of occurrences of the pattern, and the interval [left,right] in the suffix array
 int countIntIndex(void *index, uint *pattern, uint length, ulong *numocc, ulong *left, ulong *right);
 	
-	
+uint locateCSASymbol(const void *myicsa, const uint i);
 	
 	
 //int locateIntIndex(void *index, uint *pattern, uint length, ulong **occ, ulong *numocc);	

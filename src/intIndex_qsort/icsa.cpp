@@ -625,10 +625,12 @@ int printInfoIntIndex(void *index, const char tab[]) {
 
 
 
-
-
 uint inline locateSymbol(const ticsa *myicsa, const uint i) {
 	return i+1 > myicsa->bD->pop ? myicsa->bD->n-1 : bselect(myicsa->bD, i+1);
+}
+
+uint locateCSASymbol(const void *myicsa, const uint i) {
+	return locateSymbol(((ticsa *) myicsa), i);
 }
 
 uint inline getPsiValue(ticsa *myicsa, const uint i) {
@@ -644,10 +646,9 @@ uint inline getPsiValue(ticsa *myicsa, const uint i) {
 }
 
 
-int countIntIndex(void *index, uint *pattern, uint length, ulong *numocc, ulong *left, ulong *right){
+
+int countIntIndex(void *index, uint *pattern, uint length, ulong *numocc, ulong *left, ulong *right) {
 	*numocc = 0;
-	*left = 1;
-	*right = 0;
 
 	if (length == 0)
 		return 0;
@@ -658,8 +659,13 @@ int countIntIndex(void *index, uint *pattern, uint length, ulong *numocc, ulong 
 	register unsigned long l, r, i, lv, rv, k;
 	//unsigned long sl, sr;
 
-	*left = locateSymbol(myicsa, pattern[length-1]);
-	*right = locateSymbol(myicsa, pattern[length-1]+1) - 1;
+	if (!*left == 0) {
+		*left = locateSymbol(myicsa, pattern[length-1]);
+	}
+
+	if (*right == 0) {
+		*right = locateSymbol(myicsa, pattern[length-1]+1) - 1;
+	}
 
 	for (i = length-1; i > 0; i--) {
 		l = locateSymbol(myicsa, pattern[i-1]);

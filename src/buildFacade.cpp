@@ -1601,21 +1601,45 @@ int get_x_in_the_middle(void *index, TimeQuery *query) {
 	return get_uses_x(index, query) - get_starts_with_x(index, query) - get_ends_with_x(index, query);
 }
 
+uint encodeStop(twcsa *g, uint lineId, uint stopId) {
+	return mapID(g, STOPS + stopId * STOPS_LINE + lineId, NODE);
+}
+
 // Purely spatial from x to y
 int get_from_x_to_y(void *index, TimeQuery *query) {
 	twcsa *g = (twcsa *)index;
-	const auto n_lines = g->lines->size();
-	uint u = mapID(g, STOPS + query->values[1] * STOPS_LINE + query->values[0], NODE);
+	uint u;
+	ulong numocc = 0, lu = 0, ru = 0;
+
+	if (query->subtype & XY_LINE_START) {
+		u = encodeStop(g, query->values[0], query->values[1]);
+	} else {
+		u = encodeStop(g, STOPS_LINE-1, query->values[1]-1)+1;
+		ru = locateCSASymbol(g->myicsa, encodeStop(g, STOPS_LINE-1, query->values[1]) + 1) - 1;
+	}
+
 	uint v = mapID(g, query->values[3], NODE);
-	//std::cout << u << ' ' << STOPS + query->values[1] * STOPS_LINE + query->values[0] << ' ' << unmapID(g,u,NODE_REV) << std::endl;
-	//std::cout << unmapID(g,u+1,NODE_REV) << std::endl;
-	assert(unmapID(g, v, NODE_REV) == query->values[3]);
-	assert(unmapID(g, u, NODE_REV) == STOPS + query->values[1] * STOPS_LINE + query->values[0]);
-
 	uint pattern[3] = {v, 0, u};
-
-	ulong numocc, lu, ru;
 	countIntIndex(g->myicsa, pattern, 3, &numocc, &lu, &ru);
+	
+	if (query->subtype & XY_LINE_END) {
+		numocc = 0;
+		pattern[1] = v;
+
+		for (const auto &stop : g->lineStops->at(query->values[2])) {
+			if (stop == query->values[3]) {
+				break;
+			}
+
+			pattern[0] = encodeStop(g, query->values[2], stop);
+			ulong lu2 = lu;
+			ulong ru2 = ru;
+			ulong n;
+			countIntIndex(g->myicsa, pattern, 2, &n, &lu2, &ru2);
+			numocc += n;
+		}
+	}
+
 	// printf("%lu %lu %lu\n", numocc, lu, ru);
 /*
 	for (int i = lu; i <= ru; i++) {
