@@ -1497,56 +1497,33 @@ size_t getRange(twcsa *index, size_t lu, size_t ru, int t_start, int t_end) {
 	 return getRange(index, lu, ru, t_start, t_end, false, res);
 }
 
+uint inline encodeStop(twcsa *g, uint lineId, uint stopId) {
+	return mapID(g, STOPS + stopId * STOPS_LINE + lineId, NODE);
+}
+
 int get_starts_with_x(void *index, TimeQuery *query) {
 	twcsa *g = (twcsa *)index;
-	ulong numocc, lu, ru;
+	ulong numocc=0, lu=0, ru=0;
+	uint u = 0;
+	const auto stopId = query->values[0];
+	uint pattern[2] = {0, 0};
 
-	if (g->baseline) {
-		const auto u = mapID(g, query->values[0], NODE);
-		const auto &times = g->baseline->startsX->at(u);
-
-		if (query->time) {
-			numocc = 0;
-			
-			if (query->time->h_end < query->time->h_start) {
-				for (auto i = times.begin(); i != times.upper_bound(query->time->h_end); i++) {
-					numocc += i->second;
-				}
-
-				for (auto i = times.lower_bound(query->time->h_start); i != times.end(); i++) {
-					numocc += i->second;
-				}
-			} else {
-				for (auto i = times.lower_bound(query->time->h_start); i != times.upper_bound(query->time->h_end); i++) {
-					numocc += i->second;
-				}
-			}
-		} else {
-			numocc = times.size() > 0 ? times.begin()->second : 0;
-		}
-		
-		return numocc;
-	}
-
-	if (query->type->nValues) {
-		uint u = mapID(g, query->values[0], NODE);
-		uint pattern[2] = {0, u};
-		// printf("%lu\n", u);
-
+	for (const auto &lineId : g->stopLines->at(stopId)) {
+		u = encodeStop(g, lineId, stopId);
+		pattern[1] = u;
 		countIntIndex(g->myicsa, pattern, 2, &numocc, &lu, &ru);
-		// printf("%lu %lu %lu %lu\n", g->map_size, u, lu, ru);
-	} else {
-		lu = 1;
-		ru = getSelecticsa(g->myicsa, 2)-1;
-	}
 
-	numocc = ru - lu + 1;
-
-	// printf("%lu %lu %lu\n", numocc, lu, ru);
-
-	if (query->time) {
-		numocc = getRange(g, lu, ru,
-						  query->time->h_start, query->time->h_end);
+		if (numocc) {
+			const auto lineStops = &(g->lineStops->at(lineId));
+			const auto initialTimes = &(g->initialTimes->at(lineId));
+			const auto i = std::find(lineStops->begin(), lineStops->end(), stopId);
+			const auto offset = g->avgTimes->at(lineId)[i - lineStops->begin()];
+			const auto h_start = 
+				std::upper_bound(initialTimes->begin(), initialTimes->end(), query->time->h_start - offset) - initialTimes->begin();
+			const auto h_end = 
+				std::lower_bound(initialTimes->begin(), initialTimes->end(), query->time->h_end - offset) - initialTimes->begin();
+			numocc = getRange(g, lu, ru, h_start, h_end);
+		}
 	}
 
 	return numocc;
@@ -1601,10 +1578,6 @@ int get_x_in_the_middle(void *index, TimeQuery *query) {
 	return get_uses_x(index, query) - get_starts_with_x(index, query) - get_ends_with_x(index, query);
 }
 
-uint encodeStop(twcsa *g, uint lineId, uint stopId) {
-	return mapID(g, STOPS + stopId * STOPS_LINE + lineId, NODE);
-}
-
 // Purely spatial from x to y
 int get_from_x_to_y(void *index, TimeQuery *query) {
 	twcsa *g = (twcsa *)index;
@@ -1622,21 +1595,35 @@ int get_from_x_to_y(void *index, TimeQuery *query) {
 	uint pattern[3] = {v, 0, u};
 	countIntIndex(g->myicsa, pattern, 3, &numocc, &lu, &ru);
 	
-	if (query->subtype & XY_LINE_END) {
+	if (query->subtype & (XY_LINE_END | XY_TIME)) {
 		numocc = 0;
 		pattern[1] = v;
+		int i = 0;
+		const auto lineId = query->values[2];
 
-		for (const auto &stop : g->lineStops->at(query->values[2])) {
+		for (const auto &stop : g->lineStops->at(lineId)) {
 			if (stop == query->values[3]) {
 				break;
 			}
 
-			pattern[0] = encodeStop(g, query->values[2], stop);
+			pattern[0] = encodeStop(g, lineId, stop);
 			ulong lu2 = lu;
 			ulong ru2 = ru;
 			ulong n;
 			countIntIndex(g->myicsa, pattern, 2, &n, &lu2, &ru2);
+
+			if (n && (query->subtype & XY_TIME)) {
+				const auto initialTimes = &(g->initialTimes->at(lineId));
+				const auto offset = g->avgTimes->at(lineId)[i];
+				const auto h_start = 
+					std::upper_bound(initialTimes->begin(), initialTimes->end(), query->time->h_start - offset) - initialTimes->begin();
+				const auto h_end = 
+					std::lower_bound(initialTimes->begin(), initialTimes->end(), query->time->h_end - offset) - initialTimes->begin();
+				n = getRange(g, lu2, ru2, h_start, h_end);
+			}
+
 			numocc += n;
+			i++;
 		}
 	}
 

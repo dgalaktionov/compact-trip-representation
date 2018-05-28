@@ -105,10 +105,16 @@ TimeQuery * readQueries(void *index, char * filename, int * nqueries, int ignore
                 query->type = &(queryTypes[query->type->type]);
                 query->values = (uint *) malloc(sizeof(uint) * query->type->nValues);
 
-                for (int i = 0; i < query->type->nValues; i+=2) {
-                  res = fscanf(queryFile, "%100[^:]:", &line[0]);
-                  query->values[i] = g->lines->at(line);
-                  res = fscanf(queryFile, "%d ", &query->values[i+1]);
+                if (query->type->type == 15) {
+                        for (int i = 0; i < query->type->nValues; i+=2) {
+                                res = fscanf(queryFile, "%100[^:]:", &line[0]);
+                                query->values[i] = g->lines->at(line);
+                                res = fscanf(queryFile, "%d ", &query->values[i+1]);
+                        }
+                } else {
+                        for (int i = 0; i < query->type->nValues; i++) {
+                                res = fscanf(queryFile, "%d ", &query->values[i]);
+                        }
                 }
 
                 fscanf(queryFile, "%d", &start_hour);
@@ -230,7 +236,7 @@ int main(int argc, char ** argv) {
   printf("We are checking the results... Experiments mode off.\n");
 #endif
 
-        for (j = 0; j < 4; j++) {
+        for (j = 0; j < (queries[0].type->type == 15 ? XY_TOTAL : 1); j++) {
                 totalres = 0;
                 startClockTime();
                         for (i = 0; i < executed_queries; i++) {

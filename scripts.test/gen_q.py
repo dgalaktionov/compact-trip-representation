@@ -24,6 +24,15 @@ def gen_q(v, fw, q=0):
 
 def main(argv):
 	# starts with x, ends with y
+	fw = open(path + "10k-starts-with-x.txt", "w+")
+	for s in random.sample(sys.stdin.readlines(), Q):
+		nodes = filter(None, re.split(',|:|\n', s))
+		gen_q("%s" % nodes[1], fw, 0)
+	fw.close()
+
+	sys.exit(0)
+
+	# starts with x, ends with y
 	fw = open(path + "10k-starts-with-x-ends-with-y.txt", "w+")
 	for s in random.sample(sys.stdin.readlines(), Q):
 		nodes = filter(None, re.split(',|:|\n', s))
