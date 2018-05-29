@@ -27,7 +27,7 @@ pode haber repetidos)
 
 
 QueryType queryTypes[16] = {
-  {0, 1, false, get_starts_with_x},
+  {0, 2, false, get_starts_with_x},
   {1, 1, false, get_ends_with_x},
   {2, 1, false, get_x_in_the_middle},
   {3, 2, false, get_from_x_to_y},
@@ -105,17 +105,17 @@ TimeQuery * readQueries(void *index, char * filename, int * nqueries, int ignore
                 query->type = &(queryTypes[query->type->type]);
                 query->values = (uint *) malloc(sizeof(uint) * query->type->nValues);
 
-                if (query->type->type == 15) {
+                // if (query->type->type == 15) {
                         for (int i = 0; i < query->type->nValues; i+=2) {
                                 res = fscanf(queryFile, "%100[^:]:", &line[0]);
                                 query->values[i] = g->lines->at(line);
                                 res = fscanf(queryFile, "%d ", &query->values[i+1]);
                         }
-                } else {
-                        for (int i = 0; i < query->type->nValues; i++) {
-                                res = fscanf(queryFile, "%d ", &query->values[i]);
-                        }
-                }
+                // } else {
+                //         for (int i = 0; i < query->type->nValues; i++) {
+                //                 res = fscanf(queryFile, "%d ", &query->values[i]);
+                //         }
+                // }
 
                 fscanf(queryFile, "%d", &start_hour);
 

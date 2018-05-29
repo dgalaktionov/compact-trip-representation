@@ -1505,10 +1505,11 @@ int get_starts_with_x(void *index, TimeQuery *query) {
 	twcsa *g = (twcsa *)index;
 	ulong numocc=0, lu=0, ru=0;
 	uint u = 0;
-	const auto stopId = query->values[0];
+	const auto stopId = query->values[1];
 	uint pattern[2] = {0, 0};
 
-	for (const auto &lineId : g->stopLines->at(stopId)) {
+	const auto lineId = query->values[0];
+	// for (const auto &lineId : g->stopLines->at(stopId)) {
 		u = encodeStop(g, lineId, stopId);
 		pattern[1] = u;
 		countIntIndex(g->myicsa, pattern, 2, &numocc, &lu, &ru);
@@ -1526,7 +1527,7 @@ int get_starts_with_x(void *index, TimeQuery *query) {
 
 			numocc = getRange(g, lu, ru, h_start, h_end);
 		}
-	}
+	// }
 
 	return numocc;
 }

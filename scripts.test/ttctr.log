@@ -1,0 +1,90 @@
+TTCTR (psi=32 times=WMRRR32)
+./queries/madrid/10k-starts-with-x.txt	8026030	1000000	6159900	8.026030	1.302948
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6941421	1000000	75434900	6.941421	0.092019
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6892798	1000000	71993400	6.892798	0.095742
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	29374800	1000000	69107100	29.374800	0.425062
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	29213489	1000000	68186900	29.213489	0.428433
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31853921	1000000	1276200	31.853921	24.959976
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31605339	1000000	1260100	31.605339	25.081612
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31733899	1000000	1276200	31.733899	24.865929
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31362499	1000000	1260100	31.362499	24.888897
+TTCTR (psi=32 times=WMRRR64)
+./queries/madrid/10k-starts-with-x.txt	8199559	1000000	6159900	8.199559	1.331119
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6897137	1000000	75434900	6.897137	0.091432
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6858925	1000000	71993400	6.858925	0.095272
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	29132051	1000000	69107100	29.132051	0.421549
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	28880204	1000000	68186900	28.880204	0.423545
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31627698	1000000	1276200	31.627698	24.782713
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31124589	1000000	1260100	31.124589	24.700094
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31664511	1000000	1276200	31.664511	24.811559
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31165403	1000000	1260100	31.165403	24.732484
+TTCTR (psi=32 times=WMRRR128)
+./queries/madrid/10k-starts-with-x.txt	8420560	1000000	6159900	8.420560	1.366996
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6870801	1000000	75434900	6.870801	0.091083
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6898086	1000000	71993400	6.898086	0.095816
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	29144755	1000000	69107100	29.144755	0.421733
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	28920261	1000000	68186900	28.920261	0.424132
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31950148	1000000	1276200	31.950148	25.035377
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31536231	1000000	1260100	31.536231	25.026769
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	32014296	1000000	1276200	32.014296	25.085642
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	31425577	1000000	1260100	31.425577	24.938955
+TTCTR (psi=128 times=WMRRR32)
+./queries/madrid/10k-starts-with-x.txt	8722355	1000000	6159900	8.722355	1.415990
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	10279887	1000000	75446000	10.279887	0.136255
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	10233532	1000000	72002100	10.233532	0.142128
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	62629334	1000000	69102900	62.629334	0.906320
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	61843920	1000000	68181000	61.843920	0.907055
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	64663935	1000000	1276200	64.663935	50.669123
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	63825900	1000000	1260100	63.825900	50.651456
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	65035653	1000000	1276200	65.035653	50.960393
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	63961928	1000000	1260100	63.961928	50.759406
+TTCTR (psi=128 times=WMRRR64)
+./queries/madrid/10k-starts-with-x.txt	8969609	1000000	6159900	8.969609	1.456129
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	10225722	1000000	75446000	10.225722	0.135537
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	10221457	1000000	72002100	10.221457	0.141961
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	62600674	1000000	69102900	62.600674	0.905905
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	61829851	1000000	68181000	61.829851	0.906849
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	65524265	1000000	1276200	65.524265	51.343257
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	65045125	1000000	1260100	65.045125	51.619018
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	65734627	1000000	1276200	65.734627	51.508092
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	64993474	1000000	1260100	64.993474	51.578029
+TTCTR (psi=128 times=WMRRR128)
+./queries/madrid/10k-starts-with-x.txt	9195359	1000000	6159900	9.195359	1.492777
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	10209397	1000000	75446000	10.209397	0.135321
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	10209170	1000000	72002100	10.209170	0.141790
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	62376476	1000000	69102900	62.376476	0.902661
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	62049463	1000000	68181000	62.049463	0.910070
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	65466209	1000000	1276200	65.466209	51.297766
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	64776379	1000000	1260100	64.776379	51.405745
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	65091344	1000000	1276200	65.091344	51.004031
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	64419267	1000000	1260100	64.419267	51.122345
+TTCTR (psi=512 times=WMRRR32)
+./queries/madrid/10k-starts-with-x.txt	12124154	1000000	6159900	12.124154	1.968239
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	22887920	1000000	75051300	22.887920	0.304964
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	22952106	1000000	71621600	22.952106	0.320463
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	192860604	1000000	67352500	192.860604	2.863451
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	192106921	1000000	66439300	192.106921	2.891465
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	195622057	1000000	1227000	195.622057	159.431179
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	193412163	1000000	1211000	193.412163	159.712769
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	195529779	1000000	1227000	195.529779	159.355973
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	194122142	1000000	1211000	194.122142	160.299044
+TTCTR (psi=512 times=WMRRR64)
+./queries/madrid/10k-starts-with-x.txt	12210750	1000000	6159900	12.210750	1.982297
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	22802095	1000000	75051300	22.802095	0.303820
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	22819215	1000000	71621600	22.819215	0.318608
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	192008993	1000000	67352500	192.008993	2.850807
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	190460694	1000000	66439300	190.460694	2.866687
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	195060038	1000000	1227000	195.060038	158.973136
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	193136726	1000000	1211000	193.136726	159.485323
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	195145007	1000000	1227000	195.145007	159.042385
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	193113463	1000000	1211000	193.113463	159.466113
+TTCTR (psi=512 times=WMRRR128)
+./queries/madrid/10k-starts-with-x.txt	12431525	1000000	6159900	12.431525	2.018137
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	22815142	1000000	75051300	22.815142	0.303994
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	22742589	1000000	71621600	22.742589	0.317538
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	192278801	1000000	67352500	192.278801	2.854813
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	190472075	1000000	66439300	190.472075	2.866859
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	195308316	1000000	1227000	195.308316	159.175482
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	194228210	1000000	1211000	194.228210	160.386631
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	195454310	1000000	1227000	195.454310	159.294466
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	193401538	1000000	1211000	193.401538	159.703995

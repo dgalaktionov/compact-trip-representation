@@ -27,7 +27,7 @@ def main(argv):
 	fw = open(path + "10k-starts-with-x.txt", "w+")
 	for s in random.sample(sys.stdin.readlines(), Q):
 		nodes = filter(None, re.split(',|:|\n', s))
-		gen_q("%s" % nodes[1], fw, 0)
+		gen_q("%s:%s" % (nodes[0], nodes[1]), fw, 0)
 	fw.close()
 
 	sys.exit(0)
