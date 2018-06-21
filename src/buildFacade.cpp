@@ -130,7 +130,7 @@ int checkCompressedBitmapRRR (void *index) {
 int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 	twcsa *wcsa=(twcsa *) *index;
 
-	{
+	// {
 		Mapper *mapper = new MapperNone();
 		// Mapper *mapper = new MapperCont(wcsa->l, wcsa->n, BitSequenceBuilderRG(32), 0);
 		// calculateOrder(wcsa->times, wcsa->n);
@@ -143,21 +143,33 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 		uint *freqs = new uint[wcsa->lines->size()](); // zero initialized!
 		for (size_t i = 0; i < wcsa->n; i++) freqs[wcsa->l[i]]++;
 		// WaveletTree *linesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), NULL, mapper);
-		// WaveletTree *linesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRG(32), mapper);
-		// WaveletTree *linesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRRR(128), mapper);
+		// WaveletTree *linesWM = new WaveletTree(wcsa->l, wcsa->n, new wt_coder_hutucker(freqs, wcsa->lines->size()), new BitSequenceBuilderRG(32), mapper);
+		WaveletTree *linesWM = new WaveletTree(wcsa->l, wcsa->n, new wt_coder_hutucker(freqs, wcsa->lines->size()), new BitSequenceBuilderRRR(128), mapper);
 		//WaveletTree *linesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRPSN(new BitSequenceBuilderRG(32), 8, 4, 64u), mapper);
 		//for (size_t i = 0; i < wcsa->n; i++) assert(linesWM->access(i) == wcsa->times[i]);
-		delete[] freqs;
 		fprintf(stderr,"\n Done.\n");
 
     	wcsa->linesIndex = (void *) linesWM;
-	}
+	// }
 
 	std::vector<uint> line_occ;
-	((WaveletMatrix *) wcsa->linesIndex)->get_occ(line_occ);
+	//((WaveletMatrix *) wcsa->linesIndex)->get_occ(line_occ);
+	
+	uint acc = 0;
+	for (size_t i = 0; i < wcsa->lines->size()-1; i++) {
+		line_occ.push_back(acc);
+		acc += freqs[i];
+		assert(acc < wcsa->n);
+	}
+
+	delete[] freqs;
+
+	line_occ.push_back(acc);
 	uint *sorted_times = new uint[wcsa->n]();
 
 	for (size_t i = 0; i < wcsa->n; i++) {
+		assert(wcsa->l[i] < line_occ.size());
+		assert(line_occ[wcsa->l[i]] < wcsa->n);
 		sorted_times[line_occ[wcsa->l[i]]++] = wcsa->times[i];
 	}
 
