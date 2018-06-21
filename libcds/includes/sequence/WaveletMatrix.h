@@ -64,6 +64,7 @@ namespace cds_static
 			virtual ulong topK(uint k, uint ys, uint ye, uint *res) const;
 			virtual ulong topK(uint k, uint *res) const;
 			virtual void save(ofstream & fp) const;
+			virtual size_t get_occ(vector<uint> &res) const;
 			static WaveletMatrix * load(ifstream & fp);
 
 		protected:

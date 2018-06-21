@@ -64,6 +64,7 @@ namespace cds_static
 			virtual ulong topK(uint k, uint ys, uint ye, uint *res) const;
 			virtual ulong topK(uint k, uint *res) const;
 			virtual void save(ofstream & fp) const;
+			virtual size_t get_occ(vector<uint> &res) const;
 			static WaveletMatrix * load(ifstream & fp);
 
 		protected:
@@ -102,7 +103,7 @@ namespace cds_static
 			size_t rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty,vector<pair<int,int> > *res,bool addRes) const;
 			ulong extract(ulong i, ulong j, uint level, uint code, vector<uint> &res) const;
 
-	//private: ulong topK2(uint k, uint ys, uint ye, uint *res) const;
+	private: ulong topK2(uint k, uint ys, uint ye, uint *res) const;
 	};
 };
 #endif

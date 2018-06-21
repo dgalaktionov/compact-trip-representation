@@ -157,6 +157,7 @@ typedef struct {
 		size_t n;       //number of integers in s
 		uint *s;        //including time and edges  (S[0 .. nEntries*n)
 
+		uint *l;		// lines for each stop in s
 		uint *times;	// times for each stop in s
 		uint *weeks;	// time cycles
 		uint nweeks;	// number of time cycles
@@ -169,6 +170,7 @@ typedef struct {
 		BitSequence *bmap;
 		void *myicsa; //the CSA built on SE
 
+		void *linesIndex; // WM for lines
 		void *myTimesIndex; // usually a WT for times
 
 		tbaseline *baseline;

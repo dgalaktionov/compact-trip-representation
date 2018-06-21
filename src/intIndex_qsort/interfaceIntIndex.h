@@ -22,7 +22,7 @@
 
 // FUNCTION PROTOTYPES: SELF-INDEX ON INTEGERS.
 
-int buildIntIndex (uint *aintVector, uint n, uint sigma, uint n_traj, uint *times, char *build_options, void **index ); 
+int buildIntIndex (uint *aintVector, uint n, uint sigma, uint n_traj, uint *l, uint *times, char *build_options, void **index ); 
 		
 	//Saves the index to disk
 int saveIntIndex(void *index, char *pathname);

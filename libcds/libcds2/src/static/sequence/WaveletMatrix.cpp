@@ -659,6 +659,11 @@ namespace cds_static
 		return ret;
 	}
 
+	size_t WaveletMatrix::get_occ(vector<uint> &res) const{
+		res.assign(OCC, OCC + max_v + 1);
+		return res.size();
+	}
+
 	typedef struct {
 		uint node;
 		uint freq;

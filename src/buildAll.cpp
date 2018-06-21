@@ -135,7 +135,7 @@ double getTime(void);
 
 		/** saving the index to disk*/
 
-		save_index (Index, outfile);
+		// save_index (Index, outfile);
 		fprintf(stderr,"Index saved !! ");
 
 		/** tells the mem used by the index */

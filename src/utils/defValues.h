@@ -51,7 +51,9 @@
 #define VOCABULARY_WORDS_FILE_EXT "words"
 #define SE_FILE_EXT "se"
 #define CONSTANTS_FILE_EXT "cte"
+#define LINES_FILE_EXT "l"
 #define TIMES_FILE_EXT "times"
 #define WEEKS_FILE_EXT "weeks"
+
 
 #endif

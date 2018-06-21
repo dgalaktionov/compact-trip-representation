@@ -1,0 +1,18 @@
+TTCTR (psi=32 times=WMRRR32)
+./queries/madrid/10k-starts-with-x.txt	5045599	1000000	11892100	5.045599	0.424282
+TTCTR (psi=32 times=WMRRR64)
+./queries/madrid/10k-starts-with-x.txt	5195928	1000000	11892100	5.195928	0.436923
+TTCTR (psi=32 times=WMRRR128)
+./queries/madrid/10k-starts-with-x.txt	5409819	1000000	11892100	5.409819	0.454909
+TTCTR (psi=128 times=WMRRR32)
+./queries/madrid/10k-starts-with-x.txt	5846079	1000000	11892100	5.846079	0.491593
+TTCTR (psi=128 times=WMRRR64)
+./queries/madrid/10k-starts-with-x.txt	6014538	1000000	11892100	6.014538	0.505759
+TTCTR (psi=128 times=WMRRR128)
+./queries/madrid/10k-starts-with-x.txt	6306060	1000000	11892100	6.306060	0.530273
+TTCTR (psi=512 times=WMRRR32)
+./queries/madrid/10k-starts-with-x.txt	9139278	1000000	11892100	9.139278	0.768517
+TTCTR (psi=512 times=WMRRR64)
+./queries/madrid/10k-starts-with-x.txt	9304445	1000000	11892100	9.304445	0.782406
+TTCTR (psi=512 times=WMRRR128)
+./queries/madrid/10k-starts-with-x.txt	9626175	1000000	11892100	9.626175	0.809460

@@ -37,7 +37,7 @@
 #include <sais.h>
 
 
-int buildIntIndex (uint *aintVector, uint n, uint sigma, uint n_traj, uint *times, char *build_options, void **index){
+int buildIntIndex (uint *aintVector, uint n, uint sigma, uint n_traj, uint *l, uint *times, char *build_options, void **index){
 	uint textSize=n;
 	uint *Psi, *SAI, *C;
 	register uint i, j, k;
@@ -72,6 +72,8 @@ int buildIntIndex (uint *aintVector, uint n, uint sigma, uint n_traj, uint *time
 
 	SAI = (uint *) calloc(textSize+1, sizeof(uint));	// +1 para repetir na ultima posición. Evitamos un if
 	// BT: Reuse memory for times reordering
+	for(i=0; i<textSize; i++) SAI[i] = l[i];
+	for(i=0; i<textSize; i++) l[i] = SAI[Psi[i]];
 	for(i=0; i<textSize; i++) SAI[i] = times[i];
 	for(i=0; i<textSize; i++) times[i] = SAI[Psi[i]];
 
@@ -92,6 +94,7 @@ int buildIntIndex (uint *aintVector, uint n, uint sigma, uint n_traj, uint *time
 
 	for (uint i = nDollars-1; i > 0; i--) {
 		Psi[i] = Psi[i-1];
+		l[i] = l[Psi[i]];
 		times[i] = times[Psi[i]];
 		/*z = i;
 

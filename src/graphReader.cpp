@@ -171,6 +171,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 
 	uint *s = (uint *) my_malloc (graph->n * sizeof(uint));
 	uint *times = (uint *) my_malloc (graph->n * sizeof(uint));
+	uint *l = (uint *) my_malloc (graph->n * sizeof(uint));
 	uint *traj = (uint *) my_malloc(graph->n_traj * sizeof(uint));
 
 	size_t to_read = 10000000;
@@ -182,7 +183,8 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 	const uint no_val = 0;//graph->maxtime;
 
 	s[i] = 0;
-	times[0] = no_val;
+	l[i] = no_val;
+	times[i] = no_val;
 	traj[j++] = i++;
 	//traj[j++] = i;
 
@@ -197,7 +199,8 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 		traj_len++;
 		
 		if (traj_len % 2 == 1) {
-			data = STOPS + data * STOPS_LINE + graph->lines->at(line);
+			// data = STOPS + data * STOPS_LINE + graph->lines->at(line);
+			l[i] = graph->lines->at(line);
 			times[i] = t;
 			s[i++]=data;
 		}
@@ -212,8 +215,11 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 
 		if (separator == '\n') {
 			times[i] = t;
+			l[i] = graph->lines->at(line);
 			s[i++]=data;
 			s[i] = 0;
+			l[i] = no_val;
+			times[i] = no_val;
 			traj[j++] = i++;
 			traj_len = 0;
 		}
@@ -223,6 +229,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 		if (i >= graph->n - 2) {
 			graph->n *= 2;
 			s = (uint *) realloc(s, graph->n * sizeof(uint));
+			l = (uint *) realloc(l, graph->n * sizeof(uint));
 			times = (uint *) realloc(times, graph->n * sizeof(uint));
 		}
 
@@ -240,11 +247,13 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 	graph->n = i;
 	graph->n_traj = j;
 	s = (uint *) realloc(s, (i) * sizeof(uint));
+	l = (uint *) realloc(l, (i) * sizeof(uint));
 	times = (uint *) realloc(times, (i) * sizeof(uint));
 	traj = (uint *) realloc(traj, graph->n_traj * sizeof(uint));
 
 	//assert(no_val == graph->maxtime);
 	graph->s = s;
+	graph->l = l;
 	graph->times = times;
 	graph->traj = traj;
 	return 0;
@@ -341,13 +350,20 @@ int dollarCmp(const size_t a_start, const size_t b_start) {
 		} else if (gr_graph->s[a] > gr_graph->s[b]) {
 			return +1;
 		} else {
-			if (gr_graph->times[a_start] < gr_graph->times[b_start]) {
+			if (gr_graph->l[a_start] < gr_graph->l[b_start]) {
 				return -1;
 			} else {
-				 if (gr_graph->times[a_start] > gr_graph->times[b_start])
+				 if (gr_graph->l[a_start] > gr_graph->l[b_start])
 					return +1;
 				else
-					return 0;
+					if (gr_graph->times[a_start] < gr_graph->times[b_start]) {
+						return -1;
+					} else {
+						if (gr_graph->times[a_start] > gr_graph->times[b_start])
+							return +1;
+						else
+							return 0;
+					}
 			}
 		}
 	}
@@ -413,6 +429,7 @@ void gr_sortRecords(struct graphDB *graph) {
 	*/
 
 	uint *s = (uint *) my_malloc (graph->n * sizeof(uint));
+	uint *l = (uint *) my_malloc (graph->n * sizeof(uint));
 	uint *times = (uint *) my_malloc (graph->n * sizeof(uint));
 
 	for (i=0, j=0, z=0; i < graph->n_traj; i++) {
@@ -421,13 +438,16 @@ void gr_sortRecords(struct graphDB *graph) {
 
 		do {
 			times[z] = graph->times[j];
+			l[z] = graph->l[j];
 			s[z++] = graph->s[j];
 		} while (graph->s[++j] > 0);
 	}
 
 	free(graph->times);
+	free(graph->l);
 	free(graph->s);
 	graph->s = s;
+	graph->l = l;
 	graph->times = times;
 
 	/*

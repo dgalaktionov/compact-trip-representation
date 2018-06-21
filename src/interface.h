@@ -60,6 +60,7 @@
 	uint *traj;	// trajectories index on s
 	uint n_traj;	// number of trajectories
 
+  uint *l; // lines for s
   uint *times; // times for s
   uint *weeks;  // time cycles
   uint nweeks;  // number of cycles

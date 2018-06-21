@@ -99,7 +99,7 @@ typedef struct {
 
 //Creates the ICSA	
 
-	int buildIntIndex (uint *aintVector, uint n, uint sigma, uint n_traj, uint *times, char *build_options, void **index ); 
+	int buildIntIndex (uint *aintVector, uint n, uint sigma, uint n_traj, uint *l, uint *times, char *build_options, void **index ); 
 	//ticsa *createIntegerCSA (uint **aintVector, uint SAsize, char *build_options);
 
 //Returns number of elements in the indexed sequence of integers
