@@ -413,10 +413,14 @@ int gr_graphsuffixCmp(const void *arg1, const void *arg2) {
 	return +1;
 }
 
+inline int gr_xyCmp(const void *arg1, const void *arg2) {
+	return dollarCmp(*((uint *) arg1)+1, *((uint *) arg2)+1);
+}
+
 void gr_sortRecords(struct graphDB *graph) {
 	gr_graph = graph;
 	// Don't touch the last trajectory
-	qsort(graph->traj, graph->n_traj-1, sizeof(uint), gr_graphsuffixCmp);
+	qsort(graph->traj, graph->n_traj-1, sizeof(uint), gr_xyCmp);
 
 	uint i = 0, j = 0, z = 0;
 

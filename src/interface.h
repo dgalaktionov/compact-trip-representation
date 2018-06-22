@@ -43,8 +43,9 @@
 #define XY_ANY 0
 #define XY_LINE_START 1
 #define XY_LINE_END 2
-#define XY_TIME 4
-#define XY_TOTAL 8
+#define XY_TIME_START 4
+#define XY_TIME_END 8
+#define XY_TOTAL 16
 
 
  struct graphDB {
