@@ -15,7 +15,6 @@ with open("coords.txt", "r") as f:
 p = index.Property()
 p.leaf_capacity = 4
 p.index_capacity = 4
-p.near_minimum_overlap_factor = 4
 p.fill_factor = 0.99
 p.tight_mbr = True
 p.variant = index.RT_Star
@@ -34,6 +33,7 @@ def print_result(res):
 i = 0
 N = 1000
 queries = 0
+total = 0
 
 while i < N:
 	((x1,y1), (x2,y2)) = random_xy(), random_xy()
@@ -41,6 +41,7 @@ while i < N:
 	
 	if len(nodes) > 0:
 		ids = sorted([stops_dict[s] for x in nodes for s in x.object])
+		total += math.sqrt(len(ids))
 		consecutive = [j for j,s in enumerate(ids[1:]) if s-ids[j] > 1]
 
 		if len(consecutive) > 0:
@@ -54,4 +55,5 @@ while i < N:
 		i += 1
 
 print(queries/N)
-print(math.log2(len(stops)))
+print(total/N)
+print(queries/total)
