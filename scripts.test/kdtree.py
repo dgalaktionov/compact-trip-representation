@@ -1,9 +1,10 @@
-from random import seed, random
 from time import clock
 from operator import itemgetter
 from collections import namedtuple
-from math import sqrt
 from copy import deepcopy
+import re
+import random
+import math
  
  
 def sqd(p1, p2):
@@ -11,9 +12,10 @@ def sqd(p1, p2):
  
  
 class KdNode(object):
-    __slots__ = ("dom_elt", "split", "left", "right")
+    __slots__ = ("id", "dom_elt", "split", "left", "right")
  
-    def __init__(self, dom_elt, split, left, right):
+    def __init__(self, id, dom_elt, split, left, right):
+        self.id = id
         self.dom_elt = dom_elt
         self.split = split
         self.left = left
@@ -38,25 +40,29 @@ class Orthotope(object):
 class KdTree(object):
     __slots__ = ("n", "bounds")
  
-    def __init__(self, pts, bounds):
+    def __init__(self, pts, bounds=None):
         def nk2(split, exset):
             if not exset:
                 return None
-            exset.sort(key=itemgetter(split))
+            exset.sort(key=lambda x: x[1][split])
             m = len(exset) // 2
             d = exset[m]
-            while m + 1 < len(exset) and exset[m + 1][split] == d[split]:
+            while m + 1 < len(exset) and exset[m + 1][1][split] == d[1][split]:
                 m += 1
  
-            s2 = (split + 1) % len(d)  # cycle coordinates
-            return KdNode(d, split, nk2(s2, exset[:m]),
+            s2 = (split + 1) % len(d[1])  # cycle coordinates
+            return KdNode(d[0], d[1], split, nk2(s2, exset[:m]),
                                     nk2(s2, exset[m + 1:]))
         self.n = nk2(0, pts)
         self.bounds = bounds
- 
+
+        if self.bounds is None:
+            self.bounds = Orthotope(tuple([min([p[1][k] for p in pts]) for k in range(len(self.n.dom_elt))]), 
+            tuple([max([p[1][k] for p in pts]) for k in range(len(self.n.dom_elt))]))
+
 T3 = namedtuple("T3", "nearest dist_sqd nodes_visited")
- 
- 
+
+
 def find_nearest(k, t, p):
     def nn(kd, target, hr, max_dist_sqd):
         if kd is None:
@@ -108,7 +114,7 @@ def inorder(n):
     def _inorder(l,n):
         if n is not None:
             _inorder(l,n.left)
-            l.append(n.dom_elt)
+            l.append(n.id)
             _inorder(l,n.right)
         return l
     return _inorder([],n)
@@ -119,19 +125,19 @@ def range_search(t, r):
             return l
 
         if bound in r:
-            l.append(inorder(n))
+            l += inorder(n)
         else:
             k = n.split
             pivot = n.dom_elt
-            left_bound = deepcopy(bound)
+            left_bound = Orthotope(bound.min, bound.max)
             left_bound.max[k] = pivot[k]
-            right_bound = deepcopy(bound)
+            right_bound = Orthotope(bound.min, bound.max)
             right_bound.min[k] = pivot[k]+1
 
             _range(l, n.left, left_bound)
 
             if pivot in r:
-                l.append(pivot)
+                l.append(n.id)
 
             _range(l, n.right, right_bound)
 
@@ -143,26 +149,26 @@ def show_nearest(k, heading, kd, p):
     print("Point:           ", p)
     n = find_nearest(k, kd, p)
     print("Nearest neighbor:", n.nearest)
-    print("Distance:        ", sqrt(n.dist_sqd))
+    print("Distance:        ", math.sqrt(n.dist_sqd))
     print("Nodes visited:   ", n.nodes_visited, "\n")
  
  
 def random_point(k):
-    return tuple([random() for _ in range(k)])
+    return tuple([random.random() for _ in range(k)])
  
  
 def random_points(k, n):
-    return [random_point(k) for _ in range(n)]
- 
-if __name__ == "__main__":
-    seed(1)
-    kd1 = KdTree([(2, 3), (5, 4), (9, 6), (4, 7), (8, 1), (7, 2)],
+    return [(i,random_point(k)) for i in range(n)]
+
+if __name__ == "__main2__":
+    random.seed(1)
+    kd1 = KdTree(list(enumerate([(2, 3), (5, 4), (9, 6), (4, 7), (8, 1), (7, 2)])),
                   Orthotope((0, 0), (10, 10)))
     print(inorder(kd1.n))
     show_nearest(2, "Wikipedia example data", kd1, (9, 2))
     print(range_search(kd1, Orthotope((5, 0), (10, 10))))
  
-    N = 4#400000
+    N = 400000
     t0 = clock()
     kd2 = KdTree(random_points(3, N), Orthotope((0, 0, 0), (1, 1, 1)))
     t1 = clock()
@@ -171,3 +177,49 @@ if __name__ == "__main__":
                          " random 3D points (generation time: ",
                          t1-t0, "s)"),
                  kd2, random_point(3))
+
+
+stops = []
+
+with open("coords.txt", "r") as f:
+    for line in f:
+        stops.append([int(x) for x in re.split("[:,]", line)])
+
+idx = KdTree([(s[0],(s[1],s[2])) for s in stops])
+stops_dict = dict(zip(inorder(idx.n), range(1,len(stops)+1)))
+
+[[min_x,min_y], [max_x,max_y]] = [idx.bounds.min, idx.bounds.max]
+print((min_x,min_y,max_x,max_y))
+
+def random_xy():
+    return (random.randint(min_x,max_x), random.randint(min_y,max_y))
+
+def print_result(res):
+    print([(x.id, x.object) for x in res])
+
+i = 0
+N = 1000
+queries = 0
+total = 0
+
+while i < N:
+    nodes = range_search(idx, Orthotope(random_xy(), random_xy()))
+    
+    if len(nodes) > 0:
+        ids = sorted([stops_dict[s] for s in nodes])
+        total += math.sqrt(len(ids))
+        consecutive = [j for j,s in enumerate(ids[1:]) if s-ids[j] > 1]
+
+        if len(consecutive) > 0:
+            consecutive[0] += 1
+
+        consecutive.append(len(ids))
+        consecutive.insert(0,0)
+        islands = [k-j for j,k in zip(consecutive,consecutive[1:])]
+        #print(islands)
+        queries += len(islands)
+        i += 1
+
+print(queries/N)
+print(total/N)
+print(queries/total)
