@@ -5,6 +5,7 @@ from copy import deepcopy
 import re
 import random
 import math
+import sys
  
  
 def sqd(p1, p2):
@@ -26,8 +27,10 @@ class Orthotope(object):
     __slots__ = ("min", "max")
  
     def __init__(self, mi, ma):
-        self.min = [min(mi[k],ma[k]) for k in range(len(mi))]
-        self.max = [max(mi[k],ma[k]) for k in range(len(ma))]
+        #self.min = [min(mi[k],ma[k]) for k in range(len(mi))]
+        #self.max = [max(mi[k],ma[k]) for k in range(len(ma))]
+        self.min = list(mi)
+        self.max = list(ma)
 
     def __contains__(self, other):
         if isinstance(other, Orthotope):
@@ -35,6 +38,13 @@ class Orthotope(object):
                 and all ([o <= s for s,o in zip(self.max, other.max)])
         else:
             return all([mi <= o <= ma for mi,o,ma in zip(self.min, other, self.max)])
+    
+    def is_out(self, other):
+        if isinstance(other, Orthotope):
+            return any([o < s for s,o in zip(self.min, other.max)]) \
+                or any([o > s for s,o in zip(self.max, other.min)])
+        else:
+            return any([o < mi or o > ma for mi,o,ma in zip(self.min, other, self.max)])
  
  
 class KdTree(object):
@@ -47,12 +57,13 @@ class KdTree(object):
             exset.sort(key=lambda x: x[1][split])
             m = len(exset) // 2
             d = exset[m]
-            while m + 1 < len(exset) and exset[m + 1][1][split] == d[1][split]:
+            del exset[m]
+            while m < len(exset) and exset[m][1][split] == d[1][split]:
                 m += 1
  
             s2 = (split + 1) % len(d[1])  # cycle coordinates
             return KdNode(d[0], d[1], split, nk2(s2, exset[:m]),
-                                    nk2(s2, exset[m + 1:]))
+                                    nk2(s2, exset[m:]))
         self.n = nk2(0, pts)
         self.bounds = bounds
 
@@ -123,23 +134,28 @@ def range_search(t, r):
     def _range(l, n, bound):
         if n is None:
             return l
+        
+        if bound.is_out(r):
+            return l
 
         if bound in r:
             l += inorder(n)
         else:
             k = n.split
             pivot = n.dom_elt
-            left_bound = Orthotope(bound.min, bound.max)
-            left_bound.max[k] = pivot[k]
-            right_bound = Orthotope(bound.min, bound.max)
-            right_bound.min[k] = pivot[k]+1
+            prev_bound = bound.max[k]
+            bound.max[k] = pivot[k]
 
-            _range(l, n.left, left_bound)
+            _range(l, n.left, bound)
+            bound.max[k] = prev_bound
 
             if pivot in r:
                 l.append(n.id)
 
-            _range(l, n.right, right_bound)
+            prev_bound = bound.min[k]
+            bound.min[k] = min(pivot[k]+1, bound.max[k])
+            _range(l, n.right, bound)
+            bound.min[k] = prev_bound
 
         return l
     return _range([], t.n, deepcopy(t.bounds))
@@ -185,8 +201,11 @@ with open("coords.txt", "r") as f:
     for line in f:
         stops.append([int(x) for x in re.split("[:,]", line)])
 
-idx = KdTree([(s[0],(s[1],s[2])) for s in stops])
-stops_dict = dict(zip(inorder(idx.n), range(1,len(stops)+1)))
+stops = [(i, (i % 100, int(i/100)*2 + i%2)) for i in range(100**2)]
+
+idx = KdTree(stops[:])
+#idx = KdTree([(s[0],(s[1],s[2])) for s in stops])
+stops_dict = dict(zip(inorder(idx.n), range(1,len(stops)+2)))
 
 [[min_x,min_y], [max_x,max_y]] = [idx.bounds.min, idx.bounds.max]
 print((min_x,min_y,max_x,max_y))
@@ -198,12 +217,38 @@ def print_result(res):
     print([(x.id, x.object) for x in res])
 
 i = 0
-N = 1000
+N = 1
 queries = 0
 total = 0
+max_islands = 0
+max_q = None
+
+for x1 in range(10):
+    for y1 in range(10):
+        for x2 in range(max_x-10, max_x+1):
+            for y2 in range(max_y-10, max_y+1):
+                nodes = range_search(idx, Orthotope((x1,y1), (x2,y2)))
+
+                if len(nodes) > 0:
+                    ids = sorted([stops_dict[s] for s in nodes])
+                    consecutive = [j for j,s in enumerate(ids[1:]) if s-ids[j] > 1]
+
+                    if len(consecutive) > 0:
+                        consecutive[0] += 1
+
+                    consecutive.append(len(ids))
+                    consecutive.insert(0,0)
+                    islands = [k-j for j,k in zip(consecutive,consecutive[1:])]
+                    
+                    if len(islands) > max_islands:
+                        max_q = (x1,y1, x2,y2)
+                        max_islands = len(islands)
+
+print(max_q)
 
 while i < N:
-    nodes = range_search(idx, Orthotope(random_xy(), random_xy()))
+    ((x1,y1), (x2,y2)) = random_xy(), random_xy()
+    nodes = range_search(idx, Orthotope((min(x1,x2),min(y1,y2)), (max(x1,x2),max(y1,y2))))
     
     if len(nodes) > 0:
         ids = sorted([stops_dict[s] for s in nodes])
@@ -218,8 +263,12 @@ while i < N:
         islands = [k-j for j,k in zip(consecutive,consecutive[1:])]
         #print(islands)
         queries += len(islands)
+        max_islands = max(max_islands, len(islands))
         i += 1
 
+print(max_islands)
+print(max_islands/math.sqrt(len(stops)))
 print(queries/N)
 print(total/N)
+print(math.sqrt(len(stops)))
 print(queries/total)
