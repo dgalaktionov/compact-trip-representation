@@ -1,6 +1,7 @@
 from time import clock
 from operator import itemgetter
 from collections import namedtuple
+from collections import Counter
 from copy import deepcopy
 import re
 import random
@@ -223,15 +224,42 @@ if __name__ == "__main2__":
 
 stops = []
 
+def generate_mean_stops(k,n):
+    EXP = 3
+
+    def _generate_from(s, split):
+        coords = list(s[1])
+        diff = 2**(EXP-int(math.log2(s[0])))
+
+        return [(s[0]*2, tuple([math.copysign(abs(c)-diff,c) if i != split else c+diff for i,c in enumerate(coords)])), \
+            (s[0]*2+1, tuple([math.copysign(abs(c)-diff,c) if i != split else c-diff for i,c in enumerate(coords)]))]
+
+    i = 1
+    split = 0
+    stops = [(1,tuple([-2**EXP if i != split else 0 for i in range(k)]))]
+
+    while i < n:
+        split = (int(math.log2(i)))%k
+        stops = stops + _generate_from(stops[i-1], split)
+        i+=1
+    
+    #return [(i,(8-c[0],c[1]-16)) for i,c in stops]
+    return stops
+
+
+
 with open("coords.txt", "r") as f:
     for line in f:
         stops.append([int(x) for x in re.split("[:,]", line)])
 
 #stops = [(i, (i % 100, int(i/100)*2 + i%2)) for i in range(100**2)]
+stops = generate_mean_stops(2,64)
+print(stops)
 
-#idx = KdTree(stops[:])
-idx = KdTree([(s[0],(s[1],s[2])) for s in stops])
+idx = KdTree(stops[:])
+#idx = KdTree([(s[0],(s[1],s[2])) for s in stops])
 stops_dict = dict(zip(inorder(idx.n), range(1,len(stops)+2)))
+#print(inorder(idx.n))
 #stops_dict = dict(zip([s[0] for s in sorted(stops, key=lambda s: interleave2(s[1],s[2]))], range(1,len(stops)+2)))
 #stops_dict = dict(zip(range(len(stops)+1), range(1, len(stops)+2)))
 
@@ -245,19 +273,43 @@ def print_result(res):
     print([(x.id, x.object) for x in res])
 
 i = 0
-N = 1000
+N = 1
 queries = 0
 total = 0
 max_islands = 0
 max_q = None
 
+for i in range(len(stops)):
+    #print(i)
+    for j in range(len(stops)):
+        nodes = range_search(idx, Orthotope(stops[i][1], stops[j][1]))
 
+        if len(nodes) > 0:
+            ids = sorted([stops_dict[s] for s in nodes])
+            consecutive = [j for j,s in enumerate(ids[1:]) if s-ids[j] > 1]
+
+            if len(consecutive) > 0:
+                consecutive[0] += 1
+
+            consecutive.append(len(ids))
+            consecutive.insert(0,0)
+            islands = [k-j for j,k in zip(consecutive,consecutive[1:])]
+            
+            if len(islands) > max_islands:
+                max_q = (stops[i][1], stops[j][1])
+                max_islands = len(islands)
+
+i = 0
 while i < N:
     ((x1,y1), (x2,y2)) = random_xy(), random_xy()
-    nodes = range_search(idx, Orthotope((min(x1,x2),min(y1,y2)), (max(x1,x2),max(y1,y2))))
+    #nodes = range_search(idx, Orthotope((min(x1,x2),min(y1,y2)), (max(x1,x2),max(y1,y2))))
+    nodes = range_search(idx, Orthotope(max_q[0], max_q[1]))
+    #nodes = range_search(idx, Orthotope((-2,-6), (2,6)))
+    print(sorted(nodes))
     
     if len(nodes) > 0:
         ids = sorted([stops_dict[s] for s in nodes])
+        #print(ids)
         total += math.sqrt(len(ids))
         consecutive = [j for j,s in enumerate(ids[1:]) if s-ids[j] > 1]
 
