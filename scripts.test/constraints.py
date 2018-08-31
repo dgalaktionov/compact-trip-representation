@@ -13,7 +13,7 @@ first_constraint = [[] for _ in range(k)]
 constraints = [first_constraint]
 split = 0
 
-N = int(2**20)
+N = int(2**16)
 
 def bounds(constraint):
 	return len([1 for c in constraint if any(math.copysign(i, c[0]) != i for i in c)])
@@ -39,5 +39,5 @@ boundless = [i+1 for i,c in enumerate(constraints) if bounds(c) < 2]
 #print(boundless)
 print(len(boundless))
 
-powahs = Counter([int(math.log2(i+1)) for i,c in enumerate(constraints) if bounds(c) == 1])
-print(list(zip([v-4 for v in sorted(powahs.values())], [2**(i//2)-12 if i % 2 == 0 else int(1.5*2**(i//2))-12 for i in range(7,30)])))
+powahs = Counter([int(math.log2(i+1)) for i,c in enumerate(constraints) if bounds(c) < 2])
+print(list(zip([v for v in sorted(powahs.values())], [4*2**(i//2)-4 if i % 2 == 0 else int(6*2**(i//2))-4 for i in range(30)])))
