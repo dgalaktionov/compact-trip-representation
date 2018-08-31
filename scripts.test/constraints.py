@@ -13,7 +13,7 @@ first_constraint = [[] for _ in range(k)]
 constraints = [first_constraint]
 split = 0
 
-EXP = 15
+EXP = 10
 N = int(2**EXP)
 
 def bounds(constraint):
@@ -39,7 +39,7 @@ for i in range(1,N):
 boundless = [i+1 for i,c in enumerate(constraints) if bounds(c) < 2]
 #print(boundless)
 print(len(boundless))
-print(4*2**(1+EXP//2) + 6*2**math.ceil(EXP/2) - 4*EXP - 13)
+print(14*2**(EXP//2) - 4*EXP - 13 if EXP % 2 == 0 else 20*2**(EXP//2) - 4*EXP - 13)
 
 
 powahs = Counter([int(math.log2(i+1)) for i,c in enumerate(constraints) if bounds(c) < 2])
