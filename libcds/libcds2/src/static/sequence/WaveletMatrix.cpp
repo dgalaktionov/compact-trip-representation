@@ -519,18 +519,18 @@ namespace cds_static
 				}
 				*/
 
-				size_t xs_pos =  trackUp((uint)xs, level-1) - 1;
-				size_t xe_pos =  trackUp((uint)xe, level-1) - 1;
+				size_t xs_pos = trackUp((uint)xs, level-1) - 1;
+				size_t xe_pos = trackUp((uint)xe, level-1) - 1;
 
 				if (res->front().first == 0) {
-					res->front() = pair<int, int>(xs_pos, access(xs_pos));
-					res->back() = pair<int, int>(xe_pos, access(xe_pos));
+					res->front() = pair<int, int>(xs, xs_pos);
+					res->back() = pair<int, int>(xe, xe_pos);
 				} else {
-					if (res->front().first > xs_pos)
-						res->front() = pair<int, int>(xs_pos, access(xs_pos));
+					if (res->front().second > xs_pos)
+						res->front() = pair<int, int>(xs, xs_pos);
 
-					if (res->back().first < xe_pos)
-						res->back() = pair<int, int>(xe_pos, access(xe_pos));
+					if (res->back().second < xe_pos)
+						res->back() = pair<int, int>(xe, xe_pos);
 				}
 			}
 			return xe-xs+1;

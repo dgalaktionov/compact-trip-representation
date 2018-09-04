@@ -286,8 +286,8 @@ def load_subway(prefix, network):
 			st2.lines.add(line.id)
 
 def main(argv):
-	#n_traj = 0
-	n_traj = 10000000
+	n_traj = 0
+	#n_traj = 10000000
 	#change_probs = [0.50, 0.90, 0.95, 0.98, 1.0]
 	change_probs = [0.98, 0.98, 0.99, 1.0]
 	changes = collections.Counter()
@@ -296,7 +296,7 @@ def main(argv):
 	#network = parse_gtfs("madrid_emt.zip", None)
 	#network = parse_gtfs("madrid_bus.zip", "madrid_bus.dat", network=network)
 	network = load_gtfs("madrid_bus.dat")
-	tripsByStop = network.compute_trips_by_stop()
+	#tripsByStop = network.compute_trips_by_stop()
 	#load_subway("london", network)
 
 	#parse_gtfs("Madrid.zip", "madrid.dat")
@@ -310,11 +310,14 @@ def main(argv):
 	#network.assign_freqs()
 	stops = network.stops.values()
 	stops_dict = {key: value+1 for value, key in enumerate(sorted(network.stops.keys()))}
-	tripsByDay = network.calculate_trips_by_day(stops_dict, days_cycle)
+	#tripsByDay = network.calculate_trips_by_day(stops_dict, days_cycle)
 	unused_stops = set(network.stops)
 	i = 0
 	max_waiting_time = 30*60
 	err = 0
+
+	for s in stops:
+		print "%d:%0.0f,%0.0f" % (stops_dict[s.id], s.x, s.y)
 
 	while i < n_traj:
 		current_day = getRandomDay()

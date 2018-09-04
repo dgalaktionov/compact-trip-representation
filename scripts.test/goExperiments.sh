@@ -65,11 +65,11 @@
 # ./goQueryFari.sh madrid_ex30 benchmark6 madrid_ex30 10k-uses-t600
 
 ./goQuery.sh madrid_lines 32 WMRRR32
-./goQuery.sh madrid_lines 32 WMRRR64
-./goQuery.sh madrid_lines 32 WMRRR128
-./goQuery.sh madrid_lines 128 WMRRR32
-./goQuery.sh madrid_lines 128 WMRRR64
-./goQuery.sh madrid_lines 128 WMRRR128
-./goQuery.sh madrid_lines 512 WMRRR32
-./goQuery.sh madrid_lines 512 WMRRR64
-./goQuery.sh madrid_lines 512 WMRRR128
+# ./goQuery.sh madrid_lines 32 WMRRR64
+# ./goQuery.sh madrid_lines 32 WMRRR128
+# ./goQuery.sh madrid_lines 128 WMRRR32
+# ./goQuery.sh madrid_lines 128 WMRRR64
+# ./goQuery.sh madrid_lines 128 WMRRR128
+# ./goQuery.sh madrid_lines 512 WMRRR32
+# ./goQuery.sh madrid_lines 512 WMRRR64
+# ./goQuery.sh madrid_lines 512 WMRRR128

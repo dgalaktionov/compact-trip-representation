@@ -139,12 +139,12 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 		fprintf(stderr,"\n Building Lines Index...\n");
 		// WaveletMatrix *linesWM = new WaveletMatrix(wcsa->times, 1, new BitSequenceBuilderRG(32), mapper,false);
 		// WaveletMatrix *linesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRG(32), mapper,false);
-		// WaveletMatrix *linesWM = new WaveletMatrix(wcsa->l, wcsa->n, new BitSequenceBuilderRRR(128), mapper,false);
-		uint *freqs = new uint[wcsa->lines->size()](); // zero initialized!
-		for (size_t i = 0; i < wcsa->n; i++) freqs[wcsa->l[i]]++;
+		WaveletMatrix *linesWM = new WaveletMatrix(wcsa->l, wcsa->n, new BitSequenceBuilderRRR(128), mapper,false);
+		// uint *freqs = new uint[wcsa->lines->size()](); // zero initialized!
+		// for (size_t i = 0; i < wcsa->n; i++) freqs[wcsa->l[i]]++;
 		// WaveletTree *linesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), NULL, mapper);
 		// WaveletTree *linesWM = new WaveletTree(wcsa->l, wcsa->n, new wt_coder_hutucker(freqs, wcsa->lines->size()), new BitSequenceBuilderRG(32), mapper);
-		WaveletTree *linesWM = new WaveletTree(wcsa->l, wcsa->n, new wt_coder_hutucker(freqs, wcsa->lines->size()), new BitSequenceBuilderRRR(128), mapper);
+		// WaveletTree *linesWM = new WaveletTree(wcsa->l, wcsa->n, new wt_coder_hutucker(freqs, wcsa->lines->size()), new BitSequenceBuilderRRR(128), mapper);
 		//WaveletTree *linesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRPSN(new BitSequenceBuilderRG(32), 8, 4, 64u), mapper);
 		//for (size_t i = 0; i < wcsa->n; i++) assert(linesWM->access(i) == wcsa->times[i]);
 		fprintf(stderr,"\n Done.\n");
@@ -153,18 +153,18 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 	// }
 
 	std::vector<uint> line_occ;
-	//((WaveletMatrix *) wcsa->linesIndex)->get_occ(line_occ);
+	((WaveletMatrix *) wcsa->linesIndex)->get_occ(line_occ);
 	
-	uint acc = 0;
-	for (size_t i = 0; i < wcsa->lines->size()-1; i++) {
-		line_occ.push_back(acc);
-		acc += freqs[i];
-		assert(acc < wcsa->n);
-	}
+	// uint acc = 0;
+	// for (size_t i = 0; i < wcsa->lines->size()-1; i++) {
+	// 	line_occ.push_back(acc);
+	// 	acc += freqs[i];
+	// 	assert(acc < wcsa->n);
+	// }
 
-	delete[] freqs;
+	// delete[] freqs;
 
-	line_occ.push_back(acc);
+	// line_occ.push_back(acc);
 	uint *sorted_times = new uint[wcsa->n]();
 
 	for (size_t i = 0; i < wcsa->n; i++) {
@@ -1168,11 +1168,14 @@ size_t getRange(void *seq, size_t lu, size_t ru, int t_start, int t_end, bool is
 	
 	if (isContinuous) {
 		res = new std::vector<pair<int,int>>(2);
+		res->at(0).first = 0;
+		res->at(1).first = 0;
 
 		wm->range(lu, ru, t_start, t_end, res);
-		
+		//std::cout << res->at(0).first << ',' << res->at(0).second << ' ' << res->at(1).first << ',' << res->at(1).second << std::endl;
+
 		if (res->back().first)
-			numocc += res->back().first - res->front().first + 1;
+			numocc += res->back().second - res->front().second + 1;
 
 	} else {
 		// printf("Q1 for %lu %lu: %i %i\n", lu, ru, t_start, t_end);
@@ -1298,16 +1301,23 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, ulong l
 		// We get the subrange of $ that start with the given line
 		if (numocc = getRange(g->linesIndex, lu0, ru0, query->values[0], query->values[0], true, res)) {
 			if (query->subtype & XY_TIME_START) {
+				std::vector<pair<int, int>> *res2 = nullptr;
 				numocc = getTimeRange(g, query->values[0], query->values[1], res->at(0).first, res->at(1).first, 
-					start_time, end_time, true, res);
+					start_time, end_time, true, res2);
+				
+				assert(numocc < g->n);
+				assert(res->at(1).first - res->at(0).first == res->at(1).second - res->at(0).second);
+				res->at(0).second += res2->at(0).second - res->at(0).first;
+				res->at(1).second = res->at(0).second + res2->at(1).second - res2->at(0).second;
+				delete res2;
 			}
 
 			if (numocc && query->subtype & XY_LINE_END) {
 				// Translate that subrange to the original Y$X range
 				// ...and see how many of them are also within the end line.
 				numocc =  res->at(1).first ? getRange(g->linesIndex,
-					lu + res->at(0).first - lu0,
-					lu + res->at(1).first - lu0,
+					lu + res->at(0).second - lu0,
+					lu + res->at(1).second - lu0,
 					query->values[2], query->values[2], true, res) : 0;
 
 				if (numocc && query->subtype & XY_TIME_END) {
@@ -1373,6 +1383,8 @@ int get_from_x_to_y(void *index, TimeQuery *query) {
 
 		for (const auto &startLine : startLines) {
 			for (const auto &endLine : endLines) {
+				query->values[0] = startLine;
+				query->values[2] = endLine;
 				numocc += restrict_from_x_to_y(g, query, lu, ru, lu0, ru0);
 			}
 		}
