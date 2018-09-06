@@ -1,0 +1,34 @@
+#define XY_ANY 0
+#define XY_LINE_START 1
+#define XY_LINE_END 2
+#define XY_TIME_START 4
+#define XY_TIME_END 8
+#define XY_TOTAL 16
+
+Size of int index: 24281046 bytes (38.86% compression)
+
+Size of lines index: 15963448 bytes (32.52% compression)
+
+Size of times index: 37411136 bytes (59.88% compression)
+
+Size of lineStops: 119124 bytes
+Size of stopLines: 143314 bytes
+Size of avgTimes: 61660 bytes
+Size of initialTimes: 7474856 bytes
+Index size = 85454584 b
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      262636  10000   754135  26.263600       0.348261
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      427231  10000   719694  42.723100       0.593629
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      399521  10000   728268  39.952100       0.548591
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      563235  10000   712402  56.323500       0.790614
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      534493  10000   30561   53.449300       17.489382
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      424682  10000   27259   42.468200       15.579515
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      548270  10000   29617   54.827000       18.512003
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      429813  10000   26976   42.981300       15.933163
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      546812  10000   14371   54.681200       38.049683
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      772954  10000   11674   77.295400       66.211581
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      359542  10000   7020    35.954200       51.216809
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      463919  10000   6280    46.391900       73.872452
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      1106749 10000   3015    110.674900      367.080929
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      696019  10000   2260    69.601900       307.973009
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      548996  10000   1661    54.899600       330.521373
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      425648  10000   1494    42.564800       284.904953

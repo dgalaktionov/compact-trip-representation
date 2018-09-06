@@ -1,0 +1,23 @@
+#define XY_ANY 0
+#define XY_LINE_START 1
+#define XY_LINE_END 2
+#define XY_TIME 4
+#define XY_TOTAL 8
+
+Size of int index: 21580908 bytes (30.22% compression)
+
+Size of times index: 39820144 bytes (63.73% compression)
+
+Size of lineStops: 119124 bytes
+Size of stopLines: 143314 bytes
+Size of avgTimes: 61660 bytes
+Size of initialTimes: 7474856 bytes
+Index size = 69200006 b
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      202657  10000   750513  20.265700       0.270025
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      202532  10000   716216  20.253200       0.282781
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      1693940 10000   673525  169.394000      2.515037
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      1678050 10000   664393  167.805000      2.525689
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      1724927 10000   12270   172.492700      140.580848
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      1708858 10000   12110   170.885800      141.111313
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      1725324 10000   12270   172.532400      140.613203
+./queries/madrid/10k-starts-with-x-ends-with-y.txt      1710944 10000   12110   171.094400      141.283567
