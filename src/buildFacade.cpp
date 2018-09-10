@@ -1300,6 +1300,8 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, ulong l
 	if (query->subtype & XY_LINE_START) {
 		// We get the subrange of $ that start with the given line
 		if (numocc = getRange(g->linesIndex, lu0, ru0, query->values[0], query->values[0], true, res)) {
+			assert(res->at(1).first - res->at(0).first == res->at(1).second - res->at(0).second);
+			
 			if (query->subtype & XY_TIME_START) {
 				std::vector<pair<int, int>> *res2 = nullptr;
 				numocc = getTimeRange(g, query->values[0], query->values[1], res->at(0).first, res->at(1).first, 
