@@ -731,21 +731,28 @@ int countIntIndex(void *index, uint *pattern, uint length, ulong *numocc, ulong 
 
 			if (lv <= *right) {
 				// RIGHT BINARY SEARCH
+				lv = rv;
 				rv = r;
 				r = l;
-				lv = r;
+				k = ((rv+r)/2)/skip*skip;
 
-				while (r < rv && r <= (k = ((rv+r)/2)/skip*skip)) {
-					//printf("\t\t%lu %lu %lu\n", r, k, rv);
+				if (r > k && k+skip < rv) {
+					k += skip;
+				}
+
+				while (r < rv && r <= k) {
+					// printf("\t\t%lu %lu %lu\n", r, k, rv);
 
 					if (getPsiValue(myicsa, k) > *right) {
 						rv = k;
 					} else {
 						r = k + skip;
 					}
+
+					k = ((rv+r)/2)/skip*skip;
 				}
 
-				if (r >= skip && r >= rv && r-skip >= lv)
+				if (r >= skip && r >= rv && r-skip >= l)
 					r -= skip;
 
 				// printf("\tRIGHT %lu %lu\n", r, rv);
@@ -755,7 +762,7 @@ int countIntIndex(void *index, uint *pattern, uint length, ulong *numocc, ulong 
 					rv = rv-r >= skip ? skip-1 : rv-r; // right limit
 					getHuffmanPsiValueBuffer(&(myicsa->hcPsi), buffer, r, r+rv);
 					k = 0;
-					//printf("\t\t%u %u %u\n", r, k, rv);
+					// printf("\t\t%u %u %u\n", r, k, rv);
 
 					while (k < rv) {
 						if (buffer[(k+rv+1)/2] > *right) {
