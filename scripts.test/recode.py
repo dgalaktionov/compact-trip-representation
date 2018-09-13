@@ -34,6 +34,8 @@ i = 0
 N = 1000
 queries = 0
 total = 0
+max_islands = 0
+max_q = None
 
 while i < N:
 	((x1,y1), (x2,y2)) = random_xy(), random_xy()
@@ -52,8 +54,17 @@ while i < N:
 		islands = [k-j for j,k in zip(consecutive,consecutive[1:])]
 		#print(islands)
 		queries += len(islands)
+
+		if len(islands) > max_islands:
+			max_q = (x1,y1, x2,y2)
+			max_islands = len(islands)
+
 		i += 1
 
+print(max_q)
+print(max_islands)
+print(max_islands/math.sqrt(len(stops)))
+print(math.sqrt(len(stops)))
 print(queries/N)
 print(total/N)
 print(queries/total)

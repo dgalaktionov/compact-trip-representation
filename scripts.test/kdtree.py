@@ -253,11 +253,11 @@ with open("coords.txt", "r") as f:
         stops.append([int(x) for x in re.split("[:,]", line)])
 
 #stops = [(i, (i % 100, int(i/100)*2 + i%2)) for i in range(100**2)]
-stops = generate_mean_stops(2,64)
-print(stops)
+#stops = generate_mean_stops(2,64)
+#print(stops)
 
-idx = KdTree(stops[:])
-#idx = KdTree([(s[0],(s[1],s[2])) for s in stops])
+#idx = KdTree(stops[:])
+idx = KdTree([(s[0],(s[1],s[2])) for s in stops])
 stops_dict = dict(zip(inorder(idx.n), range(1,len(stops)+2)))
 #print(inorder(idx.n))
 #stops_dict = dict(zip([s[0] for s in sorted(stops, key=lambda s: interleave2(s[1],s[2]))], range(1,len(stops)+2)))
@@ -273,39 +273,18 @@ def print_result(res):
     print([(x.id, x.object) for x in res])
 
 i = 0
-N = 1
+N = 10000
 queries = 0
 total = 0
 max_islands = 0
 max_q = None
 
-for i in range(len(stops)):
-    #print(i)
-    for j in range(len(stops)):
-        nodes = range_search(idx, Orthotope(stops[i][1], stops[j][1]))
-
-        if len(nodes) > 0:
-            ids = sorted([stops_dict[s] for s in nodes])
-            consecutive = [j for j,s in enumerate(ids[1:]) if s-ids[j] > 1]
-
-            if len(consecutive) > 0:
-                consecutive[0] += 1
-
-            consecutive.append(len(ids))
-            consecutive.insert(0,0)
-            islands = [k-j for j,k in zip(consecutive,consecutive[1:])]
-            
-            if len(islands) > max_islands:
-                max_q = (stops[i][1], stops[j][1])
-                max_islands = len(islands)
-
-i = 0
 while i < N:
     ((x1,y1), (x2,y2)) = random_xy(), random_xy()
-    #nodes = range_search(idx, Orthotope((min(x1,x2),min(y1,y2)), (max(x1,x2),max(y1,y2))))
-    nodes = range_search(idx, Orthotope(max_q[0], max_q[1]))
+    nodes = range_search(idx, Orthotope((min(x1,x2),min(y1,y2)), (max(x1,x2),max(y1,y2))))
+    #nodes = range_search(idx, Orthotope(max_q[0], max_q[1]))
     #nodes = range_search(idx, Orthotope((-2,-6), (2,6)))
-    print(sorted(nodes))
+    #print(sorted(nodes))
     
     if len(nodes) > 0:
         ids = sorted([stops_dict[s] for s in nodes])
