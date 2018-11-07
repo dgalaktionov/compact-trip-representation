@@ -15,7 +15,9 @@ def encode_time(t):
 def main(argv):
 	counter = collections.Counter()
 	line_stops = {}
+	line_indices = {}
 	current_line = None
+	pizdec_count = 0
 
 	for line in sys.stdin:
 		day_match = re.match("DAY (\d+)", line)
@@ -30,14 +32,37 @@ def main(argv):
 			stops = [s.split("-")[1] for s in line.strip().split(",")]
 
 			if current_line in line_stops:
-				if len(line_stops[current_line]) != len(stops):
-					if len(line_stops[current_line]) < len(stops):
+				for i,stop in enumerate(stops):
+					line_indices[current_line][stop] = i
+				
+				current_indices = [line_indices[current_line][stop] for stop in line_stops[current_line] if stop in line_indices[current_line]]
+
+				for i,j in reversed(list(enumerate(current_indices))):
+					while current_indices.index(j) < i:
+						current_indices[i] = None
+				
+				current_indices = list(filter(None, current_indices))
+
+				if len(current_indices) == 0:
+					if len(stops) > len(line_stops[current_line]):
 						line_stops[current_line] = stops
-					else:
-						continue
+					line_indices[current_line].clear()
+					continue
+
+				if(current_indices[0] == current_indices[-1]):
+					current_indices[0] = 0
+
+				if not all(x<=y for x,y in zip(current_indices, current_indices[1:])):
+					print(line_stops[current_line])
+					print(stops)
+					pizdec_count += 1
+				line_indices[current_line].clear()
 			else:
 				line_stops[current_line] = stops
+				line_indices[current_line] = {}
 
+	print(pizdec_count)
+	sys.exit(0)
 	for line,stops in line_stops.items():
 		print("%s: %s" % (line, ",".join([s for s in stops])))
 
