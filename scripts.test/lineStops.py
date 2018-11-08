@@ -32,34 +32,59 @@ def main(argv):
 			stops = [s.split("-")[1] for s in line.strip().split(",")]
 
 			if current_line in line_stops:
-				for i,stop in enumerate(stops):
-					line_indices[current_line][stop] = i
-				
-				current_indices = [line_indices[current_line][stop] for stop in line_stops[current_line] if stop in line_indices[current_line]]
-
-				for i,j in reversed(list(enumerate(current_indices))):
-					while current_indices.index(j) < i:
-						current_indices[i] = None
-				
-				current_indices = list(filter(None, current_indices))
+				current_indices = [line_indices[current_line].get(stop, None) for stop in stops]
+				#current_indices = list(filter(None, current_indices))
 
 				if len(current_indices) == 0:
 					if len(stops) > len(line_stops[current_line]):
 						line_stops[current_line] = stops
-					line_indices[current_line].clear()
+						line_indices[current_line].clear()
+
+						for i,stop in enumerate(stops):
+							if stop not in line_indices[current_line]:
+								line_indices[current_line][stop] = i
 					continue
+
+				if None in current_indices:
+					print(current_indices)
+
+				k = 0
+				last_j = 0
+				deltas = [0]*len(line_stops[current_line])
+				for i,stop in enumerate(stops):
+					j = current_indices[i]
+
+					if j == None:
+						line_indices[current_line][stop] = last_j + k
+						k += 1
+						deltas[last_j] = k
+					else:
+						deltas[last_j:j] = [k]*(j-last_j)
+						last_j = j
+
+					current_indices[i] = last_j + k
+
+				deltas[last_j:] = [k]*(len(deltas)-last_j)
 
 				if(current_indices[0] == current_indices[-1]):
 					current_indices[0] = 0
 
-				if not all(x<=y for x,y in zip(current_indices, current_indices[1:])):
-					print(line_stops[current_line])
-					print(stops)
-					pizdec_count += 1
-				line_indices[current_line].clear()
+				if deltas[-1] > 0:
+					print(current_indices)
+					print(deltas)
+
+					if not all(x<=y for x,y in zip(current_indices, current_indices[1:])):
+						print(line_stops[current_line])
+						print(stops)
+						pizdec_count += 1
+				#line_indices[current_line].clear()
 			else:
 				line_stops[current_line] = stops
 				line_indices[current_line] = {}
+
+				for i,stop in enumerate(stops):
+					if stop not in line_indices[current_line]:
+						line_indices[current_line][stop] = i
 
 	print(pizdec_count)
 	sys.exit(0)
