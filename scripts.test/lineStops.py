@@ -12,6 +12,14 @@ def parse_time(time_str):
 def encode_time(t):
 	return "%02d:%02d:%02d" % (t/3600, (t/60) % 60, t % 60)
 
+def change_line(line_stops, line_indices, current_line, new_stops):
+	line_stops[current_line] = new_stops
+	line_indices[current_line] = {}
+
+	for i,stop in enumerate(new_stops):
+		if stop not in line_indices[current_line]:
+			line_indices[current_line][stop] = i
+
 def main(argv):
 	counter = collections.Counter()
 	line_stops = {}
@@ -33,63 +41,57 @@ def main(argv):
 
 			if current_line in line_stops:
 				current_indices = [line_indices[current_line].get(stop, None) for stop in stops]
-				#current_indices = list(filter(None, current_indices))
 
-				if len(current_indices) == 0:
+				if all(i is None for i in current_indices):
 					if len(stops) > len(line_stops[current_line]):
-						line_stops[current_line] = stops
-						line_indices[current_line].clear()
+						change_line(line_stops, line_indices, current_line, stops)
+
+				elif None in current_indices:
+					j = 0
+					k = 0
+					last_j = -1
+					deltas = [0]*(len(line_stops[current_line])+1)
+					for i,stop in enumerate(stops):
+						j = current_indices[i]
+
+						if j is None:
+							k += 1
+							current_indices[i] = last_j + k
+						else:
+							if j < last_j and current_indices.index(j) == i:
+								break
+
+							deltas[last_j+1] = k
+							last_j = j
+							current_indices[i] = last_j + k
+
+					if j is not None and j < last_j:
+						pizdec_count += 1
+						if len(stops) > len(line_stops[current_line]):
+							change_line(line_stops, line_indices, current_line, stops)
+					else:
+						d = 0
+						new_indices = {}
+
+						for i,stop in enumerate(line_stops[current_line]):
+							d = max(d, deltas[i])
+
+							if stop not in new_indices:
+								new_indices[stop] = line_indices[current_line][stop] + d
 
 						for i,stop in enumerate(stops):
-							if stop not in line_indices[current_line]:
-								line_indices[current_line][stop] = i
-					continue
+							if stop not in new_indices:
+								new_indices[stop] = current_indices[i]
 
-				if None in current_indices:
-					print(current_indices)
+						line_indices[current_line] = new_indices
+						line_stops[current_line] = [t[1] for t in sorted([tuple(reversed(x)) for x in new_indices.items()])]
 
-				k = 0
-				last_j = 0
-				deltas = [0]*len(line_stops[current_line])
-				for i,stop in enumerate(stops):
-					j = current_indices[i]
-
-					if j == None:
-						line_indices[current_line][stop] = last_j + k
-						k += 1
-						deltas[last_j] = k
-					else:
-						deltas[last_j:j] = [k]*(j-last_j)
-						last_j = j
-
-					current_indices[i] = last_j + k
-
-				deltas[last_j:] = [k]*(len(deltas)-last_j)
-
-				if(current_indices[0] == current_indices[-1]):
-					current_indices[0] = 0
-
-				if deltas[-1] > 0:
-					print(current_indices)
-					print(deltas)
-
-					if not all(x<=y for x,y in zip(current_indices, current_indices[1:])):
-						print(line_stops[current_line])
-						print(stops)
-						pizdec_count += 1
-				#line_indices[current_line].clear()
 			else:
-				line_stops[current_line] = stops
-				line_indices[current_line] = {}
+				change_line(line_stops, line_indices, current_line, stops)
 
-				for i,stop in enumerate(stops):
-					if stop not in line_indices[current_line]:
-						line_indices[current_line][stop] = i
-
-	print(pizdec_count)
-	sys.exit(0)
-	for line,stops in line_stops.items():
-		print("%s: %s" % (line, ",".join([s for s in stops])))
+	#print(pizdec_count)
+	for line,stops in sorted(line_stops.items()):
+		print("%s: %s" % (line, ",".join(stops)))
 
 
 if __name__ == "__main__":
