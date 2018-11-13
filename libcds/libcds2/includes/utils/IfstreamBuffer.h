@@ -253,7 +253,7 @@ namespace cds_utils {
 
     template<typename T>
     long IfstreamBuffer<T>::restartIterator() {
-        if (this->data == nullptr) return;
+        if (this->data == nullptr) return 0;
         this->file->seekg(0, ios_base::beg);
         this->globalIndex = 0;
         this-> bufferIndex = 0;
