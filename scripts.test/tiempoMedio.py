@@ -101,7 +101,7 @@ def main(argv):
 				pass
 
 	with open(argv[1], "w") as lineStops:
-		for line,times in line_times.items():
+		for line,times in sorted(line_times.items()):
 			line_freqs[line] = [max(f,1) for f in line_freqs[line]]
 			stops = sorted(list([(t/f,s) for t,f,s in zip(times, line_freqs[line], enumerate(line_stops[line]))]))
 			t0 = stops[0][0]

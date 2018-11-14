@@ -30,7 +30,7 @@ def main(argv):
 				else:
 					stop_lines[s] = [current_line]
 
-	for stop,lines in stop_lines.items():
+	for stop,lines in sorted(stop_lines.items()):
 		print("%s: %s" % (stop, ",".join(sorted(set(lines)))))
 
 
