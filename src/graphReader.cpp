@@ -120,6 +120,10 @@ void readInitialTimes (struct graphDB *graph, FILE *f) {
 		graph->initialTimes->at(graph->lines->at(line)).push_back(data);
 	}
 
+	for (auto &times : *graph->initialTimes) {
+		std::sort(times.begin(), times.end());
+	}
+
 	fclose(f);
 }
 
