@@ -47,6 +47,8 @@
 #include <unordered_map>
 #include <string>
 
+#include <zstd.h>
+
 #include "utils/defValues.h"
 #include "utils/fileInfo.h"
 

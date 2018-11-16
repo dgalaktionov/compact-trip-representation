@@ -882,6 +882,55 @@ void copy_commons (struct graphDB *graph, void *index) {
 	wcsa->stopLines = graph->stopLines;
 	wcsa->avgTimes = graph->avgTimes;
 	wcsa->initialTimes = graph->initialTimes;
+
+	const size_t maxtime = 3600*24*60;
+	size_t initialSize = 0;
+	BitSequenceBuilder *bs;
+	//bs = new BitSequenceBuilderRG(32);
+	bs = new BitSequenceBuilderSDArray();
+	//bs = new BitSequenceBuilderRRR(512);
+	const size_t tmp_size = 1024*1024;
+	uint8_t * const tmp = (uint8_t *) malloc(tmp_size);
+	const auto deltas = new uint8_t[tmp_size]();
+
+	for (const auto &times : *wcsa->initialTimes) {
+		// size_t numbits = times.back()+1;
+		// uint *data = new uint[numbits/W + 1]();
+		size_t i = 0;
+		uint8_t j = 0;
+		auto t0 = times[0];
+		memset(tmp, 0, tmp_size);
+		std::fill(deltas, deltas+tmp_size, 0);
+
+		for (const auto &t : times) {
+			//assert(t < numbits);
+			// bitset(data, t);
+			assert(t >= t0);
+			assert(t-t0 < tmp_size);
+			//initialSize += bits(t-t0+1);
+
+			if (t-t0 != 0 && tmp[t-t0] == 0)
+				tmp[t-t0] = ++j;
+
+			deltas[i++] = j;
+			//deltas->push_back(t-t0);
+			t0 = t;
+		}
+
+		const auto zsize = ZSTD_compress((void *) tmp, tmp_size, deltas+1, i - 1, 0);
+		assert(zsize > 0 && !ZSTD_isError((zsize)));
+		initialSize += zsize + j*4;
+
+		// BitSequence *bmap = bs->build(data,numbits);
+		// initialSize += bmap->getSize();
+		// delete[] data;
+		// delete bmap;
+	}
+
+	std::cout << std::endl << "initials bitmap size: " << initialSize << std::endl;
+	delete bs;
+	free(tmp);
+	delete deltas;
 }
 
 

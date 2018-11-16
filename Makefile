@@ -38,17 +38,17 @@ wsi: intIndexPackage buildFacade.o parameters.o basics.o \
 	mv $(LIBINTINDEX) $(LIBINDEX)
 
 benchmark: wsi
-	 $(CC) $(CXXFLAGS) -o  benchmark $(SRCDIR)/benchmark.cpp $(LIBINDEX) $(LIBCDS) $(LIBSAIS) -lrt
+	 $(CC) $(CXXFLAGS) -o  benchmark $(SRCDIR)/benchmark.cpp $(LIBINDEX) $(LIBCDS) $(LIBSAIS) -lrt -lzstd
 
 exp-query: wsi
-	 $(CC) $(CXXFLAGS) -o  exp-query $(SRCDIR)/exp-query.cpp $(LIBINDEX)  -lrt
+	 $(CC) $(CXXFLAGS) -o  exp-query $(SRCDIR)/exp-query.cpp $(LIBINDEX)  -lrt -lzstd
 
 buildAll:  wsi
-	$(CC) -DFACADEWITHMAIN $(CXXFLAGS) -o BUILDALL$(NAMEINDEX) $(SRCDIR)/buildAll.cpp $(LIBINDEX) $(LIBCDS) $(LIBSAIS)
+	$(CC) -DFACADEWITHMAIN $(CXXFLAGS) -o BUILDALL$(NAMEINDEX) $(SRCDIR)/buildAll.cpp $(LIBINDEX) $(LIBCDS) $(LIBSAIS) -lzstd
 
 buildFacade.o: parameters.o basics.o bitmap.o \
 		 huff.o fileInfo.o delta.o $(LIBINTINDEX)
-	 $(CC) $(CXXFLAGS) -c  $(SRCDIR)/buildFacade.cpp $(LIBCDS) $(LIBSAIS)
+	 $(CC) $(CXXFLAGS) -c  $(SRCDIR)/buildFacade.cpp $(LIBCDS) $(LIBSAIS) -lzstd
 
 
 
