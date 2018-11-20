@@ -892,6 +892,7 @@ void copy_commons (struct graphDB *graph, void *index) {
 	const size_t tmp_size = 1024*1024;
 	uint8_t * const tmp = (uint8_t *) malloc(tmp_size);
 	const auto deltas = new uint8_t[tmp_size]();
+	ZSTD_CCtx * const ctx = ZSTD_createCCtx();
 
 	for (const auto &times : *wcsa->initialTimes) {
 		// size_t numbits = times.back()+1;
@@ -917,7 +918,7 @@ void copy_commons (struct graphDB *graph, void *index) {
 			t0 = t;
 		}
 
-		const auto zsize = ZSTD_compress((void *) tmp, tmp_size, deltas+1, i - 1, 0);
+		const auto zsize = ZSTD_compressCCtx(ctx, (void *) tmp, tmp_size, deltas+1, i - 1, 1);
 		assert(zsize > 0 && !ZSTD_isError((zsize)));
 		initialSize += zsize + j*4;
 
@@ -928,6 +929,7 @@ void copy_commons (struct graphDB *graph, void *index) {
 	}
 
 	std::cout << std::endl << "initials bitmap size: " << initialSize << std::endl;
+	ZSTD_freeCCtx(ctx);
 	delete bs;
 	free(tmp);
 	delete deltas;
