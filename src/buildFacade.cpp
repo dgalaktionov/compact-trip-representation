@@ -931,7 +931,7 @@ void copy_commons (struct graphDB *graph, void *index) {
 			const auto zsize = ZSTD_compressStream(ctx, &outbuffer, &inbuffer);
 			assert(!ZSTD_isError((zsize)));
 			ZSTD_endStream(ctx, &outbuffer);
-			initialSize += sizeof(size_t);
+			initialSize += sizeof(size_t) + 4;
 		}
 		
 		initialSize += j*4;
