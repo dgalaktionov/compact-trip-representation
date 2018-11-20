@@ -891,8 +891,12 @@ void copy_commons (struct graphDB *graph, void *index) {
 	//bs = new BitSequenceBuilderRRR(512);
 	const size_t tmp_size = 1024*1024;
 	uint8_t * const tmp = (uint8_t *) malloc(tmp_size);
-	const auto deltas = new uint8_t[tmp_size]();
-	ZSTD_CCtx * const ctx = ZSTD_createCCtx();
+	uint8_t * const comp = (uint8_t *) malloc(tmp_size);
+	uint8_t * const deltas = new uint8_t[tmp_size]();
+	ZSTD_CStream * const ctx = ZSTD_createCStream();
+
+	ZSTD_inBuffer inbuffer = {deltas+1, 0, 0};
+	ZSTD_outBuffer outbuffer = {comp, tmp_size, 0};
 
 	for (const auto &times : *wcsa->initialTimes) {
 		// size_t numbits = times.back()+1;
@@ -918,9 +922,13 @@ void copy_commons (struct graphDB *graph, void *index) {
 			t0 = t;
 		}
 
-		const auto zsize = ZSTD_compressCCtx(ctx, (void *) tmp, tmp_size, deltas+1, i - 1, 1);
-		assert(zsize > 0 && !ZSTD_isError((zsize)));
-		initialSize += zsize + j*4;
+		ZSTD_initCStream(ctx, 1);
+		inbuffer.size = i;
+		inbuffer.pos = 0;
+		const auto zsize = ZSTD_compressStream(ctx, &outbuffer, &inbuffer);
+		assert(!ZSTD_isError((zsize)));
+		ZSTD_endStream(ctx, &outbuffer);
+		initialSize += j*4;
 
 		// BitSequence *bmap = bs->build(data,numbits);
 		// initialSize += bmap->getSize();
@@ -928,8 +936,9 @@ void copy_commons (struct graphDB *graph, void *index) {
 		// delete bmap;
 	}
 
+	initialSize += outbuffer.pos;
 	std::cout << std::endl << "initials bitmap size: " << initialSize << std::endl;
-	ZSTD_freeCCtx(ctx);
+	ZSTD_freeCStream(ctx);
 	delete bs;
 	free(tmp);
 	delete deltas;
