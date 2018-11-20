@@ -890,13 +890,15 @@ void copy_commons (struct graphDB *graph, void *index) {
 	bs = new BitSequenceBuilderSDArray();
 	//bs = new BitSequenceBuilderRRR(512);
 	const size_t tmp_size = 1024*1024;
+	const size_t buffer_size = 512;
 	uint8_t * const tmp = (uint8_t *) malloc(tmp_size);
 	uint8_t * const comp = (uint8_t *) malloc(tmp_size);
 	uint8_t * const deltas = new uint8_t[tmp_size]();
 	ZSTD_CStream * const ctx = ZSTD_createCStream();
 
-	ZSTD_inBuffer inbuffer = {deltas+1, 0, 0};
+	ZSTD_inBuffer inbuffer = {deltas, 0, 0};
 	ZSTD_outBuffer outbuffer = {comp, tmp_size, 0};
+
 
 	for (const auto &times : *wcsa->initialTimes) {
 		// size_t numbits = times.back()+1;
@@ -922,12 +924,16 @@ void copy_commons (struct graphDB *graph, void *index) {
 			t0 = t;
 		}
 
-		ZSTD_initCStream(ctx, 1);
-		inbuffer.size = i;
-		inbuffer.pos = 0;
-		const auto zsize = ZSTD_compressStream(ctx, &outbuffer, &inbuffer);
-		assert(!ZSTD_isError((zsize)));
-		ZSTD_endStream(ctx, &outbuffer);
+		for (size_t k = 1; k < i; k += buffer_size) {
+			inbuffer.pos = k;
+			inbuffer.size = k+min(buffer_size,i-k);
+			ZSTD_initCStream(ctx, 1);
+			const auto zsize = ZSTD_compressStream(ctx, &outbuffer, &inbuffer);
+			assert(!ZSTD_isError((zsize)));
+			ZSTD_endStream(ctx, &outbuffer);
+			initialSize += sizeof(size_t);
+		}
+		
 		initialSize += j*4;
 
 		// BitSequence *bmap = bs->build(data,numbits);
@@ -938,6 +944,7 @@ void copy_commons (struct graphDB *graph, void *index) {
 
 	initialSize += outbuffer.pos;
 	std::cout << std::endl << "initials bitmap size: " << initialSize << std::endl;
+
 	ZSTD_freeCStream(ctx);
 	delete bs;
 	free(tmp);
