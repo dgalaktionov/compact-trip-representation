@@ -31,15 +31,14 @@ SRCDIRLIBCDS = ./src/libcds
 all: clean buildAll benchmark cleanO
 
 wsi: intIndexPackage buildFacade.o parameters.o basics.o \
-		bitmap.o huff.o fileInfo.o graphReader.o delta.o #icsa.o
+		bitmap.o huff.o fileInfo.o graphReader.o delta.o zstdArray.o #icsa.o
 	ar rc $(LIBINTINDEX) parameters.o buildFacade.o basics.o \
-		bitmap.o huff.o fileInfo.o graphReader.o delta.o
+		bitmap.o huff.o fileInfo.o graphReader.o delta.o zstdArray.o
 	#ar q $(LIBINDEX) icsa.o psiHuffmanRLE.o psiDeltaCode.o psiGonzalo.o  ##they are included by icsa.a
 	mv $(LIBINTINDEX) $(LIBINDEX)
 
 benchmark: wsi
 	 $(CC) $(CXXFLAGS) -o  benchmark $(SRCDIR)/benchmark.cpp $(LIBINDEX) $(LIBCDS) $(LIBSAIS) -lrt -lzstd
-
 exp-query: wsi
 	 $(CC) $(CXXFLAGS) -o  exp-query $(SRCDIR)/exp-query.cpp $(LIBINDEX)  -lrt -lzstd
 
@@ -47,8 +46,8 @@ buildAll:  wsi
 	$(CC) -DFACADEWITHMAIN $(CXXFLAGS) -o BUILDALL$(NAMEINDEX) $(SRCDIR)/buildAll.cpp $(LIBINDEX) $(LIBCDS) $(LIBSAIS) -lzstd
 
 buildFacade.o: parameters.o basics.o bitmap.o \
-		 huff.o fileInfo.o delta.o $(LIBINTINDEX)
-	 $(CC) $(CXXFLAGS) -c  $(SRCDIR)/buildFacade.cpp $(LIBCDS) $(LIBSAIS) -lzstd
+		 huff.o fileInfo.o delta.o zstdArray.o $(LIBINTINDEX)
+	 $(CC) $(CXXFLAGS) -c  $(SRCDIR)/buildFacade.cpp $(LIBCDS) $(LIBSAIS)
 
 
 
@@ -116,6 +115,9 @@ delta.o:
 
 MemTrack.o:
 	$(CC) $(CXXFLAGS) -c $(SRCDIR)/MemTrack.cpp
+
+zstdArray.o:
+	$(CC) $(CXXFLAGS) -c $(SRCDIR)/$(SRCDIRUTILS)/zstdArray.cpp
 
 
 ############################ CLEANING #################################

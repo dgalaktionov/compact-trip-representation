@@ -882,73 +882,8 @@ void copy_commons (struct graphDB *graph, void *index) {
 	wcsa->stopLines = graph->stopLines;
 	wcsa->avgTimes = graph->avgTimes;
 	wcsa->initialTimes = graph->initialTimes;
-
-	const size_t maxtime = 3600*24*60;
-	size_t initialSize = 0;
-	BitSequenceBuilder *bs;
-	//bs = new BitSequenceBuilderRG(32);
-	bs = new BitSequenceBuilderSDArray();
-	//bs = new BitSequenceBuilderRRR(512);
-	const size_t tmp_size = 1024*1024;
-	const size_t buffer_size = 512;
-	uint8_t * const tmp = (uint8_t *) malloc(tmp_size);
-	uint8_t * const comp = (uint8_t *) malloc(tmp_size);
-	uint8_t * const deltas = new uint8_t[tmp_size]();
-	ZSTD_CStream * const ctx = ZSTD_createCStream();
-
-	ZSTD_inBuffer inbuffer = {deltas, 0, 0};
-	ZSTD_outBuffer outbuffer = {comp, tmp_size, 0};
-
-
-	for (const auto &times : *wcsa->initialTimes) {
-		// size_t numbits = times.back()+1;
-		// uint *data = new uint[numbits/W + 1]();
-		size_t i = 0;
-		uint8_t j = 0;
-		auto t0 = times[0];
-		memset(tmp, 0, tmp_size);
-		std::fill(deltas, deltas+tmp_size, 0);
-
-		for (const auto &t : times) {
-			//assert(t < numbits);
-			// bitset(data, t);
-			assert(t >= t0);
-			assert(t-t0 < tmp_size);
-			//initialSize += bits(t-t0+1);
-
-			if (t-t0 != 0 && tmp[t-t0] == 0)
-				tmp[t-t0] = ++j;
-
-			deltas[i++] = j;
-			//deltas->push_back(t-t0);
-			t0 = t;
-		}
-
-		for (size_t k = 1; k < i; k += buffer_size) {
-			inbuffer.pos = k;
-			inbuffer.size = k+min(buffer_size,i-k);
-			ZSTD_initCStream(ctx, 1);
-			const auto zsize = ZSTD_compressStream(ctx, &outbuffer, &inbuffer);
-			assert(!ZSTD_isError((zsize)));
-			ZSTD_endStream(ctx, &outbuffer);
-			initialSize += sizeof(size_t) + 4;
-		}
-		
-		initialSize += j*4;
-
-		// BitSequence *bmap = bs->build(data,numbits);
-		// initialSize += bmap->getSize();
-		// delete[] data;
-		// delete bmap;
-	}
-
-	initialSize += outbuffer.pos;
-	std::cout << std::endl << "initials bitmap size: " << initialSize << std::endl;
-
-	ZSTD_freeCStream(ctx);
-	delete bs;
-	free(tmp);
-	delete deltas;
+	auto z = new ZSTDArray(graph->initialTimes);
+	delete z;
 }
 
 

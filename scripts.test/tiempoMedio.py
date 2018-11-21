@@ -49,7 +49,7 @@ def main(argv):
 		elif line_match:
 			current_line = line_match.group(1)
 		elif time_match:
-			t0 = parse_time(time_match[0][:-1])
+			t0 = parse_time(time_match.group(0)[:-1])
 			stops = [(parse_time(t[0])-t0, t[1]) for t in [s.split("-") for s in line.split(",")]]
 			last_i = -1
 

@@ -47,16 +47,14 @@
 #include <unordered_map>
 #include <string>
 
-#include <zstd.h>
-
 #include "utils/defValues.h"
 #include "utils/fileInfo.h"
 
 
 #include "utils/huff.h"
 #include "utils/parameters.h"
-
 #include "utils/bitmap.h"
+#include "utils/zstdArray.h"
 
 
 #include "intIndex_qsort/interfaceIntIndex.h"
