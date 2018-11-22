@@ -3,10 +3,13 @@
 #include <vector>
 #include <utility>
 #include <memory>
+#include <exception>
 
 #include <zstd.h>
 
 #include "basics.h"
+
+const size_t ZSTD_BUFFER = 512;
 
 class ZSTDArray {
 	private:
@@ -20,4 +23,5 @@ class ZSTDArray {
 		ZSTDArray(std::vector< std::vector<uint32_t> > *initialTimes);
 
 		const size_t getSize();
+		const void check(std::vector< std::vector<uint32_t> > *initialTimes);
 };
