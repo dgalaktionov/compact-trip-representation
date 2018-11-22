@@ -479,6 +479,10 @@ int free_index(void *index){
 		delete wcsa->initialTimes;
 	}
 
+	if (wcsa->cInitialTimes) {
+		delete wcsa->cInitialTimes;
+	}
+
 #ifdef DICTIONARY_HUFFRLE
 	destroyHuffmanCompressedPsi(&(wcsa->cunmap));
 #else
@@ -882,8 +886,7 @@ void copy_commons (struct graphDB *graph, void *index) {
 	wcsa->stopLines = graph->stopLines;
 	wcsa->avgTimes = graph->avgTimes;
 	wcsa->initialTimes = graph->initialTimes;
-	auto z = new ZSTDArray(graph->initialTimes);
-	delete z;
+	wcsa->cInitialTimes = new ZSTDArray(graph->initialTimes);
 }
 
 
@@ -1198,13 +1201,21 @@ size_t getTimeRange(twcsa *g, uint16_t lineId, uint32_t stopId, size_t lu, size_
 
 	const auto lineStops = &(g->lineStops->at(lineId));
 	const auto i = std::find(lineStops->begin(), lineStops->end(), stopId) - lineStops->begin();
-	const auto initialTimes = &(g->initialTimes->at(lineId));
+	//const auto initialTimes = &(g->initialTimes->at(lineId));
 	const int second = g->avgTimes->at(lineId)[i];
 	const auto offset = std::min(second, t_start-1);
+
+	auto bounds = g->cInitialTimes->getBounds(lineId, t_start-offset, t_end-offset);
 	t_start = 
-		std::lower_bound(initialTimes->begin(), initialTimes->end(), t_start - offset) - initialTimes->begin();
+		//std::lower_bound(initialTimes->begin(), initialTimes->end(), t_start - offset) - initialTimes->begin();
+		bounds.first;
 	t_end = 
-		std::upper_bound(initialTimes->begin(), initialTimes->end(), t_end - offset) - initialTimes->begin();
+		//std::upper_bound(initialTimes->begin(), initialTimes->end(), t_end - offset) - initialTimes->begin();
+		bounds.second;
+
+	if (t_end < t_start) {
+		return 0;
+	}
 
 	return getRange(g->myTimesIndex, lu, ru, t_start, t_end, isContinuous, res);
 }
@@ -1309,11 +1320,13 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, ulong l
 				numocc = getTimeRange(g, query->values[0], query->values[1], res->at(0).first, res->at(1).first, 
 					start_time, end_time, true, res2);
 				
-				assert(numocc < g->n);
-				assert(res->at(1).first - res->at(0).first == res->at(1).second - res->at(0).second);
-				res->at(0).second += res2->at(0).second - res->at(0).first;
-				res->at(1).second = res->at(0).second + res2->at(1).second - res2->at(0).second;
-				delete res2;
+				if (numocc) {
+					assert(numocc < g->n);
+					assert(res2->at(1).first - res2->at(0).first == res2->at(1).second - res2->at(0).second);
+					res->at(0).second += res2->at(0).second - res->at(0).first;
+					res->at(1).second = res->at(0).second + res2->at(1).second - res2->at(0).second;
+					delete res2;
+				}
 			}
 
 			if (numocc && query->subtype & XY_LINE_END) {

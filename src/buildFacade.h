@@ -181,6 +181,8 @@ typedef struct {
 		std::vector< std::vector<uint16_t> > *stopLines;
 		std::vector< std::vector<uint16_t> > *avgTimes;
 		std::vector< std::vector<uint32_t> > *initialTimes;
+
+		ZSTDArray *cInitialTimes;
 	} twcsa;
 
 
