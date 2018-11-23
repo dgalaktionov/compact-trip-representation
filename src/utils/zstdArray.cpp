@@ -24,7 +24,7 @@ ZSTDArray::ZSTDArray(std::vector< std::vector<uint32_t> > *initialTimes) {
 	for (const auto &times : *initialTimes) {
 		size_t i = 0;
 		uint8_t j = 0;
-		auto t0 = times[0];
+		uint32_t t0 = times[0];
 		std::fill(tmp.get(), tmp.get()+tmp_size, 0);
 		std::fill(deltas.get(), deltas.get()+tmp_size, 0);
 		assert(times.size() < tmp_size);
@@ -32,10 +32,10 @@ ZSTDArray::ZSTDArray(std::vector< std::vector<uint32_t> > *initialTimes) {
 		auto D = std::vector<uint32_t>();
 
 		for (const auto &t : times) {
-			if (i > 0 && t == t0)
+			if (t == t0)
 				continue;
 
-			assert(i == 0 || t > t0);
+			assert(t > t0);
 			assert(t-t0 < tmp_size);
 
 			if (tmp[t-t0] == 0) {
@@ -49,32 +49,23 @@ ZSTDArray::ZSTDArray(std::vector< std::vector<uint32_t> > *initialTimes) {
 		}
 
 		assert (i > 1);
+		inbuffer.pos = 0;
+		auto t = times[0];
 		lines_D.push_back(D);
 
-		// we never compress deltas[0] because it's usually either a 0 or an "strange" delta, so we just sample it
-		inbuffer.pos = 1;
-		
+		// we never compress times[0] because it's usually either a 0 or an "strange" delta, so we just sample it
 		for (size_t k = 0; k < i; k++) {
-			t0 += delta[k];
-
-			if (k%ZSTD_BUFFER == 0) {
+			if (k%ZSTD_BUFFER == 0 && inbuffer.pos < i) {
 				sample_pointers.push_back(outbuffer.pos);
-				sample_values.push_back(t0);
+				sample_values.push_back(t);
 				inbuffer.size = inbuffer.pos+min(ZSTD_BUFFER,i-inbuffer.pos);
 				ZSTD_initCStream(ctx, 1);
 				const auto zsize = ZSTD_compressStream(ctx, &outbuffer, &inbuffer);
 				assert(!ZSTD_isError((zsize)));
 				ZSTD_endStream(ctx, &outbuffer);
 			}
-		}
-		for (inbuffer.pos = 1; inbuffer.pos < i;) {
-			sample_pointers.push_back(outbuffer.pos);
-			sample_values.push_back(times[inbuffer.pos-1]);
-			inbuffer.size = inbuffer.pos+min(ZSTD_BUFFER,i-inbuffer.pos);
-			ZSTD_initCStream(ctx, 1);
-			const auto zsize = ZSTD_compressStream(ctx, &outbuffer, &inbuffer);
-			assert(!ZSTD_isError((zsize)));
-			ZSTD_endStream(ctx, &outbuffer);
+
+			t += D[deltas[k]-1];
 		}
 	}
 
@@ -115,7 +106,6 @@ const void ZSTDArray::check(std::vector< std::vector<uint32_t> > *initialTimes) 
 				continue;
 
 			if (k%ZSTD_BUFFER == 0) {
-				std::cout << "FRAME: " << sample_values.at(C+k/ZSTD_BUFFER) << ' ' << times[j-1] << std::endl;
 				assert(sample_pointers.at(C+k/ZSTD_BUFFER) == inbuffer.pos);
 				assert(sample_values.at(C+k/ZSTD_BUFFER) == times[j-1]);
 				outbuffer.pos = 0;
@@ -124,9 +114,8 @@ const void ZSTDArray::check(std::vector< std::vector<uint32_t> > *initialTimes) 
 				assert(!ZSTD_isError((zsize)));
 			}
 
-			//n += D.at(buffer[k % ZSTD_BUFFER]);
-			//std::cout << n << ' ' << times[j] << std::endl;
-			//assert(k == times[j]);
+			n += D.at(buffer[k % ZSTD_BUFFER]-1);
+			assert(n == times[j]);
 			k++;
 		}
 	}
@@ -147,7 +136,7 @@ const std::pair<size_t, size_t> ZSTDArray::getBounds(uint16_t line_id, uint32_t 
 
 	const auto s_lo = std::lower_bound(it_s, it_e, start_t)-1;
 	const auto s_hi = std::upper_bound(it_s, it_e, end_t)-1;
-	auto k = *s_lo;
+	auto k = s_lo < it_s ? start_t : *s_lo;
 
 	if (s_hi >= it_s) {
 		if (s_lo >= it_s) {
@@ -159,11 +148,9 @@ const std::pair<size_t, size_t> ZSTDArray::getBounds(uint16_t line_id, uint32_t 
 
 			size_t i = 0;
 
-			std::cout << it_s - sample_values.cbegin() << ' ' << s_lo - sample_values.cbegin() << ' ' << it_e - sample_values.cbegin() << ' ' << outbuffer.pos << std::endl;
 			for(k = *s_lo; k < start_t && i < outbuffer.pos; i++) {
-				std::cout << +buffer[i] << ' ' << D.size() << std::endl;
-				assert(buffer[i] < D.size());
-				k+=D[buffer[i]];
+				//assert(buffer[i]-1 < D.size());
+				k+=D[buffer[i]-1];
 			}
 
 			// should be i-1, but it cancels out with a +1 as deltas[0] is never compressed
@@ -183,12 +170,12 @@ const std::pair<size_t, size_t> ZSTDArray::getBounds(uint16_t line_id, uint32_t 
 			size_t i = 0;
 
 			for(k = *s_hi; k <= end_t && i < outbuffer.pos; i++) {
-				assert(buffer[i] < D.size());
-				k+=D[buffer[i]];
+				//assert(buffer[i]-1 < D.size());
+				k+=D[buffer[i]-1];
 			}
 
 			// -1 here because want to return the last valid index
-			bounds.second = (s_hi-it_s)*ZSTD_BUFFER + i-1;
+			bounds.second = (s_hi-it_s)*ZSTD_BUFFER + i - (k > end_t ? 1 : 0);
 		}
 	} else {
 		// set to invalid 

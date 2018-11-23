@@ -1201,23 +1201,24 @@ size_t getTimeRange(twcsa *g, uint16_t lineId, uint32_t stopId, size_t lu, size_
 
 	const auto lineStops = &(g->lineStops->at(lineId));
 	const auto i = std::find(lineStops->begin(), lineStops->end(), stopId) - lineStops->begin();
-	//const auto initialTimes = &(g->initialTimes->at(lineId));
+	const auto initialTimes = &(g->initialTimes->at(lineId));
 	const int second = g->avgTimes->at(lineId)[i];
 	const auto offset = std::min(second, t_start-1);
 
-	auto bounds = g->cInitialTimes->getBounds(lineId, t_start-offset, t_end-offset);
-	t_start = 
+	const auto bounds = g->cInitialTimes->getBounds(lineId, t_start-offset, t_end-offset);
+	const auto j_start = 
 		//std::lower_bound(initialTimes->begin(), initialTimes->end(), t_start - offset) - initialTimes->begin();
 		bounds.first;
-	t_end = 
-		//std::upper_bound(initialTimes->begin(), initialTimes->end(), t_end - offset) - initialTimes->begin();
+	const auto j_end = 
+		//std::upper_bound(initialTimes->begin(), initialTimes->end(), t_end - offset) - initialTimes->begin() - 1;
 		bounds.second;
 
-	if (t_end < t_start) {
+	if (j_end < j_start) {
 		return 0;
 	}
 
-	return getRange(g->myTimesIndex, lu, ru, t_start, t_end, isContinuous, res);
+	assert(j_start >= 0 && j_end < initialTimes->size());
+	return getRange(g->myTimesIndex, lu, ru, j_start, j_end, isContinuous, res);
 }
 
 uint inline encodeStop(twcsa *g, uint lineId, uint stopId) {
@@ -1322,7 +1323,7 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, ulong l
 				
 				if (numocc) {
 					assert(numocc < g->n);
-					assert(res2->at(1).first - res2->at(0).first == res2->at(1).second - res2->at(0).second);
+					assert(res->at(0).first <= res2->at(0).second && res->at(1).first >= res2->at(1).second);
 					res->at(0).second += res2->at(0).second - res->at(0).first;
 					res->at(1).second = res->at(0).second + res2->at(1).second - res2->at(0).second;
 					delete res2;
