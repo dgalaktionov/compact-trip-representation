@@ -18,11 +18,16 @@ class ZSTDArray {
 		std::vector<uint32_t> sample_values;
 		std::vector<uint32_t> lines_C;
 		std::vector< std::vector<uint32_t> > lines_D;
+		ZSTD_DStream * d_stream = ZSTD_createDStream();
+
+		const void decompressFrame(ZSTD_outBuffer* output, ZSTD_inBuffer* input);
 
 	public:
-		ZSTDArray(std::vector< std::vector<uint32_t> > *initialTimes);
+		ZSTDArray(const std::vector< std::vector<uint32_t> > *initialTimes);
+		~ZSTDArray();
 
 		const size_t getSize();
-		const void check(std::vector< std::vector<uint32_t> > *initialTimes);
-		const std::pair<size_t, size_t> getBounds(uint16_t line_id, uint32_t start_t, uint32_t end_t);
+		const void check(const std::vector< std::vector<uint32_t> > *initialTimes);
+		const std::pair<size_t, size_t> getBounds(const uint16_t line_id, uint32_t start_t, uint32_t end_t);
+		const uint32_t access(const uint16_t line_id, const size_t i);
 };

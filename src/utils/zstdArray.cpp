@@ -1,12 +1,8 @@
 #include "zstdArray.h"
 
-#ifndef min
-#define min(x,y) ((x)<(y)?(x):(y))
-#endif
-
 const size_t ZSTD_BUFFER = 512;
 
-ZSTDArray::ZSTDArray(std::vector< std::vector<uint32_t> > *initialTimes) {
+ZSTDArray::ZSTDArray(const std::vector< std::vector<uint32_t> > *initialTimes) {
 	const size_t maxtime = 3600*24*60;
 	const size_t tmp_size = 1024*1024;
 
@@ -58,7 +54,7 @@ ZSTDArray::ZSTDArray(std::vector< std::vector<uint32_t> > *initialTimes) {
 			if (k%ZSTD_BUFFER == 0 && inbuffer.pos < i) {
 				sample_pointers.push_back(outbuffer.pos);
 				sample_values.push_back(t);
-				inbuffer.size = inbuffer.pos+min(ZSTD_BUFFER,i-inbuffer.pos);
+				inbuffer.size = inbuffer.pos+std::min(ZSTD_BUFFER,i-inbuffer.pos);
 				ZSTD_initCStream(ctx, 1);
 				const auto zsize = ZSTD_compressStream(ctx, &outbuffer, &inbuffer);
 				assert(!ZSTD_isError((zsize)));
@@ -80,6 +76,17 @@ ZSTDArray::ZSTDArray(std::vector< std::vector<uint32_t> > *initialTimes) {
 	#endif
 }
 
+ZSTDArray::~ZSTDArray() {
+	ZSTD_freeDStream(d_stream);
+}
+
+const void ZSTDArray::decompressFrame(ZSTD_outBuffer* output, ZSTD_inBuffer* input) {
+	output->pos = 0;
+	ZSTD_initDStream(d_stream);
+	const auto zsize = ZSTD_decompressStream(d_stream, output, input);
+	assert(!ZSTD_isError((zsize)));
+}
+
 const size_t ZSTDArray::getSize() {
 	size_t s = sizeof(ZSTDArray) + compressed_size;
 	s += sample_pointers.size()*sizeof(size_t) + sample_values.size()*4;
@@ -88,9 +95,8 @@ const size_t ZSTDArray::getSize() {
 	return s;
 }
 
-const void ZSTDArray::check(std::vector< std::vector<uint32_t> > *initialTimes) {
+const void ZSTDArray::check(const std::vector< std::vector<uint32_t> > *initialTimes) {
 	const auto buffer = std::unique_ptr<uint8_t[]>(new uint8_t[ZSTD_BUFFER]);
-	ZSTD_DStream * const ctx = ZSTD_createDStream();
 	ZSTD_inBuffer inbuffer = {compressed_frames.get(), compressed_size, 0};
 	ZSTD_outBuffer outbuffer = {buffer.get(), ZSTD_BUFFER, 0};
 
@@ -108,10 +114,7 @@ const void ZSTDArray::check(std::vector< std::vector<uint32_t> > *initialTimes) 
 			if (k%ZSTD_BUFFER == 0) {
 				assert(sample_pointers.at(C+k/ZSTD_BUFFER) == inbuffer.pos);
 				assert(sample_values.at(C+k/ZSTD_BUFFER) == times[j-1]);
-				outbuffer.pos = 0;
-				ZSTD_initDStream(ctx);
-				const auto zsize = ZSTD_decompressStream(ctx, &outbuffer, &inbuffer);
-				assert(!ZSTD_isError((zsize)));
+				decompressFrame(&outbuffer, &inbuffer);
 			}
 
 			n += D.at(buffer[k % ZSTD_BUFFER]-1);
@@ -119,15 +122,12 @@ const void ZSTDArray::check(std::vector< std::vector<uint32_t> > *initialTimes) 
 			k++;
 		}
 	}
-
-	ZSTD_freeDStream(ctx);
 }
 
-const std::pair<size_t, size_t> ZSTDArray::getBounds(uint16_t line_id, uint32_t start_t, uint32_t end_t) {
+const std::pair<size_t, size_t> ZSTDArray::getBounds(const uint16_t line_id, const uint32_t start_t, const uint32_t end_t) {
 	const auto C = lines_C.at(line_id);
 	const auto D = lines_D.at(line_id);
 	const auto buffer = std::unique_ptr<uint8_t[]>(new uint8_t[ZSTD_BUFFER]);
-	ZSTD_DStream * const ctx = ZSTD_createDStream();
 	ZSTD_inBuffer inbuffer = {compressed_frames.get(), compressed_size, 0};
 	ZSTD_outBuffer outbuffer = {buffer.get(), ZSTD_BUFFER, 0};
 	const auto it_s = sample_values.cbegin() + C;
@@ -140,11 +140,8 @@ const std::pair<size_t, size_t> ZSTDArray::getBounds(uint16_t line_id, uint32_t 
 
 	if (s_hi >= it_s) {
 		if (s_lo >= it_s) {
-			outbuffer.pos = 0;
 			inbuffer.pos = sample_pointers.at(s_lo - sample_values.cbegin());
-			ZSTD_initDStream(ctx);
-			const auto zsize = ZSTD_decompressStream(ctx, &outbuffer, &inbuffer);
-			assert(!ZSTD_isError((zsize)));
+			decompressFrame(&outbuffer, &inbuffer);
 
 			size_t i = 0;
 
@@ -160,11 +157,8 @@ const std::pair<size_t, size_t> ZSTDArray::getBounds(uint16_t line_id, uint32_t 
 		if (k >= start_t) {
 			// check if we can reuse the same decompressed frame
 			if (s_lo < it_s || s_lo < s_hi) {
-				outbuffer.pos = 0;
 				inbuffer.pos = sample_pointers.at(s_hi - sample_values.cbegin());
-				ZSTD_initDStream(ctx);
-				const auto zsize = ZSTD_decompressStream(ctx, &outbuffer, &inbuffer);
-				assert(!ZSTD_isError((zsize)));
+				decompressFrame(&outbuffer, &inbuffer);
 			}
 
 			size_t i = 0;
@@ -182,6 +176,29 @@ const std::pair<size_t, size_t> ZSTDArray::getBounds(uint16_t line_id, uint32_t 
 		bounds.first = 1;
 	}
 
-	ZSTD_freeDStream(ctx);
 	return bounds;
+}
+
+const uint32_t ZSTDArray::access(const uint16_t line_id, const size_t i) {
+	const auto C = lines_C.at(line_id);
+
+	if (i/ZSTD_BUFFER >= lines_C.at(line_id+1) - C) 
+		throw std::out_of_range("ZSTDArray::access(" + std::to_string(line_id) + "," + std::to_string(i) + ")");
+
+	auto t = sample_values[C+i/ZSTD_BUFFER];
+
+	if (i%ZSTD_BUFFER > 0) {
+		const auto D = lines_D.at(line_id);
+		const auto buffer = std::unique_ptr<uint8_t[]>(new uint8_t[ZSTD_BUFFER]);
+		ZSTD_inBuffer inbuffer = {compressed_frames.get(), compressed_size, sample_pointers[C+i/ZSTD_BUFFER]};
+		ZSTD_outBuffer outbuffer = {buffer.get(), i%ZSTD_BUFFER, 0};
+
+		decompressFrame(&outbuffer, &inbuffer);
+
+		for(size_t j = 0; j < std::min(i%ZSTD_BUFFER, outbuffer.pos); j++) {
+			t+=D[buffer[j]-1];
+		}
+	}
+
+	return t;
 }
