@@ -60,7 +60,7 @@ namespace cds_static
 			virtual ulong extract(ulong i, ulong j, vector<uint> &res) const;
 			virtual size_t getSize() const;
 			size_t rangeCount(size_t xs, size_t xe, uint ys, uint ye) const;
-			uint trackUp(uint pos, int l) const;
+			uint trackUp(uint pos) const;
 			virtual void range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits);
 			virtual ulong topK(uint k, uint ys, uint ye, uint *res) const;
 			virtual ulong topK(uint k, uint *res) const;
@@ -102,6 +102,7 @@ namespace cds_static
 			size_t rngCount(size_t xs, size_t xe, uint ys, uint ye, uint current, uint lefty, uint righty, int level) const;
 			size_t rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty, std::pair<int,int> *limits) const;
 			ulong extract(ulong i, ulong j, uint level, uint code, vector<uint> &res) const;
+			uint trackUp(uint pos, int l) const;
 
 	private: ulong topK2(uint k, uint ys, uint ye, uint *res) const;
 	};

@@ -502,7 +502,11 @@ namespace cds_static
 				pos=bitstring[i]->select0(pos+1);
 			}
 		}
-		return pos+1;
+		return pos;
+	}
+
+	uint WaveletMatrix::trackUp(uint pos) const {
+		return trackUp(pos, height-1);
 	}
 
 	size_t WaveletMatrix::rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty, std::pair<int,int> *limits) const {
@@ -513,7 +517,7 @@ namespace cds_static
 				for (int i=xs;i<=xe;i++){
 					pair<int,int> p;
 					p.first=current;
-					p.second=trackUp((uint)i,level-1)-1;
+					p.second=trackUp((uint)i,level-1);
 					res->push_back(p);
 				}
 				*/

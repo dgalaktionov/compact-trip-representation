@@ -1166,38 +1166,24 @@ uint unmapID (twcsa *g, uint value, uint type) {
 #define SAMPLES 1
 
 // Wrapper for a WM count.
-// When isContinuous, it returns in res the starting and ending indexes of the resulting range, as well as their values.
-size_t getRange(void *seq, size_t lu, size_t ru, int t_start, int t_end, bool isContinuous, vector<pair<int, int>> * &res) {
-	size_t numocc = 0;
+size_t getRange(void *seq, size_t lu, size_t ru, int t_start, int t_end, pair<int, int> *limits) {
 	Sequence *wm = (Sequence *)seq;
 	
-	if (isContinuous) {
-		res = new std::vector<pair<int,int>>(2);
-		res->at(0).first = 0;
-		res->at(1).first = 0;
-
-		wm->range(lu, ru, t_start, t_end, res);
-		//std::cout << res->at(0).first << ',' << res->at(0).second << ' ' << res->at(1).first << ',' << res->at(1).second << std::endl;
-
-		if (res->back().first)
-			numocc += res->back().second - res->front().second + 1;
-
+	if (limits != NULL) {
+		limits->first = 0;
+		limits->second = 0;
+		wm->range(lu, ru, t_start, t_end, limits);
+		return limits->second ? limits->second - limits->first + 1 : 0;
 	} else {
-		// printf("Q1 for %lu %lu: %i %i\n", lu, ru, t_start, t_end);
-		numocc += wm->rangeCount(lu, ru, t_start, t_end);
+		return wm->rangeCount(lu, ru, t_start, t_end);
 	}
-
-	return numocc;
 }
 
-size_t getRange(void *index, size_t lu, size_t ru, int t_start, int t_end) {
-	 vector<pair<int, int>> *res = NULL;
-
-	 return getRange(index, lu, ru, t_start, t_end, false, res);
+size_t getRange(void *seq, size_t lu, size_t ru, int t_start, int t_end) {
+	 return getRange(seq, lu, ru, t_start, t_end, NULL);
 }
 
-size_t getTimeRange(twcsa *g, uint16_t lineId, uint32_t stopId, size_t lu, size_t ru, int t_start, int t_end, 
-	bool isContinuous, vector<pair<int, int>> * &res) {
+size_t getTimeRange(twcsa *g, uint16_t lineId, uint32_t stopId, size_t lu, size_t ru, int t_start, int t_end, pair<int, int> *limits) {
 
 	const auto lineStops = &(g->lineStops->at(lineId));
 	const auto i = std::find(lineStops->begin(), lineStops->end(), stopId) - lineStops->begin();
@@ -1218,7 +1204,7 @@ size_t getTimeRange(twcsa *g, uint16_t lineId, uint32_t stopId, size_t lu, size_
 	}
 
 	assert(j_start >= 0 && j_end < initialTimes->size());
-	return getRange(g->myTimesIndex, lu, ru, j_start, j_end, isContinuous, res);
+	return getRange(g->myTimesIndex, lu, ru, j_start, j_end, limits);
 }
 
 uint inline encodeStop(twcsa *g, uint lineId, uint stopId) {
@@ -1309,52 +1295,59 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, ulong l
 	ulong numocc = 0;
 	const auto start_time = query->time->h_start;
 	const auto end_time = query->time->h_end;
-	std::vector<pair<int, int>> *res;
+	pair<int, int> res,res2;
 	
 	if (query->subtype & XY_LINE_START) {
 		// We get the subrange of $ that start with the given line
-		if (numocc = getRange(g->linesIndex, lu0, ru0, query->values[0], query->values[0], true, res)) {
-			assert(res->at(1).first - res->at(0).first == res->at(1).second - res->at(0).second);
-			
+		if (numocc = getRange(g->linesIndex, lu0, ru0, query->values[0], query->values[0], &res)) {
+
 			if (query->subtype & XY_TIME_START) {
-				std::vector<pair<int, int>> *res2 = nullptr;
-				numocc = getTimeRange(g, query->values[0], query->values[1], res->at(0).first, res->at(1).first, 
-					start_time, end_time, true, res2);
+				numocc = getTimeRange(g, query->values[0], query->values[1], res.first, res.second, 
+					start_time, end_time, &res2);
 				
 				if (numocc) {
+					const auto wm = dynamic_cast<WaveletMatrix *>((Sequence *)g->myTimesIndex);
+
+					if (wm == NULL) {
+						std::cerr << "Either use WM or implement the trackUp operation in the WT!" << std::endl;
+						throw std::bad_cast();
+					}
+
+					const auto xs = wm->trackUp(res2.first);
+					const auto xe = wm->trackUp(res2.second);
+
+					std::cout << res.first << ' ' << xs << ' ' << xe << ' ' << res.second << std::endl;
 					assert(numocc < g->n);
-					assert(res->at(0).first <= res2->at(0).second && res->at(1).first >= res2->at(1).second);
-					res->at(0).second += res2->at(0).second - res->at(0).first;
-					res->at(1).second = res->at(0).second + res2->at(1).second - res2->at(0).second;
-					delete res2;
+					// FIXME: The assert is failing because I AM DOING TRACKUP FROM DIFFERENT LEVELS!!
+					assert(res.first <= xs && res.second >= xe);
+					assert(
+						((WaveletMatrix *)g->linesIndex)->trackUp(xs) == 
+						((WaveletMatrix *)g->linesIndex)->trackUp(res.first) + xs - res.first
+						);
+					// res->at(0).second += res2->at(0).second - res->at(0).first;
+					// res->at(1).second = res->at(0).second + res2->at(1).second - res2->at(0).second;
 				}
 			}
 
-			if (numocc && query->subtype & XY_LINE_END) {
-				// Translate that subrange to the original Y$X range
-				// ...and see how many of them are also within the end line.
-				numocc =  res->at(1).first ? getRange(g->linesIndex,
-					lu + res->at(0).second - lu0,
-					lu + res->at(1).second - lu0,
-					query->values[2], query->values[2], true, res) : 0;
+			// if (numocc && query->subtype & XY_LINE_END) {
+			// 	// Translate that subrange to the original Y$X range
+			// 	// ...and see how many of them are also within the end line.
+			// 	numocc =  res->at(1).first ? getRange(g->linesIndex,
+			// 		lu + res->at(0).second - lu0,
+			// 		lu + res->at(1).second - lu0,
+			// 		query->values[2], query->values[2], &res) : 0;
 
-				if (numocc && query->subtype & XY_TIME_END) {
-					numocc = getTimeRange(g, query->values[2], query->values[3], res->at(0).first, res->at(1).first, 
-						start_time, end_time, false, res);
-				}
-			}
+			// 	if (numocc && query->subtype & XY_TIME_END) {
+			// 		numocc = getTimeRange(g, query->values[2], query->values[3], res.first, res.second, start_time, end_time, NULL);
+			// 	}
+			// }
 		}
-
-		delete res;
 	} else if (query->subtype & XY_LINE_END) {
-		numocc = getRange(g->linesIndex, lu, ru, query->values[2], query->values[2], true, res);
+		numocc = getRange(g->linesIndex, lu, ru, query->values[2], query->values[2], &res);
 
 		if (numocc && query->subtype & XY_TIME_END) {
-			numocc = getTimeRange(g, query->values[2], query->values[3], res->at(0).first, res->at(1).first, 
-				start_time, end_time, false, res);
+			numocc = getTimeRange(g, query->values[2], query->values[3], res.first, res.second, start_time, end_time, NULL);
 		}
-
-		delete res;
 	}
 
 	return numocc;
@@ -1447,29 +1440,29 @@ int get_from_x_to_y_strong(void *index, TimeQuery *query) {
 	ru0 = getPsiicsa(g->myicsa, ru);
 
 	numocc = 0;
-	std::vector<pair<int, int>> *res;
+	// std::vector<pair<int, int>> *res;
 
-	// We get the subrange of XY$ that start within the desired time range
-	if (getRange(g, lu0, ru0, start_time, end_time, true, res)) {
+	// // We get the subrange of XY$ that start within the desired time range
+	// if (getRange(g, lu0, ru0, start_time, end_time, true, res)) {
 
-		// Translate that subrange to the original Y$X range
-		// ...and see how many of them are also within the time range.
-		numocc =  res->at(1).first ? getRange(g,
-			lu + res->at(0).first - lu0,
-			lu + res->at(1).first - lu0,
-			start_time, end_time) : 0;
+	// 	// Translate that subrange to the original Y$X range
+	// 	// ...and see how many of them are also within the time range.
+	// 	numocc =  res->at(1).first ? getRange(g,
+	// 		lu + res->at(0).first - lu0,
+	// 		lu + res->at(1).first - lu0,
+	// 		start_time, end_time) : 0;
 
-		// Handle the special case of time overflow (i.e. from 23:30 to 0:40)
-		if (res->size() > 3 && res->at(3).first) {
-			numocc += getRange(g,
-				lu + res->at(2).first - lu0,
-				lu + res->at(3).first - lu0,
-				start_time, end_time);
-		}
-	}
+	// 	// Handle the special case of time overflow (i.e. from 23:30 to 0:40)
+	// 	if (res->size() > 3 && res->at(3).first) {
+	// 		numocc += getRange(g,
+	// 			lu + res->at(2).first - lu0,
+	// 			lu + res->at(3).first - lu0,
+	// 			start_time, end_time);
+	// 	}
+	// }
 
-	// printf("%lu %lu %lu\n", numocc, lu, ru);
-	delete res;
+	// // printf("%lu %lu %lu\n", numocc, lu, ru);
+	// delete res;
 	return numocc;
 }
 
