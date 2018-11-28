@@ -505,11 +505,10 @@ namespace cds_static
 		return pos+1;
 	}
 
-	size_t WaveletMatrix::rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty,
-							vector<pair<int,int> > *res, bool addRes) const {
+	size_t WaveletMatrix::rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty, std::pair<int,int> *limits) const {
 
 		if ((lefty>=(uint)ys) && (righty<=(uint)ye)){
-			if (addRes){
+			if (limits != NULL){
 				/*
 				for (int i=xs;i<=xe;i++){
 					pair<int,int> p;
@@ -519,18 +518,15 @@ namespace cds_static
 				}
 				*/
 
-				size_t xs_pos = trackUp((uint)xs, level-1) - 1;
-				size_t xe_pos = trackUp((uint)xe, level-1) - 1;
-
-				if (res->front().first == 0) {
-					res->front() = pair<int, int>(xs, xs_pos);
-					res->back() = pair<int, int>(xe, xe_pos);
+				if (limits->second == 0) {
+					limits->first = xs;
+					limits->second = xe;
 				} else {
-					if (res->front().second > xs_pos)
-						res->front() = pair<int, int>(xs, xs_pos);
+					if (xs < limits->first)
+						limits->first = xs;
 
-					if (res->back().second < xe_pos)
-						res->back() = pair<int, int>(xe, xe_pos);
+					if (xe > limits->second)
+						limits->second = xe;
 				}
 			}
 			return xe-xs+1;
@@ -545,7 +541,7 @@ namespace cds_static
 			xe0=bitstring[level]->rank0(xe);
 			if (xs0<xe0){
 				uint newlefty=(current<<(shift));
-				lc=rng(xs0,xe0-1,ys,ye,current,level+1,newlefty,newlefty|((1u<<(shift))-1),res,addRes);
+				lc=rng(xs0,xe0-1,ys,ye,current,level+1,newlefty,newlefty|((1u<<(shift))-1),limits);
 			}
 		}
 
@@ -560,7 +556,7 @@ namespace cds_static
 			newxs2=xe-xe0+C[level];
 			if (newxs1<=newxs2){
 				lefty=(current<<(shift));
-				rc=rng(newxs1,newxs2,ys,ye,current,level+1,lefty,lefty|((1u<<(shift))-1),res,addRes);
+				rc=rng(newxs1,newxs2,ys,ye,current,level+1,lefty,lefty|((1u<<(shift))-1),limits);
 			}
 		}
 		return lc+rc;
@@ -568,13 +564,13 @@ namespace cds_static
 
 	size_t WaveletMatrix::rngCount(size_t xs, size_t xe, uint ys, uint ye, uint current, uint lefty, uint righty,int level) const {
 		if (xs>xe) return 0;
-		return rng(xs,xe,ys,ye,0,0,0,max_v,NULL,false);
+		return rng(xs,xe,ys,ye,0,0,0,max_v,NULL);
 	}
 
 
-	void WaveletMatrix::range(int i1, int i2, int j1, int j2, vector<pair<int,int> > *res){
+	void WaveletMatrix::range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits){
 		if (i1>i2) return;
-		rng(i1,i2,j1,j2,0,0,0,max_v,res,true);
+		rng(i1,i2,j1,j2,0,0,0,max_v,limits);
 	}
 	size_t WaveletMatrix::getSize() const
 	{

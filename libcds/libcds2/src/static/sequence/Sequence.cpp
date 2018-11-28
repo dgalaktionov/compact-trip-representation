@@ -108,10 +108,10 @@ namespace cds_static
 	{
 		return 0;
 	}
-
-	void Sequence::range(int i1, int i2, int j1, int j2, vector<pair<int,int> > *res){
-		res=NULL;
+	void Sequence::range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits){
+		
 	}
+
 	Sequence * Sequence::load(ifstream & fp) {
 		uint type = loadValue<uint>(fp);
 		size_t pos = fp.tellg();

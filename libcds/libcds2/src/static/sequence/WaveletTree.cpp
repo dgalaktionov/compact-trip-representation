@@ -161,18 +161,13 @@ namespace cds_static
         return am->unmap(root->access(pos, rank));
     }
 
-    void WaveletTree::range(int i1, int i2, int j1, int j2, vector<pair<int,int> > *res) {
-      rangeFacade(i1,i2,j1,j2,res);
+    void WaveletTree::range(int i1, int i2, int j1, int j2, pair<int,int> *limits) {
+      rangeFacade(i1,i2,j1,j2,limits);
     }
 
     size_t WaveletTree::rangeFacade(size_t xs, size_t xe, uint ys, uint ye,
-      vector<pair<int,int> > *res) const {
+      std::pair<int,int> *limits) const {
         if (xs>xe || ys>ye) return 0;
-
-        if (res != NULL) {
-          res->front() = pair<int, int>(0,0);
-					res->back() = pair<int, int>(0,0);
-        }
 
         uint yscode = 0, yecode = 0, len = 0;
         size_t bits = sizeof(uint) * 8;
@@ -188,12 +183,13 @@ namespace cds_static
         // std::bitset<32> yebits(yecode);
         // std::cout << "yecode: " << yecode << " len: " << len << endl;
 
-  		  bits = root->rng(xs,xe,yscode,yecode,0,0,0,(uint)-1,res,res!=NULL);
-        if (res != NULL) {
-          res->front().first += xs;
-          res->back().first = xe - res->back().first;
-          // std::cout << xs << " " << res->front().first << " " << xe << " " << res->back().first << endl;
+  		bits = root->rng(xs,xe,yscode,yecode,0,0,0,(uint)-1,limits);
+
+        if (limits != NULL) {
+          limits->first += xs;
+          limits->second = xe - limits->first;
         }
+
         return bits;
   	}
 

@@ -78,7 +78,7 @@ namespace cds_static
 
     size_t wt_node_leaf::rng(size_t xs, size_t xe, uint ys, uint ye,
         uint current, uint level, uint lefty, uint righty,
-  							vector<pair<int,int> > *res, bool addRes) const {
+  							pair<int,int> *limits) const {
 
         return xe-xs+1;
     }

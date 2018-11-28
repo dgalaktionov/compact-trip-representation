@@ -128,7 +128,7 @@ namespace cds_static
 
 			virtual size_t rangeCount(size_t xs, size_t xe, uint ys, uint ye) const;
 
-			virtual void range(int i1, int i2, int j1, int j2, vector<pair<int,int> > *res);
+			virtual void range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits);
 			/** Reads a bitmap determining the type */
 			static Sequence * load(ifstream & fp);
 
