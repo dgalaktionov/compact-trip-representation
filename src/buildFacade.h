@@ -172,7 +172,7 @@ typedef struct {
 		void *myicsa; //the CSA built on SE
 
 		void *linesIndex; // WM for lines
-		void *myTimesIndex; // usually a WT for times
+		void *myTimesIndex; // usually a WM for times
 
 		tbaseline *baseline;
 

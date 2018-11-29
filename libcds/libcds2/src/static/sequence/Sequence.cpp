@@ -108,8 +108,9 @@ namespace cds_static
 	{
 		return 0;
 	}
-	void Sequence::range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits){
-		
+
+	size_t Sequence::range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits, bool trackUp) const {
+		return 0;
 	}
 
 	Sequence * Sequence::load(ifstream & fp) {

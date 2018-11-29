@@ -509,7 +509,8 @@ namespace cds_static
 		return trackUp(pos, height-1);
 	}
 
-	size_t WaveletMatrix::rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty, std::pair<int,int> *limits) const {
+	size_t WaveletMatrix::rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty, std::pair<int,int> *limits, 
+		std::pair<uint,uint> *limit_symbols, std::pair<uint,uint> *limit_levels) const {
 
 		if ((lefty>=(uint)ys) && (righty<=(uint)ye)){
 			if (limits != NULL){
@@ -522,15 +523,29 @@ namespace cds_static
 				}
 				*/
 
-				if (limits->second == 0) {
-					limits->first = xs;
-					limits->second = xe;
-				} else {
-					if (xs < limits->first)
+				if (limit_symbols == NULL) {
+					if (limits->second == 0) {
 						limits->first = xs;
-
-					if (xe > limits->second)
 						limits->second = xe;
+					} else {
+						if (xs < limits->first)
+							limits->first = xs;
+
+						if (xe > limits->second)
+							limits->second = xe;
+					}
+				} else {
+					if (lefty <= limit_symbols->first) {
+						limits->first = xs;
+						limit_symbols->first = lefty;
+						limit_levels->first = level;
+					}
+
+					if (righty >= limit_symbols->second) {
+						limits->second = xe;
+						limit_symbols->second = righty;
+						limit_levels->second = level;
+					}
 				}
 			}
 			return xe-xs+1;
@@ -545,7 +560,8 @@ namespace cds_static
 			xe0=bitstring[level]->rank0(xe);
 			if (xs0<xe0){
 				uint newlefty=(current<<(shift));
-				lc=rng(xs0,xe0-1,ys,ye,current,level+1,newlefty,newlefty|((1u<<(shift))-1),limits);
+				lc=rng(xs0,xe0-1,ys,ye,current,level+1,newlefty,newlefty|((1u<<(shift))-1),
+					limits, limit_symbols, limit_levels);
 			}
 		}
 
@@ -560,7 +576,8 @@ namespace cds_static
 			newxs2=xe-xe0+C[level];
 			if (newxs1<=newxs2){
 				lefty=(current<<(shift));
-				rc=rng(newxs1,newxs2,ys,ye,current,level+1,lefty,lefty|((1u<<(shift))-1),limits);
+				rc=rng(newxs1,newxs2,ys,ye,current,level+1,lefty,lefty|((1u<<(shift))-1),
+					limits, limit_symbols, limit_levels);
 			}
 		}
 		return lc+rc;
@@ -568,13 +585,27 @@ namespace cds_static
 
 	size_t WaveletMatrix::rngCount(size_t xs, size_t xe, uint ys, uint ye, uint current, uint lefty, uint righty,int level) const {
 		if (xs>xe) return 0;
-		return rng(xs,xe,ys,ye,0,0,0,max_v,NULL);
+		return rng(xs,xe,ys,ye,0,0,0,max_v,NULL,NULL,NULL);
 	}
 
 
-	void WaveletMatrix::range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits){
-		if (i1>i2) return;
-		rng(i1,i2,j1,j2,0,0,0,max_v,limits);
+	size_t WaveletMatrix::range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits, bool tu) const{
+		if (i1>i2) return 0;
+
+		if (limits!=NULL && tu) {
+			std::pair<uint,uint> limit_symbols = std::make_pair<uint,uint>(j2,j1);
+			std::pair<uint,uint> limit_levels;
+			size_t res = rng(i1,i2,j1,j2,0,0,0,max_v,limits,&limit_symbols,&limit_levels);
+
+			if (res) {
+				limits->first = trackUp(limits->first, limit_levels.first-1);
+				limits->second = trackUp(limits->second, limit_levels.second-1);
+			}
+
+			return res;
+		} else {
+			return rng(i1,i2,j1,j2,0,0,0,max_v,limits, NULL, NULL);
+		}
 	}
 	size_t WaveletMatrix::getSize() const
 	{

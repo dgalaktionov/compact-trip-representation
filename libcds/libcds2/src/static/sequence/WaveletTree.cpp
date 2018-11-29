@@ -161,8 +161,8 @@ namespace cds_static
         return am->unmap(root->access(pos, rank));
     }
 
-    void WaveletTree::range(int i1, int i2, int j1, int j2, pair<int,int> *limits) {
-      rangeFacade(i1,i2,j1,j2,limits);
+    size_t WaveletTree::range(int i1, int i2, int j1, int j2, pair<int,int> *limits, bool trackUp) const {
+      return rangeFacade(i1,i2,j1,j2,limits);
     }
 
     size_t WaveletTree::rangeFacade(size_t xs, size_t xe, uint ys, uint ye,

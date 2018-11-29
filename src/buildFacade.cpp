@@ -1166,24 +1166,18 @@ uint unmapID (twcsa *g, uint value, uint type) {
 #define SAMPLES 1
 
 // Wrapper for a WM count.
-size_t getRange(void *seq, size_t lu, size_t ru, int t_start, int t_end, pair<int, int> *limits) {
+size_t getRange(void *seq, size_t lu, size_t ru, int t_start, int t_end, pair<int, int> *limits=NULL, bool trackUp=false) {
 	Sequence *wm = (Sequence *)seq;
 	
 	if (limits != NULL) {
 		limits->first = 0;
 		limits->second = 0;
-		wm->range(lu, ru, t_start, t_end, limits);
-		return limits->second ? limits->second - limits->first + 1 : 0;
-	} else {
-		return wm->rangeCount(lu, ru, t_start, t_end);
 	}
+
+	return wm->range(lu, ru, t_start, t_end, limits, trackUp);
 }
 
-size_t getRange(void *seq, size_t lu, size_t ru, int t_start, int t_end) {
-	 return getRange(seq, lu, ru, t_start, t_end, NULL);
-}
-
-size_t getTimeRange(twcsa *g, uint16_t lineId, uint32_t stopId, size_t lu, size_t ru, int t_start, int t_end, pair<int, int> *limits) {
+size_t getTimeRange(twcsa *g, uint16_t lineId, uint32_t stopId, size_t lu, size_t ru, int t_start, int t_end, pair<int, int> *limits=NULL) {
 
 	const auto lineStops = &(g->lineStops->at(lineId));
 	const auto i = std::find(lineStops->begin(), lineStops->end(), stopId) - lineStops->begin();
@@ -1204,7 +1198,7 @@ size_t getTimeRange(twcsa *g, uint16_t lineId, uint32_t stopId, size_t lu, size_
 	}
 
 	assert(j_start >= 0 && j_end < initialTimes->size());
-	return getRange(g->myTimesIndex, lu, ru, j_start, j_end, limits);
+	return getRange(g->myTimesIndex, lu, ru, j_start, j_end, limits, true);
 }
 
 uint inline encodeStop(twcsa *g, uint lineId, uint stopId) {
@@ -1295,58 +1289,46 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, ulong l
 	ulong numocc = 0;
 	const auto start_time = query->time->h_start;
 	const auto end_time = query->time->h_end;
-	pair<int, int> res,res2;
+	pair<int, int> res;
+	const auto linesWM = dynamic_cast<WaveletMatrix *>((Sequence *)g->linesIndex);
+	const auto timesWM = dynamic_cast<WaveletMatrix *>((Sequence *)g->myTimesIndex);
+
+	if (linesWM == NULL || timesWM == NULL) {
+		std::cerr << "Either use WM or implement the trackUp operation in the WT!" << std::endl;
+		throw std::bad_cast();
+	}
 	
 	if (query->subtype & XY_LINE_START) {
 		// We get the subrange of $ that start with the given line
-		if (numocc = getRange(g->linesIndex, lu0, ru0, query->values[0], query->values[0], &res)) {
+		if (numocc = getRange(linesWM, lu0, ru0, query->values[0], query->values[0], &res)) {
 
 			if (query->subtype & XY_TIME_START) {
 				numocc = getTimeRange(g, query->values[0], query->values[1], res.first, res.second, 
-					start_time, end_time, &res2);
-				
-				if (numocc) {
-					const auto wm = dynamic_cast<WaveletMatrix *>((Sequence *)g->myTimesIndex);
-
-					if (wm == NULL) {
-						std::cerr << "Either use WM or implement the trackUp operation in the WT!" << std::endl;
-						throw std::bad_cast();
-					}
-
-					const auto xs = wm->trackUp(res2.first);
-					const auto xe = wm->trackUp(res2.second);
-
-					std::cout << res.first << ' ' << xs << ' ' << xe << ' ' << res.second << std::endl;
-					assert(numocc < g->n);
-					// FIXME: The assert is failing because I AM DOING TRACKUP FROM DIFFERENT LEVELS!!
-					assert(res.first <= xs && res.second >= xe);
-					assert(
-						((WaveletMatrix *)g->linesIndex)->trackUp(xs) == 
-						((WaveletMatrix *)g->linesIndex)->trackUp(res.first) + xs - res.first
-						);
-					// res->at(0).second += res2->at(0).second - res->at(0).first;
-					// res->at(1).second = res->at(0).second + res2->at(1).second - res2->at(0).second;
-				}
+					start_time, end_time, &res);
+				assert(numocc < g->n);
 			}
 
-			// if (numocc && query->subtype & XY_LINE_END) {
-			// 	// Translate that subrange to the original Y$X range
-			// 	// ...and see how many of them are also within the end line.
-			// 	numocc =  res->at(1).first ? getRange(g->linesIndex,
-			// 		lu + res->at(0).second - lu0,
-			// 		lu + res->at(1).second - lu0,
-			// 		query->values[2], query->values[2], &res) : 0;
+			if (numocc && query->subtype & XY_LINE_END) {
+				// Translate that subrange to the original Y$X range
+				// ...and see how many of them are also within the end line.
 
-			// 	if (numocc && query->subtype & XY_TIME_END) {
-			// 		numocc = getTimeRange(g, query->values[2], query->values[3], res.first, res.second, start_time, end_time, NULL);
-			// 	}
-			// }
+				const auto xs = linesWM->trackUp(res.first);
+				const auto xe = linesWM->trackUp(res.second);
+				assert(xe-xs == res.second-res.first);
+				numocc =  getRange(g->linesIndex, lu+xs-lu0, lu+xe-lu0, query->values[2], query->values[2], &res);
+
+				if (numocc && query->subtype & XY_TIME_END) {
+					numocc = getTimeRange(g, query->values[2], query->values[3], res.first, res.second, start_time, end_time);
+				}
+			}
 		}
 	} else if (query->subtype & XY_LINE_END) {
 		numocc = getRange(g->linesIndex, lu, ru, query->values[2], query->values[2], &res);
 
 		if (numocc && query->subtype & XY_TIME_END) {
-			numocc = getTimeRange(g, query->values[2], query->values[3], res.first, res.second, start_time, end_time, NULL);
+			assert(res.first > 0);
+			assert(res.second < g->n);
+			numocc = getTimeRange(g, query->values[2], query->values[3], res.first, res.second, start_time, end_time);
 		}
 	}
 

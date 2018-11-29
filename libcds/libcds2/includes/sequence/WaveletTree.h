@@ -92,8 +92,8 @@ namespace cds_static
 
 			virtual size_t getSize() const;
 
-			size_t rangeCount(size_t xs, size_t xe, uint ys, uint ye) const;
-			void range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits);
+			virtual size_t rangeCount(size_t xs, size_t xe, uint ys, uint ye) const;
+			virtual size_t range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits, bool trackUp) const;
 
 			virtual void save(ofstream & fp) const;
 			static WaveletTree * load(ifstream & fp);
