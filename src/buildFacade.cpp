@@ -1177,27 +1177,23 @@ size_t getRange(void *seq, size_t lu, size_t ru, int t_start, int t_end, pair<in
 	return wm->range(lu, ru, t_start, t_end, limits, trackUp);
 }
 
-size_t getTimeRange(twcsa *g, uint16_t lineId, uint32_t stopId, size_t lu, size_t ru, int t_start, int t_end, pair<int, int> *limits=NULL) {
-
+const std::pair<size_t, size_t> getJCodes(twcsa *g, uint16_t lineId, uint32_t stopId, int t_start, int t_end) {
 	const auto lineStops = &(g->lineStops->at(lineId));
 	const auto i = std::find(lineStops->begin(), lineStops->end(), stopId) - lineStops->begin();
 	const auto initialTimes = &(g->initialTimes->at(lineId));
 	const int second = g->avgTimes->at(lineId)[i];
 	const auto offset = std::min(second, t_start-1);
 
-	const auto bounds = g->cInitialTimes->getBounds(lineId, t_start-offset, t_end-offset);
-	const auto j_start = 
-		//std::lower_bound(initialTimes->begin(), initialTimes->end(), t_start - offset) - initialTimes->begin();
-		bounds.first;
-	const auto j_end = 
-		//std::upper_bound(initialTimes->begin(), initialTimes->end(), t_end - offset) - initialTimes->begin() - 1;
-		bounds.second;
+	return g->cInitialTimes->getBounds(lineId, t_start-offset, t_end-offset);
+	//std::lower_bound(initialTimes->begin(), initialTimes->end(), t_start - offset) - initialTimes->begin();
+	//std::upper_bound(initialTimes->begin(), initialTimes->end(), t_end - offset) - initialTimes->begin() - 1;
+}
 
+const size_t getTimeRange(twcsa *g, size_t lu, size_t ru, size_t j_start, size_t j_end, pair<int, int> *limits=NULL) {
 	if (j_end < j_start) {
 		return 0;
 	}
 
-	assert(j_start >= 0 && j_end < initialTimes->size());
 	return getRange(g->myTimesIndex, lu, ru, j_start, j_end, limits, true);
 }
 
@@ -1285,13 +1281,14 @@ int get_x_in_the_middle(void *index, TimeQuery *query) {
 	return get_uses_x(index, query) - get_starts_with_x(index, query) - get_ends_with_x(index, query);
 }
 
-int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, ulong lu0, ulong ru0) {
-	ulong numocc = 0;
+int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, std::vector<uint16_t> &startLines, std::vector<uint16_t> &endLines) {
+	ulong numocc = 0, total = 0;
 	const auto start_time = query->time->h_start;
 	const auto end_time = query->time->h_end;
-	pair<int, int> res;
+	pair<int, int> res,res2;
 	const auto linesWM = dynamic_cast<WaveletMatrix *>((Sequence *)g->linesIndex);
 	const auto timesWM = dynamic_cast<WaveletMatrix *>((Sequence *)g->myTimesIndex);
+	auto jcodes_cache = std::vector< std::pair<size_t,size_t> > (endLines.size(), std::make_pair<size_t,size_t>(1,0));
 
 	if (linesWM == NULL || timesWM == NULL) {
 		std::cerr << "Either use WM or implement the trackUp operation in the WT!" << std::endl;
@@ -1299,40 +1296,62 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, ulong l
 	}
 	
 	if (query->subtype & XY_LINE_START) {
-		// We get the subrange of $ that start with the given line
-		if (numocc = getRange(linesWM, lu0, ru0, query->values[0], query->values[0], &res)) {
+		const auto lu0 = getPsiicsa(g->myicsa, lu);
+		const auto ru0 = getPsiicsa(g->myicsa, ru);
 
-			if (query->subtype & XY_TIME_START) {
-				numocc = getTimeRange(g, query->values[0], query->values[1], res.first, res.second, 
-					start_time, end_time, &res);
-				assert(numocc < g->n);
-			}
+		for (const auto &startLine : startLines) {
+			numocc = getRange(linesWM, lu0, ru0, startLine, startLine, &res);
 
-			if (numocc && query->subtype & XY_LINE_END) {
-				// Translate that subrange to the original Y$X range
-				// ...and see how many of them are also within the end line.
+			// We get the subrange of $ that start with the given line
+			if (numocc) {
+				if (query->subtype & XY_TIME_START) {
+					const auto jcodes = getJCodes(g, startLine, query->values[1], start_time, end_time);
+					numocc = getTimeRange(g, res.first, res.second, jcodes.first, jcodes.second, &res);
+					assert(numocc < g->n);
+				}
 
-				const auto xs = linesWM->trackUp(res.first);
-				const auto xe = linesWM->trackUp(res.second);
-				assert(xe-xs == res.second-res.first);
-				numocc =  getRange(g->linesIndex, lu+xs-lu0, lu+xe-lu0, query->values[2], query->values[2], &res);
+				if (numocc && query->subtype & XY_LINE_END) {
+					size_t i = 0;
+					const auto xs = linesWM->trackUp(res.first);
+					const auto xe = linesWM->trackUp(res.second);
+					assert(xe-xs == res.second-res.first);
 
-				if (numocc && query->subtype & XY_TIME_END) {
-					numocc = getTimeRange(g, query->values[2], query->values[3], res.first, res.second, start_time, end_time);
+					for (const auto &endLine : endLines) {
+						// Translate that subrange to the original Y$X range
+						// ...and see how many of them are also within the end line.
+						numocc =  getRange(g->linesIndex, lu+xs-lu0, lu+xe-lu0, endLine, endLine, &res2);
+
+						if (numocc && query->subtype & XY_TIME_END) {
+							if (jcodes_cache[i].first > jcodes_cache[i].second)
+								jcodes_cache[i] = getJCodes(g, endLine, query->values[3], start_time, end_time);
+							
+							numocc = getTimeRange(g, res2.first, res2.second, jcodes_cache[i].first, jcodes_cache[i].second);
+						}
+
+						i++;
+						total += numocc;
+					}
+				} else {
+					total += numocc;
 				}
 			}
 		}
 	} else if (query->subtype & XY_LINE_END) {
-		numocc = getRange(g->linesIndex, lu, ru, query->values[2], query->values[2], &res);
+		for (const auto &endLine : endLines) {
+			numocc = getRange(g->linesIndex, lu, ru, endLine, endLine, &res);
 
-		if (numocc && query->subtype & XY_TIME_END) {
-			assert(res.first > 0);
-			assert(res.second < g->n);
-			numocc = getTimeRange(g, query->values[2], query->values[3], res.first, res.second, start_time, end_time);
+			if (numocc && query->subtype & XY_TIME_END) {
+				assert(res.first > 0);
+				assert(res.second < g->n);
+				const auto jcodes = getJCodes(g, endLine, query->values[3], start_time, end_time);
+				numocc = getTimeRange(g, res.first, res.second, jcodes.first, jcodes.second);
+			}
+
+			total += numocc;
 		}
 	}
 
-	return numocc;
+	return total;
 }
 
 // Purely spatial from x to y
@@ -1369,18 +1388,7 @@ int get_from_x_to_y(void *index, TimeQuery *query) {
 			endLines.push_back(query->values[2]);
 		}
 
-		if (query->subtype & XY_LINE_START) {
-			lu0 = getPsiicsa(g->myicsa, lu);
-			ru0 = getPsiicsa(g->myicsa, ru);
-		}
-
-		for (const auto &startLine : startLines) {
-			for (const auto &endLine : endLines) {
-				query->values[0] = startLine;
-				query->values[2] = endLine;
-				numocc += restrict_from_x_to_y(g, query, lu, ru, lu0, ru0);
-			}
-		}
+		numocc += restrict_from_x_to_y(g, query, lu, ru, startLines, endLines);
 	}
 
 	// printf("%lu %lu %lu\n", numocc, lu, ru);
