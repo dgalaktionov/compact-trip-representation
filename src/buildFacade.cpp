@@ -130,75 +130,48 @@ int checkCompressedBitmapRRR (void *index) {
 int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 	twcsa *wcsa=(twcsa *) *index;
 
-	// {
-		Mapper *mapper = new MapperNone();
-		// Mapper *mapper = new MapperCont(wcsa->l, wcsa->n, BitSequenceBuilderRG(32), 0);
-		// calculateOrder(wcsa->times, wcsa->n);
+	// Mapper *mapper = new MapperNone();
+	// Mapper *mapper = new MapperCont(wcsa->l, wcsa->n, BitSequenceBuilderRG(32), 0);
+	// calculateOrder(wcsa->times, wcsa->n);
 
 
-		fprintf(stderr,"\n Building Lines Index...\n");
-		// WaveletMatrix *linesWM = new WaveletMatrix(wcsa->times, 1, new BitSequenceBuilderRG(32), mapper,false);
-		// WaveletMatrix *linesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRG(32), mapper,false);
-		WaveletMatrix *linesWM = new WaveletMatrix(wcsa->l, wcsa->n, new BitSequenceBuilderRRR(128), mapper,false);
-		// uint *freqs = new uint[wcsa->lines->size()](); // zero initialized!
-		// for (size_t i = 0; i < wcsa->n; i++) freqs[wcsa->l[i]]++;
-		// WaveletTree *linesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), NULL, mapper);
-		// WaveletTree *linesWM = new WaveletTree(wcsa->l, wcsa->n, new wt_coder_hutucker(freqs, wcsa->lines->size()), new BitSequenceBuilderRG(32), mapper);
-		// WaveletTree *linesWM = new WaveletTree(wcsa->l, wcsa->n, new wt_coder_hutucker(freqs, wcsa->lines->size()), new BitSequenceBuilderRRR(128), mapper);
-		//WaveletTree *linesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRPSN(new BitSequenceBuilderRG(32), 8, 4, 64u), mapper);
-		//for (size_t i = 0; i < wcsa->n; i++) assert(linesWM->access(i) == wcsa->times[i]);
-		fprintf(stderr,"\n Done.\n");
+	fprintf(stderr,"\n Building WM Indices...\n");
+	// WaveletMatrix *linesWM = new WaveletMatrix(wcsa->times, 1, new BitSequenceBuilderRG(32), mapper,false);
+	// WaveletMatrix *linesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRG(32), mapper,false);
+	// WaveletMatrix *linesWM = new WaveletMatrix(wcsa->l, wcsa->n, new BitSequenceBuilderRRR(128), mapper,false);
+	auto sorted_times = std::vector<uint>(wcsa->n,0);
+	auto line_occ = std::vector<uint>(wcsa->lines->size()+1, 0);
+	//for (size_t i = 0; i < wcsa->n; i++) line_occ[wcsa->l[i]+1]++;
+	// WaveletTree *linesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), NULL, mapper);
+	// WaveletTree *linesWM = new WaveletTree(wcsa->l, wcsa->n, new wt_coder_hutucker(freqs, wcsa->lines->size()), new BitSequenceBuilderRG(32), mapper);
+	// WaveletTree *linesWM = new WaveletTree(wcsa->l, wcsa->n, new wt_coder_hutucker(freqs, wcsa->lines->size()), new BitSequenceBuilderRRR(128), mapper);
+	//WaveletTree *linesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRPSN(new BitSequenceBuilderRG(32), 8, 4, 64u), mapper);
+	//for (size_t i = 0; i < wcsa->n; i++) assert(linesWM->access(i) == wcsa->times[i]);
 
-    	wcsa->linesIndex = (void *) linesWM;
-	// }
+	size_t l=0,r=0;
+	auto line_wms = new std::vector<WaveletMatrix*>(wcsa->nodes);
+	auto time_wms = new std::vector<WaveletMatrix*>(wcsa->nodes);
 
-	std::vector<uint> line_occ;
-	((WaveletMatrix *) wcsa->linesIndex)->get_occ(line_occ);
-	
-	// uint acc = 0;
-	// for (size_t i = 0; i < wcsa->lines->size()-1; i++) {
-	// 	line_occ.push_back(acc);
-	// 	acc += freqs[i];
-	// 	assert(acc < wcsa->n);
-	// }
+	for (uint i = 0; i < wcsa->nodes; i++) {
+		r = i+1 < wcsa->nodes ? getSelecticsa(wcsa->myicsa, i+2) : wcsa->n;
+		Mapper *mapper = new MapperCont(wcsa->l+l, r-l, BitSequenceBuilderRG(32), 0);
+		line_wms->at(i) = new WaveletMatrix(wcsa->l+l, r-l, new BitSequenceBuilderRRR(128), mapper,false);
+		const auto occ_size = line_wms->at(i)->get_occ(line_occ);
 
-	// delete[] freqs;
+		for (size_t j = l; j < r; j++) {
+			sorted_times[line_occ[mapper->map(wcsa->l[j])]++] = wcsa->times[j];
+		}
 
-	// line_occ.push_back(acc);
-	uint *sorted_times = new uint[wcsa->n]();
-
-	for (size_t i = 0; i < wcsa->n; i++) {
-		assert(wcsa->l[i] < line_occ.size());
-		assert(line_occ[wcsa->l[i]] < wcsa->n);
-		sorted_times[line_occ[wcsa->l[i]]++] = wcsa->times[i];
+		mapper = new MapperCont(sorted_times.data(), r-l, BitSequenceBuilderRG(32), 0);
+		time_wms->at(i) = new WaveletMatrix(sorted_times.data(), r-l, new BitSequenceBuilderRG(32), mapper,false);
+		l=r;
 	}
 
-	{
-		// uint maxtime = wcsa->maxtime+1;
-		// Mapper *mapper = new MapperNone();
-		Mapper *mapper = new MapperCont(wcsa->times, wcsa->n, BitSequenceBuilderRG(32), 0);
-		//calculateOrder(wcsa->times, wcsa->n);
+	wcsa->linesIndex = (void *) line_wms;
+	wcsa->myTimesIndex = (void *) time_wms;
 
+	fprintf(stderr,"\n Done.\n");
 
-		fprintf(stderr,"\n Building Time Index...\n");
-		// WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, 1, new BitSequenceBuilderRG(32), mapper,false);
-		// WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRG(32), mapper,false);
-		WaveletMatrix *timesWM = new WaveletMatrix(sorted_times, wcsa->n, new BitSequenceBuilderRRR(128), mapper,false);
-		// uint *freqs = new uint[maxtime](); // zero initialized!
-		// for (size_t i = 0; i < wcsa->n; i++) freqs[sorted_times[i]]++;
-		// WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), NULL, mapper);
-		// WaveletTree *timesWM = new WaveletTree(sorted_times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRG(32), mapper);
-		// WaveletTree *timesWM = new WaveletTree(sorted_times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRRR(128), mapper);
-		//WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRPSN(new BitSequenceBuilderRG(32), 8, 4, 64u), mapper);
-		//for (size_t i = 0; i < wcsa->n; i++) assert(timesWM->access(i) == wcsa->times[i]);
-		// delete[] freqs;
-    //printf("\n\n\n WM range: %u\n\n\n", timesWM->rangeCount(500000, 600000, 2, 2));
-		fprintf(stderr,"\n Done.\n");
-
-    	wcsa->myTimesIndex = (void *) timesWM;
-	}
-
-	delete[] sorted_times;
     return 0;
 }
 
@@ -333,7 +306,11 @@ int save_index (void *index, char *filename) {
 		strcat(outfilename, LINES_FILE_EXT);
 		unlink(outfilename);
 		std::ofstream ofs(outfilename, std::ofstream::out);
-		((Sequence *)wcsa->linesIndex)->save(ofs);
+
+		for (const auto &wm : *((std::vector<Sequence*> *) wcsa->linesIndex)) {
+			wm->save(ofs);
+		}
+
 		ofs.close();
 	}
 
@@ -343,7 +320,11 @@ int save_index (void *index, char *filename) {
 		strcat(outfilename, TIMES_FILE_EXT);
 		unlink(outfilename);
 		std::ofstream ofs(outfilename, std::ofstream::out);
-		((Sequence *)wcsa->myTimesIndex)->save(ofs);
+
+		for (const auto &wm : *((std::vector<Sequence*> *) wcsa->myTimesIndex)) {
+			wm->save(ofs);
+		}
+
 		ofs.close();
 	}
 
@@ -407,7 +388,13 @@ int loadTimeIndex(twcsa *wcsa, char *basename) {
 			strcat(filename, ".");
 			strcat(filename, LINES_FILE_EXT);
 			std::ifstream ifs(filename, std::ifstream::in);
-			wcsa->linesIndex = (void *) Sequence::load(ifs);
+
+			auto line_wms = new std::vector<Sequence*>();
+			for (size_t i = 0; i < wcsa->nodes; i++) {
+				line_wms->push_back(Sequence::load(ifs));
+			}
+
+			wcsa->linesIndex = (void *) line_wms;
 			ifs.close();
 		}
 
@@ -416,7 +403,13 @@ int loadTimeIndex(twcsa *wcsa, char *basename) {
 			strcat(filename, ".");
 			strcat(filename, TIMES_FILE_EXT);
 			std::ifstream ifs(filename, std::ifstream::in);
-			wcsa->myTimesIndex = (void *) Sequence::load(ifs);
+
+			auto time_wms = new std::vector<Sequence*>();
+			for (size_t i = 0; i < wcsa->nodes; i++) {
+				time_wms->push_back(Sequence::load(ifs));
+			}
+
+			wcsa->myTimesIndex = (void *) time_wms;
 			ifs.close();
 		}
 }
@@ -449,11 +442,19 @@ int free_index(void *index){
 	if (wcsa->unmap)
 		my_free_array (wcsa->unmap);
 
-	if (wcsa->linesIndex)
-		delete ((Sequence *) wcsa->linesIndex);
+	if (wcsa->linesIndex) {
+		for (auto &wm : *((std::vector<Sequence*> *) wcsa->linesIndex)) {
+			delete wm;
+		}
+		delete (std::vector<Sequence*> *) wcsa->linesIndex;
+	}
 
-	if (wcsa->myTimesIndex)
-		delete ((Sequence *) wcsa->myTimesIndex);
+	if (wcsa->myTimesIndex) {
+		for (auto &wm : *((std::vector<Sequence*> *) wcsa->myTimesIndex)) {
+			delete wm;
+		}
+		delete (std::vector<Sequence*> *) wcsa->myTimesIndex;
+	}
 
 	if (wcsa->baseline && 0) {
 		delete ((std::vector<std::map<uint,uint32_t>> *) wcsa->baseline->usesX);
@@ -537,14 +538,24 @@ int index_size(void *index, ulong *size) {
 		*size, 100*(*size)*8/(float)(bits(wcsa->nodes)*wcsa->n));
 
 	if (wcsa->linesIndex) {
-		size_t timesBytes = ((Sequence *) wcsa->linesIndex)->getSize();
+		size_t timesBytes = wcsa->nodes * sizeof(Sequence*);
+
+		for (auto &wm : *((std::vector<Sequence*> *) wcsa->linesIndex)) {
+			timesBytes += wm->getSize();
+		}
+
 		fprintf(stderr,"\nSize of lines index: %zu bytes (%.2f%% compression)\n",
 			timesBytes, 100*timesBytes*8/(float)(bits(wcsa->lines->size())*wcsa->n));
 		*size += timesBytes;
 	}
 
 	if (wcsa->myTimesIndex) {
-		size_t timesBytes = ((Sequence *) wcsa->myTimesIndex)->getSize();
+		size_t timesBytes = wcsa->nodes * sizeof(Sequence*);
+
+		for (auto &wm : *((std::vector<Sequence*> *) wcsa->myTimesIndex)) {
+			timesBytes += wm->getSize();
+		}
+
 		fprintf(stderr,"\nSize of times index: %zu bytes (%.2f%% compression)\n",
 			timesBytes, 100*timesBytes*8/(float)(bits(wcsa->maxtime)*wcsa->n));
 		*size += timesBytes;
