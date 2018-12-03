@@ -586,12 +586,7 @@ int index_size(void *index, ulong *size) {
 	}
 
 	if (wcsa->initialTimes) {
-		commonBytes = sizeof(size_t) * wcsa->initialTimes->size();
-
-		for (const auto &vec : *wcsa->initialTimes) {
-			commonBytes += sizeof(uint32_t) * vec.size();
-		}
-		
+		commonBytes = wcsa->cInitialTimes->getSize();
 		fprintf(stderr,"\nSize of initialTimes: %zu bytes", commonBytes);
 		*size += commonBytes;
 	}
