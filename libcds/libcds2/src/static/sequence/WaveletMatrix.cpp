@@ -591,6 +591,7 @@ namespace cds_static
 
 	size_t WaveletMatrix::range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits, bool tu) const{
 		if (i1>i2) return 0;
+		assert(i2 < n);
 
 		if (limits!=NULL && tu) {
 			std::pair<uint,uint> limit_symbols = std::make_pair<uint,uint>(j2,j1);

@@ -126,6 +126,14 @@ int checkCompressedBitmapRRR (void *index) {
 }
 
 
+const inline size_t selectStop(twcsa *wcsa, const uint stopId) {
+	if (stopId < wcsa->nodes) {
+		return getSelecticsa(wcsa->myicsa, stopId+1);
+	} else {
+		return wcsa->n;
+	}
+}
+
 // Wavelet Matrix is built here
 int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 	twcsa *wcsa=(twcsa *) *index;
@@ -151,16 +159,19 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 	auto line_wms = new std::vector<WaveletMatrix*>(wcsa->nodes);
 
 	for (uint i = 0; i < wcsa->nodes; i++) {
-		r = i+1 < wcsa->nodes ? getSelecticsa(wcsa->myicsa, i+2) : wcsa->n;
-		Mapper *mapper = new MapperCont(wcsa->l+l, r-l, BitSequenceBuilderRG(32), 0);
-		line_wms->at(i) = new WaveletMatrix(wcsa->l+l, r-l, new BitSequenceBuilderRRR(128), mapper,false);
-		const auto occ_size = line_wms->at(i)->get_occ(line_occ);
+		r = selectStop(wcsa, i+1);
 
-		for (size_t j = l; j < r; j++) {
-			sorted_times[l+line_occ[mapper->map(wcsa->l[j])]++] = wcsa->times[j];
+		if (r > l) {
+			Mapper *mapper = new MapperCont(wcsa->l+l, r-l, BitSequenceBuilderRG(32), 0);
+			line_wms->at(i) = new WaveletMatrix(wcsa->l+l, r-l, new BitSequenceBuilderRRR(128), mapper,false);
+			const auto occ_size = line_wms->at(i)->get_occ(line_occ);
+
+			for (size_t j = l; j < r; j++) {
+				sorted_times[l+line_occ[mapper->map(wcsa->l[j])]++] = wcsa->times[j];
+			}
+
+			l=r;
 		}
-
-		l=r;
 	}
 
 	wcsa->linesIndex = (void *) line_wms;
@@ -197,9 +208,6 @@ int build_index (struct graphDB *graph, char *build_options, void **index) {
     if (!returnvalue)
     	returnvalue = build_iCSA (build_options,*index);
 
-    buildTimesIndex(graph, build_options, index);
-
-
 
 #ifdef DICTIONARY_HUFFRLE
 	uint samplingUnmap=32;
@@ -210,6 +218,8 @@ int build_index (struct graphDB *graph, char *build_options, void **index) {
 	createCompressedBitmapRRR(*index);
 	checkCompressedBitmapRRR(*index);
 #endif
+
+	buildTimesIndex(graph, build_options, index);
 
     return returnvalue;
 }
@@ -1273,8 +1283,10 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, std::ve
 	ulong numocc = 0, total = 0;
 	const auto start_time = query->time->h_start;
 	const auto end_time = query->time->h_end;
+	const auto v = mapID(g, query->values[3], NODE);
+	const auto stop_offset = selectStop(g, v);
 	pair<int, int> res,res2;
-	const auto linesWM = dynamic_cast<WaveletMatrix *>((Sequence *)g->linesIndex);
+	const auto linesWM = dynamic_cast<std::vector<WaveletMatrix *>*>((std::vector<WaveletMatrix *>*)g->linesIndex);
 	const auto timesWM = dynamic_cast<WaveletMatrix *>((Sequence *)g->myTimesIndex);
 	auto jcodes_cache = std::vector< std::pair<size_t,size_t> > (endLines.size(), std::make_pair<size_t,size_t>(1,0));
 
@@ -1288,32 +1300,36 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, std::ve
 		const auto ru0 = getPsiicsa(g->myicsa, ru);
 
 		for (const auto &startLine : startLines) {
-			numocc = getRange(linesWM, lu0, ru0, startLine, startLine, &res);
+			numocc = getRange(linesWM->at(0), lu0, ru0, startLine, startLine, &res);
 
 			// We get the subrange of $ that start with the given line
 			if (numocc) {
 				if (query->subtype & XY_TIME_START) {
 					const auto jcodes = getJCodes(g, startLine, query->values[1], start_time, end_time);
-					numocc = getTimeRange(g, res.first, res.second, jcodes.first, jcodes.second, &res);
+					numocc = getTimeRange(g, res.first, res.second, jcodes.first, jcodes.second, 
+						(query->subtype & XY_LINE_END) ? &res : NULL);
 					assert(numocc < g->n);
 				}
 
 				if (numocc && query->subtype & XY_LINE_END) {
 					size_t i = 0;
-					const auto xs = linesWM->trackUp(res.first);
-					const auto xe = linesWM->trackUp(res.second);
+					const auto xs = linesWM->at(0)->trackUp(res.first);
+					const auto xe = linesWM->at(0)->trackUp(res.second);
 					assert(xe-xs == res.second-res.first);
+					assert(lu >= stop_offset);
 
 					for (const auto &endLine : endLines) {
 						// Translate that subrange to the original Y$X range
 						// ...and see how many of them are also within the end line.
-						numocc =  getRange(g->linesIndex, lu+xs-lu0, lu+xe-lu0, endLine, endLine, &res2);
+						numocc = getRange(linesWM->at(v), (lu-stop_offset)+xs-lu0, (lu-stop_offset)+xe-lu0, 
+							endLine, endLine, &res2);
 
 						if (numocc && query->subtype & XY_TIME_END) {
 							if (jcodes_cache[i].first > jcodes_cache[i].second)
 								jcodes_cache[i] = getJCodes(g, endLine, query->values[3], start_time, end_time);
 							
-							numocc = getTimeRange(g, res2.first, res2.second, jcodes_cache[i].first, jcodes_cache[i].second);
+							numocc = getTimeRange(g, stop_offset+res2.first, stop_offset+res2.second, 
+								jcodes_cache[i].first, jcodes_cache[i].second);
 						}
 
 						i++;
@@ -1325,14 +1341,16 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, std::ve
 			}
 		}
 	} else if (query->subtype & XY_LINE_END) {
+		assert(lu >= stop_offset);
+
 		for (const auto &endLine : endLines) {
-			numocc = getRange(g->linesIndex, lu, ru, endLine, endLine, &res);
+			numocc = getRange(linesWM->at(v), lu-stop_offset, ru-stop_offset, endLine, endLine, &res);
 
 			if (numocc && query->subtype & XY_TIME_END) {
 				assert(res.first > 0);
-				assert(res.second < g->n);
+				assert(stop_offset+res.second < g->n);
 				const auto jcodes = getJCodes(g, endLine, query->values[3], start_time, end_time);
-				numocc = getTimeRange(g, res.first, res.second, jcodes.first, jcodes.second);
+				numocc = getTimeRange(g, stop_offset+res.first, stop_offset+res.second, jcodes.first, jcodes.second);
 			}
 
 			total += numocc;
