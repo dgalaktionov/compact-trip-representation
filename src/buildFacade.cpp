@@ -1289,7 +1289,6 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, std::ve
 	pair<int, int> res,res2;
 	const auto linesWM = dynamic_cast<std::vector<WaveletMatrix *>*>((std::vector<WaveletMatrix *>*)g->linesIndex);
 	const auto timesWM = dynamic_cast<WaveletMatrix *>((Sequence *)g->myTimesIndex);
-	auto jcodes_cache = std::vector< std::pair<size_t,size_t> > (endLines.size(), std::make_pair<size_t,size_t>(1,0));
 
 	if (linesWM == NULL || timesWM == NULL) {
 		std::cerr << "Either use WM or implement the trackUp operation in the WT!" << std::endl;
@@ -1314,7 +1313,6 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, std::ve
 				}
 
 				if (numocc && query->subtype & XY_LINE_END) {
-					size_t i = 0;
 					const auto xs = linesWM->at(0)->trackUp(res.first);
 					const auto xe = linesWM->at(0)->trackUp(res.second);
 					assert(xe-xs == res.second-res.first);
@@ -1327,14 +1325,10 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, std::ve
 							endLine, endLine, &res2);
 
 						if (numocc && query->subtype & XY_TIME_END) {
-							if (jcodes_cache[i].first > jcodes_cache[i].second)
-								jcodes_cache[i] = getJCodes(g, endLine, query->values[3], start_time, end_time);
-							
-							numocc = getTimeRange(g, stop_offset+res2.first, stop_offset+res2.second, 
-								jcodes_cache[i].first, jcodes_cache[i].second);
+							const auto jcodes = getJCodes(g, endLine, query->values[3], start_time, end_time);
+							numocc = getTimeRange(g, stop_offset+res2.first, stop_offset+res2.second, jcodes.first, jcodes.second);
 						}
 
-						i++;
 						total += numocc;
 					}
 				} else {
