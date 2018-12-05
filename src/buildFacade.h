@@ -153,7 +153,7 @@ typedef struct {
 
 		uint nodes;     //number of nodes from [0 ... nodes]
 		uint maxtime;   //maximum time in the dataset from [0 ... maxtime-1]
-		uint n_traj;	// number of trajectories (zeros-1)
+		uint n_traj;	// number of trajectories (zeros)
 
 		size_t n;       //number of integers in s
 		uint *s;        //including time and edges  (S[0 .. nEntries*n)

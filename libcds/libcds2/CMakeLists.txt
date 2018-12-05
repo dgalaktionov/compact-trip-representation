@@ -6,7 +6,7 @@ set(PROJECT_VENDOR "Alberto Ordóñez")
 set(PROJECT_CONTACT "alberto.ordonez@udc.es")
 set(PROJECT_DESCRIPTION "libcds y derivados")
 set(CMAKE_PROJECT_NAME "libcds in libcds")
-set(CMAKE_BUILD_TYPE "Debug")
+set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_INSTALL_PREFIX /home/alberto/software)
 set(CMAKE_COMPILER_IS_GNUCXX)
 

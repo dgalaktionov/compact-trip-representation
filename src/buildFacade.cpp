@@ -169,11 +169,12 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 			for (size_t j = l; j < r; j++) {
 				sorted_times[l+line_occ[mapper->map(wcsa->l[j])]++] = wcsa->times[j];
 			}
-
+	
 			l=r;
 		}
 	}
 
+	assert(r == wcsa->n);
 	wcsa->linesIndex = (void *) line_wms;
 
 	{
@@ -1298,6 +1299,7 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, std::ve
 	if (query->subtype & XY_LINE_START) {
 		const auto lu0 = getPsiicsa(g->myicsa, lu);
 		const auto ru0 = getPsiicsa(g->myicsa, ru);
+		assert(ru-lu == ru0-lu0);
 
 		for (const auto &startLine : startLines) {
 			numocc = getRange(linesWM->at(0), lu0, ru0, startLine, startLine, &res);
@@ -1347,7 +1349,7 @@ int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, std::ve
 			numocc = getRange(linesWM->at(v), lu-stop_offset, ru-stop_offset, endLine, endLine, &res);
 
 			if (numocc && query->subtype & XY_TIME_END) {
-				assert(res.first > 0);
+				assert(numocc == res.second-res.first+1);
 				assert(stop_offset+res.second < g->n);
 				const auto jcodes = getJCodes(g, endLine, query->values[3], start_time, end_time);
 				numocc = getTimeRange(g, stop_offset+res.first, stop_offset+res.second, jcodes.first, jcodes.second);

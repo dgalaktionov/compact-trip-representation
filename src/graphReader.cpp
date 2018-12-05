@@ -218,6 +218,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 		separator = fgetc(f);
 
 		if (separator == '\n') {
+			assert(traj_len % 2 == 0);
 			times[i] = t;
 			l[i] = graph->lines->at(line);
 			s[i++]=data;

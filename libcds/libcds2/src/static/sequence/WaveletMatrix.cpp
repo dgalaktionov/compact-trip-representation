@@ -593,6 +593,8 @@ namespace cds_static
 		if (i1>i2) return 0;
 		assert(i2 < n);
 
+		j1 = am->map(j1); j2 = am->map(j2);
+
 		if (limits!=NULL && tu) {
 			std::pair<uint,uint> limit_symbols = std::make_pair<uint,uint>(j2,j1);
 			std::pair<uint,uint> limit_levels;
