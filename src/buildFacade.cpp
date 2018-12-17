@@ -1184,8 +1184,10 @@ const std::pair<size_t, size_t> getJCodes(twcsa *g, uint16_t lineId, uint32_t st
 	const auto offset = std::min(second, t_start-1);
 
 	return g->cInitialTimes->getBounds(lineId, t_start-offset, t_end-offset);
-	//std::lower_bound(initialTimes->begin(), initialTimes->end(), t_start - offset) - initialTimes->begin();
-	//std::upper_bound(initialTimes->begin(), initialTimes->end(), t_end - offset) - initialTimes->begin() - 1;
+/*	return std::make_pair<size_t,size_t>(
+		std::lower_bound(initialTimes->begin(), initialTimes->end(), t_start - offset) - initialTimes->begin(),
+		std::upper_bound(initialTimes->begin(), initialTimes->end(), t_end - offset) - initialTimes->begin() - 1
+	);*/
 }
 
 const size_t getTimeRange(twcsa *g, size_t lu, size_t ru, size_t j_start, size_t j_end, pair<int, int> *limits=NULL) {

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1
+CMAKE_SOURCE_DIR = /data/libsais/sais-2.4.1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1
+CMAKE_BINARY_DIR = /data/libsais/sais-2.4.1
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -95,7 +95,7 @@ install/fast: preinstall/fast
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && /usr/bin/cpack --config ./CPackConfig.cmake
+	cd /data/libsais/sais-2.4.1 && /usr/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -106,7 +106,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/CPackSourceConfig.cmake
+	cd /data/libsais/sais-2.4.1 && /usr/bin/cpack --config ./CPackSourceConfig.cmake /data/libsais/sais-2.4.1/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -148,14 +148,14 @@ list_install_components/fast: list_install_components
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -E cmake_progress_start /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/CMakeFiles /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/lib/CMakeFiles/progress.marks
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 lib/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/CMakeFiles 0
+	cd /data/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -E cmake_progress_start /data/libsais/sais-2.4.1/CMakeFiles /data/libsais/sais-2.4.1/lib/CMakeFiles/progress.marks
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 lib/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /data/libsais/sais-2.4.1/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 lib/clean
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 lib/clean
 .PHONY : clean
 
 # The main clean target
@@ -165,22 +165,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 lib/preinstall
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 lib/preinstall
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /data/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 lib/CMakeFiles/sais.dir/rule:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/sais.dir/rule
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/sais.dir/rule
 .PHONY : lib/CMakeFiles/sais.dir/rule
 
 # Convenience name for target.
@@ -190,22 +190,22 @@ sais: lib/CMakeFiles/sais.dir/rule
 
 # fast build rule for target.
 sais/fast:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f lib/CMakeFiles/sais.dir/build.make lib/CMakeFiles/sais.dir/build
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f lib/CMakeFiles/sais.dir/build.make lib/CMakeFiles/sais.dir/build
 .PHONY : sais/fast
 
 # target to build an object file
 sais.o:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f lib/CMakeFiles/sais.dir/build.make lib/CMakeFiles/sais.dir/sais.o
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f lib/CMakeFiles/sais.dir/build.make lib/CMakeFiles/sais.dir/sais.o
 .PHONY : sais.o
 
 # target to preprocess a source file
 sais.i:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f lib/CMakeFiles/sais.dir/build.make lib/CMakeFiles/sais.dir/sais.i
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f lib/CMakeFiles/sais.dir/build.make lib/CMakeFiles/sais.dir/sais.i
 .PHONY : sais.i
 
 # target to generate assembly for a file
 sais.s:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f lib/CMakeFiles/sais.dir/build.make lib/CMakeFiles/sais.dir/sais.s
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f lib/CMakeFiles/sais.dir/build.make lib/CMakeFiles/sais.dir/sais.s
 .PHONY : sais.s
 
 # Help Target
@@ -237,6 +237,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /data/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

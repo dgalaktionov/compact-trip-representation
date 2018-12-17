@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1
+CMAKE_SOURCE_DIR = /data/libsais/sais-2.4.1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1
+CMAKE_BINARY_DIR = /data/libsais/sais-2.4.1
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -116,7 +116,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target package
 package: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool..."
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && /usr/bin/cpack --config ./CPackConfig.cmake
+	cd /data/libsais/sais-2.4.1 && /usr/bin/cpack --config ./CPackConfig.cmake
 .PHONY : package
 
 # Special rule for the target package
@@ -127,7 +127,7 @@ package/fast: package
 # Special rule for the target package_source
 package_source:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/CPackSourceConfig.cmake
+	cd /data/libsais/sais-2.4.1 && /usr/bin/cpack --config ./CPackSourceConfig.cmake /data/libsais/sais-2.4.1/CPackSourceConfig.cmake
 .PHONY : package_source
 
 # Special rule for the target package_source
@@ -148,14 +148,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -E cmake_progress_start /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/CMakeFiles /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/examples/CMakeFiles/progress.marks
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/CMakeFiles 0
+	cd /data/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -E cmake_progress_start /data/libsais/sais-2.4.1/CMakeFiles /data/libsais/sais-2.4.1/examples/CMakeFiles/progress.marks
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /data/libsais/sais-2.4.1/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/clean
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/clean
 .PHONY : clean
 
 # The main clean target
@@ -165,22 +165,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /data/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 examples/CMakeFiles/bwt.dir/rule:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/bwt.dir/rule
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/bwt.dir/rule
 .PHONY : examples/CMakeFiles/bwt.dir/rule
 
 # Convenience name for target.
@@ -190,12 +190,12 @@ bwt: examples/CMakeFiles/bwt.dir/rule
 
 # fast build rule for target.
 bwt/fast:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/bwt.dir/build.make examples/CMakeFiles/bwt.dir/build
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/bwt.dir/build.make examples/CMakeFiles/bwt.dir/build
 .PHONY : bwt/fast
 
 # Convenience name for target.
 examples/CMakeFiles/suftest.dir/rule:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/suftest.dir/rule
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/suftest.dir/rule
 .PHONY : examples/CMakeFiles/suftest.dir/rule
 
 # Convenience name for target.
@@ -205,12 +205,12 @@ suftest: examples/CMakeFiles/suftest.dir/rule
 
 # fast build rule for target.
 suftest/fast:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/suftest.dir/build.make examples/CMakeFiles/suftest.dir/build
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/suftest.dir/build.make examples/CMakeFiles/suftest.dir/build
 .PHONY : suftest/fast
 
 # Convenience name for target.
 examples/CMakeFiles/unbwt.dir/rule:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/unbwt.dir/rule
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/unbwt.dir/rule
 .PHONY : examples/CMakeFiles/unbwt.dir/rule
 
 # Convenience name for target.
@@ -220,52 +220,52 @@ unbwt: examples/CMakeFiles/unbwt.dir/rule
 
 # fast build rule for target.
 unbwt/fast:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/unbwt.dir/build.make examples/CMakeFiles/unbwt.dir/build
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/unbwt.dir/build.make examples/CMakeFiles/unbwt.dir/build
 .PHONY : unbwt/fast
 
 # target to build an object file
 bwt.o:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/bwt.dir/build.make examples/CMakeFiles/bwt.dir/bwt.o
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/bwt.dir/build.make examples/CMakeFiles/bwt.dir/bwt.o
 .PHONY : bwt.o
 
 # target to preprocess a source file
 bwt.i:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/bwt.dir/build.make examples/CMakeFiles/bwt.dir/bwt.i
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/bwt.dir/build.make examples/CMakeFiles/bwt.dir/bwt.i
 .PHONY : bwt.i
 
 # target to generate assembly for a file
 bwt.s:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/bwt.dir/build.make examples/CMakeFiles/bwt.dir/bwt.s
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/bwt.dir/build.make examples/CMakeFiles/bwt.dir/bwt.s
 .PHONY : bwt.s
 
 # target to build an object file
 suftest.o:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/suftest.dir/build.make examples/CMakeFiles/suftest.dir/suftest.o
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/suftest.dir/build.make examples/CMakeFiles/suftest.dir/suftest.o
 .PHONY : suftest.o
 
 # target to preprocess a source file
 suftest.i:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/suftest.dir/build.make examples/CMakeFiles/suftest.dir/suftest.i
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/suftest.dir/build.make examples/CMakeFiles/suftest.dir/suftest.i
 .PHONY : suftest.i
 
 # target to generate assembly for a file
 suftest.s:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/suftest.dir/build.make examples/CMakeFiles/suftest.dir/suftest.s
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/suftest.dir/build.make examples/CMakeFiles/suftest.dir/suftest.s
 .PHONY : suftest.s
 
 # target to build an object file
 unbwt.o:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/unbwt.dir/build.make examples/CMakeFiles/unbwt.dir/unbwt.o
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/unbwt.dir/build.make examples/CMakeFiles/unbwt.dir/unbwt.o
 .PHONY : unbwt.o
 
 # target to preprocess a source file
 unbwt.i:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/unbwt.dir/build.make examples/CMakeFiles/unbwt.dir/unbwt.i
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/unbwt.dir/build.make examples/CMakeFiles/unbwt.dir/unbwt.i
 .PHONY : unbwt.i
 
 # target to generate assembly for a file
 unbwt.s:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/unbwt.dir/build.make examples/CMakeFiles/unbwt.dir/unbwt.s
+	cd /data/libsais/sais-2.4.1 && $(MAKE) -f examples/CMakeFiles/unbwt.dir/build.make examples/CMakeFiles/unbwt.dir/unbwt.s
 .PHONY : unbwt.s
 
 # Help Target
@@ -305,6 +305,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /data/libsais/sais-2.4.1 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

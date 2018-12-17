@@ -1,8 +1,8 @@
-IF(NOT EXISTS "/home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/install_manifest.txt")
-  MESSAGE(FATAL_ERROR "Cannot find install manifest: \"/home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/install_manifest.txt\"")
-ENDIF(NOT EXISTS "/home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/install_manifest.txt")
+IF(NOT EXISTS "/data/libsais/sais-2.4.1/install_manifest.txt")
+  MESSAGE(FATAL_ERROR "Cannot find install manifest: \"/data/libsais/sais-2.4.1/install_manifest.txt\"")
+ENDIF(NOT EXISTS "/data/libsais/sais-2.4.1/install_manifest.txt")
 
-FILE(READ "/home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/install_manifest.txt" files)
+FILE(READ "/data/libsais/sais-2.4.1/install_manifest.txt" files)
 STRING(REGEX REPLACE "\n" ";" files "${files}")
 
 SET(NUM 0)
@@ -33,4 +33,4 @@ FOREACH(file ${files})
   MATH(EXPR NUM "1 + ${NUM}")
 ENDFOREACH(file)
 
-FILE(REMOVE "/home/dgalaktionov/Documents/trayectorias/new_shit/ctr/libsais/sais-2.4.1/install_manifest.txt")
+FILE(REMOVE "/data/libsais/sais-2.4.1/install_manifest.txt")
