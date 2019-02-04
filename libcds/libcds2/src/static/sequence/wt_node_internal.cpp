@@ -262,7 +262,7 @@ namespace cds_static
 
     size_t wt_node_internal::rng(size_t xs, size_t xe, uint ys, uint ye,
         uint current, uint level, uint lefty, uint righty,
-  							vector<pair<int,int> > *res, bool addRes) const {
+  							pair<int,int> *limits) const {
 
   		if ((lefty>=(uint)ys) && (righty<=(uint)ye)){
   			return xe-xs+1;
@@ -281,17 +281,17 @@ namespace cds_static
 
       if (current>=(uint)(ys>>shift) && xs0<xe0){
   				lefty=(current<<(shift));
-  				lc=left_child->rng(xs0,xe0-1,ys,ye,current,level+1,lefty,lefty|((1u<<(shift))-1),res,addRes);
-  		} else if (addRes) {
-          res->front().first += xe0-xs0;
+  				lc=left_child->rng(xs0,xe0-1,ys,ye,current,level+1,lefty,lefty|((1u<<(shift))-1),limits);
+  		} else if (limits != NULL) {
+          limits->first += xe0-xs0;
       }
 
   		current|=0x1;
   		if (current<=(uint)(ye>>shift) && xs1<xe1){
   				righty=(current<<(shift));
-  				rc=right_child->rng(xs1,xe1-1,ys,ye,current,level+1,righty,righty|((1u<<(shift))-1),res,addRes);
-  		} else if (addRes) {
-          res->back().first += xe1-xs1;
+  				rc=right_child->rng(xs1,xe1-1,ys,ye,current,level+1,righty,righty|((1u<<(shift))-1),limits);
+  		} else if (limits != NULL) {
+          limits->second += xe1-xs1;
       }
 
   		return lc+rc;

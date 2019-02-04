@@ -1413,71 +1413,16 @@ uint unmapID (twcsa *g, uint value, uint type) {
 
 #define SAMPLES 1
 
-// Wrapper for a WM count, designed to work well when querying overflowing time ranges (such as 23:30 to 0:40).
-// When isContinuous, it returns in res the starting and ending indexes of the resulting range, as well as their values.
-size_t getRange(twcsa *index, size_t lu, size_t ru, int t_start, int t_end, bool isContinuous, vector<pair<int, int>> * &res) {
-	uint i,j;
-	uint TIMES_WEEK = 0, TIMES_TOTAL = index->maxtime/SAMPLES;
-	t_start = t_start/SAMPLES;
-	t_end = t_end/SAMPLES;
-
-	for (i=0,j=0; i<index->nweeks; i++){
-		j+= index->weeks[i]/SAMPLES;
-
-		if (t_start < j) {
-			TIMES_WEEK = index->weeks[i]/SAMPLES;
-		}
+// Wrapper for a WM count.
+size_t getRange(void *seq, size_t lu, size_t ru, int t_start, int t_end, pair<int, int> *limits=NULL, bool trackUp=false) {
+	Sequence *wm = (Sequence *)seq;
+	
+	if (limits != NULL) {
+		limits->first = 0;
+		limits->second = 0;
 	}
 
-	/*
-	if (t_end >= t_start + TIMES_WEEK - (t_start % TIMES_WEEK)) {
-		t_end = t_start + TIMES_WEEK - (t_start % TIMES_WEEK) - 1;
-	}
-	*/
-
-	int t_start2 = TIMES_TOTAL;
-	int t_end2 = TIMES_TOTAL;
-	size_t numocc = 0;
-	Sequence *wm = (Sequence *)index->myTimesIndex;
-
-	// check if there's a time overflow
-	if (t_start > t_end) {
-		t_start2 = t_end - (t_end % TIMES_WEEK);
-		t_end2 = t_end;
-		t_end = t_start2 + TIMES_WEEK - 1;
-	}
-
-	// printf("%i %i %i %i\n", t_start, t_end, t_start2, t_end2);
-
-	if (isContinuous) {
-		res = new std::vector<pair<int,int>>(2);
-
-		wm->range(lu, ru, t_start, t_end, res);
-		
-		if (res->back().first)
-			numocc += res->back().first - res->front().first + 1;
-
-		if (t_start2 != TIMES_TOTAL) {
-			std::vector<pair<int,int>> *res2 = new std::vector<pair<int,int>>(2);
-			wm->range(lu, ru, t_start2, t_end2, res2);
-
-			if (res2->back().first)
-				numocc += res2->back().first - res2->front().first + 1;
-
-			res->insert(res->end(), res2->begin(), res2->end());
-			delete res2;
-		}
-	} else {
-		// printf("Q1 for %lu %lu: %i %i\n", lu, ru, t_start, t_end);
-		numocc += wm->rangeCount(lu, ru, t_start, t_end);
-
-		if (t_start2 != TIMES_TOTAL) {
-			// printf("Q1 for %i %i\n", t_start2, t_end2);
-			numocc += wm->rangeCount(lu, ru, t_start2, t_end2);
-		}
-	}
-
-	return numocc;
+	return wm->range(lu, ru, t_start, t_end, limits, trackUp);
 }
 
 // add or substract a time delta
@@ -1489,12 +1434,6 @@ int addTime(int t, int delta, uint TIMES_WEEK) {
 	} else {
 		return (TIMES_WEEK + t + delta) % TIMES_WEEK;
 	}
-}
-
-size_t getRange(twcsa *index, size_t lu, size_t ru, int t_start, int t_end) {
-	 vector<pair<int, int>> *res = NULL;
-
-	 return getRange(index, lu, ru, t_start, t_end, false, res);
 }
 
 uint inline encodeStop(twcsa *g, uint lineId, uint stopId) {
@@ -1696,24 +1635,24 @@ int get_from_x_to_y_strong(void *index, TimeQuery *query) {
 	std::vector<pair<int, int>> *res;
 
 	// We get the subrange of XY$ that start within the desired time range
-	if (getRange(g, lu0, ru0, start_time, end_time,
-			true, res)) {
+	// if (getRange(g, lu0, ru0, start_time, end_time,
+	// 		true, res)) {
 
-		// Translate that subrange to the original Y$X range
-		// ...and see how many of them are also within the time range.
-		numocc =  res->at(1).first ? getRange(g,
-			lu + res->at(0).first - lu0,
-			lu + res->at(1).first - lu0,
-			start_time, end_time) : 0;
+	// 	// Translate that subrange to the original Y$X range
+	// 	// ...and see how many of them are also within the time range.
+	// 	numocc =  res->at(1).first ? getRange(g,
+	// 		lu + res->at(0).first - lu0,
+	// 		lu + res->at(1).first - lu0,
+	// 		start_time, end_time) : 0;
 
-		// Handle the special case of time overflow (i.e. from 23:30 to 0:40)
-		if (res->size() > 3 && res->at(3).first) {
-			numocc += getRange(g,
-				lu + res->at(2).first - lu0,
-				lu + res->at(3).first - lu0,
-				start_time, end_time);
-		}
-	}
+	// 	// Handle the special case of time overflow (i.e. from 23:30 to 0:40)
+	// 	if (res->size() > 3 && res->at(3).first) {
+	// 		numocc += getRange(g,
+	// 			lu + res->at(2).first - lu0,
+	// 			lu + res->at(3).first - lu0,
+	// 			start_time, end_time);
+	// 	}
+	// }
 
 	// printf("%lu %lu %lu\n", numocc, lu, ru);
 	delete res;
@@ -1754,31 +1693,6 @@ int get_from_x_to_y_weak(void *index, TimeQuery *query) {
 
 	ulong numocc, lu, ru, lu0, ru0;
 
-	if (g->baseline) {
-		const std::map<std::pair<uint, uint>, uint32_t> &times = g->baseline->fromXtoY->at(std::make_pair(u,v));
-		auto ta = times.lower_bound(std::make_pair(start_time, start_time));
-		const auto &tz = times.upper_bound(std::make_pair(end_time, end_time));
-		numocc = 0;
-
-		if (end_time < start_time) {
-			for (ta=times.begin();ta!=times.cend();ta++) {
-				if (ta->first.second >= start_time)
-					numocc += ta->second;
-			}
-
-			for (ta=times.begin();ta!=tz;ta++) {
-				numocc += ta->second;
-			}
-		} else {
-			for (ta=times.begin();ta!=tz;ta++) {
-				if (ta->first.second >= start_time)
-					numocc += ta->second;
-			}
-		}
-
-		return numocc;
-	}
-
 	// First we get the Y$X range
 	countIntIndex(g->myicsa, pattern, 3, &numocc, &lu, &ru);
 	// printf("%lu %lu\n", u, v);
@@ -1798,31 +1712,31 @@ int get_from_x_to_y_weak(void *index, TimeQuery *query) {
 	// Count all the occurences within the desired time in XY$, they're all good for the result...
 	numocc = getRange(g, lu0, ru0, start_time, end_time);
 
-	if (diff) {
-		//...but we also need to add the ones that start BEFORE the start time...
-		if (getRange(g, lu0, ru0,
-			/*addTime(start_time, -diff, TIMES_WEEK),*/
-			(start_time/TIMES_WEEK)*TIMES_WEEK,
-			addTime(start_time, -1, TIMES_WEEK),
-			true, res)) {
+	// if (diff) {
+	// 	//...but we also need to add the ones that start BEFORE the start time...
+	// 	if (getRange(g, lu0, ru0,
+	// 		/*addTime(start_time, -diff, TIMES_WEEK),*/
+	// 		(start_time/TIMES_WEEK)*TIMES_WEEK,
+	// 		addTime(start_time, -1, TIMES_WEEK),
+	// 		true, res)) {
 
-			//... while ending AFTER the start time
-			numocc += res->at(1).first ? getRange(g,
-				lu + res->at(0).first - lu0,
-				lu + res->at(1).first - lu0,
-				start_time, (start_time/TIMES_WEEK+1)*TIMES_WEEK-1) : 0;
+	// 		//... while ending AFTER the start time
+	// 		numocc += res->at(1).first ? getRange(g,
+	// 			lu + res->at(0).first - lu0,
+	// 			lu + res->at(1).first - lu0,
+	// 			start_time, (start_time/TIMES_WEEK+1)*TIMES_WEEK-1) : 0;
 
-			// Handle the special case of time overflow (i.e. from 23:30 to 0:40)
-			if (res->size() > 2 && res->at(3).first) {
-				numocc += getRange(g,
-					lu + res->at(2).first - lu0,
-					lu + res->at(3).first - lu0,
-					start_time, (start_time/TIMES_WEEK+1)*TIMES_WEEK-1);
-			}
-		}
+	// 		// Handle the special case of time overflow (i.e. from 23:30 to 0:40)
+	// 		if (res->size() > 2 && res->at(3).first) {
+	// 			numocc += getRange(g,
+	// 				lu + res->at(2).first - lu0,
+	// 				lu + res->at(3).first - lu0,
+	// 				start_time, (start_time/TIMES_WEEK+1)*TIMES_WEEK-1);
+	// 		}
+	// 	}
 
-		delete res;
-	}
+	// 	delete res;
+	// }
 
 	// printf("%lu %lu %lu\n", numocc, lu, ru);
 	return numocc;

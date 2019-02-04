@@ -502,35 +502,50 @@ namespace cds_static
 				pos=bitstring[i]->select0(pos+1);
 			}
 		}
-		return pos+1;
+		return pos;
 	}
 
-	size_t WaveletMatrix::rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty,
-							vector<pair<int,int> > *res, bool addRes) const {
+	uint WaveletMatrix::trackUp(uint pos) const {
+		return trackUp(pos, height-1);
+	}
+
+	size_t WaveletMatrix::rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty, std::pair<int,int> *limits, 
+		std::pair<uint,uint> *limit_symbols, std::pair<uint,uint> *limit_levels) const {
 
 		if ((lefty>=(uint)ys) && (righty<=(uint)ye)){
-			if (addRes){
+			if (limits != NULL){
 				/*
 				for (int i=xs;i<=xe;i++){
 					pair<int,int> p;
 					p.first=current;
-					p.second=trackUp((uint)i,level-1)-1;
+					p.second=trackUp((uint)i,level-1);
 					res->push_back(p);
 				}
 				*/
 
-				size_t xs_pos =  trackUp((uint)xs, level-1) - 1;
-				size_t xe_pos =  trackUp((uint)xe, level-1) - 1;
+				if (limit_symbols == NULL) {
+					if (limits->second == 0) {
+						limits->first = xs;
+						limits->second = xe;
+					} else {
+						if (xs < limits->first)
+							limits->first = xs;
 
-				if (res->front().first == 0) {
-					res->front() = pair<int, int>(xs_pos, access(xs_pos));
-					res->back() = pair<int, int>(xe_pos, access(xe_pos));
+						if (xe > limits->second)
+							limits->second = xe;
+					}
 				} else {
-					if (res->front().first > xs_pos)
-						res->front() = pair<int, int>(xs_pos, access(xs_pos));
+					if (lefty <= limit_symbols->first) {
+						limits->first = xs;
+						limit_symbols->first = lefty;
+						limit_levels->first = level;
+					}
 
-					if (res->back().first < xe_pos)
-						res->back() = pair<int, int>(xe_pos, access(xe_pos));
+					if (righty >= limit_symbols->second) {
+						limits->second = xe;
+						limit_symbols->second = righty;
+						limit_levels->second = level;
+					}
 				}
 			}
 			return xe-xs+1;
@@ -545,7 +560,8 @@ namespace cds_static
 			xe0=bitstring[level]->rank0(xe);
 			if (xs0<xe0){
 				uint newlefty=(current<<(shift));
-				lc=rng(xs0,xe0-1,ys,ye,current,level+1,newlefty,newlefty|((1u<<(shift))-1),res,addRes);
+				lc=rng(xs0,xe0-1,ys,ye,current,level+1,newlefty,newlefty|((1u<<(shift))-1),
+					limits, limit_symbols, limit_levels);
 			}
 		}
 
@@ -560,7 +576,8 @@ namespace cds_static
 			newxs2=xe-xe0+C[level];
 			if (newxs1<=newxs2){
 				lefty=(current<<(shift));
-				rc=rng(newxs1,newxs2,ys,ye,current,level+1,lefty,lefty|((1u<<(shift))-1),res,addRes);
+				rc=rng(newxs1,newxs2,ys,ye,current,level+1,lefty,lefty|((1u<<(shift))-1),
+					limits, limit_symbols, limit_levels);
 			}
 		}
 		return lc+rc;
@@ -568,13 +585,30 @@ namespace cds_static
 
 	size_t WaveletMatrix::rngCount(size_t xs, size_t xe, uint ys, uint ye, uint current, uint lefty, uint righty,int level) const {
 		if (xs>xe) return 0;
-		return rng(xs,xe,ys,ye,0,0,0,max_v,NULL,false);
+		return rng(xs,xe,ys,ye,0,0,0,max_v,NULL,NULL,NULL);
 	}
 
 
-	void WaveletMatrix::range(int i1, int i2, int j1, int j2, vector<pair<int,int> > *res){
-		if (i1>i2) return;
-		rng(i1,i2,j1,j2,0,0,0,max_v,res,true);
+	size_t WaveletMatrix::range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits, bool tu) const{
+		if (i1>i2) return 0;
+		assert(i2 < n);
+
+		j1 = am->map(j1); j2 = am->map(j2);
+
+		if (limits!=NULL && tu) {
+			std::pair<uint,uint> limit_symbols = std::make_pair<uint,uint>(j2,j1);
+			std::pair<uint,uint> limit_levels;
+			size_t res = rng(i1,i2,j1,j2,0,0,0,max_v,limits,&limit_symbols,&limit_levels);
+
+			if (res) {
+				limits->first = trackUp(limits->first, limit_levels.first-1);
+				limits->second = trackUp(limits->second, limit_levels.second-1);
+			}
+
+			return res;
+		} else {
+			return rng(i1,i2,j1,j2,0,0,0,max_v,limits, NULL, NULL);
+		}
 	}
 	size_t WaveletMatrix::getSize() const
 	{
@@ -657,6 +691,11 @@ namespace cds_static
 			val >>= 1;
 		}
 		return ret;
+	}
+
+	size_t WaveletMatrix::get_occ(vector<uint> &res) const{
+		res.assign(OCC, OCC + max_v + 1);
+		return res.size();
 	}
 
 	typedef struct {

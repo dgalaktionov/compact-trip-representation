@@ -56,7 +56,7 @@ namespace cds_static
             virtual void save(ofstream & fp) const = 0;
             virtual size_t rng(size_t xs, size_t xe, uint ys, uint ye,
                 uint current, uint level, uint lefty, uint righty,
-          			vector<pair<int,int> > *res, bool addRes) const = 0;
+          			pair<int,int> *limits) const = 0;
             virtual int topKSplit(uint ys, uint ye, uint *res,
                 std::priority_queue<BinTopK_Item, std::vector<BinTopK_Item>, TopK_Cmp> *topKQueue) const = 0;
 

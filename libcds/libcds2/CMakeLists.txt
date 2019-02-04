@@ -6,14 +6,14 @@ set(PROJECT_VENDOR "Alberto Ordóñez")
 set(PROJECT_CONTACT "alberto.ordonez@udc.es")
 set(PROJECT_DESCRIPTION "libcds y derivados")
 set(CMAKE_PROJECT_NAME "libcds in libcds")
-#set(CMAKE_BUILD_TYPE "Debug")
+set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_INSTALL_PREFIX /home/alberto/software)
 set(CMAKE_COMPILER_IS_GNUCXX)
 
 # Flags
 set(CMAKE_CXX_FLAGS " -Wall -m64 -Wunused-variable")
-set(CMAKE_CXX_FLAGS_RELEASE " -std=c++0x -Wall -O9 -DNDEBUG")
-set(CMAKE_CXX_FLAGS_DEBUG " -std=c++0x -Wall -O0 -g3 -DDEBUG -w")
+set(CMAKE_CXX_FLAGS_RELEASE " -std=c++0x -Wall -O9 -DNDEBUG -DRANGESEARCH")
+set(CMAKE_CXX_FLAGS_DEBUG " -std=c++0x -Wall -O0 -g3 -DDEBUG -w -DRANGESEARCH")
 # Suffix Arrays library
 # add_subdirectory(external/libdivsufsort-2.0.1/)
 # include_directories(external/libdivsufsort-2.0.1/include)

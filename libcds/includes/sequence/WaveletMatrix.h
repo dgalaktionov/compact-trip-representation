@@ -59,11 +59,13 @@ namespace cds_static
 			virtual uint access(size_t pos) const;
 			virtual ulong extract(ulong i, ulong j, vector<uint> &res) const;
 			virtual size_t getSize() const;
-			size_t rangeCount(size_t xs, size_t xe, uint ys, uint ye) const;
-			virtual void range(int i1, int i2, int j1, int j2, vector<pair<int,int> > *res);
+			virtual size_t rangeCount(size_t xs, size_t xe, uint ys, uint ye) const;
+			uint trackUp(uint pos) const;
+			virtual size_t range(int i1, int i2, int j1, int j2, std::pair<int,int> *limits, bool trackUp) const;
 			virtual ulong topK(uint k, uint ys, uint ye, uint *res) const;
 			virtual ulong topK(uint k, uint *res) const;
 			virtual void save(ofstream & fp) const;
+			virtual size_t get_occ(vector<uint> &res) const;
 			static WaveletMatrix * load(ifstream & fp);
 
 		protected:
@@ -98,9 +100,9 @@ namespace cds_static
 			/** Recursive function for building the Wavelet Tree. */
 			void build_level(uint **bm, uint *symbols, size_t length, uint *occs);
 			size_t rngCount(size_t xs, size_t xe, uint ys, uint ye, uint current, uint lefty, uint righty, int level) const;
-			uint trackUp(uint pos, int l) const;
-			size_t rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty,vector<pair<int,int> > *res,bool addRes) const;
+			size_t rng(int xs, int xe, int ys, int ye, uint current, int level, uint lefty, uint righty, std::pair<int,int> *limits, std::pair<uint,uint> *limit_symbols, std::pair<uint,uint> *limit_levels) const;
 			ulong extract(ulong i, ulong j, uint level, uint code, vector<uint> &res) const;
+			uint trackUp(uint pos, int l) const;
 
 	private: ulong topK2(uint k, uint ys, uint ye, uint *res) const;
 	};

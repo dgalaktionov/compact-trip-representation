@@ -51,7 +51,7 @@ namespace cds_static
             virtual void save(ofstream & fp) const;
             virtual size_t rng(size_t xs, size_t xe, uint ys, uint ye,
                 uint current, uint level, uint lefty, uint righty,
-          			vector<pair<int,int> > *res, bool addRes) const;
+          			pair<int,int> *limits) const;
             static wt_node_leaf * load(ifstream & fp);
             virtual int topKSplit(uint xs, uint xe, uint *res,
                 std::priority_queue<BinTopK_Item, std::vector<BinTopK_Item>, TopK_Cmp> *topKQueue) const;
