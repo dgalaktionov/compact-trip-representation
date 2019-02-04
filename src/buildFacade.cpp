@@ -228,8 +228,8 @@ void calculateOrder(uint *v, size_t n) {
 int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 	twcsa *wcsa=(twcsa *) *index;
 	uint maxtime = wcsa->maxtime+1;
-    Mapper *mapper = new MapperNone();
-    //Mapper *mapper = new MapperCont(wcsa->times, wcsa->n, BitSequenceBuilderRG(32), 0);
+    //Mapper *mapper = new MapperNone();
+    Mapper *mapper = new MapperCont(wcsa->times, wcsa->n, BitSequenceBuilderRG(32), 0);
 	//calculateOrder(wcsa->times, wcsa->n);
 
 
@@ -1562,7 +1562,7 @@ int get_from_x_to_y(void *index, TimeQuery *query) {
 					std::lower_bound(initialTimes->begin(), initialTimes->end(), query->time->h_start - offset) - initialTimes->begin();
 				const auto h_end = 
 					std::upper_bound(initialTimes->begin(), initialTimes->end(), query->time->h_end - offset) - initialTimes->begin();
-				n = getRange(g, lu2, ru2, h_start, h_end);
+				n = getRange(g->myTimesIndex, lu2, ru2, h_start, h_end);
 			}
 
 			numocc += n;
