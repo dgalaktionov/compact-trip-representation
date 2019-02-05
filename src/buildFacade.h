@@ -190,6 +190,13 @@ typedef struct {
 #endif
 
 
+enum CTRBitmap {RG, RRR, TOTAL};
+
+
+typedef struct {
+	CTRBitmap bitmap_type = CTRBitmap::RG;
+	int32_t param = 32;
+} tctrbitmap;
 
 /** ******************************************************************************
     * Interface (from pizza chili) for using the WCSA index

@@ -134,6 +134,45 @@ const inline size_t selectStop(twcsa *wcsa, const uint stopId) {
 	}
 }
 
+void parametersWM(tctrbitmap &ctr_bitmap, char *params) {
+	uint8_t i = 0;
+
+	if (strncmp(params, "RRR", 3) == 0) {
+		i = 3;
+		ctr_bitmap.bitmap_type = CTRBitmap::RRR;
+	} else if (strncmp(params, "RG", 2) == 0) {
+		i = 2;
+		ctr_bitmap.bitmap_type = CTRBitmap::RG;
+	}
+
+	if (i > 0) {
+		ctr_bitmap.param = atoi(params+i);
+	}
+}
+
+uint parametersCTR(twcsa *wcsa, char *build_options, tctrbitmap &bLines, tctrbitmap &bTimes){
+	char delimiters[] = " =;";
+	int j,num_parameters;
+	char ** parameters;
+
+	if (build_options != NULL) {
+		parse_parameters(build_options,&num_parameters, &parameters, delimiters);
+		for (j=0; j<num_parameters;j++) {
+
+			if ((strcmp(parameters[j], "bLines") == 0 ) && (j < num_parameters-1) ) {
+				parametersWM(bLines, parameters[j+1]);
+			}
+			if ((strcmp(parameters[j], "bTimes") == 0 ) && (j < num_parameters-1) ) {
+				parametersWM(bTimes, parameters[j+1]);
+			}
+			j++;
+		}
+	}
+
+	free_parameters(num_parameters, &parameters);
+	return num_parameters;
+}
+
 // Wavelet Matrix is built here
 int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 	twcsa *wcsa=(twcsa *) *index;
@@ -142,7 +181,8 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 	// Mapper *mapper = new MapperCont(wcsa->l, wcsa->n, BitSequenceBuilderRG(32), 0);
 	// calculateOrder(wcsa->times, wcsa->n);
 
-
+	tctrbitmap bLines, bTimes;
+	parametersCTR(wcsa, build_options, bLines, bTimes);
 	fprintf(stderr,"\n Building WM Indices...\n");
 	// WaveletMatrix *linesWM = new WaveletMatrix(wcsa->times, 1, new BitSequenceBuilderRG(32), mapper,false);
 	// WaveletMatrix *linesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRG(32), mapper,false);
@@ -163,7 +203,7 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 
 		if (r > l) {
 			Mapper *mapper = new MapperCont(wcsa->l+l, r-l, BitSequenceBuilderRG(32), 0);
-			line_wms->at(i) = new WaveletMatrix(wcsa->l+l, r-l, new BitSequenceBuilderRRR(128), mapper,false);
+			line_wms->at(i) = new WaveletMatrix(wcsa->l+l, r-l, new BitSequenceBuilderRG(128), mapper,false);
 			const auto occ_size = line_wms->at(i)->get_occ(line_occ);
 
 			for (size_t j = l; j < r; j++) {
@@ -179,7 +219,12 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 
 	{
 		Mapper *mapper = new MapperCont(sorted_times.data(), wcsa->n, BitSequenceBuilderRG(32), 0);
-		wcsa->myTimesIndex = (void *) new WaveletMatrix(sorted_times.data(), wcsa->n, new BitSequenceBuilderRG(32), mapper,false);
+
+		if (bTimes.bitmap_type == CTRBitmap::RRR) {
+			wcsa->myTimesIndex = (void *) new WaveletMatrix(sorted_times.data(), wcsa->n, new BitSequenceBuilderRRR(bTimes.param), mapper,false);
+		} else {
+			wcsa->myTimesIndex = (void *) new WaveletMatrix(sorted_times.data(), wcsa->n, new BitSequenceBuilderRG(bTimes.param), mapper,false);
+		}
 	}
 
 	fprintf(stderr,"\n Done.\n");
