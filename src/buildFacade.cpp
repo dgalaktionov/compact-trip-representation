@@ -125,129 +125,62 @@ int checkCompressedBitmapRRR (void *index) {
 	return 0;
 }
 
-size_t calculateSizeTimes2(uint *freqs, size_t n, uint k) {
-	size_t result = 0;
-	uint *db = new uint[n/W+1]();
+void parametersWM(tctrbitmap &ctr_bitmap, char *params) {
+	uint8_t i = 0;
 
-	for (uint i=0; i<n; i++) {
-		if (freqs[i])
-			bitset(db, i);
+	if (strncmp(params, "RRR", 3) == 0) {
+		i = 3;
+		ctr_bitmap.bitmap_type = CTRBitmap::RRR;
+	} else if (strncmp(params, "RG", 2) == 0) {
+		i = 2;
+		ctr_bitmap.bitmap_type = CTRBitmap::RG;
 	}
 
-	BitSequenceRRR bs = BitSequenceRRR(db, n, 32);
-	result += bs.getSize();
-	delete[] db;
-
-	/*
-	db = new uint[n/k+1]();
-	uint sum = 0;
-
-	for (uint i=0; i<n; i++) {
-		if (i%k==0)
-			db[i/k] = sum;
-
-		sum+=freqs[i];
+	if (i > 0) {
+		ctr_bitmap.param = atoi(params+i);
 	}
-
-	DAC d = DAC(db, n/k);
-	result += d.getSize();
-	delete[] db;
-	*/
-
-	return result;
 }
 
-size_t calculateSizeTimes3(uint *freqs, size_t n, uint k) {
-		if (n <= 1)
-			return 0;
+uint parametersCTR(twcsa *wcsa, char *build_options, tctrbitmap &bTimes){
+	char delimiters[] = " =;";
+	int j,num_parameters;
+	char ** parameters;
 
-		uint sum = 0;
-		for (uint i = 0; i < n; i++)
-			sum+=freqs[i];
-		uint b = bits(sum);
-		if (b == 0) return 0;
-
-		uint node_size = (n+k-1)/k;
-		uint nodes = (n+node_size-1)/node_size;
-		size_t result = b*nodes;
-
-		for (uint i = 0; i < n; i+=node_size) {
-			if (i+node_size >= n) {
-				result += calculateSizeTimes3(freqs+i, n-i, k);
-			} else {
-				result += calculateSizeTimes3(freqs+i, node_size, k);
+	if (build_options != NULL) {
+		parse_parameters(build_options,&num_parameters, &parameters, delimiters);
+		for (j=0; j<num_parameters;j++) {
+			if ((strcmp(parameters[j], "bTimes") == 0 ) && (j < num_parameters-1) ) {
+				parametersWM(bTimes, parameters[j+1]);
 			}
-		}
-
-		return result;
-}
-
-size_t calculateSizeTimes(uint *freqs, size_t n, uint k) {
-	if (n <= 1)
-		return 0;
-
-	uint sum = 0;
-	for (uint i = 0; i < n; i++)
-		sum+=freqs[i];
-	if (sum == 0) return 0;
-
-	uint node_size = (n+k-1)/k;
-	size_t result = k;
-
-	for (uint i = 0; i < n; i+=node_size) {
-		if (i+node_size >= n) {
-			result += calculateSizeTimes(freqs+i, n-i, k);
-		} else {
-			result += calculateSizeTimes(freqs+i, node_size, k);
+			j++;
 		}
 	}
 
-	return result;
-}
-
-void calculateOrder(uint *v, size_t n) {
-	ulong changes = 0;
-	ulong diff = 0;
-	int last = 0;
-
-	for (size_t i = 0; i < n; i++) {
-		if (last != v[i]) {
-			changes++;
-			diff += abs(((int) v[i]) - last);
-		}
-
-		last = v[i];
-	}
-
-	std::cout << std::endl << changes << " changes, " << diff << " diff" << std::endl;
-
-	return;
+	free_parameters(num_parameters, &parameters);
+	return num_parameters;
 }
 
 // Wavelet Matrix is built here
 int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 	twcsa *wcsa=(twcsa *) *index;
 	uint maxtime = wcsa->maxtime+1;
+
+	tctrbitmap bTimes;
+	parametersCTR(wcsa, build_options, bTimes);
+
     //Mapper *mapper = new MapperNone();
     Mapper *mapper = new MapperCont(wcsa->times, wcsa->n, BitSequenceBuilderRG(32), 0);
 	//calculateOrder(wcsa->times, wcsa->n);
 
+    WaveletMatrix *timesWM;
+	fprintf(stderr,"\n Building Time Index...\n");
+	if (bTimes.bitmap_type == CTRBitmap::RRR) {
+		timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRRR(bTimes.param), mapper,false);
+	} else {
+		timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRG(bTimes.param), mapper,false);
+	}
 
-		fprintf(stderr,"\n Building Time Index...\n");
-		// WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, 1, new BitSequenceBuilderRG(32), mapper,false);
-		// WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRG(32), mapper,false);
-		WaveletMatrix *timesWM = new WaveletMatrix(wcsa->times, wcsa->n, new BitSequenceBuilderRRR(128), mapper,false);
-		uint *freqs = new uint[maxtime](); // zero initialized!
-		for (size_t i = 0; i < wcsa->n; i++) freqs[wcsa->times[i]]++;
-		// WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), NULL, mapper);
-		// WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRG(32), mapper);
-		// WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRRR(128), mapper);
-		//WaveletTree *timesWM = new WaveletTree(wcsa->times, wcsa->n, new wt_coder_hutucker(freqs, maxtime), new BitSequenceBuilderRPSN(new BitSequenceBuilderRG(32), 8, 4, 64u), mapper);
-		//for (size_t i = 0; i < wcsa->n; i++) assert(timesWM->access(i) == wcsa->times[i]);
-		delete[] freqs;
-    //printf("\n\n\n WM range: %u\n\n\n", timesWM->rangeCount(500000, 600000, 2, 2));
-		fprintf(stderr,"\n Done.\n");
-
+	fprintf(stderr,"\n Done.\n");
     wcsa->myTimesIndex = (void *) timesWM;
     return 0;
 }
