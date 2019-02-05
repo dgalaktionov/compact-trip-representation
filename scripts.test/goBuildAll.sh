@@ -32,6 +32,12 @@ mkdir indexes
 # 	cat ./texts/madrid.txt | ../BUILDALLwcsa stdin ./indexes/madrid_64 \"sPsi=64; nsHuff=16;psiSF=4\"; \\
 # 	cat ./texts/madrid.txt | ../BUILDALLwcsa stdin ./indexes/madrid_256 \"sPsi=256; nsHuff=16;psiSF=4\""
 
-zcat ./texts/madrid_lines.txt.gz | ../BUILDALLwcsa stdin ./indexes/madrid_lines32 "sPsi=32; nsHuff=16;psiSF=1"
-zcat ./texts/madrid_lines.txt.gz | ../BUILDALLwcsa stdin ./indexes/madrid_lines128 "sPsi=128; nsHuff=16;psiSF=1"
-zcat ./texts/madrid_lines.txt.gz | ../BUILDALLwcsa stdin ./indexes/madrid_lines512 "sPsi=512; nsHuff=16;psiSF=1"
+cat ./texts/madrid_lines.zst | zstd -d | ../BUILDALLwcsa stdin ./indexes/madrid_lines32 "sPsi=32; nsHuff=16;psiSF=1; bTimes=RG32;bLines=RG32"
+mv indexes/madrid_lines32.l indexes/madrid_lines_RG32.l
+mv indexes/madrid_lines32.times indexes/madrid_lines_RG32.times
+cat ./texts/madrid_lines.zst | zstd -d | ../BUILDALLwcsa stdin ./indexes/madrid_lines128 "sPsi=128; nsHuff=16;psiSF=1; bTimes=RG32;bLines=RRR128"
+mv indexes/madrid_lines128.l indexes/madrid_lines_RRR128_1.l
+mv indexes/madrid_lines128.times indexes/madrid_lines_RRR128_1.times
+cat ./texts/madrid_lines.zst | zstd -d | ../BUILDALLwcsa stdin ./indexes/madrid_lines512 "sPsi=512; nsHuff=16;psiSF=1; bTimes=RRR128;bLines=RRR128"
+mv indexes/madrid_lines512.l indexes/madrid_lines_RRR128_2.l
+mv indexes/madrid_lines512.times indexes/madrid_lines_RRR128_2.times
