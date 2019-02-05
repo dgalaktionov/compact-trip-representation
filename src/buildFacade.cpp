@@ -203,7 +203,13 @@ int buildTimesIndex(struct graphDB *graph, char *build_options, void **index) {
 
 		if (r > l) {
 			Mapper *mapper = new MapperCont(wcsa->l+l, r-l, BitSequenceBuilderRG(32), 0);
-			line_wms->at(i) = new WaveletMatrix(wcsa->l+l, r-l, new BitSequenceBuilderRG(128), mapper,false);
+
+			if (bLines.bitmap_type == CTRBitmap::RRR) {
+				line_wms->at(i) = new WaveletMatrix(wcsa->l+l, r-l, new BitSequenceBuilderRRR(bLines.param), mapper,false);
+			} else {
+				line_wms->at(i) = new WaveletMatrix(wcsa->l+l, r-l, new BitSequenceBuilderRG(bLines.param), mapper,false);
+			}
+
 			const auto occ_size = line_wms->at(i)->get_occ(line_occ);
 
 			for (size_t j = l; j < r; j++) {
