@@ -236,8 +236,8 @@ int main(int argc, char ** argv) {
   printf("We are checking the results... Experiments mode off.\n");
 #endif
 
-        //for (j = 0; j < (queries[0].type->type == 15 ? XY_TOTAL : 1); j++) {
-        for (j = 0; j < 1; j++) {
+        for (j = 0; j < (queries[0].type->type == 15 ? XY_TOTAL : 1); j++) {
+        //for (j = 0; j < 1; j++) {
                 totalres = 0;
                 startClockTime();
                         for (i = 0; i < executed_queries; i++) {
@@ -247,8 +247,8 @@ int main(int argc, char ** argv) {
 
                                 if (query.type->resultIsArray)
                                 query.res = gotreslist;
-                                //query.subtype = j;
-                                query.subtype = XY_LINE_START;
+                                query.subtype = j;
+                                //query.subtype = XY_LINE_START;
                                 gotres = query.type->callback(index, &query);
                                 totalres += gotres;
                                 //printf("%i %u %u\n%u\n", query.type->type, query.values[0], query.values[1], gotres);

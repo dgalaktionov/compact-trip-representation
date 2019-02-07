@@ -5,8 +5,8 @@ CC          = g++
 
 
 ## Uncomment for using a dictionary represented as a bitmap-RRR
-export CXXFLAGS  = -std=c++11 -O9 -m64 -DNDEBUG -fPIC -DDICTIONARY_RRR -I libcds/includes/
-#export CXXFLAGS  = -std=c++11 -O9 -m64 -DNDEBUG -DEXPERIMENTS -fPIC -DDICTIONARY_RRR -I libcds/includes/
+#export CXXFLAGS  = -std=c++11 -O9 -m64 -DNDEBUG -fPIC -DDICTIONARY_RRR -I libcds/includes/
+export CXXFLAGS  = -std=c++11 -O9 -m64 -DNDEBUG -DEXPERIMENTS -fPIC -DDICTIONARY_RRR -I libcds/includes/
 #export CXXFLAGS  = -std=c++11 -g -O0 -m64 -Wall -DEXPERIMENTS -fPIC -DDICTIONARY_RRR -I libcds/includes/
 
 
