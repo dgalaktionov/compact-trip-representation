@@ -120,6 +120,10 @@ void readInitialTimes (struct graphDB *graph, FILE *f) {
 		graph->initialTimes->at(graph->lines->at(line)).push_back(data);
 	}
 
+	for (auto &times : *graph->initialTimes) {
+		std::sort(times.begin(), times.end());
+	}
+
 	fclose(f);
 }
 
@@ -211,6 +215,7 @@ int gr_readRecords(struct graphDB *graph, FILE *f ) {
 		separator = fgetc(f);
 
 		if (separator == '\n') {
+			assert(traj_len % 2 == 0);
 			times[i] = t;
 			s[i++]=data;
 			s[i] = 0;

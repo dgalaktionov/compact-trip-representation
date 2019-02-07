@@ -1349,6 +1349,8 @@ uint unmapID (twcsa *g, uint value, uint type) {
 // Wrapper for a WM count.
 size_t getRange(void *seq, size_t lu, size_t ru, int t_start, int t_end, pair<int, int> *limits=NULL, bool trackUp=false) {
 	Sequence *wm = (Sequence *)seq;
+
+	if (t_end < t_start) {return 0;}
 	
 	if (limits != NULL) {
 		limits->first = 0;
@@ -1371,6 +1373,19 @@ int addTime(int t, int delta, uint TIMES_WEEK) {
 
 uint inline encodeStop(twcsa *g, uint lineId, uint stopId) {
 	return mapID(g, STOPS + stopId * STOPS_LINE + lineId, NODE);
+}
+
+const std::pair<size_t, size_t> getJCodes(twcsa *g, uint16_t lineId, uint32_t stopId, int t_start, int t_end) {
+	const auto lineStops = &(g->lineStops->at(lineId));
+	const auto i = std::find(lineStops->begin(), lineStops->end(), stopId) - lineStops->begin();
+	const auto initialTimes = &(g->initialTimes->at(lineId));
+	const int second = g->avgTimes->at(lineId)[i];
+	const auto offset = std::min(second, t_start-1);
+
+	return std::make_pair<size_t,size_t>(
+		std::lower_bound(initialTimes->begin(), initialTimes->end(), t_start - offset) - initialTimes->begin(),
+		std::upper_bound(initialTimes->begin(), initialTimes->end(), t_end - offset) - initialTimes->begin() - 1
+	);
 }
 
 int get_starts_with_x(void *index, TimeQuery *query) {
@@ -1453,65 +1468,104 @@ int get_x_in_the_middle(void *index, TimeQuery *query) {
 	return get_uses_x(index, query) - get_starts_with_x(index, query) - get_ends_with_x(index, query);
 }
 
-// Purely spatial from x to y
-int get_from_x_to_y(void *index, TimeQuery *query) {
-	twcsa *g = (twcsa *)index;
-	uint u;
-	ulong numocc = 0, lu = 0, ru = 0;
 
-	if (query->subtype & XY_LINE_START) {
-		u = encodeStop(g, query->values[0], query->values[1]);
-	} else {
-		u = encodeStop(g, STOPS_LINE-1, query->values[1]-1)+1;
-		ru = locateCSASymbol(g->myicsa, encodeStop(g, STOPS_LINE-1, query->values[1]) + 1) - 1;
+int restrict_from_x_to_y(twcsa *g, TimeQuery *query, ulong lu, ulong ru, uint16_t startLine, std::vector<uint16_t> &endLines) {
+	ulong numocc = 0;
+	const auto start_time = query->time->h_start;
+	const auto end_time = query->time->h_end;
+	pair<int, int> res;
+
+	if (query->subtype & XY_LINE_START && query->subtype & XY_TIME_START) {
+		const auto lu0 = getPsiicsa(g->myicsa, lu);
+		const auto ru0 = getPsiicsa(g->myicsa, ru);
+		assert(ru-lu == ru0-lu0);
+
+		const auto jcodes = getJCodes(g, startLine, query->values[1], start_time, end_time);
+		numocc = getRange(g->myTimesIndex, lu0, ru0, jcodes.first, jcodes.second, 
+			(query->subtype & XY_LINE_END) ? &res : NULL, (query->subtype & XY_LINE_END) != 0);
+		assert(numocc < g->n);
+
+		if (numocc == 0) {
+			return 0;
+		} else if (query->subtype & XY_LINE_END) {
+			lu+=(res.first-lu0);
+			ru=lu+res.second-res.first;
+		}
 	}
-
-	uint v = mapID(g, query->values[3], NODE);
-	uint pattern[3] = {v, 0, u};
-	countIntIndex(g->myicsa, pattern, 3, &numocc, &lu, &ru);
 	
-	if (query->subtype & (XY_LINE_END | XY_TIME)) {
+	if (query->subtype & (XY_LINE_END | XY_TIME_END)) {
+		const auto v = mapID(g, query->values[3], NODE);
+		uint pattern[2] = {0,v};
 		numocc = 0;
-		pattern[1] = v;
-		int i = 0;
-		const auto lineId = query->values[2];
 
-		for (const auto &stop : g->lineStops->at(lineId)) {
-			if (stop == query->values[3]) {
-				break;
+		for (const auto &endLine : endLines) {
+			const auto jcodes = getJCodes(g, endLine, query->values[3], start_time, end_time);
+
+			for (const auto &stop : g->lineStops->at(endLine)) {
+				if (stop == query->values[3]) {
+					break;
+				}
+
+				pattern[0] = encodeStop(g, endLine, stop);
+				ulong lu2 = lu;
+				ulong ru2 = ru;
+				ulong n;
+				countIntIndex(g->myicsa, pattern, 2, &n, &lu2, &ru2);
+
+				if (n && (query->subtype & XY_TIME_END)) {
+					n = getRange(g->myTimesIndex, lu2, ru2, jcodes.first, jcodes.second);
+				}
+
+				numocc += n;
 			}
-
-			pattern[0] = encodeStop(g, lineId, stop);
-			ulong lu2 = lu;
-			ulong ru2 = ru;
-			ulong n;
-			countIntIndex(g->myicsa, pattern, 2, &n, &lu2, &ru2);
-
-			if (n && (query->subtype & XY_TIME)) {
-				const auto initialTimes = &(g->initialTimes->at(lineId));
-				const uint second = g->avgTimes->at(lineId)[i];
-				const auto offset = std::min(second, query->time->h_start-1);
-				const auto h_start = 
-					std::lower_bound(initialTimes->begin(), initialTimes->end(), query->time->h_start - offset) - initialTimes->begin();
-				const auto h_end = 
-					std::upper_bound(initialTimes->begin(), initialTimes->end(), query->time->h_end - offset) - initialTimes->begin();
-				n = getRange(g->myTimesIndex, lu2, ru2, h_start, h_end);
-			}
-
-			numocc += n;
-			i++;
 		}
 	}
 
-	// printf("%lu %lu %lu\n", numocc, lu, ru);
-/*
-	for (int i = lu; i <= ru; i++) {
-		printf("%u:%u ", getPsiicsa(g->myicsa, i), ((WaveletMatrix *) g->myTimesIndex)->access(getPsiicsa(g->myicsa, i)));
-	}
-	printf("\n");
-*/
-
 	return numocc;
+}
+
+int get_from_x_to_y(void *index, TimeQuery *query) {
+	ulong numocc = 0, total = 0;
+	twcsa *g = (twcsa *)index;
+	std::vector<uint16_t> startLines, endLines;
+
+	if ((query->subtype & (XY_LINE_START | XY_TIME_START)) == XY_TIME_START) {
+		query->subtype |= XY_LINE_START;
+		startLines = g->stopLines->at(query->values[1]);
+	} else {
+		startLines.push_back(query->values[0]);
+	}
+
+	if ((query->subtype & (XY_LINE_END | XY_TIME_END)) == XY_TIME_END) {
+		query->subtype |= XY_LINE_END;
+		endLines = g->stopLines->at(query->values[3]);
+	} else {
+		endLines.push_back(query->values[2]);
+	}
+
+	for (const auto &startLine : startLines) {
+		uint u;
+		ulong lu = 0, ru = 0;
+
+		if (query->subtype & XY_LINE_START) {
+			u = encodeStop(g, startLine, query->values[1]);
+		} else {
+			u = encodeStop(g, STOPS_LINE-1, query->values[1]-1)+1;
+			ru = locateCSASymbol(g->myicsa, encodeStop(g, STOPS_LINE-1, query->values[1]) + 1) - 1;
+		}
+
+		uint v = mapID(g, query->values[3], NODE);
+		uint pattern[3] = {v, 0, u};
+		countIntIndex(g->myicsa, pattern, 3, &numocc, &lu, &ru);
+
+		if (numocc && (query->subtype | XY_LINE_START) != XY_LINE_START) {
+			total += restrict_from_x_to_y(g, query, lu, ru, startLine, endLines);
+		} else {
+			total += numocc;
+		}
+	}
+
+	return total;
 }
 
 // strong semantics
