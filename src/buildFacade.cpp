@@ -618,13 +618,13 @@ int index_size(void *index, ulong *size) {
 		*size += nbytes;
 	}
 
-	fprintf(stderr,"\nSize of int index: %zu bytes (%.2f%% compression)\n",
-		*size, 100*(*size)*8/(float)(bits(wcsa->nodes)*wcsa->n));
+	fprintf(stderr,"\nSize of int index: %zu bytes, %.3f bps (%.2f%% compression)\n",
+		*size, ((*size)*8)/(float)(wcsa->n), 100*(*size)*8/(float)(bits(wcsa->nodes)*wcsa->n));
 
 	if (wcsa->myTimesIndex) {
 		size_t timesBytes = ((Sequence *) wcsa->myTimesIndex)->getSize();
-		fprintf(stderr,"\nSize of times index: %zu bytes (%.2f%% compression)\n",
-			timesBytes, 100*timesBytes*8/(float)(bits(wcsa->maxtime)*wcsa->n));
+		fprintf(stderr,"\nSize of times index: %zu bytes, %.3f bps (%.2f%% compression)\n",
+			timesBytes, (timesBytes*8)/(float)(wcsa->n), 100*timesBytes*8/(float)(bits(wcsa->maxtime)*wcsa->n));
 		*size += timesBytes;
 	}
 
