@@ -583,8 +583,8 @@ int index_size(void *index, ulong *size) {
 		*size += nbytes;
 	}
 
-	fprintf(stderr,"\nSize of int index: %zu bytes (%.2f%% compression)\n",
-		*size, 100*(*size)*8/(float)(bits(wcsa->nodes)*wcsa->n));
+	fprintf(stderr,"\nSize of int index: %zu bytes, %.3f bps (%.2f%% compression)\n",
+		*size, ((*size)*8)/(float)(wcsa->n), 100*(*size)*8/(float)(bits(wcsa->nodes)*wcsa->n));
 
 	if (wcsa->linesIndex) {
 		size_t timesBytes = wcsa->nodes * sizeof(Sequence*);
@@ -593,15 +593,15 @@ int index_size(void *index, ulong *size) {
 			timesBytes += wm->getSize();
 		}
 
-		fprintf(stderr,"\nSize of lines index: %zu bytes (%.2f%% compression)\n",
-			timesBytes, 100*timesBytes*8/(float)(bits(wcsa->lines->size())*wcsa->n));
+		fprintf(stderr,"\nSize of lines index: %zu bytes, %.3f bps (%.2f%% compression)\n",
+			timesBytes, (timesBytes*8)/(float)(wcsa->n), 100*timesBytes*8/(float)(bits(wcsa->lines->size())*wcsa->n));
 		*size += timesBytes;
 	}
 
 	if (wcsa->myTimesIndex) {
 		size_t timesBytes = ((Sequence *) wcsa->myTimesIndex)->getSize();
-		fprintf(stderr,"\nSize of times index: %zu bytes (%.2f%% compression)\n",
-			timesBytes, 100*timesBytes*8/(float)(bits(wcsa->maxtime)*wcsa->n));
+		fprintf(stderr,"\nSize of times index: %zu bytes, %.3f bps (%.2f%% compression)\n",
+			timesBytes, (timesBytes*8)/(float)(wcsa->n), 100*timesBytes*8/(float)(bits(wcsa->maxtime)*wcsa->n));
 		*size += timesBytes;
 	}
 
@@ -641,8 +641,15 @@ int index_size(void *index, ulong *size) {
 	}
 
 	if (wcsa->initialTimes) {
+		size_t n_entries = 0;
+
+		for (const auto &vec : *wcsa->initialTimes) {
+			n_entries += vec.size();
+		}
+
 		commonBytes = wcsa->cInitialTimes->getSize();
-		fprintf(stderr,"\nSize of initialTimes: %zu bytes", commonBytes);
+		fprintf(stderr,"\nSize of initialTimes: %zu bytes, %.3f bps (%.2f%% compression)\n", commonBytes, 
+			(commonBytes*8)/(float)n_entries, (100*commonBytes*8)/(float)(n_entries*32));
 		*size += commonBytes;
 	}
 
