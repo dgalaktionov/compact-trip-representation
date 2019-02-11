@@ -1,3 +1,250 @@
+ out file set to : ./indexes/madrid_lines32
+Read weeks=0
+Processing 355.7%
+ UNSORTED: 5284781 > 8206914  (record j=3)
+
+ INPUT RECORDS ARE #not# SORTED INCREASINGLY
+ UNSORTED: 2658097 > 10949429  (record j=2)
+
+ SORTED RECORDS ARE #not# SORTED INCREASINGLY
+ parameters: "sPsi=32; nsHuff=16;psiSF=1; bTimes=RG32"
+
+ Number of nodes = 11672889
+ Number of times = 9980
+
+ n_stops 11019 
+ real nodes 38014 
+ map_size 11672889  Number of lines = 1049
+ map and unmap vocabulary arrays created sucessfully
+ **** CREATING CSA-bottom-layer *****
+	 parameters for iCSA: samplePsi=32
+	              : nsHuff=16384, psiSearchFactor = 1 --> jump = 32
+	 *BUILDING THE SUFFIX ARRAY over 35573340 integers... (with sais)
+
+	 ...... ended.
+	
+	 Creating compressed Psi...
+	 Creating compressed Psi HUFFMAN RLE...
+MALLOC FOR 16384
+
+MALLOC FOR 35573340
+
+		 [3] diffsHT.total = 133418909 bits 
+		 [3]streamSize = 162170480 , index = 16384
+ psi: pointersize = 28 bits, sampleSize=26 bits
+ espacio para Sample-values-psi = 3612920 bytes
+ espacio para Sample-values-psi** = 3612920 bytes
+ espacio para Sample-pointers-psi = 3890840 bytes
+ espacio para stream-psi = 20271312 bytes
+@@@@@@@@@ psi samaplePeriod= 32, ns=16384 
+@@@@@@@@@ psi size= [samples = 3612920] bytes 
+@@@@@@@@@ psi size= [pointers = 3890840] bytes 
+@@@@@@@@@ psi size= [totalsize diffsHt.total  = 133418909] bits 
+
+@@@@@@@@@ psi size= [streamsize+largevalues =20271312] bytes 
+@@@@@@@@@ psi size= [sizeHuff tree = 65620] bytes 
+
+ Building Time Index...
+
+ Done.
+	**** [iCSA built on 35573340 integers. Size = 32350449 bytes... RAM
+ Test MAP/UNMAP (compressDictionary RRR) passed *OK*, 
+ Saving structures to disk: ./indexes/madrid_lines32.*Index saved !! 
+Size of int index: 32408738 bytes, 7.288 bps (45.55% compression)
+
+Size of times index: 64200082 bytes, 14.438 bps (103.13% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+Index occupied 103747594 bytes
+
+
+Size of int index: 32408738 bytes, 7.288 bps (45.55% compression)
+
+Size of times index: 64200082 bytes, 14.438 bps (103.13% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+[destroying index] ...Freed 103747594 bytes... RAM
+	[destroying  iCSA: compressed PSI structure] ...Freed 27840820 bytes... RAM
+	[destroying  iCSA: D vector] ...Freed 4446668 bytes... RAM
+	**** [the whole iCSA ocuppied ... 32350449 bytes... RAM
+	**** iCSA size = 32350449 bytes 
+
+
+	 ## Building time (**parsing into integers + present_layer: 46.859 secs
+
+
+
+ out file set to : ./indexes/madrid_lines128
+Read weeks=0
+Processing 355.7%
+ UNSORTED: 5284781 > 8206914  (record j=3)
+
+ INPUT RECORDS ARE #not# SORTED INCREASINGLY
+ UNSORTED: 2658097 > 10949429  (record j=2)
+
+ SORTED RECORDS ARE #not# SORTED INCREASINGLY
+ parameters: "sPsi=128; nsHuff=16;psiSF=1; bTimes=RRR32"
+
+ Number of nodes = 11672889
+ Number of times = 9980
+
+ n_stops 11019 
+ real nodes 38014 
+ map_size 11672889  Number of lines = 1049
+ map and unmap vocabulary arrays created sucessfully
+ **** CREATING CSA-bottom-layer *****
+	 parameters for iCSA: samplePsi=128
+	              : nsHuff=16384, psiSearchFactor = 1 --> jump = 128
+	 *BUILDING THE SUFFIX ARRAY over 35573340 integers... (with sais)
+
+	 ...... ended.
+	
+	 Creating compressed Psi...
+	 Creating compressed Psi HUFFMAN RLE...
+MALLOC FOR 16384
+
+MALLOC FOR 35573340
+
+		 [3] diffsHT.total = 134340978 bits 
+		 [3]streamSize = 163807856 , index = 16384
+ psi: pointersize = 28 bits, sampleSize=26 bits
+ espacio para Sample-values-psi = 903232 bytes
+ espacio para Sample-values-psi** = 903232 bytes
+ espacio para Sample-pointers-psi = 972712 bytes
+ espacio para stream-psi = 20475984 bytes
+@@@@@@@@@ psi samaplePeriod= 128, ns=16384 
+@@@@@@@@@ psi size= [samples = 903232] bytes 
+@@@@@@@@@ psi size= [pointers = 972712] bytes 
+@@@@@@@@@ psi size= [totalsize diffsHt.total  = 134340978] bits 
+
+@@@@@@@@@ psi size= [streamsize+largevalues =20475984] bytes 
+@@@@@@@@@ psi size= [sizeHuff tree = 65620] bytes 
+
+ Building Time Index...
+
+ Done.
+	**** [iCSA built on 35573340 integers. Size = 26927305 bytes... RAM
+ Test MAP/UNMAP (compressDictionary RRR) passed *OK*, 
+ Saving structures to disk: ./indexes/madrid_lines128.*Index saved !! 
+Size of int index: 26985594 bytes, 6.069 bps (37.93% compression)
+
+Size of times index: 59933644 bytes, 13.478 bps (96.27% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+Index occupied 94058012 bytes
+
+
+Size of int index: 26985594 bytes, 6.069 bps (37.93% compression)
+
+Size of times index: 59933644 bytes, 13.478 bps (96.27% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+[destroying index] ...Freed 94058012 bytes... RAM
+	[destroying  iCSA: compressed PSI structure] ...Freed 22417676 bytes... RAM
+	[destroying  iCSA: D vector] ...Freed 4446668 bytes... RAM
+	**** [the whole iCSA ocuppied ... 26927305 bytes... RAM
+	**** iCSA size = 26927305 bytes 
+
+
+	 ## Building time (**parsing into integers + present_layer: 51.688 secs
+
+
+
+ out file set to : ./indexes/madrid_lines512
+Read weeks=0
+Processing 355.7%
+ UNSORTED: 5284781 > 8206914  (record j=3)
+
+ INPUT RECORDS ARE #not# SORTED INCREASINGLY
+ UNSORTED: 2658097 > 10949429  (record j=2)
+
+ SORTED RECORDS ARE #not# SORTED INCREASINGLY
+ parameters: "sPsi=512; nsHuff=16;psiSF=1; bTimes=RRR128"
+
+ Number of nodes = 11672889
+ Number of times = 9980
+
+ n_stops 11019 
+ real nodes 38014 
+ map_size 11672889  Number of lines = 1049
+ map and unmap vocabulary arrays created sucessfully
+ **** CREATING CSA-bottom-layer *****
+	 parameters for iCSA: samplePsi=512
+	              : nsHuff=16384, psiSearchFactor = 1 --> jump = 512
+	 *BUILDING THE SUFFIX ARRAY over 35573340 integers... (with sais)
+
+	 ...... ended.
+	
+	 Creating compressed Psi...
+	 Creating compressed Psi HUFFMAN RLE...
+MALLOC FOR 16384
+
+MALLOC FOR 35573340
+
+		 [3] diffsHT.total = 134371674 bits 
+		 [3]streamSize = 164106482 , index = 16384
+ psi: pointersize = 28 bits, sampleSize=26 bits
+ espacio para Sample-values-psi = 225812 bytes
+ espacio para Sample-values-psi** = 225812 bytes
+ espacio para Sample-pointers-psi = 243184 bytes
+ espacio para stream-psi = 20513312 bytes
+@@@@@@@@@ psi samaplePeriod= 512, ns=16384 
+@@@@@@@@@ psi size= [samples = 225812] bytes 
+@@@@@@@@@ psi size= [pointers = 243184] bytes 
+@@@@@@@@@ psi size= [totalsize diffsHt.total  = 134371674] bits 
+
+@@@@@@@@@ psi size= [streamsize+largevalues =20513312] bytes 
+@@@@@@@@@ psi size= [sizeHuff tree = 65628] bytes 
+
+ Building Time Index...
+
+ Done.
+	**** [iCSA built on 35573340 integers. Size = 25557693 bytes... RAM
+ Test MAP/UNMAP (compressDictionary RRR) passed *OK*, 
+ Saving structures to disk: ./indexes/madrid_lines512.*Index saved !! 
+Size of int index: 25615982 bytes, 5.761 bps (36.00% compression)
+
+Size of times index: 55341016 bytes, 12.446 bps (88.90% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+Index occupied 88095772 bytes
+
+
+Size of int index: 25615982 bytes, 5.761 bps (36.00% compression)
+
+Size of times index: 55341016 bytes, 12.446 bps (88.90% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+[destroying index] ...Freed 88095772 bytes... RAM
+	[destroying  iCSA: compressed PSI structure] ...Freed 21048064 bytes... RAM
+	[destroying  iCSA: D vector] ...Freed 4446668 bytes... RAM
+	**** [the whole iCSA ocuppied ... 25557693 bytes... RAM
+	**** iCSA size = 25557693 bytes 
+
+
+	 ## Building time (**parsing into integers + present_layer: 49.828 secs
+
+
+
+
 TTCTR (psi=32 times=RG32)
 ./queries/madrid/10k-starts-with-x-ends-with-y.txt	73646	10000	773297	7.364600	0.095236
 ./queries/madrid/10k-starts-with-x-ends-with-y.txt	70815	10000	739183	7.081500	0.095802
