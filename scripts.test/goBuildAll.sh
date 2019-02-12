@@ -36,5 +36,7 @@ cat ./texts/madrid_lines.zst | zstd -d | ../BUILDALLwcsa stdin ./indexes/madrid_
 mv indexes/madrid_lines32.times indexes/madrid_lines_RG32.times
 cat ./texts/madrid_lines.zst | zstd -d | ../BUILDALLwcsa stdin ./indexes/madrid_lines128 "sPsi=128; nsHuff=16;psiSF=1; bTimes=RRR32"
 mv indexes/madrid_lines128.times indexes/madrid_lines_RRR32.times
+cat ./texts/madrid_lines.zst | zstd -d | ../BUILDALLwcsa stdin ./indexes/madrid_lines512 "sPsi=512; nsHuff=16;psiSF=1; bTimes=RRR64"
+mv indexes/madrid_lines512.times indexes/madrid_lines_RRR64.times
 cat ./texts/madrid_lines.zst | zstd -d | ../BUILDALLwcsa stdin ./indexes/madrid_lines512 "sPsi=512; nsHuff=16;psiSF=1; bTimes=RRR128"
 mv indexes/madrid_lines512.times indexes/madrid_lines_RRR128.times
