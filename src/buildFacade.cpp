@@ -418,9 +418,9 @@ int save_index (void *index, char *filename) {
 
     /**  Loads index from one or more file(s) named filename, possibly
       adding the proper extensions. */
-int load_index(char *filename, char *timesFile, void **index){
+int load_index(char *filename, char *linesFile, char *timesFile, void **index){
 	twcsa *wcsa;
-	wcsa = loadWCSA (filename, timesFile);
+	wcsa = loadWCSA (filename, linesFile, timesFile);
 	(*index) = (void *) wcsa;
 
 #ifdef DICTIONARY_HUFFRLE
@@ -438,11 +438,11 @@ int load_index(char *filename, char *timesFile, void **index){
 	return 0;
 }
 
-int loadTimeIndex(twcsa *wcsa, char *basename) {
+int loadTimeIndex(twcsa *wcsa, char *linesFile, char *timesFile) {
 		char filename[1024];
 
 		{
-			strcpy(filename, basename);
+			strcpy(filename, linesFile);
 			strcat(filename, ".");
 			strcat(filename, LINES_FILE_EXT);
 			std::ifstream ifs(filename, std::ifstream::in);
@@ -457,7 +457,7 @@ int loadTimeIndex(twcsa *wcsa, char *basename) {
 		}
 
 		{
-			strcpy(filename, basename);
+			strcpy(filename, timesFile);
 			strcat(filename, ".");
 			strcat(filename, TIMES_FILE_EXT);
 			std::ifstream ifs(filename, std::ifstream::in);
@@ -1059,7 +1059,7 @@ int loadBaseline(twcsa *wcsa, char *basename) {
 	//wcsa->baseline = new tbaseline{NULL, NULL, NULL, fromXtoY};
 }
 
-twcsa *loadWCSA(char *filename, char *timesFile) {
+twcsa *loadWCSA(char *filename, char *linesFile, char *timesFile) {
 	twcsa *wcsa;
 
 	wcsa = (twcsa *) my_malloc (sizeof (twcsa) * 1);
@@ -1067,7 +1067,7 @@ twcsa *loadWCSA(char *filename, char *timesFile) {
 
 	loadIntIndex(filename, (void **)&wcsa->myicsa);
 	loadStructs(wcsa,filename);
-	loadTimeIndex(wcsa,timesFile);
+	loadTimeIndex(wcsa, linesFile, timesFile);
 	// loadBaseline(wcsa, filename);
 
 

@@ -119,9 +119,7 @@ Size of initialTimes: 450719 bytes, 2.121 bps (6.63% compression)
 	**** iCSA size = 30927069 bytes 
 
 
-	 ## Building time (**parsing into integers + present_layer: 69.703 secs
-
-
+	 ## Building time (**parsing into integers + present_layer: 35.780 secs
 
  out file set to : ./indexes/madrid_lines128
 Read weeks=0
@@ -170,7 +168,7 @@ Processing 355.7%
 	[0 11021 10555 ]
 	[0 ]
 
- parameters: "sPsi=128; nsHuff=16;psiSF=1; bTimes=RG32;bLines=RRR128"
+ parameters: "sPsi=128; nsHuff=16;psiSF=1; bTimes=RRR32;bLines=RRR32"
 
  Number of nodes = 11022
  Number of times = 9980
@@ -214,39 +212,160 @@ MALLOC FOR 35573340
  Saving structures to disk: ./indexes/madrid_lines128.*Index saved !! 
 Size of int index: 25467738 bytes, 5.727 bps (40.91% compression)
 
-Size of lines index: 9351388 bytes, 2.103 bps (19.12% compression)
+Size of lines index: 10395976 bytes, 2.338 bps (21.25% compression)
 
-Size of times index: 64200082 bytes, 14.438 bps (103.13% compression)
+Size of times index: 59671620 bytes, 13.419 bps (95.85% compression)
 
 Size of lineStops: 121972 bytes
 Size of stopLines: 144548 bytes
 Size of avgTimes: 65182 bytes
 Size of initialTimes: 450719 bytes, 2.121 bps (6.63% compression)
 
-Index occupied 99801629 bytes
+Index occupied 96317755 bytes
 
 
 Size of int index: 25467738 bytes, 5.727 bps (40.91% compression)
 
-Size of lines index: 9351388 bytes, 2.103 bps (19.12% compression)
+Size of lines index: 10395976 bytes, 2.338 bps (21.25% compression)
 
-Size of times index: 64200082 bytes, 14.438 bps (103.13% compression)
+Size of times index: 59671620 bytes, 13.419 bps (95.85% compression)
 
 Size of lineStops: 121972 bytes
 Size of stopLines: 144548 bytes
 Size of avgTimes: 65182 bytes
 Size of initialTimes: 450719 bytes, 2.121 bps (6.63% compression)
 
-[destroying index] ...Freed 99801629 bytes... RAM
+[destroying index] ...Freed 96317755 bytes... RAM
 	[destroying  iCSA: compressed PSI structure] ...Freed 20994820 bytes... RAM
 	[destroying  iCSA: D vector] ...Freed 4446668 bytes... RAM
 	**** [the whole iCSA ocuppied ... 25462829 bytes... RAM
 	**** iCSA size = 25462829 bytes 
 
 
-	 ## Building time (**parsing into integers + present_layer: 73.984 secs
+	 ## Building time (**parsing into integers + present_layer: 36.836 secs
+
+ out file set to : ./indexes/madrid_lines512
+Read weeks=0
+Processing 355.7%
+ UNSORTED: 4937 > 7720  (record j=3)
+
+ INPUT RECORDS ARE #not# SORTED INCREASINGLY
+ UNSORTED: 2436 > 10332  (record j=2)
+
+ SORTED RECORDS ARE #not# SORTED INCREASINGLY
+ 10000001 trajectories read, max nodes = 11022, max-time = 9979
+	[0 1 2436 340 1 ]
+	[0 1 10332 4058 342 ]
+	[0 1 2436 345 ]
+	[0 1 2436 340 346 ]
+	[0 1 10824 344 353 ]
+	[0 1 2435 410 ]
+	[0 1 1981 ]
+	[0 1 1981 ]
+	[0 1 1981 ]
+	[0 1 1981 ]
+...
+...
+
+	[0 5404 7575 8322 7315 ]
+	[0 5404 5003 7329 ]
+	[0 5404 5008 7329 ]
+	[0 5404 5008 7329 ]
+	[0 5404 5008 7329 ]
+	[0 5404 5008 7329 ]
+	[0 5404 5008 7329 ]
+	[0 5404 5008 7329 ]
+	[0 5404 5008 7329 ]
+	[0 5404 5008 7329 ]
+...
+...
+
+	[0 11021 10555 ]
+	[0 11021 10555 ]
+	[0 11021 10555 ]
+	[0 11021 10555 ]
+	[0 11021 10555 ]
+	[0 11021 10555 ]
+	[0 11021 10555 ]
+	[0 11021 10555 ]
+	[0 11021 10555 ]
+	[0 ]
+
+ parameters: "sPsi=512; nsHuff=16;psiSF=1; bTimes=RRR64;bLines=RRR64"
+
+ Number of nodes = 11022
+ Number of times = 9980
+
+ real nodes 11022 
+ map_size 11022  Number of lines = 1049
+ map and unmap vocabulary arrays created sucessfully
+ **** CREATING CSA-bottom-layer *****
+	 parameters for iCSA: samplePsi=512
+	              : nsHuff=16384, psiSearchFactor = 1 --> jump = 512
+	 *BUILDING THE SUFFIX ARRAY over 35573340 integers... (with sais)
+
+	 ...... ended.
+	
+	 Creating compressed Psi...
+	 Creating compressed Psi HUFFMAN RLE...
+MALLOC FOR 16384
+
+MALLOC FOR 35573340
+
+		 [3] diffsHT.total = 125754163 bits 
+		 [3]streamSize = 152627094 , index = 16384
+ psi: pointersize = 28 bits, sampleSize=26 bits
+ espacio para Sample-values-psi = 225812 bytes
+ espacio para Sample-values-psi** = 225812 bytes
+ espacio para Sample-pointers-psi = 243184 bytes
+ espacio para stream-psi = 19078388 bytes
+@@@@@@@@@ psi samaplePeriod= 512, ns=16384 
+@@@@@@@@@ psi size= [samples = 225812] bytes 
+@@@@@@@@@ psi size= [pointers = 243184] bytes 
+@@@@@@@@@ psi size= [totalsize diffsHt.total  = 125754163] bits 
+
+@@@@@@@@@ psi size= [streamsize+largevalues =19078388] bytes 
+@@@@@@@@@ psi size= [sizeHuff tree = 65624] bytes 
+	**** [iCSA built on 35573340 integers. Size = 24081145 bytes... RAM
+ Test MAP/UNMAP (compressDictionary RRR) passed *OK*, 
+ Building WM Indices...
+
+ Done.
+
+ Saving structures to disk: ./indexes/madrid_lines512.*Index saved !! 
+Size of int index: 24086054 bytes, 5.417 bps (38.69% compression)
+
+Size of lines index: 9693728 bytes, 2.180 bps (19.82% compression)
+
+Size of times index: 56614500 bytes, 12.732 bps (90.94% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 450719 bytes, 2.121 bps (6.63% compression)
+
+Index occupied 91176703 bytes
 
 
+Size of int index: 24086054 bytes, 5.417 bps (38.69% compression)
+
+Size of lines index: 9693728 bytes, 2.180 bps (19.82% compression)
+
+Size of times index: 56614500 bytes, 12.732 bps (90.94% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 450719 bytes, 2.121 bps (6.63% compression)
+
+[destroying index] ...Freed 91176703 bytes... RAM
+	[destroying  iCSA: compressed PSI structure] ...Freed 19613136 bytes... RAM
+	[destroying  iCSA: D vector] ...Freed 4446668 bytes... RAM
+	**** [the whole iCSA ocuppied ... 24081145 bytes... RAM
+	**** iCSA size = 24081145 bytes 
+
+
+	 ## Building time (**parsing into integers + present_layer: 36.689 secs
 
  out file set to : ./indexes/madrid_lines512
 Read weeks=0
@@ -369,8 +488,7 @@ Size of initialTimes: 450719 bytes, 2.121 bps (6.63% compression)
 	**** iCSA size = 24081145 bytes 
 
 
-	 ## Building time (**parsing into integers + present_layer: 81.453 secs
-
+	 ## Building time (**parsing into integers + present_layer: 37.160 secs
 
 
 
