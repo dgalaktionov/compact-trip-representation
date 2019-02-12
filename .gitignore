@@ -56,3 +56,4 @@ libsais/sais-2.4.1/build/
 libcds/libcds2/BitStreamTests
 libcds/libcds2/CTestTestfile.cmake
 scripts.test/*.gz
+scripts.test/*.zst

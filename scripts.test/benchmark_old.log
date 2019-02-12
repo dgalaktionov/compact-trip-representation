@@ -1,0 +1,401 @@
+ out file set to : ./indexes/madrid_lines32
+Read weeks=0
+Processing 355.7%
+ UNSORTED: 5284781 > 8206914  (record j=3)
+
+ INPUT RECORDS ARE #not# SORTED INCREASINGLY
+ UNSORTED: 2658097 > 10949429  (record j=2)
+
+ SORTED RECORDS ARE #not# SORTED INCREASINGLY
+ parameters: "sPsi=32; nsHuff=16;psiSF=1; bTimes=RG32"
+
+ Number of nodes = 11672889
+ Number of times = 9980
+
+ n_stops 11019 
+ real nodes 38014 
+ map_size 11672889  Number of lines = 1049
+ map and unmap vocabulary arrays created sucessfully
+ **** CREATING CSA-bottom-layer *****
+	 parameters for iCSA: samplePsi=32
+	              : nsHuff=16384, psiSearchFactor = 1 --> jump = 32
+	 *BUILDING THE SUFFIX ARRAY over 35573340 integers... (with sais)
+
+	 ...... ended.
+	
+	 Creating compressed Psi...
+	 Creating compressed Psi HUFFMAN RLE...
+MALLOC FOR 16384
+
+MALLOC FOR 35573340
+
+		 [3] diffsHT.total = 133418909 bits 
+		 [3]streamSize = 162170480 , index = 16384
+ psi: pointersize = 28 bits, sampleSize=26 bits
+ espacio para Sample-values-psi = 3612920 bytes
+ espacio para Sample-values-psi** = 3612920 bytes
+ espacio para Sample-pointers-psi = 3890840 bytes
+ espacio para stream-psi = 20271312 bytes
+@@@@@@@@@ psi samaplePeriod= 32, ns=16384 
+@@@@@@@@@ psi size= [samples = 3612920] bytes 
+@@@@@@@@@ psi size= [pointers = 3890840] bytes 
+@@@@@@@@@ psi size= [totalsize diffsHt.total  = 133418909] bits 
+
+@@@@@@@@@ psi size= [streamsize+largevalues =20271312] bytes 
+@@@@@@@@@ psi size= [sizeHuff tree = 65620] bytes 
+
+ Building Time Index...
+
+ Done.
+	**** [iCSA built on 35573340 integers. Size = 32350449 bytes... RAM
+ Test MAP/UNMAP (compressDictionary RRR) passed *OK*, 
+ Saving structures to disk: ./indexes/madrid_lines32.*Index saved !! 
+Size of int index: 32408738 bytes, 7.288 bps (45.55% compression)
+
+Size of times index: 64200082 bytes, 14.438 bps (103.13% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+Index occupied 103747594 bytes
+
+
+Size of int index: 32408738 bytes, 7.288 bps (45.55% compression)
+
+Size of times index: 64200082 bytes, 14.438 bps (103.13% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+[destroying index] ...Freed 103747594 bytes... RAM
+	[destroying  iCSA: compressed PSI structure] ...Freed 27840820 bytes... RAM
+	[destroying  iCSA: D vector] ...Freed 4446668 bytes... RAM
+	**** [the whole iCSA ocuppied ... 32350449 bytes... RAM
+	**** iCSA size = 32350449 bytes 
+
+
+	 ## Building time (**parsing into integers + present_layer: 46.859 secs
+
+
+
+ out file set to : ./indexes/madrid_lines128
+Read weeks=0
+Processing 355.7%
+ UNSORTED: 5284781 > 8206914  (record j=3)
+
+ INPUT RECORDS ARE #not# SORTED INCREASINGLY
+ UNSORTED: 2658097 > 10949429  (record j=2)
+
+ SORTED RECORDS ARE #not# SORTED INCREASINGLY
+ parameters: "sPsi=128; nsHuff=16;psiSF=1; bTimes=RRR32"
+
+ Number of nodes = 11672889
+ Number of times = 9980
+
+ n_stops 11019 
+ real nodes 38014 
+ map_size 11672889  Number of lines = 1049
+ map and unmap vocabulary arrays created sucessfully
+ **** CREATING CSA-bottom-layer *****
+	 parameters for iCSA: samplePsi=128
+	              : nsHuff=16384, psiSearchFactor = 1 --> jump = 128
+	 *BUILDING THE SUFFIX ARRAY over 35573340 integers... (with sais)
+
+	 ...... ended.
+	
+	 Creating compressed Psi...
+	 Creating compressed Psi HUFFMAN RLE...
+MALLOC FOR 16384
+
+MALLOC FOR 35573340
+
+		 [3] diffsHT.total = 134340978 bits 
+		 [3]streamSize = 163807856 , index = 16384
+ psi: pointersize = 28 bits, sampleSize=26 bits
+ espacio para Sample-values-psi = 903232 bytes
+ espacio para Sample-values-psi** = 903232 bytes
+ espacio para Sample-pointers-psi = 972712 bytes
+ espacio para stream-psi = 20475984 bytes
+@@@@@@@@@ psi samaplePeriod= 128, ns=16384 
+@@@@@@@@@ psi size= [samples = 903232] bytes 
+@@@@@@@@@ psi size= [pointers = 972712] bytes 
+@@@@@@@@@ psi size= [totalsize diffsHt.total  = 134340978] bits 
+
+@@@@@@@@@ psi size= [streamsize+largevalues =20475984] bytes 
+@@@@@@@@@ psi size= [sizeHuff tree = 65620] bytes 
+
+ Building Time Index...
+
+ Done.
+	**** [iCSA built on 35573340 integers. Size = 26927305 bytes... RAM
+ Test MAP/UNMAP (compressDictionary RRR) passed *OK*, 
+ Saving structures to disk: ./indexes/madrid_lines128.*Index saved !! 
+Size of int index: 26985594 bytes, 6.069 bps (37.93% compression)
+
+Size of times index: 59933644 bytes, 13.478 bps (96.27% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+Index occupied 94058012 bytes
+
+
+Size of int index: 26985594 bytes, 6.069 bps (37.93% compression)
+
+Size of times index: 59933644 bytes, 13.478 bps (96.27% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+[destroying index] ...Freed 94058012 bytes... RAM
+	[destroying  iCSA: compressed PSI structure] ...Freed 22417676 bytes... RAM
+	[destroying  iCSA: D vector] ...Freed 4446668 bytes... RAM
+	**** [the whole iCSA ocuppied ... 26927305 bytes... RAM
+	**** iCSA size = 26927305 bytes 
+
+
+	 ## Building time (**parsing into integers + present_layer: 51.688 secs
+
+
+
+ out file set to : ./indexes/madrid_lines512
+Read weeks=0
+Processing 355.7%
+ UNSORTED: 5284781 > 8206914  (record j=3)
+
+ INPUT RECORDS ARE #not# SORTED INCREASINGLY
+ UNSORTED: 2658097 > 10949429  (record j=2)
+
+ SORTED RECORDS ARE #not# SORTED INCREASINGLY
+ parameters: "sPsi=512; nsHuff=16;psiSF=1; bTimes=RRR128"
+
+ Number of nodes = 11672889
+ Number of times = 9980
+
+ n_stops 11019 
+ real nodes 38014 
+ map_size 11672889  Number of lines = 1049
+ map and unmap vocabulary arrays created sucessfully
+ **** CREATING CSA-bottom-layer *****
+	 parameters for iCSA: samplePsi=512
+	              : nsHuff=16384, psiSearchFactor = 1 --> jump = 512
+	 *BUILDING THE SUFFIX ARRAY over 35573340 integers... (with sais)
+
+	 ...... ended.
+	
+	 Creating compressed Psi...
+	 Creating compressed Psi HUFFMAN RLE...
+MALLOC FOR 16384
+
+MALLOC FOR 35573340
+
+		 [3] diffsHT.total = 134371674 bits 
+		 [3]streamSize = 164106482 , index = 16384
+ psi: pointersize = 28 bits, sampleSize=26 bits
+ espacio para Sample-values-psi = 225812 bytes
+ espacio para Sample-values-psi** = 225812 bytes
+ espacio para Sample-pointers-psi = 243184 bytes
+ espacio para stream-psi = 20513312 bytes
+@@@@@@@@@ psi samaplePeriod= 512, ns=16384 
+@@@@@@@@@ psi size= [samples = 225812] bytes 
+@@@@@@@@@ psi size= [pointers = 243184] bytes 
+@@@@@@@@@ psi size= [totalsize diffsHt.total  = 134371674] bits 
+
+@@@@@@@@@ psi size= [streamsize+largevalues =20513312] bytes 
+@@@@@@@@@ psi size= [sizeHuff tree = 65628] bytes 
+
+ Building Time Index...
+
+ Done.
+	**** [iCSA built on 35573340 integers. Size = 25557693 bytes... RAM
+ Test MAP/UNMAP (compressDictionary RRR) passed *OK*, 
+ Saving structures to disk: ./indexes/madrid_lines512.*Index saved !! 
+Size of int index: 25615982 bytes, 5.761 bps (36.00% compression)
+
+Size of times index: 55341016 bytes, 12.446 bps (88.90% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+Index occupied 88095772 bytes
+
+
+Size of int index: 25615982 bytes, 5.761 bps (36.00% compression)
+
+Size of times index: 55341016 bytes, 12.446 bps (88.90% compression)
+
+Size of lineStops: 121972 bytes
+Size of stopLines: 144548 bytes
+Size of avgTimes: 65182 bytes
+Size of initialTimes: 6807072 bytes
+[destroying index] ...Freed 88095772 bytes... RAM
+	[destroying  iCSA: compressed PSI structure] ...Freed 21048064 bytes... RAM
+	[destroying  iCSA: D vector] ...Freed 4446668 bytes... RAM
+	**** [the whole iCSA ocuppied ... 25557693 bytes... RAM
+	**** iCSA size = 25557693 bytes 
+
+
+	 ## Building time (**parsing into integers + present_layer: 49.828 secs
+
+
+
+
+TTCTR (psi=32 times=RG32)
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	73646	10000	773297	7.364600	0.095236
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	70815	10000	739183	7.081500	0.095802
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	311623	10000	721512	31.162300	0.431903
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	310953	10000	712911	31.095300	0.436174
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	213181	10000	25069	21.318100	8.503770
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	103446	10000	23932	10.344600	4.322497
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	370210	10000	23398	37.021000	15.822293
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	239621	10000	23049	23.962100	10.396156
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	942804	10000	24628	94.280400	38.281793
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	928997	10000	23568	92.899700	39.417727
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	343599	10000	23341	34.359900	14.720835
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	338394	10000	23062	33.839400	14.673229
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	713207	10000	24483	71.320700	29.130703
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	502609	10000	23394	50.260900	21.484526
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	385325	10000	23201	38.532500	16.608120
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	250145	10000	22894	25.014500	10.926225
+TTCTR (psi=32 times=RRR32)
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	74225	10000	773297	7.422500	0.095985
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	73333	10000	739183	7.333300	0.099208
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	319060	10000	721512	31.906000	0.442210
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	310673	10000	712911	31.067300	0.435781
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	223875	10000	25069	22.387500	8.930352
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	111179	10000	23932	11.117900	4.645621
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	399246	10000	23398	39.924600	17.063253
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	256249	10000	23049	25.624900	11.117576
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	960258	10000	24628	96.025800	38.990499
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	943832	10000	23568	94.383200	40.047183
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	353875	10000	23341	35.387500	15.161090
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	348674	10000	23062	34.867400	15.118984
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	745286	10000	24483	74.528600	30.440959
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	530161	10000	23394	53.016100	22.662264
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	411108	10000	23201	41.110800	17.719409
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	273896	10000	22894	27.389600	11.963659
+TTCTR (psi=32 times=RRR128)
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	74953	10000	773297	7.495300	0.096927
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	72794	10000	739183	7.279400	0.098479
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	311528	10000	721512	31.152800	0.431771
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	308038	10000	712911	30.803800	0.432085
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	229731	10000	25069	22.973100	9.163948
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	118132	10000	23932	11.813200	4.936152
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	418043	10000	23398	41.804300	17.866613
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	277096	10000	23049	27.709600	12.022040
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	969119	10000	24628	96.911900	39.350292
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	950141	10000	23568	95.014100	40.314876
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	361208	10000	23341	36.120800	15.475258
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	354203	10000	23062	35.420300	15.358729
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	770985	10000	24483	77.098500	31.490626
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	551073	10000	23394	55.107300	23.556168
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	441815	10000	23201	44.181500	19.042929
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	297222	10000	22894	29.722200	12.982528
+TTCTR (psi=128 times=RG32)
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	119368	10000	773278	11.936800	0.154366
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	115833	10000	739164	11.583300	0.156708
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	650466	10000	721481	65.046600	0.901571
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	647597	10000	712885	64.759700	0.908417
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	327430	10000	25068	32.743000	13.061672
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	152110	10000	23931	15.211000	6.356191
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	641686	10000	23395	64.168600	27.428339
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	417717	10000	23046	41.771700	18.125358
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2148426	10000	24626	214.842600	87.242183
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2125791	10000	23566	212.579100	90.205847
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	680731	10000	23339	68.073100	29.167102
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	677051	10000	23060	67.705100	29.360408
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1459149	10000	24477	145.914900	59.613065
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1044255	10000	23391	104.425500	44.643453
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	652289	10000	23198	65.228900	28.118329
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	430849	10000	22891	43.084900	18.821764
+TTCTR (psi=128 times=RRR32)
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	117881	10000	773278	11.788100	0.152443
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	115900	10000	739164	11.590000	0.156799
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	651971	10000	721481	65.197100	0.903657
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	644948	10000	712885	64.494800	0.904701
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	338117	10000	25068	33.811700	13.487993
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	159916	10000	23931	15.991600	6.682379
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	661339	10000	23395	66.133900	28.268391
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	436823	10000	23046	43.682300	18.954396
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2161043	10000	24626	216.104300	87.754528
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2137640	10000	23566	213.764000	90.708648
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	692348	10000	23339	69.234800	29.664853
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	681267	10000	23060	68.126700	29.543235
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1489114	10000	24477	148.911400	60.837276
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1069330	10000	23391	106.933000	45.715446
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	681827	10000	23198	68.182700	29.391629
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	451227	10000	22891	45.122700	19.711983
+TTCTR (psi=128 times=RRR128)
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	117609	10000	773278	11.760900	0.152091
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	115492	10000	739164	11.549200	0.156247
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	652767	10000	721481	65.276700	0.904760
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	646186	10000	712885	64.618600	0.906438
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	343632	10000	25068	34.363200	13.707994
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	163352	10000	23931	16.335200	6.825958
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	689588	10000	23395	68.958800	29.475871
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	455326	10000	23046	45.532600	19.757268
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2172582	10000	24626	217.258200	88.223098
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2145692	10000	23566	214.569200	91.050327
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	698546	10000	23339	69.854600	29.930417
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	691131	10000	23060	69.113100	29.970989
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1517583	10000	24477	151.758300	62.000368
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1094260	10000	23391	109.426000	46.781241
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	710323	10000	23198	71.032300	30.620010
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	477566	10000	22891	47.756600	20.862610
+TTCTR (psi=512 times=RG32)
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	284616	10000	769820	28.461600	0.369718
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	283683	10000	736048	28.368300	0.385414
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1951221	10000	716950	195.122100	2.721558
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1933684	10000	708493	193.368400	2.729292
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	781729	10000	24948	78.172900	31.334335
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	346904	10000	23818	34.690400	14.564783
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1697054	10000	22932	169.705400	74.003750
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1123130	10000	22587	112.313000	49.724620
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6296455	10000	24465	629.645500	257.365829
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6243974	10000	23417	624.397400	266.642781
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1979101	10000	23189	197.910100	85.346544
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1962220	10000	22915	196.222000	85.630373
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	4076025	10000	24009	407.602500	169.770711
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2942700	10000	22931	294.270000	128.328464
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1710116	10000	22738	171.011600	75.209605
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1133863	10000	22435	113.386300	50.539915
+TTCTR (psi=512 times=RRR32)
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	284471	10000	769820	28.447100	0.369529
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	281190	10000	736048	28.119000	0.382027
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1960758	10000	716950	196.075800	2.734860
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1944368	10000	708493	194.436800	2.744372
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	792630	10000	24948	79.263000	31.771284
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	351175	10000	23818	35.117500	14.744101
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1727037	10000	22932	172.703700	75.311224
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1146799	10000	22587	114.679900	50.772524
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6347663	10000	24465	634.766300	259.458941
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6289205	10000	23417	628.920500	268.574326
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2000383	10000	23189	200.038300	86.264306
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1981891	10000	22915	198.189100	86.488806
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	4126842	10000	24009	412.684200	171.887292
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2985221	10000	22931	298.522100	130.182766
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1745733	10000	22738	174.573300	76.776014
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1175329	10000	22435	117.532900	52.388188
+TTCTR (psi=512 times=RRR128)
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	284580	10000	769820	28.458000	0.369671
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	283221	10000	736048	28.322100	0.384786
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1958769	10000	716950	195.876900	2.732086
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1944818	10000	708493	194.481800	2.745007
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	800254	10000	24948	80.025400	32.076880
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	357740	10000	23818	35.774000	15.019733
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1752494	10000	22932	175.249400	76.421333
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1167516	10000	22587	116.751600	51.689733
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6356356	10000	24465	635.635600	259.814265
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	6297720	10000	23417	629.772000	268.937951
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2006878	10000	23189	200.687800	86.544396
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	2095610	10000	22915	209.561000	91.451451
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	4154606	10000	24009	415.460600	173.043692
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	3006347	10000	22931	300.634700	131.104051
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1773671	10000	22738	177.367100	78.004706
+./queries/madrid/10k-starts-with-x-ends-with-y.txt	1189629	10000	22435	118.962900	53.025585
+
