@@ -142,10 +142,11 @@
 
 #../benchmark indexes/madrid_lines indexes/madrid_lines ./queries/madrid/top-100.txt 0 1000
 
-#echo 'TTCTR (psi='$2' lines='$3' times='$4')'
+echo 'TTCTR (psi='$2' lines='$3' times='$4')'
 #../benchmark indexes/$1$2 indexes/$1_$3 indexes/$1_$4 ./queries/madrid/10k-starts-with-x-ends-with-y.txt 0 10000
-#../benchmark indexes/$1$2 indexes/$1_$3 ./queries/madrid/10k-starts-with-x.txt 0 1000
+../benchmark indexes/$1$2 indexes/$1_$3 indexes/$1_$4 ./queries/madrid/10k-starts-with-x.txt 0 10000
+../benchmark indexes/$1$2 indexes/$1_$3 indexes/$1_$4 ./queries/madrid/10k-ends-with-x.txt 0 10000
 
-../benchmark indexes/madrid_lines indexes/madrid_lines_RG32 indexes/madrid_lines_RG32 ./queries/madrid/10k-starts-with-x-ends-with-y.txt 0 10000
+#../benchmark indexes/madrid_lines indexes/madrid_lines indexes/madrid_lines ./queries/madrid/10k-starts-with-x-ends-with-y.txt 0 10000
 #../benchmark indexes/madrid_lines indexes/madrid_lines indexes/madrid_lines ./queries/madrid/10k-starts-with-x.txt 0 10000
 #../benchmark indexes/madrid_lines indexes/madrid_lines indexes/madrid_lines ./queries/madrid/10k-ends-with-x.txt 0 10000

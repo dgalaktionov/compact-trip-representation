@@ -1350,9 +1350,7 @@ int get_ends_with_x(void *index, TimeQuery *query) {
 
 		for (const auto &line : lines) {
 			n = getRange(linesWM->at(u), lu-stop_offset, ru-stop_offset, line, line, &res);
-			printf("%lu %lu\n", lu-stop_offset, ru-stop_offset);
-			printf("%lu %lu %lu\n", res.first, res.second, n);
-			assert(n == res.second-res.first+1);
+			assert(n == 0 || n == res.second-res.first+1);
 			assert(stop_offset+res.second < g->n);
 
 			if (n && query->subtype & XY_TIME_END) {
