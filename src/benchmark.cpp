@@ -236,7 +236,8 @@ int main(int argc, char ** argv) {
   printf("We are checking the results... Experiments mode off.\n");
 #endif
 
-        for (j = 0; j < (queries[0].type->type == 15 ? XY_TOTAL : 1); j++) {
+        //for (j = 0; j < (queries[0].type->type == 15 ? XY_TOTAL : 1); j++) {
+        for (j = 0; j < XY_TOTAL; j++) {
         //for (j = 0; j < 1; j++) {
                 totalres = 0;
                 startClockTime();
