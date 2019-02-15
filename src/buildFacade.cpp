@@ -418,9 +418,9 @@ int save_index (void *index, char *filename) {
 
     /**  Loads index from one or more file(s) named filename, possibly
       adding the proper extensions. */
-int load_index(char *filename, char *timesFile, void **index){
+int load_index(char *filename, char *linesFile, char *timesFile, void **index){
 	twcsa *wcsa;
-	wcsa = loadWCSA (filename, timesFile);
+	wcsa = loadWCSA (filename, linesFile, timesFile);
 	(*index) = (void *) wcsa;
 
 #ifdef DICTIONARY_HUFFRLE
@@ -438,11 +438,11 @@ int load_index(char *filename, char *timesFile, void **index){
 	return 0;
 }
 
-int loadTimeIndex(twcsa *wcsa, char *basename) {
+int loadTimeIndex(twcsa *wcsa, char *linesFile, char *timesFile) {
 		char filename[1024];
 
 		{
-			strcpy(filename, basename);
+			strcpy(filename, linesFile);
 			strcat(filename, ".");
 			strcat(filename, LINES_FILE_EXT);
 			std::ifstream ifs(filename, std::ifstream::in);
@@ -457,7 +457,7 @@ int loadTimeIndex(twcsa *wcsa, char *basename) {
 		}
 
 		{
-			strcpy(filename, basename);
+			strcpy(filename, timesFile);
 			strcat(filename, ".");
 			strcat(filename, TIMES_FILE_EXT);
 			std::ifstream ifs(filename, std::ifstream::in);
@@ -1059,7 +1059,7 @@ int loadBaseline(twcsa *wcsa, char *basename) {
 	//wcsa->baseline = new tbaseline{NULL, NULL, NULL, fromXtoY};
 }
 
-twcsa *loadWCSA(char *filename, char *timesFile) {
+twcsa *loadWCSA(char *filename, char *linesFile, char *timesFile) {
 	twcsa *wcsa;
 
 	wcsa = (twcsa *) my_malloc (sizeof (twcsa) * 1);
@@ -1067,7 +1067,7 @@ twcsa *loadWCSA(char *filename, char *timesFile) {
 
 	loadIntIndex(filename, (void **)&wcsa->myicsa);
 	loadStructs(wcsa,filename);
-	loadTimeIndex(wcsa,timesFile);
+	loadTimeIndex(wcsa, linesFile, timesFile);
 	// loadBaseline(wcsa, filename);
 
 
@@ -1261,7 +1261,7 @@ uint inline encodeStop(twcsa *g, uint lineId, uint stopId) {
 }
 
 int get_starts_with_x(void *index, TimeQuery *query) {
-	if (query->subtype & (XY_LINE_START | XY_TIME_START) != query->subtype) {
+	if ((query->subtype & (XY_LINE_START | XY_TIME_START)) != query->subtype) {
 		return 0;
 	}
 
@@ -1311,45 +1311,57 @@ int get_starts_with_x(void *index, TimeQuery *query) {
 }
 
 int get_ends_with_x(void *index, TimeQuery *query) {
+	if ((query->subtype & (XY_LINE_END | XY_TIME_END)) != query->subtype) {
+		return 0;
+	}
+
 	twcsa *g = (twcsa *)index;
-	uint u = mapID(g, query->values[0], NODE);
+	ulong numocc=0, lu=0, ru=0;
+	pair<int, int> res;
+	const auto lineId = query->values[0];
+	const auto stopId = query->values[1];
+	uint u = mapID(g, stopId, NODE);
 	uint pattern[2] = {u, 0};
-	ulong numocc, lu, ru;
+	const auto linesWM = dynamic_cast<std::vector<WaveletMatrix *>*>((std::vector<WaveletMatrix *>*)g->linesIndex);
 
-	if (g->baseline) {
-		const auto u = mapID(g, query->values[0], NODE);
-		const auto &times = g->baseline->endsX->at(u);
-
-		if (query->time) {
-			numocc = 0;
-			
-			if (query->time->h_end < query->time->h_start) {
-				for (auto i = times.begin(); i != times.upper_bound(query->time->h_end); i++) {
-					numocc += i->second;
-				}
-
-				for (auto i = times.lower_bound(query->time->h_start); i != times.end(); i++) {
-					numocc += i->second;
-				}
-			} else {
-				for (auto i = times.lower_bound(query->time->h_start); i != times.upper_bound(query->time->h_end); i++) {
-					numocc += i->second;
-				}
-			}
-		} else {
-			numocc = times.size() > 0 ? times.begin()->second : 0;
-		}
-
-		return numocc;
+	if (linesWM == NULL) {
+		std::cerr << "Either use WM or implement the trackUp operation in the WT!" << std::endl;
+		throw std::bad_cast();
 	}
 
 	countIntIndex(g->myicsa, pattern, 2, &numocc, &lu, &ru);
+	assert(numocc < g->n);
 
-	// printf("%lu %lu %lu\n", numocc, lu, ru);
+	if (numocc && query->subtype) {
+		const auto stop_offset = selectStop(g, u);
+		assert(lu >= stop_offset);
+		const auto start_time = query->time->h_start;
+		const auto end_time = query->time->h_end;
+		std::vector<uint16_t> lines;
+		numocc = 0;
+		ulong n = 0;
 
-	if (query->time && numocc) {
-		numocc = getRange(g, lu, ru,
-						  query->time->h_start, query->time->h_end);
+		if ((query->subtype & (XY_LINE_END | XY_TIME_END)) == XY_TIME_END) {
+			query->subtype |= XY_LINE_END;
+			lines = g->stopLines->at(query->values[1]);
+		} else {
+			lines.push_back(query->values[0]);
+		}
+
+		for (const auto &line : lines) {
+			n = getRange(linesWM->at(u), lu-stop_offset, ru-stop_offset, line, line, &res);
+			printf("%lu %lu\n", lu-stop_offset, ru-stop_offset);
+			printf("%lu %lu %lu\n", res.first, res.second, n);
+			assert(n == res.second-res.first+1);
+			assert(stop_offset+res.second < g->n);
+
+			if (n && query->subtype & XY_TIME_END) {
+				const auto jcodes = getJCodes(g, line, query->values[1], start_time, end_time);
+				n = getTimeRange(g, stop_offset+res.first, stop_offset+res.second, jcodes.first, jcodes.second);
+			}
+
+			numocc += n;
+		}
 	}
 
 	return numocc;

@@ -28,7 +28,7 @@ pode haber repetidos)
 
 QueryType queryTypes[16] = {
   {0, 2, false, get_starts_with_x},
-  {1, 1, false, get_ends_with_x},
+  {1, 2, false, get_ends_with_x},
   {2, 1, false, get_x_in_the_middle},
   {3, 2, false, get_from_x_to_y},
   {4, 1, true, get_top_k},
@@ -173,6 +173,7 @@ int main(int argc, char ** argv) {
   //FILE * flog = fopen("deactivewcsa.log","w");
 
         char * fileName;
+        char * linesFile;
         char * timesFile;
 
         //@@ struct tgs index;
@@ -181,13 +182,14 @@ int main(int argc, char ** argv) {
         unsigned int * gotreslist;
         uint gotres = 0;
 
-        if (argc < 4) {
-                printf("Usage: %s <infexfile> <timesfile> <queryfile> [ignore_times] [loops]\n", argv[0]);
+        if (argc < 5) {
+                printf("Usage: %s <infexfile> <linesfile> <timesfile> <queryfile> [ignore_times] [loops]\n", argv[0]);
                 exit(1);
         }
 
         fileName = argv[1];
-        timesFile = argv[2];
+        linesFile = argv[2];
+        timesFile = argv[3];
 
 
         //@@ f.open(fileName, ios::binary);
@@ -195,7 +197,7 @@ int main(int argc, char ** argv) {
         //@@ f.close();
 
         ulong Index_size, Text_length;
-        int error= load_index (fileName, timesFile, &index);
+        int error= load_index (fileName, linesFile, timesFile, &index);
         IFERROR (error);
         //printInfo(index);
 
@@ -218,16 +220,16 @@ int main(int argc, char ** argv) {
         gotreslist = (uint*)malloc(sizeof(unsigned int)*BUFFER);
         int ignore_times = 0;
 
-        if (argc > 4) {
-          ignore_times = atoi(argv[4]);
+        if (argc > 5) {
+          ignore_times = atoi(argv[5]);
         }
 
         int nqueries = 0;
-        TimeQuery * queries = readQueries(index, argv[3], &nqueries, ignore_times);
+        TimeQuery * queries = readQueries(index, argv[4], &nqueries, ignore_times);
         int executed_queries = LOOPS;
 
-        if (argc > 5) {
-          executed_queries = atoi(argv[5]);
+        if (argc > 6) {
+          executed_queries = atoi(argv[6]);
         }
 
         int i,j;
@@ -236,7 +238,8 @@ int main(int argc, char ** argv) {
   printf("We are checking the results... Experiments mode off.\n");
 #endif
 
-        for (j = 0; j < (queries[0].type->type == 15 ? XY_TOTAL : 1); j++) {
+        //for (j = 0; j < (queries[0].type->type == 15 ? XY_TOTAL : 1); j++) {
+        for (j = 0; j < XY_TOTAL; j++) {
                 totalres = 0;
                 startClockTime();
                         for (i = 0; i < executed_queries; i++) {

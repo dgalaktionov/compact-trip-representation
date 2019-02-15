@@ -75,13 +75,52 @@
 # ./goQuery.sh madrid_lines 512 WMRRR128
 
 
-./goQuery.sh madrid_lines 32 RG32
-./goQuery.sh madrid_lines 32 RRR128_1
-./goQuery.sh madrid_lines 32 RRR128_2
-./goQuery.sh madrid_lines 128 RG32
-./goQuery.sh madrid_lines 128 RRR128_1
-./goQuery.sh madrid_lines 128 RRR128_2
-./goQuery.sh madrid_lines 512 RG32
-./goQuery.sh madrid_lines 512 RRR128_1
-./goQuery.sh madrid_lines 512 RRR128_2
+./goQuery.sh madrid_lines 32 RG32 RG32
+./goQuery.sh madrid_lines 32 RG32 RRR32
+./goQuery.sh madrid_lines 32 RG32 RRR64
+./goQuery.sh madrid_lines 32 RG32 RRR128
+./goQuery.sh madrid_lines 32 RRR32 RG32
+./goQuery.sh madrid_lines 32 RRR32 RRR32
+./goQuery.sh madrid_lines 32 RRR32 RRR64
+./goQuery.sh madrid_lines 32 RRR32 RRR128
+./goQuery.sh madrid_lines 32 RRR64 RG32
+./goQuery.sh madrid_lines 32 RRR64 RRR32
+./goQuery.sh madrid_lines 32 RRR64 RRR64
+./goQuery.sh madrid_lines 32 RRR64 RRR128
+./goQuery.sh madrid_lines 32 RRR128 RG32
+./goQuery.sh madrid_lines 32 RRR128 RRR32
+./goQuery.sh madrid_lines 32 RRR128 RRR64
+./goQuery.sh madrid_lines 32 RRR128 RRR128
+./goQuery.sh madrid_lines 128 RG32 RG32
+./goQuery.sh madrid_lines 128 RG32 RRR32
+./goQuery.sh madrid_lines 128 RG32 RRR64
+./goQuery.sh madrid_lines 128 RG32 RRR128
+./goQuery.sh madrid_lines 128 RRR32 RG32
+./goQuery.sh madrid_lines 128 RRR32 RRR32
+./goQuery.sh madrid_lines 128 RRR32 RRR64
+./goQuery.sh madrid_lines 128 RRR32 RRR128
+./goQuery.sh madrid_lines 128 RRR64 RG32
+./goQuery.sh madrid_lines 128 RRR64 RRR32
+./goQuery.sh madrid_lines 128 RRR64 RRR64
+./goQuery.sh madrid_lines 128 RRR64 RRR128
+./goQuery.sh madrid_lines 128 RRR128 RG32
+./goQuery.sh madrid_lines 128 RRR128 RRR32
+./goQuery.sh madrid_lines 128 RRR128 RRR64
+./goQuery.sh madrid_lines 128 RRR128 RRR128
+./goQuery.sh madrid_lines 512 RG32 RG32
+./goQuery.sh madrid_lines 512 RG32 RRR32
+./goQuery.sh madrid_lines 512 RG32 RRR64
+./goQuery.sh madrid_lines 512 RG32 RRR128
+./goQuery.sh madrid_lines 512 RRR32 RG32
+./goQuery.sh madrid_lines 512 RRR32 RRR32
+./goQuery.sh madrid_lines 512 RRR32 RRR64
+./goQuery.sh madrid_lines 512 RRR32 RRR128
+./goQuery.sh madrid_lines 512 RRR64 RG32
+./goQuery.sh madrid_lines 512 RRR64 RRR32
+./goQuery.sh madrid_lines 512 RRR64 RRR64
+./goQuery.sh madrid_lines 512 RRR64 RRR128
+./goQuery.sh madrid_lines 512 RRR128 RG32
+./goQuery.sh madrid_lines 512 RRR128 RRR32
+./goQuery.sh madrid_lines 512 RRR128 RRR64
+./goQuery.sh madrid_lines 512 RRR128 RRR128
 echo ''

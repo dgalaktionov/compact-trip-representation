@@ -142,7 +142,7 @@ int save_index (void *index, char *filename);
 
         /*  Loads index from one or more file(s) named filename, possibly
           adding the proper extensions. */
-int load_index (char *filename, char *timesFile, void **index);
+int load_index (char *filename, char *linesFile, char *timesFile, void **index);
 	//@@void tgs_load(struct tgs *a, ifstream & f);
 
         /* Frees the memory occupied by index. */

@@ -270,7 +270,7 @@ int printInfo(void *index);
 
 		//loading/freeing the data structures into memory.
     void loadStructs(twcsa *wcsa, char *basename);
-	twcsa *loadWCSA(char *filename, char *timesFile);
+    twcsa *loadWCSA(char *filename, char *linesFile, char *timesFile);
 
 // Definitions of PRIVATE functions
 	//Auxiliary functions

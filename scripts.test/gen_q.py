@@ -33,10 +33,16 @@ def main(argv):
 	# sys.exit(0)
 
 	# starts with x, ends with y
-	fw = open(path + "10k-starts-with-x-ends-with-y.txt", "w+")
+	# fw = open(path + "10k-starts-with-x-ends-with-y.txt", "w+")
+	# for s in random.sample(sys.stdin.readlines(), Q):
+	# 	nodes = filter(None, re.split(',|:|\n', s))
+	# 	gen_q("%s:%s %s:%s" % (nodes[0], nodes[1], nodes[-3], nodes[-2]), fw, 15)
+	# fw.close()
+
+	fw = open(path + "10k-ends-with-x.txt", "w+")
 	for s in random.sample(sys.stdin.readlines(), Q):
 		nodes = filter(None, re.split(',|:|\n', s))
-		gen_q("%s:%s %s:%s" % (nodes[0], nodes[1], nodes[-3], nodes[-2]), fw, 15)
+		gen_q("%s:%s" % (nodes[-3], nodes[-2]), fw, 1)
 	fw.close()
 
 def main2(argv):
