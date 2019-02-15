@@ -1261,32 +1261,51 @@ uint inline encodeStop(twcsa *g, uint lineId, uint stopId) {
 }
 
 int get_starts_with_x(void *index, TimeQuery *query) {
+	if (query->subtype & (XY_LINE_START | XY_TIME_START) != query->subtype) {
+		return 0;
+	}
+
 	twcsa *g = (twcsa *)index;
 	ulong numocc=0, lu=0, ru=0;
-	uint u = 0;
-	const auto stopId = query->values[1];
-	uint pattern[2] = {0, 0};
-
+	pair<int, int> res;
 	const auto lineId = query->values[0];
-	// for (const auto &lineId : g->stopLines->at(stopId)) {
-		u = encodeStop(g, lineId, stopId);
-		pattern[1] = u;
-		countIntIndex(g->myicsa, pattern, 2, &numocc, &lu, &ru);
+	const auto stopId = query->values[1];
+	uint u = mapID(g, stopId, NODE);
+	uint pattern[2] = {0, u};
+	const auto linesWM = dynamic_cast<std::vector<WaveletMatrix *>*>((std::vector<WaveletMatrix *>*)g->linesIndex);
 
-		if (numocc) {
-			const auto lineStops = &(g->lineStops->at(lineId));
-			const auto initialTimes = &(g->initialTimes->at(lineId));
-			const auto i = std::find(lineStops->begin(), lineStops->end(), stopId) - lineStops->begin();
-			const uint second = g->avgTimes->at(lineId)[i];
-			const auto offset = std::min(second, query->time->h_start-1);
-			const auto h_start = 
-				std::lower_bound(initialTimes->begin(), initialTimes->end(), query->time->h_start - offset) - initialTimes->begin();
-			const auto h_end = 
-				std::upper_bound(initialTimes->begin(), initialTimes->end(), query->time->h_end - offset) - initialTimes->begin();
+	if (linesWM == NULL) {
+		std::cerr << "Either use WM or implement the trackUp operation in the WT!" << std::endl;
+		throw std::bad_cast();
+	}
 
-			numocc = getRange(g, lu, ru, h_start, h_end);
+	countIntIndex(g->myicsa, pattern, 2, &numocc, &lu, &ru);
+
+	if (numocc && query->subtype) {
+		const auto start_time = query->time->h_start;
+		const auto end_time = query->time->h_end;
+		std::vector<uint16_t> lines;
+		numocc = 0;
+		ulong n = 0;
+
+		if ((query->subtype & (XY_LINE_START | XY_TIME_START)) == XY_TIME_START) {
+			query->subtype |= XY_LINE_START;
+			lines = g->stopLines->at(query->values[1]);
+		} else {
+			lines.push_back(query->values[0]);
 		}
-	// }
+
+		for (const auto &line : lines) {
+			n = getRange(linesWM->at(0), lu, ru, line, line, &res);
+
+			if (n && query->subtype & XY_TIME_START) {
+				const auto jcodes = getJCodes(g, line, query->values[1], start_time, end_time);
+				n = getTimeRange(g, res.first, res.second, jcodes.first, jcodes.second);
+			}
+
+			numocc += n;
+		}
+	}
 
 	return numocc;
 }
