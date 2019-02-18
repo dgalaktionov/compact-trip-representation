@@ -143,9 +143,13 @@
 #../benchmark indexes/madrid_lines indexes/madrid_lines ./queries/madrid/top-100.txt 0 1000
 
 echo 'TTCTR (psi='$2' times='$3')'
-#../benchmark indexes/$1$2 indexes/$1_$3 ./queries/madrid/10k-starts-with-x-ends-with-y.txt 0 10000
-../benchmark indexes/$1$2 indexes/$1_$3 ./queries/madrid/10k-starts-with-x.txt 0 10000
-../benchmark indexes/$1$2 indexes/$1_$3 ./queries/madrid/10k-ends-with-x.txt 0 10000
+echo 'xy'
+../benchmark indexes/$1$2 indexes/$1_$3 ./queries/madrid/10k-starts-with-x-ends-with-y.txt 0 100000
+echo 'start x'
+../benchmark indexes/$1$2 indexes/$1_$3 ./queries/madrid/10k-starts-with-x.txt 0 100000
+echo 'end x'
+../benchmark indexes/$1$2 indexes/$1_$3 ./queries/madrid/10k-ends-with-x.txt 0 100000
+echo ''
 
 #../benchmark indexes/madrid_lines indexes/madrid_lines ./queries/madrid/10k-starts-with-x-ends-with-y.txt 0 10000
 #../benchmark indexes/madrid_lines indexes/madrid_lines ./queries/madrid/10k-starts-with-x.txt 0 10000
