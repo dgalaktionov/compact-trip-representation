@@ -125,6 +125,14 @@ int checkCompressedBitmapRRR (void *index) {
 	return 0;
 }
 
+const inline size_t selectStop(twcsa *wcsa, const uint stopId) {
+	if (stopId < wcsa->nodes) {
+		return getSelecticsa(wcsa->myicsa, stopId+1);
+	} else {
+		return wcsa->n;
+	}
+}
+
 void parametersWM(tctrbitmap &ctr_bitmap, char *params) {
 	uint8_t i = 0;
 
@@ -1388,6 +1396,55 @@ const std::pair<size_t, size_t> getJCodes(twcsa *g, uint16_t lineId, uint32_t st
 	);
 }
 
+int get_uses_x(void *index, TimeQuery *query) {
+	if ((query->subtype & (XY_LINE_START | XY_TIME_START)) != query->subtype) {
+		return 0;
+	}
+
+	twcsa *g = (twcsa *)index;
+	ulong numocc = 0, lu = 0, ru = 0;
+	pair<int, int> res;
+	std::vector<uint16_t> lines;
+	const auto lineId = query->values[0];
+	const auto stopId = query->values[1];
+	const auto start_time = query->time->h_start;
+	const auto end_time = query->time->h_end;
+	uint u = 0;
+	ulong n = 0;
+
+	if ((query->subtype & (XY_LINE_START | XY_TIME_START)) == XY_TIME_START) {
+		query->subtype |= XY_LINE_START;
+		lines = g->stopLines->at(query->values[1]);
+	} else {
+		lines.push_back(query->values[0]);
+	}
+
+	for (const auto &line : lines) {
+		lu = 0; ru = 0; n = 0;
+
+		if (query->subtype & XY_LINE_START) {
+			u = encodeStop(g, line, query->values[1]);
+			lu = selectStop(g, u);
+			ru = selectStop(g, u+1);
+			if (ru < g->n) ru--;
+		} else {
+			lu = selectStop(g, encodeStop(g, STOPS_LINE-1, query->values[1]-1)+1);
+			ru = selectStop(g, encodeStop(g, STOPS_LINE-1, query->values[1]+1))+1;
+		}
+
+		n = ru-lu+1;
+		
+		if (n && query->subtype & XY_TIME_START) {
+			const auto jcodes = getJCodes(g, line, query->values[1], start_time, end_time);
+			n = getRange(g->myTimesIndex, lu, ru, jcodes.first, jcodes.second);
+		}
+
+		numocc += n;
+	}
+
+	return numocc;
+}
+
 int get_starts_with_x(void *index, TimeQuery *query) {
 	if ((query->subtype & (XY_LINE_START | XY_TIME_START)) != query->subtype) {
 		return 0;
@@ -2063,75 +2120,6 @@ int get_top_k_times(void *index, TimeQuery *query) {
 
 int get_starts_or_ends_with_x(void *index, TimeQuery *query) {
 	return get_starts_with_x(index, query) + get_ends_with_x(index, query);
-}
-
-
-int get_uses_x(void *index, TimeQuery *query) {
-	twcsa *g = (twcsa *)index;
-	ulong numocc = 0, lu = 0, ru = 0;
-
-	if (g->baseline) {
-		const auto u = mapID(g, query->values[0], NODE);
-		const auto &times = g->baseline->usesX->at(u);
-
-		if (query->time) {
-			numocc = 0;
-			
-			if (query->time->h_end < query->time->h_start) {
-				for (auto i = times.begin(); i != times.upper_bound(query->time->h_end); i++) {
-					numocc += i->second;
-				}
-
-				for (auto i = times.lower_bound(query->time->h_start); i != times.end(); i++) {
-					numocc += i->second;
-				}
-			} else {
-				for (auto i = times.lower_bound(query->time->h_start); i != times.upper_bound(query->time->h_end); i++) {
-					numocc += i->second;
-				}
-			}
-		} else {
-			numocc = times.size() > 0 ? times.begin()->second : 0;
-		}
-
-		return numocc;
-	}
-
-	//notice that:
-	//select(0) is 0
-	//select(1) is 1
-	//select(2) is the first stop after the $
-	//select(x+1) is where the stops x start
-
-	if (query->type->nValues) {
-		uint u = mapID(g, query->values[0], NODE);
-
-		if (u+1 >= g->map_size) {
-			lu = getSelecticsa(g->myicsa, u+1);
-			ru = g->n - 1;
-		} else {
-			lu = getSelecticsa(g->myicsa, u+1);
-			ru = getSelecticsa(g->myicsa, u+2)-1;
-		}
-
-		// printf("%lu %lu %lu %lu\n", g->map_size, u, lu, ru);
-	} else {
-		lu = getSelecticsa(g->myicsa, 2);
-		ru = g->n-1;
-	}
-
-	numocc = ru - lu + 1;
-
-	if (query->time) {
-		Sequence *wm = (Sequence *)g->myTimesIndex;
-		numocc = getRange(g, lu, ru, query->time->h_start, query->time->h_end);
-		// numocc = getRange(g, lu, ru, query->time->h_start, query->time->h_start);
-		// numocc = wm->rank(query->time->h_start, ru) - wm->rank(query->time->h_start, lu);
-	}
-
-	// printf("%lu %lu %lu\n", numocc, lu, ru);
-
-	return numocc;
 }
 
 
