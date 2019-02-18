@@ -34,7 +34,7 @@ QueryType queryTypes[16] = {
   {4, 1, true, get_top_k},
   {5, 1, false, get_starts_or_ends_with_x},
   {6, 1, true, get_top_k_starts},
-  {7, 1, false, get_uses_x},
+  {7, 2, false, get_uses_x},
   {8, 2, false, get_from_x_to_y_strong},
   {9, 2, false, get_from_x_to_y_weak},
   {10, 0, false, get_uses_x},

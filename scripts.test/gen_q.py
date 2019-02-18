@@ -39,10 +39,16 @@ def main(argv):
 	# 	gen_q("%s:%s %s:%s" % (nodes[0], nodes[1], nodes[-3], nodes[-2]), fw, 15)
 	# fw.close()
 
-	fw = open(path + "10k-ends-with-x.txt", "w+")
+	# fw = open(path + "10k-ends-with-x.txt", "w+")
+	# for s in random.sample(sys.stdin.readlines(), Q):
+	# 	nodes = filter(None, re.split(',|:|\n', s))
+	# 	gen_q("%s:%s" % (nodes[-3], nodes[-2]), fw, 1)
+	# fw.close()
+
+	fw = open(path + "10k-uses-x.txt", "w+")
 	for s in random.sample(sys.stdin.readlines(), Q):
 		nodes = filter(None, re.split(',|:|\n', s))
-		gen_q("%s:%s" % (nodes[-3], nodes[-2]), fw, 1)
+		gen_q("%s:%s" % (nodes[0], nodes[1]), fw, 7)
 	fw.close()
 
 def main2(argv):
