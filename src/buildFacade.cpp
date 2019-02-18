@@ -1454,20 +1454,18 @@ int get_ends_with_x(void *index, TimeQuery *query) {
 
 	countIntIndex(g->myicsa, pattern, 2, &numocc, &lu, &ru);
 
-	if (numocc && query->subtype) {
+	if (numocc) {
 		numocc = 0;
 		pattern[1] = v;
 
-		if ((query->subtype & (XY_LINE_END | XY_TIME_END)) == XY_TIME_END) {
-			query->subtype |= XY_LINE_END;
+		if ((query->subtype & XY_LINE_END) == 0) {
+			//query->subtype |= XY_LINE_END;
 			lines = g->stopLines->at(query->values[1]);
-		} else if (query->subtype & XY_LINE_END) {
+		} else {
 			lines.push_back(query->values[0]);
 		}
 
 		for (const auto &line : lines) {
-			const auto jcodes = getJCodes(g, line, query->values[1], start_time, end_time);
-
 			for (const auto &stop : g->lineStops->at(line)) {
 				if (stop == query->values[1]) {
 					break;
@@ -1480,6 +1478,7 @@ int get_ends_with_x(void *index, TimeQuery *query) {
 				countIntIndex(g->myicsa, pattern, 2, &n, &lu2, &ru2);
 
 				if (n && (query->subtype & XY_TIME_END)) {
+					const auto jcodes = getJCodes(g, line, query->values[1], start_time, end_time);
 					n = getRange(g->myTimesIndex, lu2, ru2, jcodes.first, jcodes.second);
 				}
 
