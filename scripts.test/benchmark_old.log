@@ -1036,3 +1036,232 @@ end x
 ./queries/madrid/10k-ends-with-x.txt	765	100000	0	0.007650	inf
 
 
+TTCTR (psi=32 times=RG32)
+board x
+./queries/madrid/10k-uses-x.txt	16689	100000	209306750	0.166890	0.000080
+./queries/madrid/10k-uses-x.txt	12494	100000	86901610	0.124940	0.000144
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	821275	100000	4689380	8.212750	0.175135
+./queries/madrid/10k-uses-x.txt	386557	100000	2796950	3.865570	0.138207
+./queries/madrid/10k-uses-x.txt	758	100000	0	0.007580	inf
+./queries/madrid/10k-uses-x.txt	749	100000	0	0.007490	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	745	100000	0	0.007450	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+
+TTCTR (psi=32 times=RRR32)
+board x
+./queries/madrid/10k-uses-x.txt	16906	100000	209306750	0.169060	0.000081
+./queries/madrid/10k-uses-x.txt	12492	100000	86901610	0.124920	0.000144
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	1091604	100000	4689380	10.916040	0.232782
+./queries/madrid/10k-uses-x.txt	513725	100000	2796950	5.137250	0.183673
+./queries/madrid/10k-uses-x.txt	765	100000	0	0.007650	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	745	100000	0	0.007450	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+
+TTCTR (psi=32 times=RRR64)
+board x
+./queries/madrid/10k-uses-x.txt	17221	100000	209306750	0.172210	0.000082
+./queries/madrid/10k-uses-x.txt	12953	100000	86901610	0.129530	0.000149
+./queries/madrid/10k-uses-x.txt	764	100000	0	0.007640	inf
+./queries/madrid/10k-uses-x.txt	760	100000	0	0.007600	inf
+./queries/madrid/10k-uses-x.txt	1171183	100000	4689380	11.711830	0.249752
+./queries/madrid/10k-uses-x.txt	534675	100000	2796950	5.346750	0.191164
+./queries/madrid/10k-uses-x.txt	757	100000	0	0.007570	inf
+./queries/madrid/10k-uses-x.txt	747	100000	0	0.007470	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	743	100000	0	0.007430	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+
+TTCTR (psi=32 times=RRR128)
+board x
+./queries/madrid/10k-uses-x.txt	17187	100000	209306750	0.171870	0.000082
+./queries/madrid/10k-uses-x.txt	12618	100000	86901610	0.126180	0.000145
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	1334976	100000	4689380	13.349760	0.284681
+./queries/madrid/10k-uses-x.txt	598593	100000	2796950	5.985930	0.214016
+./queries/madrid/10k-uses-x.txt	760	100000	0	0.007600	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	743	100000	0	0.007430	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+
+TTCTR (psi=128 times=RG32)
+board x
+./queries/madrid/10k-uses-x.txt	16771	100000	209306750	0.167710	0.000080
+./queries/madrid/10k-uses-x.txt	12562	100000	86901610	0.125620	0.000145
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	824144	100000	4689380	8.241440	0.175747
+./queries/madrid/10k-uses-x.txt	388143	100000	2796950	3.881430	0.138774
+./queries/madrid/10k-uses-x.txt	755	100000	0	0.007550	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	750	100000	0	0.007500	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+
+TTCTR (psi=128 times=RRR32)
+board x
+./queries/madrid/10k-uses-x.txt	17208	100000	209306750	0.172080	0.000082
+./queries/madrid/10k-uses-x.txt	12968	100000	86901610	0.129680	0.000149
+./queries/madrid/10k-uses-x.txt	745	100000	0	0.007450	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	1090130	100000	4689380	10.901300	0.232468
+./queries/madrid/10k-uses-x.txt	512105	100000	2796950	5.121050	0.183094
+./queries/madrid/10k-uses-x.txt	763	100000	0	0.007630	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	745	100000	0	0.007450	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+
+TTCTR (psi=128 times=RRR64)
+board x
+./queries/madrid/10k-uses-x.txt	16664	100000	209306750	0.166640	0.000080
+./queries/madrid/10k-uses-x.txt	12440	100000	86901610	0.124400	0.000143
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	1166947	100000	4689380	11.669470	0.248849
+./queries/madrid/10k-uses-x.txt	535978	100000	2796950	5.359780	0.191629
+./queries/madrid/10k-uses-x.txt	757	100000	0	0.007570	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	745	100000	0	0.007450	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+
+TTCTR (psi=128 times=RRR128)
+board x
+./queries/madrid/10k-uses-x.txt	16751	100000	209306750	0.167510	0.000080
+./queries/madrid/10k-uses-x.txt	12500	100000	86901610	0.125000	0.000144
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	1319365	100000	4689380	13.193650	0.281352
+./queries/madrid/10k-uses-x.txt	591786	100000	2796950	5.917860	0.211583
+./queries/madrid/10k-uses-x.txt	756	100000	0	0.007560	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	747	100000	0	0.007470	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	745	100000	0	0.007450	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+./queries/madrid/10k-uses-x.txt	741	100000	0	0.007410	inf
+
+TTCTR (psi=512 times=RG32)
+board x
+./queries/madrid/10k-uses-x.txt	17092	100000	209306750	0.170920	0.000082
+./queries/madrid/10k-uses-x.txt	12838	100000	86901610	0.128380	0.000148
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	822128	100000	4689380	8.221280	0.175317
+./queries/madrid/10k-uses-x.txt	386150	100000	2796950	3.861500	0.138061
+./queries/madrid/10k-uses-x.txt	755	100000	0	0.007550	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	745	100000	0	0.007450	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+
+TTCTR (psi=512 times=RRR32)
+board x
+./queries/madrid/10k-uses-x.txt	16676	100000	209306750	0.166760	0.000080
+./queries/madrid/10k-uses-x.txt	12480	100000	86901610	0.124800	0.000144
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	743	100000	0	0.007430	inf
+./queries/madrid/10k-uses-x.txt	1090156	100000	4689380	10.901560	0.232473
+./queries/madrid/10k-uses-x.txt	511904	100000	2796950	5.119040	0.183022
+./queries/madrid/10k-uses-x.txt	756	100000	0	0.007560	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	746	100000	0	0.007460	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	742	100000	0	0.007420	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+
+TTCTR (psi=512 times=RRR64)
+board x
+./queries/madrid/10k-uses-x.txt	16952	100000	209306750	0.169520	0.000081
+./queries/madrid/10k-uses-x.txt	12574	100000	86901610	0.125740	0.000145
+./queries/madrid/10k-uses-x.txt	743	100000	0	0.007430	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	1164090	100000	4689380	11.640900	0.248240
+./queries/madrid/10k-uses-x.txt	541488	100000	2796950	5.414880	0.193599
+./queries/madrid/10k-uses-x.txt	754	100000	0	0.007540	inf
+./queries/madrid/10k-uses-x.txt	771	100000	0	0.007710	inf
+./queries/madrid/10k-uses-x.txt	739	100000	0	0.007390	inf
+./queries/madrid/10k-uses-x.txt	739	100000	0	0.007390	inf
+./queries/madrid/10k-uses-x.txt	739	100000	0	0.007390	inf
+./queries/madrid/10k-uses-x.txt	739	100000	0	0.007390	inf
+./queries/madrid/10k-uses-x.txt	739	100000	0	0.007390	inf
+./queries/madrid/10k-uses-x.txt	768	100000	0	0.007680	inf
+./queries/madrid/10k-uses-x.txt	739	100000	0	0.007390	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+
+TTCTR (psi=512 times=RRR128)
+board x
+./queries/madrid/10k-uses-x.txt	16864	100000	209306750	0.168640	0.000081
+./queries/madrid/10k-uses-x.txt	12558	100000	86901610	0.125580	0.000145
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	1322364	100000	4689380	13.223640	0.281991
+./queries/madrid/10k-uses-x.txt	595044	100000	2796950	5.950440	0.212747
+./queries/madrid/10k-uses-x.txt	762	100000	0	0.007620	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	743	100000	0	0.007430	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+./queries/madrid/10k-uses-x.txt	740	100000	0	0.007400	inf
+
+
