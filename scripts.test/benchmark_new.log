@@ -1463,3 +1463,2789 @@ indexes/madrid_lines_RRR128	520398	10000	23657	52.039800	21.997633
 indexes/madrid_lines_RRR128	572832	10000	23409	57.283200	24.470588
 indexes/madrid_lines_RRR128	510918	10000	23199	51.091800	22.023277
 
+TTCTR (psi=32 lines=RG32 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RG32 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RG32 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RG32 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR32 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR32 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR32 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR32 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR64 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR64 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR64 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR64 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR128 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR128 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR128 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=32 lines=RRR128 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RG32 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RG32 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RG32 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RG32 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR32 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR32 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR32 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR32 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR64 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR64 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR64 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR64 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR128 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR128 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR128 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=128 lines=RRR128 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RG32 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RG32 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RG32 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RG32 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR32 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR32 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR32 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR32 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR64 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR64 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR64 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR64 times=RRR128)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR128 times=RG32)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR128 times=RRR32)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR128 times=RRR64)
+xy
+start x
+end x
+
+TTCTR (psi=512 lines=RRR128 times=RRR128)
+xy
+start x
+end x
+
+
+TTCTR (psi=32 lines=RG32 times=RG32)
+xy
+indexes/madrid_lines_RG32	504707	100000	7733090	5.047070	0.065266
+indexes/madrid_lines_RG32	801134	100000	7391950	8.011340	0.108379
+indexes/madrid_lines_RG32	606812	100000	7305750	6.068120	0.083060
+indexes/madrid_lines_RG32	1215060	100000	7218110	12.150600	0.168335
+indexes/madrid_lines_RG32	1524464	100000	249440	15.244640	6.111546
+indexes/madrid_lines_RG32	1232323	100000	239320	12.323230	5.149269
+indexes/madrid_lines_RG32	1948404	100000	235740	19.484040	8.265055
+indexes/madrid_lines_RG32	1602595	100000	233590	16.025950	6.860717
+indexes/madrid_lines_RG32	1378218	100000	249220	13.782180	5.530126
+indexes/madrid_lines_RG32	1938841	100000	238360	19.388410	8.134087
+indexes/madrid_lines_RG32	1039056	100000	236560	10.390560	4.392357
+indexes/madrid_lines_RG32	1659868	100000	233700	16.598680	7.102559
+indexes/madrid_lines_RG32	2232596	100000	247230	22.325960	9.030441
+indexes/madrid_lines_RG32	1856015	100000	236570	18.560150	7.845521
+indexes/madrid_lines_RG32	2143188	100000	234090	21.431880	9.155402
+indexes/madrid_lines_RG32	1787476	100000	231990	17.874760	7.704970
+start x
+indexes/madrid_lines_RG32	341420	100000	92130440	3.414200	0.003706
+indexes/madrid_lines_RG32	584940	100000	63037510	5.849400	0.009279
+indexes/madrid_lines_RG32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	2039231	100000	2960720	20.392310	0.688762
+indexes/madrid_lines_RG32	1157932	100000	2027450	11.579320	0.571127
+indexes/madrid_lines_RG32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RG32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+end x
+indexes/madrid_lines_RG32	242070	100000	228047590	2.420700	0.001061
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	318201	100000	126633550	3.182010	0.002513
+indexes/madrid_lines_RG32	773	100000	0	0.007730	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	2079863	100000	7304300	20.798630	0.284745
+indexes/madrid_lines_RG32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RG32	892079	100000	4058090	8.920790	0.219827
+indexes/madrid_lines_RG32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RG32	774	100000	0	0.007740	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+
+TTCTR (psi=32 lines=RG32 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	504450	100000	7733090	5.044500	0.065233
+indexes/madrid_lines_RRR32	799689	100000	7391950	7.996890	0.108184
+indexes/madrid_lines_RRR32	607057	100000	7305750	6.070570	0.083093
+indexes/madrid_lines_RRR32	1213175	100000	7218110	12.131750	0.168074
+indexes/madrid_lines_RRR32	1625494	100000	249440	16.254940	6.516573
+indexes/madrid_lines_RRR32	1312754	100000	239320	13.127540	5.485350
+indexes/madrid_lines_RRR32	2180164	100000	235740	21.801640	9.248172
+indexes/madrid_lines_RRR32	1801207	100000	233590	18.012070	7.710976
+indexes/madrid_lines_RRR32	1494395	100000	249220	14.943950	5.996288
+indexes/madrid_lines_RRR32	2042362	100000	238360	20.423620	8.568392
+indexes/madrid_lines_RRR32	1126046	100000	236560	11.260460	4.760086
+indexes/madrid_lines_RRR32	1759349	100000	233700	17.593490	7.528237
+indexes/madrid_lines_RRR32	2525938	100000	247230	25.259380	10.216956
+indexes/madrid_lines_RRR32	2112751	100000	236570	21.127510	8.930765
+indexes/madrid_lines_RRR32	2429768	100000	234090	24.297680	10.379632
+indexes/madrid_lines_RRR32	2037013	100000	231990	20.370130	8.780607
+start x
+indexes/madrid_lines_RRR32	344055	100000	92130440	3.440550	0.003734
+indexes/madrid_lines_RRR32	581830	100000	63037510	5.818300	0.009230
+indexes/madrid_lines_RRR32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	2315176	100000	2960720	23.151760	0.781964
+indexes/madrid_lines_RRR32	1299404	100000	2027450	12.994040	0.640906
+indexes/madrid_lines_RRR32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR32	246321	100000	228047590	2.463210	0.001080
+indexes/madrid_lines_RRR32	785	100000	0	0.007850	inf
+indexes/madrid_lines_RRR32	319443	100000	126633550	3.194430	0.002523
+indexes/madrid_lines_RRR32	773	100000	0	0.007730	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	2518719	100000	7304300	25.187190	0.344827
+indexes/madrid_lines_RRR32	780	100000	0	0.007800	inf
+indexes/madrid_lines_RRR32	1043973	100000	4058090	10.439730	0.257257
+indexes/madrid_lines_RRR32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	772	100000	0	0.007720	inf
+
+TTCTR (psi=32 lines=RG32 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	508900	100000	7733090	5.089000	0.065808
+indexes/madrid_lines_RRR64	798483	100000	7391950	7.984830	0.108021
+indexes/madrid_lines_RRR64	602853	100000	7305750	6.028530	0.082518
+indexes/madrid_lines_RRR64	1223745	100000	7218110	12.237450	0.169538
+indexes/madrid_lines_RRR64	1646808	100000	249440	16.468080	6.602021
+indexes/madrid_lines_RRR64	1329998	100000	239320	13.299980	5.557404
+indexes/madrid_lines_RRR64	2256612	100000	235740	22.566120	9.572461
+indexes/madrid_lines_RRR64	1867937	100000	233590	18.679370	7.996648
+indexes/madrid_lines_RRR64	1527558	100000	249220	15.275580	6.129356
+indexes/madrid_lines_RRR64	2069328	100000	238360	20.693280	8.681524
+indexes/madrid_lines_RRR64	1152319	100000	236560	11.523190	4.871149
+indexes/madrid_lines_RRR64	1780049	100000	233700	17.800490	7.616812
+indexes/madrid_lines_RRR64	2620871	100000	247230	26.208710	10.600942
+indexes/madrid_lines_RRR64	2191173	100000	236570	21.911730	9.262261
+indexes/madrid_lines_RRR64	2518621	100000	234090	25.186210	10.759199
+indexes/madrid_lines_RRR64	2112661	100000	231990	21.126610	9.106690
+start x
+indexes/madrid_lines_RRR64	342476	100000	92130440	3.424760	0.003717
+indexes/madrid_lines_RRR64	582485	100000	63037510	5.824850	0.009240
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	2369724	100000	2960720	23.697240	0.800388
+indexes/madrid_lines_RRR64	1321956	100000	2027450	13.219560	0.652029
+indexes/madrid_lines_RRR64	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+end x
+indexes/madrid_lines_RRR64	244566	100000	228047590	2.445660	0.001072
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	314360	100000	126633550	3.143600	0.002482
+indexes/madrid_lines_RRR64	786	100000	0	0.007860	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	2630184	100000	7304300	26.301840	0.360087
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	1068888	100000	4058090	10.688880	0.263397
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+
+TTCTR (psi=32 lines=RG32 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	513679	100000	7733090	5.136790	0.066426
+indexes/madrid_lines_RRR128	805196	100000	7391950	8.051960	0.108929
+indexes/madrid_lines_RRR128	608775	100000	7305750	6.087750	0.083328
+indexes/madrid_lines_RRR128	1215546	100000	7218110	12.155460	0.168402
+indexes/madrid_lines_RRR128	1697975	100000	249440	16.979750	6.807148
+indexes/madrid_lines_RRR128	1362689	100000	239320	13.626890	5.694004
+indexes/madrid_lines_RRR128	2450465	100000	235740	24.504650	10.394778
+indexes/madrid_lines_RRR128	2029055	100000	233590	20.290550	8.686395
+indexes/madrid_lines_RRR128	1580461	100000	249220	15.804610	6.341630
+indexes/madrid_lines_RRR128	2117447	100000	238360	21.174470	8.883399
+indexes/madrid_lines_RRR128	1182618	100000	236560	11.826180	4.999231
+indexes/madrid_lines_RRR128	1811026	100000	233700	18.110260	7.749362
+indexes/madrid_lines_RRR128	2830752	100000	247230	28.307520	11.449873
+indexes/madrid_lines_RRR128	2363707	100000	236570	23.637070	9.991575
+indexes/madrid_lines_RRR128	2723380	100000	234090	27.233800	11.633901
+indexes/madrid_lines_RRR128	2287264	100000	231990	22.872640	9.859322
+start x
+indexes/madrid_lines_RRR128	343904	100000	92130440	3.439040	0.003733
+indexes/madrid_lines_RRR128	582659	100000	63037510	5.826590	0.009243
+indexes/madrid_lines_RRR128	794	100000	0	0.007940	inf
+indexes/madrid_lines_RRR128	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR128	2509473	100000	2960720	25.094730	0.847589
+indexes/madrid_lines_RRR128	1376716	100000	2027450	13.767160	0.679038
+indexes/madrid_lines_RRR128	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR128	249433	100000	228047590	2.494330	0.001094
+indexes/madrid_lines_RRR128	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR128	316451	100000	126633550	3.164510	0.002499
+indexes/madrid_lines_RRR128	787	100000	0	0.007870	inf
+indexes/madrid_lines_RRR128	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR128	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR128	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR128	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR128	2846633	100000	7304300	28.466330	0.389720
+indexes/madrid_lines_RRR128	786	100000	0	0.007860	inf
+indexes/madrid_lines_RRR128	1122377	100000	4058090	11.223770	0.276578
+indexes/madrid_lines_RRR128	784	100000	0	0.007840	inf
+indexes/madrid_lines_RRR128	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR128	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	771	100000	0	0.007710	inf
+
+TTCTR (psi=32 lines=RRR32 times=RG32)
+xy
+indexes/madrid_lines_RG32	503808	100000	7733090	5.038080	0.065150
+indexes/madrid_lines_RG32	776647	100000	7391950	7.766470	0.105067
+indexes/madrid_lines_RG32	610996	100000	7305750	6.109960	0.083632
+indexes/madrid_lines_RG32	1421840	100000	7218110	14.218400	0.196982
+indexes/madrid_lines_RG32	1545569	100000	249440	15.455690	6.196155
+indexes/madrid_lines_RG32	1241277	100000	239320	12.412770	5.186683
+indexes/madrid_lines_RG32	2092240	100000	235740	20.922400	8.875201
+indexes/madrid_lines_RG32	1722447	100000	233590	17.224470	7.373805
+indexes/madrid_lines_RG32	1404127	100000	249220	14.041270	5.634086
+indexes/madrid_lines_RG32	2185539	100000	238360	21.855390	9.169068
+indexes/madrid_lines_RG32	1048795	100000	236560	10.487950	4.433526
+indexes/madrid_lines_RG32	1899853	100000	233700	18.998530	8.129452
+indexes/madrid_lines_RG32	2389592	100000	247230	23.895920	9.665461
+indexes/madrid_lines_RG32	1987968	100000	236570	19.879680	8.403297
+indexes/madrid_lines_RG32	2291664	100000	234090	22.916640	9.789671
+indexes/madrid_lines_RG32	1914304	100000	231990	19.143040	8.251666
+start x
+indexes/madrid_lines_RG32	342096	100000	92130440	3.420960	0.003713
+indexes/madrid_lines_RG32	552102	100000	63037510	5.521020	0.008758
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	2072051	100000	2960720	20.720510	0.699847
+indexes/madrid_lines_RG32	1167790	100000	2027450	11.677900	0.575990
+indexes/madrid_lines_RG32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	767	100000	0	0.007670	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+end x
+indexes/madrid_lines_RG32	240903	100000	228047590	2.409030	0.001056
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	313141	100000	126633550	3.131410	0.002473
+indexes/madrid_lines_RG32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	2099372	100000	7304300	20.993720	0.287416
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	883961	100000	4058090	8.839610	0.217827
+indexes/madrid_lines_RG32	783	100000	0	0.007830	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+
+TTCTR (psi=32 lines=RRR32 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	504506	100000	7733090	5.045060	0.065240
+indexes/madrid_lines_RRR32	777552	100000	7391950	7.775520	0.105189
+indexes/madrid_lines_RRR32	607328	100000	7305750	6.073280	0.083130
+indexes/madrid_lines_RRR32	1426621	100000	7218110	14.266210	0.197645
+indexes/madrid_lines_RRR32	1630831	100000	249440	16.308310	6.537969
+indexes/madrid_lines_RRR32	1318477	100000	239320	13.184770	5.509264
+indexes/madrid_lines_RRR32	2306985	100000	235740	23.069850	9.786142
+indexes/madrid_lines_RRR32	1908450	100000	233590	19.084500	8.170084
+indexes/madrid_lines_RRR32	1508766	100000	249220	15.087660	6.053952
+indexes/madrid_lines_RRR32	2287480	100000	238360	22.874800	9.596744
+indexes/madrid_lines_RRR32	1131752	100000	236560	11.317520	4.784207
+indexes/madrid_lines_RRR32	1992164	100000	233700	19.921640	8.524450
+indexes/madrid_lines_RRR32	2666893	100000	247230	26.668930	10.787093
+indexes/madrid_lines_RRR32	2228856	100000	236570	22.288560	9.421550
+indexes/madrid_lines_RRR32	2560981	100000	234090	25.609810	10.940155
+indexes/madrid_lines_RRR32	2152595	100000	231990	21.525950	9.278827
+start x
+indexes/madrid_lines_RRR32	342021	100000	92130440	3.420210	0.003712
+indexes/madrid_lines_RRR32	549409	100000	63037510	5.494090	0.008716
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	2326737	100000	2960720	23.267370	0.785869
+indexes/madrid_lines_RRR32	1293222	100000	2027450	12.932220	0.637856
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+end x
+indexes/madrid_lines_RRR32	241658	100000	228047590	2.416580	0.001060
+indexes/madrid_lines_RRR32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR32	314196	100000	126633550	3.141960	0.002481
+indexes/madrid_lines_RRR32	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	2522422	100000	7304300	25.224220	0.345334
+indexes/madrid_lines_RRR32	780	100000	0	0.007800	inf
+indexes/madrid_lines_RRR32	1037631	100000	4058090	10.376310	0.255694
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	767	100000	0	0.007670	inf
+
+TTCTR (psi=32 lines=RRR32 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	506089	100000	7733090	5.060890	0.065445
+indexes/madrid_lines_RRR64	779151	100000	7391950	7.791510	0.105405
+indexes/madrid_lines_RRR64	611560	100000	7305750	6.115600	0.083709
+indexes/madrid_lines_RRR64	1423732	100000	7218110	14.237320	0.197244
+indexes/madrid_lines_RRR64	1672652	100000	249440	16.726520	6.705629
+indexes/madrid_lines_RRR64	1342623	100000	239320	13.426230	5.610158
+indexes/madrid_lines_RRR64	2430942	100000	235740	24.309420	10.311962
+indexes/madrid_lines_RRR64	2006067	100000	233590	20.060670	8.587983
+indexes/madrid_lines_RRR64	1556416	100000	249220	15.564160	6.245149
+indexes/madrid_lines_RRR64	2380935	100000	238360	23.809350	9.988819
+indexes/madrid_lines_RRR64	1161431	100000	236560	11.614310	4.909668
+indexes/madrid_lines_RRR64	2069399	100000	233700	20.693990	8.854938
+indexes/madrid_lines_RRR64	2808265	100000	247230	28.082650	11.358917
+indexes/madrid_lines_RRR64	2344374	100000	236570	23.443740	9.909853
+indexes/madrid_lines_RRR64	2704175	100000	234090	27.041750	11.551860
+indexes/madrid_lines_RRR64	2266500	100000	231990	22.665000	9.769818
+start x
+indexes/madrid_lines_RRR64	343467	100000	92130440	3.434670	0.003728
+indexes/madrid_lines_RRR64	544547	100000	63037510	5.445470	0.008638
+indexes/madrid_lines_RRR64	773	100000	0	0.007730	inf
+indexes/madrid_lines_RRR64	767	100000	0	0.007670	inf
+indexes/madrid_lines_RRR64	2374659	100000	2960720	23.746590	0.802055
+indexes/madrid_lines_RRR64	1317350	100000	2027450	13.173500	0.649757
+indexes/madrid_lines_RRR64	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	764	100000	0	0.007640	inf
+end x
+indexes/madrid_lines_RRR64	241205	100000	228047590	2.412050	0.001058
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	319976	100000	126633550	3.199760	0.002527
+indexes/madrid_lines_RRR64	773	100000	0	0.007730	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	2629484	100000	7304300	26.294840	0.359991
+indexes/madrid_lines_RRR64	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR64	1066719	100000	4058090	10.667190	0.262862
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+
+TTCTR (psi=32 lines=RRR32 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	504793	100000	7733090	5.047930	0.065277
+indexes/madrid_lines_RRR128	778802	100000	7391950	7.788020	0.105358
+indexes/madrid_lines_RRR128	606721	100000	7305750	6.067210	0.083047
+indexes/madrid_lines_RRR128	1423499	100000	7218110	14.234990	0.197212
+indexes/madrid_lines_RRR128	1693699	100000	249440	16.936990	6.790006
+indexes/madrid_lines_RRR128	1355408	100000	239320	13.554080	5.663580
+indexes/madrid_lines_RRR128	2557906	100000	235740	25.579060	10.850539
+indexes/madrid_lines_RRR128	2118216	100000	233590	21.182160	9.068094
+indexes/madrid_lines_RRR128	1583837	100000	249220	15.838370	6.355176
+indexes/madrid_lines_RRR128	2355190	100000	238360	23.551900	9.880811
+indexes/madrid_lines_RRR128	1178590	100000	236560	11.785900	4.982203
+indexes/madrid_lines_RRR128	2037795	100000	233700	20.377950	8.719705
+indexes/madrid_lines_RRR128	2952430	100000	247230	29.524300	11.942038
+indexes/madrid_lines_RRR128	2464177	100000	236570	24.641770	10.416270
+indexes/madrid_lines_RRR128	2844065	100000	234090	28.440650	12.149451
+indexes/madrid_lines_RRR128	2479570	100000	231990	24.795700	10.688262
+start x
+indexes/madrid_lines_RRR128	341676	100000	92130440	3.416760	0.003709
+indexes/madrid_lines_RRR128	548997	100000	63037510	5.489970	0.008709
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	2515889	100000	2960720	25.158890	0.849756
+indexes/madrid_lines_RRR128	1371064	100000	2027450	13.710640	0.676250
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	773	100000	0	0.007730	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR128	246962	100000	228047590	2.469620	0.001083
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	313762	100000	126633550	3.137620	0.002478
+indexes/madrid_lines_RRR128	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	2938377	100000	7304300	29.383770	0.402280
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	1120562	100000	4058090	11.205620	0.276130
+indexes/madrid_lines_RRR128	780	100000	0	0.007800	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+
+TTCTR (psi=32 lines=RRR64 times=RG32)
+xy
+indexes/madrid_lines_RG32	508637	100000	7733090	5.086370	0.065774
+indexes/madrid_lines_RG32	788272	100000	7391950	7.882720	0.106639
+indexes/madrid_lines_RG32	611549	100000	7305750	6.115490	0.083708
+indexes/madrid_lines_RG32	1563734	100000	7218110	15.637340	0.216640
+indexes/madrid_lines_RG32	1581284	100000	249440	15.812840	6.339336
+indexes/madrid_lines_RG32	1251581	100000	239320	12.515810	5.229738
+indexes/madrid_lines_RG32	2198484	100000	235740	21.984840	9.325884
+indexes/madrid_lines_RG32	1789891	100000	233590	17.898910	7.662533
+indexes/madrid_lines_RG32	1422279	100000	249220	14.222790	5.706922
+indexes/madrid_lines_RG32	2337595	100000	238360	23.375950	9.806994
+indexes/madrid_lines_RG32	1048783	100000	236560	10.487830	4.433476
+indexes/madrid_lines_RG32	2040060	100000	233700	20.400600	8.729397
+indexes/madrid_lines_RG32	2502528	100000	247230	25.025280	10.122267
+indexes/madrid_lines_RG32	2065681	100000	236570	20.656810	8.731796
+indexes/madrid_lines_RG32	2397814	100000	234090	23.978140	10.243129
+indexes/madrid_lines_RG32	1986371	100000	231990	19.863710	8.562313
+start x
+indexes/madrid_lines_RG32	344030	100000	92130440	3.440300	0.003734
+indexes/madrid_lines_RG32	561375	100000	63037510	5.613750	0.008905
+indexes/madrid_lines_RG32	769	100000	0	0.007690	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	2116302	100000	2960720	21.163020	0.714793
+indexes/madrid_lines_RG32	1170127	100000	2027450	11.701270	0.577142
+indexes/madrid_lines_RG32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	767	100000	0	0.007670	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RG32	244449	100000	228047590	2.444490	0.001072
+indexes/madrid_lines_RG32	792	100000	0	0.007920	inf
+indexes/madrid_lines_RG32	317160	100000	126633550	3.171600	0.002505
+indexes/madrid_lines_RG32	769	100000	0	0.007690	inf
+indexes/madrid_lines_RG32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RG32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RG32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RG32	2117755	100000	7304300	21.177550	0.289933
+indexes/madrid_lines_RG32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RG32	885378	100000	4058090	8.853780	0.218176
+indexes/madrid_lines_RG32	774	100000	0	0.007740	inf
+indexes/madrid_lines_RG32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RG32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RG32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RG32	760	100000	0	0.007600	inf
+
+TTCTR (psi=32 lines=RRR64 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	511642	100000	7733090	5.116420	0.066163
+indexes/madrid_lines_RRR32	788597	100000	7391950	7.885970	0.106683
+indexes/madrid_lines_RRR32	614217	100000	7305750	6.142170	0.084073
+indexes/madrid_lines_RRR32	1567062	100000	7218110	15.670620	0.217101
+indexes/madrid_lines_RRR32	1677867	100000	249440	16.778670	6.726535
+indexes/madrid_lines_RRR32	1327940	100000	239320	13.279400	5.548805
+indexes/madrid_lines_RRR32	2406601	100000	235740	24.066010	10.208709
+indexes/madrid_lines_RRR32	1976148	100000	233590	19.761480	8.459900
+indexes/madrid_lines_RRR32	1521850	100000	249220	15.218500	6.106452
+indexes/madrid_lines_RRR32	2441625	100000	238360	24.416250	10.243434
+indexes/madrid_lines_RRR32	1131763	100000	236560	11.317630	4.784253
+indexes/madrid_lines_RRR32	2128328	100000	233700	21.283280	9.107095
+indexes/madrid_lines_RRR32	2782234	100000	247230	27.822340	11.253626
+indexes/madrid_lines_RRR32	2300414	100000	236570	23.004140	9.724031
+indexes/madrid_lines_RRR32	2682421	100000	234090	26.824210	11.458930
+indexes/madrid_lines_RRR32	2219417	100000	231990	22.194170	9.566865
+start x
+indexes/madrid_lines_RRR32	345988	100000	92130440	3.459880	0.003755
+indexes/madrid_lines_RRR32	559061	100000	63037510	5.590610	0.008869
+indexes/madrid_lines_RRR32	769	100000	0	0.007690	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	2365715	100000	2960720	23.657150	0.799034
+indexes/madrid_lines_RRR32	1300832	100000	2027450	13.008320	0.641610
+indexes/madrid_lines_RRR32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR32	241027	100000	228047590	2.410270	0.001057
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	319258	100000	126633550	3.192580	0.002521
+indexes/madrid_lines_RRR32	769	100000	0	0.007690	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	2536592	100000	7304300	25.365920	0.347274
+indexes/madrid_lines_RRR32	781	100000	0	0.007810	inf
+indexes/madrid_lines_RRR32	1042044	100000	4058090	10.420440	0.256782
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+
+TTCTR (psi=32 lines=RRR64 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	508963	100000	7733090	5.089630	0.065816
+indexes/madrid_lines_RRR64	796543	100000	7391950	7.965430	0.107758
+indexes/madrid_lines_RRR64	609321	100000	7305750	6.093210	0.083403
+indexes/madrid_lines_RRR64	1568073	100000	7218110	15.680730	0.217241
+indexes/madrid_lines_RRR64	1694563	100000	249440	16.945630	6.793469
+indexes/madrid_lines_RRR64	1343960	100000	239320	13.439600	5.615745
+indexes/madrid_lines_RRR64	2486485	100000	235740	24.864850	10.547574
+indexes/madrid_lines_RRR64	2040910	100000	233590	20.409100	8.737146
+indexes/madrid_lines_RRR64	1553162	100000	249220	15.531620	6.232092
+indexes/madrid_lines_RRR64	2468219	100000	238360	24.682190	10.355005
+indexes/madrid_lines_RRR64	1152038	100000	236560	11.520380	4.869961
+indexes/madrid_lines_RRR64	2150734	100000	233700	21.507340	9.202970
+indexes/madrid_lines_RRR64	2864665	100000	247230	28.646650	11.587044
+indexes/madrid_lines_RRR64	2386062	100000	236570	23.860620	10.086072
+indexes/madrid_lines_RRR64	2760354	100000	234090	27.603540	11.791849
+indexes/madrid_lines_RRR64	2293749	100000	231990	22.937490	9.887275
+start x
+indexes/madrid_lines_RRR64	344384	100000	92130440	3.443840	0.003738
+indexes/madrid_lines_RRR64	558408	100000	63037510	5.584080	0.008858
+indexes/madrid_lines_RRR64	768	100000	0	0.007680	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	2432511	100000	2960720	24.325110	0.821594
+indexes/madrid_lines_RRR64	1325593	100000	2027450	13.255930	0.653823
+indexes/madrid_lines_RRR64	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR64	245541	100000	228047590	2.455410	0.001077
+indexes/madrid_lines_RRR64	768	100000	0	0.007680	inf
+indexes/madrid_lines_RRR64	316309	100000	126633550	3.163090	0.002498
+indexes/madrid_lines_RRR64	770	100000	0	0.007700	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	770	100000	0	0.007700	inf
+indexes/madrid_lines_RRR64	2653968	100000	7304300	26.539680	0.363343
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	1071987	100000	4058090	10.719870	0.264160
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+
+TTCTR (psi=32 lines=RRR64 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	509856	100000	7733090	5.098560	0.065932
+indexes/madrid_lines_RRR128	792331	100000	7391950	7.923310	0.107188
+indexes/madrid_lines_RRR128	613890	100000	7305750	6.138900	0.084028
+indexes/madrid_lines_RRR128	1561230	100000	7218110	15.612300	0.216293
+indexes/madrid_lines_RRR128	1736918	100000	249440	17.369180	6.963270
+indexes/madrid_lines_RRR128	1377792	100000	239320	13.777920	5.757112
+indexes/madrid_lines_RRR128	2666427	100000	235740	26.664270	11.310881
+indexes/madrid_lines_RRR128	2189397	100000	233590	21.893970	9.372820
+indexes/madrid_lines_RRR128	1608854	100000	249220	16.088540	6.455557
+indexes/madrid_lines_RRR128	2519588	100000	238360	25.195880	10.570515
+indexes/madrid_lines_RRR128	1183448	100000	236560	11.834480	5.002739
+indexes/madrid_lines_RRR128	2180423	100000	233700	21.804230	9.330009
+indexes/madrid_lines_RRR128	3071099	100000	247230	30.710990	12.422032
+indexes/madrid_lines_RRR128	2545159	100000	236570	25.451590	10.758587
+indexes/madrid_lines_RRR128	2952318	100000	234090	29.523180	12.611893
+indexes/madrid_lines_RRR128	2464171	100000	231990	24.641710	10.621885
+start x
+indexes/madrid_lines_RRR128	341469	100000	92130440	3.414690	0.003706
+indexes/madrid_lines_RRR128	563399	100000	63037510	5.633990	0.008938
+indexes/madrid_lines_RRR128	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	2566910	100000	2960720	25.669100	0.866988
+indexes/madrid_lines_RRR128	1377908	100000	2027450	13.779080	0.679626
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+end x
+indexes/madrid_lines_RRR128	242494	100000	228047590	2.424940	0.001063
+indexes/madrid_lines_RRR128	783	100000	0	0.007830	inf
+indexes/madrid_lines_RRR128	320023	100000	126633550	3.200230	0.002527
+indexes/madrid_lines_RRR128	770	100000	0	0.007700	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	2885331	100000	7304300	28.853310	0.395018
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	1125963	100000	4058090	11.259630	0.277461
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+
+TTCTR (psi=32 lines=RRR128 times=RG32)
+xy
+indexes/madrid_lines_RG32	503099	100000	7733090	5.030990	0.065058
+indexes/madrid_lines_RG32	836229	100000	7391950	8.362290	0.113127
+indexes/madrid_lines_RG32	619159	100000	7305750	6.191590	0.084750
+indexes/madrid_lines_RG32	1879109	100000	7218110	18.791090	0.260333
+indexes/madrid_lines_RG32	1676960	100000	249440	16.769600	6.722899
+indexes/madrid_lines_RG32	1295380	100000	239320	12.953800	5.412753
+indexes/madrid_lines_RG32	2434434	100000	235740	24.344340	10.326775
+indexes/madrid_lines_RG32	1960967	100000	233590	19.609670	8.394910
+indexes/madrid_lines_RG32	1454451	100000	249220	14.544510	5.836012
+indexes/madrid_lines_RG32	2683678	100000	238360	26.836780	11.258928
+indexes/madrid_lines_RG32	1056341	100000	236560	10.563410	4.465425
+indexes/madrid_lines_RG32	2430455	100000	233700	24.304550	10.399893
+indexes/madrid_lines_RG32	2832756	100000	247230	28.327560	11.457978
+indexes/madrid_lines_RG32	2250167	100000	236570	22.501670	9.511633
+indexes/madrid_lines_RG32	2687569	100000	234090	26.875690	11.480922
+indexes/madrid_lines_RG32	2152809	100000	231990	21.528090	9.279749
+start x
+indexes/madrid_lines_RG32	350025	100000	92130440	3.500250	0.003799
+indexes/madrid_lines_RG32	604626	100000	63037510	6.046260	0.009592
+indexes/madrid_lines_RG32	770	100000	0	0.007700	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	2224310	100000	2960720	22.243100	0.751273
+indexes/madrid_lines_RG32	1209235	100000	2027450	12.092350	0.596431
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	770	100000	0	0.007700	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RG32	242237	100000	228047590	2.422370	0.001062
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	320810	100000	126633550	3.208100	0.002533
+indexes/madrid_lines_RG32	774	100000	0	0.007740	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	2155231	100000	7304300	21.552310	0.295063
+indexes/madrid_lines_RG32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RG32	891273	100000	4058090	8.912730	0.219629
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+
+TTCTR (psi=32 lines=RRR128 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	510177	100000	7733090	5.101770	0.065973
+indexes/madrid_lines_RRR32	839710	100000	7391950	8.397100	0.113598
+indexes/madrid_lines_RRR32	619284	100000	7305750	6.192840	0.084767
+indexes/madrid_lines_RRR32	1879104	100000	7218110	18.791040	0.260332
+indexes/madrid_lines_RRR32	1761782	100000	249440	17.617820	7.062949
+indexes/madrid_lines_RRR32	1364251	100000	239320	13.642510	5.700531
+indexes/madrid_lines_RRR32	2644920	100000	235740	26.449200	11.219649
+indexes/madrid_lines_RRR32	2142269	100000	233590	21.422690	9.171065
+indexes/madrid_lines_RRR32	1563086	100000	249220	15.630860	6.271912
+indexes/madrid_lines_RRR32	2784681	100000	238360	27.846810	11.682669
+indexes/madrid_lines_RRR32	1144433	100000	236560	11.444330	4.837813
+indexes/madrid_lines_RRR32	2445163	100000	233700	24.451630	10.462828
+indexes/madrid_lines_RRR32	3020196	100000	247230	30.201960	12.216139
+indexes/madrid_lines_RRR32	2475088	100000	236570	24.750880	10.462392
+indexes/madrid_lines_RRR32	2896939	100000	234090	28.969390	12.375321
+indexes/madrid_lines_RRR32	2385229	100000	231990	23.852290	10.281603
+start x
+indexes/madrid_lines_RRR32	341256	100000	92130440	3.412560	0.003704
+indexes/madrid_lines_RRR32	615435	100000	63037510	6.154350	0.009763
+indexes/madrid_lines_RRR32	768	100000	0	0.007680	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	2462336	100000	2960720	24.623360	0.831668
+indexes/madrid_lines_RRR32	1333512	100000	2027450	13.335120	0.657729
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	767	100000	0	0.007670	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR32	240838	100000	228047590	2.408380	0.001056
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	326654	100000	126633550	3.266540	0.002580
+indexes/madrid_lines_RRR32	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	2571530	100000	7304300	25.715300	0.352057
+indexes/madrid_lines_RRR32	783	100000	0	0.007830	inf
+indexes/madrid_lines_RRR32	1046371	100000	4058090	10.463710	0.257848
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+
+TTCTR (psi=32 lines=RRR128 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	508848	100000	7733090	5.088480	0.065801
+indexes/madrid_lines_RRR64	840139	100000	7391950	8.401390	0.113656
+indexes/madrid_lines_RRR64	616264	100000	7305750	6.162640	0.084353
+indexes/madrid_lines_RRR64	1883710	100000	7218110	18.837100	0.260970
+indexes/madrid_lines_RRR64	1782138	100000	249440	17.821380	7.144556
+indexes/madrid_lines_RRR64	1380638	100000	239320	13.806380	5.769004
+indexes/madrid_lines_RRR64	2722166	100000	235740	27.221660	11.547323
+indexes/madrid_lines_RRR64	2203524	100000	233590	22.035240	9.433298
+indexes/madrid_lines_RRR64	1590675	100000	249220	15.906750	6.382614
+indexes/madrid_lines_RRR64	2812631	100000	238360	28.126310	11.799929
+indexes/madrid_lines_RRR64	1157122	100000	236560	11.571220	4.891452
+indexes/madrid_lines_RRR64	2466032	100000	233700	24.660320	10.552127
+indexes/madrid_lines_RRR64	3112311	100000	247230	31.123110	12.588727
+indexes/madrid_lines_RRR64	2552433	100000	236570	25.524330	10.789335
+indexes/madrid_lines_RRR64	2994800	100000	234090	29.948000	12.793370
+indexes/madrid_lines_RRR64	2460716	100000	231990	24.607160	10.606992
+start x
+indexes/madrid_lines_RRR64	341710	100000	92130440	3.417100	0.003709
+indexes/madrid_lines_RRR64	720350	100000	63037510	7.203500	0.011427
+indexes/madrid_lines_RRR64	768	100000	0	0.007680	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	2544465	100000	2960720	25.444650	0.859408
+indexes/madrid_lines_RRR64	1363607	100000	2027450	13.636070	0.672572
+indexes/madrid_lines_RRR64	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR64	247186	100000	228047590	2.471860	0.001084
+indexes/madrid_lines_RRR64	784	100000	0	0.007840	inf
+indexes/madrid_lines_RRR64	328228	100000	126633550	3.282280	0.002592
+indexes/madrid_lines_RRR64	792	100000	0	0.007920	inf
+indexes/madrid_lines_RRR64	782	100000	0	0.007820	inf
+indexes/madrid_lines_RRR64	782	100000	0	0.007820	inf
+indexes/madrid_lines_RRR64	788	100000	0	0.007880	inf
+indexes/madrid_lines_RRR64	782	100000	0	0.007820	inf
+indexes/madrid_lines_RRR64	2693615	100000	7304300	26.936150	0.368771
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	1076818	100000	4058090	10.768180	0.265351
+indexes/madrid_lines_RRR64	774	100000	0	0.007740	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+
+TTCTR (psi=32 lines=RRR128 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	508317	100000	7733090	5.083170	0.065733
+indexes/madrid_lines_RRR128	834172	100000	7391950	8.341720	0.112849
+indexes/madrid_lines_RRR128	625615	100000	7305750	6.256150	0.085633
+indexes/madrid_lines_RRR128	1878497	100000	7218110	18.784970	0.260248
+indexes/madrid_lines_RRR128	1827146	100000	249440	18.271460	7.324992
+indexes/madrid_lines_RRR128	1414563	100000	239320	14.145630	5.910760
+indexes/madrid_lines_RRR128	2920225	100000	235740	29.202250	12.387482
+indexes/madrid_lines_RRR128	2369156	100000	233590	23.691560	10.142369
+indexes/madrid_lines_RRR128	1640705	100000	249220	16.407050	6.583360
+indexes/madrid_lines_RRR128	2894063	100000	238360	28.940630	12.141563
+indexes/madrid_lines_RRR128	1192678	100000	236560	11.926780	5.041757
+indexes/madrid_lines_RRR128	2524093	100000	233700	25.240930	10.800569
+indexes/madrid_lines_RRR128	3328398	100000	247230	33.283980	13.462759
+indexes/madrid_lines_RRR128	2736808	100000	236570	27.368080	11.568703
+indexes/madrid_lines_RRR128	3199112	100000	234090	31.991120	13.666163
+indexes/madrid_lines_RRR128	2639940	100000	231990	26.399400	11.379542
+start x
+indexes/madrid_lines_RRR128	343437	100000	92130440	3.434370	0.003728
+indexes/madrid_lines_RRR128	610893	100000	63037510	6.108930	0.009691
+indexes/madrid_lines_RRR128	770	100000	0	0.007700	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	2666204	100000	2960720	26.662040	0.900526
+indexes/madrid_lines_RRR128	1415721	100000	2027450	14.157210	0.698277
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR128	241198	100000	228047590	2.411980	0.001058
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	322604	100000	126633550	3.226040	0.002548
+indexes/madrid_lines_RRR128	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	2923936	100000	7304300	29.239360	0.400303
+indexes/madrid_lines_RRR128	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR128	1133123	100000	4058090	11.331230	0.279226
+indexes/madrid_lines_RRR128	774	100000	0	0.007740	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+
+TTCTR (psi=128 lines=RG32 times=RG32)
+xy
+indexes/madrid_lines_RG32	949291	100000	7733090	9.492910	0.122757
+indexes/madrid_lines_RG32	1278269	100000	7391950	12.782690	0.172927
+indexes/madrid_lines_RG32	1035440	100000	7305750	10.354400	0.141729
+indexes/madrid_lines_RG32	1681117	100000	7218110	16.811170	0.232903
+indexes/madrid_lines_RG32	1975354	100000	249440	19.753540	7.919155
+indexes/madrid_lines_RG32	1690085	100000	239320	16.900850	7.062030
+indexes/madrid_lines_RG32	2394423	100000	235740	23.944230	10.157050
+indexes/madrid_lines_RG32	2054813	100000	233590	20.548130	8.796665
+indexes/madrid_lines_RG32	1777381	100000	249220	17.773810	7.131775
+indexes/madrid_lines_RG32	2382215	100000	238360	23.822150	9.994189
+indexes/madrid_lines_RG32	1445766	100000	236560	14.457660	6.111625
+indexes/madrid_lines_RG32	2111102	100000	233700	21.111020	9.033385
+indexes/madrid_lines_RG32	2671011	100000	247230	26.710110	10.803750
+indexes/madrid_lines_RG32	2303899	100000	236570	23.038990	9.738762
+indexes/madrid_lines_RG32	2584723	100000	234090	25.847230	11.041578
+indexes/madrid_lines_RG32	2236166	100000	231990	22.361660	9.639062
+start x
+indexes/madrid_lines_RG32	633904	100000	92130440	6.339040	0.006881
+indexes/madrid_lines_RG32	942804	100000	63037510	9.428040	0.014956
+indexes/madrid_lines_RG32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	2265244	100000	2960720	22.652440	0.765099
+indexes/madrid_lines_RG32	1401671	100000	2027450	14.016710	0.691347
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RG32	502754	100000	228047590	5.027540	0.002205
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RG32	567399	100000	126633550	5.673990	0.004481
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	2329455	100000	7304300	23.294550	0.318916
+indexes/madrid_lines_RG32	774	100000	0	0.007740	inf
+indexes/madrid_lines_RG32	1129826	100000	4058090	11.298260	0.278413
+indexes/madrid_lines_RG32	779	100000	0	0.007790	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+
+TTCTR (psi=128 lines=RG32 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	961386	100000	7733090	9.613860	0.124321
+indexes/madrid_lines_RRR32	1279601	100000	7391950	12.796010	0.173107
+indexes/madrid_lines_RRR32	1041830	100000	7305750	10.418300	0.142604
+indexes/madrid_lines_RRR32	1680539	100000	7218110	16.805390	0.232823
+indexes/madrid_lines_RRR32	2075563	100000	249440	20.755630	8.320891
+indexes/madrid_lines_RRR32	1768797	100000	239320	17.687970	7.390928
+indexes/madrid_lines_RRR32	2624568	100000	235740	26.245680	11.133316
+indexes/madrid_lines_RRR32	2260353	100000	233590	22.603530	9.676583
+indexes/madrid_lines_RRR32	1892696	100000	249220	18.926960	7.594479
+indexes/madrid_lines_RRR32	2490469	100000	238360	24.904690	10.448351
+indexes/madrid_lines_RRR32	1542155	100000	236560	15.421550	6.519086
+indexes/madrid_lines_RRR32	2211635	100000	233700	22.116350	9.463564
+indexes/madrid_lines_RRR32	2973208	100000	247230	29.732080	12.026081
+indexes/madrid_lines_RRR32	2556906	100000	236570	25.569060	10.808243
+indexes/madrid_lines_RRR32	2871693	100000	234090	28.716930	12.267474
+indexes/madrid_lines_RRR32	2487129	100000	231990	24.871290	10.720846
+start x
+indexes/madrid_lines_RRR32	630383	100000	92130440	6.303830	0.006842
+indexes/madrid_lines_RRR32	855005	100000	63037510	8.550050	0.013563
+indexes/madrid_lines_RRR32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	2545363	100000	2960720	25.453630	0.859711
+indexes/madrid_lines_RRR32	1536973	100000	2027450	15.369730	0.758082
+indexes/madrid_lines_RRR32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	767	100000	0	0.007670	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR32	505678	100000	228047590	5.056780	0.002217
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	566539	100000	126633550	5.665390	0.004474
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	2767633	100000	7304300	27.676330	0.378905
+indexes/madrid_lines_RRR32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR32	1291731	100000	4058090	12.917310	0.318310
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	788	100000	0	0.007880	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+
+TTCTR (psi=128 lines=RG32 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	949367	100000	7733090	9.493670	0.122767
+indexes/madrid_lines_RRR64	1278569	100000	7391950	12.785690	0.172968
+indexes/madrid_lines_RRR64	1037594	100000	7305750	10.375940	0.142024
+indexes/madrid_lines_RRR64	1686306	100000	7218110	16.863060	0.233622
+indexes/madrid_lines_RRR64	2093173	100000	249440	20.931730	8.391489
+indexes/madrid_lines_RRR64	1781032	100000	239320	17.810320	7.442052
+indexes/madrid_lines_RRR64	2703355	100000	235740	27.033550	11.467528
+indexes/madrid_lines_RRR64	2313109	100000	233590	23.131090	9.902432
+indexes/madrid_lines_RRR64	1922073	100000	249220	19.220730	7.712355
+indexes/madrid_lines_RRR64	2516819	100000	238360	25.168190	10.558898
+indexes/madrid_lines_RRR64	1553234	100000	236560	15.532340	6.565920
+indexes/madrid_lines_RRR64	2229105	100000	233700	22.291050	9.538318
+indexes/madrid_lines_RRR64	3059708	100000	247230	30.597080	12.375958
+indexes/madrid_lines_RRR64	2630729	100000	236570	26.307290	11.120298
+indexes/madrid_lines_RRR64	2966049	100000	234090	29.660490	12.670550
+indexes/madrid_lines_RRR64	2559569	100000	231990	25.595690	11.033101
+start x
+indexes/madrid_lines_RRR64	638679	100000	92130440	6.386790	0.006932
+indexes/madrid_lines_RRR64	853049	100000	63037510	8.530490	0.013532
+indexes/madrid_lines_RRR64	781	100000	0	0.007810	inf
+indexes/madrid_lines_RRR64	785	100000	0	0.007850	inf
+indexes/madrid_lines_RRR64	2599625	100000	2960720	25.996250	0.878038
+indexes/madrid_lines_RRR64	1565762	100000	2027450	15.657620	0.772281
+indexes/madrid_lines_RRR64	780	100000	0	0.007800	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR64	509213	100000	228047590	5.092130	0.002233
+indexes/madrid_lines_RRR64	767	100000	0	0.007670	inf
+indexes/madrid_lines_RRR64	569334	100000	126633550	5.693340	0.004496
+indexes/madrid_lines_RRR64	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	2877564	100000	7304300	28.775640	0.393955
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	1316217	100000	4058090	13.162170	0.324344
+indexes/madrid_lines_RRR64	786	100000	0	0.007860	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+
+TTCTR (psi=128 lines=RG32 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	955658	100000	7733090	9.556580	0.123580
+indexes/madrid_lines_RRR128	1277760	100000	7391950	12.777600	0.172858
+indexes/madrid_lines_RRR128	1043208	100000	7305750	10.432080	0.142793
+indexes/madrid_lines_RRR128	1679734	100000	7218110	16.797340	0.232711
+indexes/madrid_lines_RRR128	2141171	100000	249440	21.411710	8.583912
+indexes/madrid_lines_RRR128	1820349	100000	239320	18.203490	7.606339
+indexes/madrid_lines_RRR128	2883854	100000	235740	28.838540	12.233198
+indexes/madrid_lines_RRR128	2467367	100000	233590	24.673670	10.562811
+indexes/madrid_lines_RRR128	1975997	100000	249220	19.759970	7.928726
+indexes/madrid_lines_RRR128	2575382	100000	238360	25.753820	10.804590
+indexes/madrid_lines_RRR128	1588173	100000	236560	15.881730	6.713616
+indexes/madrid_lines_RRR128	2260980	100000	233700	22.609800	9.674711
+indexes/madrid_lines_RRR128	3262128	100000	247230	32.621280	13.194709
+indexes/madrid_lines_RRR128	2812472	100000	236570	28.124720	11.888540
+indexes/madrid_lines_RRR128	3162521	100000	234090	31.625210	13.509851
+indexes/madrid_lines_RRR128	2735294	100000	231990	27.352940	11.790569
+start x
+indexes/madrid_lines_RRR128	633219	100000	92130440	6.332190	0.006873
+indexes/madrid_lines_RRR128	853279	100000	63037510	8.532790	0.013536
+indexes/madrid_lines_RRR128	781	100000	0	0.007810	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	2736399	100000	2960720	27.363990	0.924234
+indexes/madrid_lines_RRR128	1620754	100000	2027450	16.207540	0.799405
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	767	100000	0	0.007670	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+end x
+indexes/madrid_lines_RRR128	499559	100000	228047590	4.995590	0.002191
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	670657	100000	126633550	6.706570	0.005296
+indexes/madrid_lines_RRR128	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	3100830	100000	7304300	31.008300	0.424521
+indexes/madrid_lines_RRR128	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR128	1372385	100000	4058090	13.723850	0.338185
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+
+TTCTR (psi=128 lines=RRR32 times=RG32)
+xy
+indexes/madrid_lines_RG32	947663	100000	7733090	9.476630	0.122546
+indexes/madrid_lines_RG32	1258830	100000	7391950	12.588300	0.170297
+indexes/madrid_lines_RG32	1041661	100000	7305750	10.416610	0.142581
+indexes/madrid_lines_RG32	1892701	100000	7218110	18.927010	0.262216
+indexes/madrid_lines_RG32	1997068	100000	249440	19.970680	8.006206
+indexes/madrid_lines_RG32	1696847	100000	239320	16.968470	7.090285
+indexes/madrid_lines_RG32	2543191	100000	235740	25.431910	10.788118
+indexes/madrid_lines_RG32	2176035	100000	233590	21.760350	9.315617
+indexes/madrid_lines_RG32	1804530	100000	249220	18.045300	7.240711
+indexes/madrid_lines_RG32	2637617	100000	238360	26.376170	11.065686
+indexes/madrid_lines_RG32	1461023	100000	236560	14.610230	6.176120
+indexes/madrid_lines_RG32	2352199	100000	233700	23.521990	10.065036
+indexes/madrid_lines_RG32	2835506	100000	247230	28.355060	11.469102
+indexes/madrid_lines_RG32	2438084	100000	236570	24.380840	10.305973
+indexes/madrid_lines_RG32	2741407	100000	234090	27.414070	11.710910
+indexes/madrid_lines_RG32	2369470	100000	231990	23.694700	10.213673
+start x
+indexes/madrid_lines_RG32	629839	100000	92130440	6.298390	0.006836
+indexes/madrid_lines_RG32	828323	100000	63037510	8.283230	0.013140
+indexes/madrid_lines_RG32	768	100000	0	0.007680	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	2298469	100000	2960720	22.984690	0.776321
+indexes/madrid_lines_RG32	1407413	100000	2027450	14.074130	0.694179
+indexes/madrid_lines_RG32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+end x
+indexes/madrid_lines_RG32	499795	100000	228047590	4.997950	0.002192
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	570675	100000	126633550	5.706750	0.004507
+indexes/madrid_lines_RG32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	2352861	100000	7304300	23.528610	0.322120
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	1137578	100000	4058090	11.375780	0.280324
+indexes/madrid_lines_RG32	780	100000	0	0.007800	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+
+TTCTR (psi=128 lines=RRR32 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	948410	100000	7733090	9.484100	0.122643
+indexes/madrid_lines_RRR32	1258266	100000	7391950	12.582660	0.170221
+indexes/madrid_lines_RRR32	1040320	100000	7305750	10.403200	0.142397
+indexes/madrid_lines_RRR32	1890390	100000	7218110	18.903900	0.261895
+indexes/madrid_lines_RRR32	2080456	100000	249440	20.804560	8.340507
+indexes/madrid_lines_RRR32	1766450	100000	239320	17.664500	7.381122
+indexes/madrid_lines_RRR32	2756192	100000	235740	27.561920	11.691660
+indexes/madrid_lines_RRR32	2361181	100000	233590	23.611810	10.108228
+indexes/madrid_lines_RRR32	1905279	100000	249220	19.052790	7.644968
+indexes/madrid_lines_RRR32	2738453	100000	238360	27.384530	11.488727
+indexes/madrid_lines_RRR32	1538060	100000	236560	15.380600	6.501775
+indexes/madrid_lines_RRR32	2441583	100000	233700	24.415830	10.447510
+indexes/madrid_lines_RRR32	3111138	100000	247230	31.111380	12.583983
+indexes/madrid_lines_RRR32	2676401	100000	236570	26.764010	11.313358
+indexes/madrid_lines_RRR32	3008121	100000	234090	30.081210	12.850276
+indexes/madrid_lines_RRR32	2598968	100000	231990	25.989680	11.202931
+start x
+indexes/madrid_lines_RRR32	646495	100000	92130440	6.464950	0.007017
+indexes/madrid_lines_RRR32	822987	100000	63037510	8.229870	0.013056
+indexes/madrid_lines_RRR32	779	100000	0	0.007790	inf
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR32	2545087	100000	2960720	25.450870	0.859618
+indexes/madrid_lines_RRR32	1529136	100000	2027450	15.291360	0.754216
+indexes/madrid_lines_RRR32	785	100000	0	0.007850	inf
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR32	774	100000	0	0.007740	inf
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+end x
+indexes/madrid_lines_RRR32	500659	100000	228047590	5.006590	0.002195
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	570782	100000	126633550	5.707820	0.004507
+indexes/madrid_lines_RRR32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR32	2768704	100000	7304300	27.687040	0.379051
+indexes/madrid_lines_RRR32	774	100000	0	0.007740	inf
+indexes/madrid_lines_RRR32	1292788	100000	4058090	12.927880	0.318571
+indexes/madrid_lines_RRR32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR32	760	100000	0	0.007600	inf
+
+TTCTR (psi=128 lines=RRR32 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	951286	100000	7733090	9.512860	0.123015
+indexes/madrid_lines_RRR64	1256675	100000	7391950	12.566750	0.170006
+indexes/madrid_lines_RRR64	1040886	100000	7305750	10.408860	0.142475
+indexes/madrid_lines_RRR64	1891445	100000	7218110	18.914450	0.262042
+indexes/madrid_lines_RRR64	2135007	100000	249440	21.350070	8.559201
+indexes/madrid_lines_RRR64	1805581	100000	239320	18.055810	7.544631
+indexes/madrid_lines_RRR64	2874669	100000	235740	28.746690	12.194235
+indexes/madrid_lines_RRR64	2451266	100000	233590	24.512660	10.493882
+indexes/madrid_lines_RRR64	1980190	100000	249220	19.801900	7.945550
+indexes/madrid_lines_RRR64	2801898	100000	238360	28.018980	11.754900
+indexes/madrid_lines_RRR64	1577880	100000	236560	15.778800	6.670105
+indexes/madrid_lines_RRR64	2482730	100000	233700	24.827300	10.623577
+indexes/madrid_lines_RRR64	3258694	100000	247230	32.586940	13.180819
+indexes/madrid_lines_RRR64	2792011	100000	236570	27.920110	11.802050
+indexes/madrid_lines_RRR64	3151925	100000	234090	31.519250	13.464586
+indexes/madrid_lines_RRR64	2716375	100000	231990	27.163750	11.709018
+start x
+indexes/madrid_lines_RRR64	632401	100000	92130440	6.324010	0.006864
+indexes/madrid_lines_RRR64	828570	100000	63037510	8.285700	0.013144
+indexes/madrid_lines_RRR64	770	100000	0	0.007700	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	2604655	100000	2960720	26.046550	0.879737
+indexes/madrid_lines_RRR64	1554998	100000	2027450	15.549980	0.766972
+indexes/madrid_lines_RRR64	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+end x
+indexes/madrid_lines_RRR64	503221	100000	228047590	5.032210	0.002207
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	565527	100000	126633550	5.655270	0.004466
+indexes/madrid_lines_RRR64	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	2884331	100000	7304300	28.843310	0.394881
+indexes/madrid_lines_RRR64	779	100000	0	0.007790	inf
+indexes/madrid_lines_RRR64	1316496	100000	4058090	13.164960	0.324413
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR64	785	100000	0	0.007850	inf
+
+TTCTR (psi=128 lines=RRR32 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	949268	100000	7733090	9.492680	0.122754
+indexes/madrid_lines_RRR128	1255220	100000	7391950	12.552200	0.169809
+indexes/madrid_lines_RRR128	1040087	100000	7305750	10.400870	0.142366
+indexes/madrid_lines_RRR128	1892439	100000	7218110	18.924390	0.262179
+indexes/madrid_lines_RRR128	2144930	100000	249440	21.449300	8.598982
+indexes/madrid_lines_RRR128	1820705	100000	239320	18.207050	7.607826
+indexes/madrid_lines_RRR128	3016267	100000	235740	30.162670	12.794888
+indexes/madrid_lines_RRR128	2569112	100000	233590	25.691120	10.998382
+indexes/madrid_lines_RRR128	1993607	100000	249220	19.936070	7.999386
+indexes/madrid_lines_RRR128	2810604	100000	238360	28.106040	11.791425
+indexes/madrid_lines_RRR128	1593719	100000	236560	15.937190	6.737060
+indexes/madrid_lines_RRR128	2493729	100000	233700	24.937290	10.670642
+indexes/madrid_lines_RRR128	3406462	100000	247230	34.064620	13.778514
+indexes/madrid_lines_RRR128	2920441	100000	236570	29.204410	12.344934
+indexes/madrid_lines_RRR128	3294309	100000	234090	32.943090	14.072831
+indexes/madrid_lines_RRR128	2844178	100000	231990	28.441780	12.259916
+start x
+indexes/madrid_lines_RRR128	630884	100000	92130440	6.308840	0.006848
+indexes/madrid_lines_RRR128	829058	100000	63037510	8.290580	0.013152
+indexes/madrid_lines_RRR128	768	100000	0	0.007680	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	2742763	100000	2960720	27.427630	0.926384
+indexes/madrid_lines_RRR128	1609886	100000	2027450	16.098860	0.794045
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	767	100000	0	0.007670	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+end x
+indexes/madrid_lines_RRR128	513024	100000	228047590	5.130240	0.002250
+indexes/madrid_lines_RRR128	782	100000	0	0.007820	inf
+indexes/madrid_lines_RRR128	571505	100000	126633550	5.715050	0.004513
+indexes/madrid_lines_RRR128	770	100000	0	0.007700	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	3101143	100000	7304300	31.011430	0.424564
+indexes/madrid_lines_RRR128	782	100000	0	0.007820	inf
+indexes/madrid_lines_RRR128	1370102	100000	4058090	13.701020	0.337622
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+
+TTCTR (psi=128 lines=RRR64 times=RG32)
+xy
+indexes/madrid_lines_RG32	948878	100000	7733090	9.488780	0.122704
+indexes/madrid_lines_RG32	1276344	100000	7391950	12.763440	0.172667
+indexes/madrid_lines_RG32	1044672	100000	7305750	10.446720	0.142993
+indexes/madrid_lines_RG32	2029902	100000	7218110	20.299020	0.281223
+indexes/madrid_lines_RG32	2030325	100000	249440	20.303250	8.139533
+indexes/madrid_lines_RG32	1708117	100000	239320	17.081170	7.137377
+indexes/madrid_lines_RG32	2639607	100000	235740	26.396070	11.197111
+indexes/madrid_lines_RG32	2238486	100000	233590	22.384860	9.582970
+indexes/madrid_lines_RG32	1822335	100000	249220	18.223350	7.312154
+indexes/madrid_lines_RG32	2788580	100000	238360	27.885800	11.699027
+indexes/madrid_lines_RG32	1459072	100000	236560	14.590720	6.167873
+indexes/madrid_lines_RG32	2494477	100000	233700	24.944770	10.673843
+indexes/madrid_lines_RG32	2938473	100000	247230	29.384730	11.885584
+indexes/madrid_lines_RG32	2504087	100000	236570	25.040870	10.584973
+indexes/madrid_lines_RG32	2847681	100000	234090	28.476810	12.164898
+indexes/madrid_lines_RG32	2427984	100000	231990	24.279840	10.465899
+start x
+indexes/madrid_lines_RG32	632516	100000	92130440	6.325160	0.006865
+indexes/madrid_lines_RG32	853760	100000	63037510	8.537600	0.013544
+indexes/madrid_lines_RG32	788	100000	0	0.007880	inf
+indexes/madrid_lines_RG32	783	100000	0	0.007830	inf
+indexes/madrid_lines_RG32	2352701	100000	2960720	23.527010	0.794638
+indexes/madrid_lines_RG32	1421960	100000	2027450	14.219600	0.701354
+indexes/madrid_lines_RG32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	767	100000	0	0.007670	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+end x
+indexes/madrid_lines_RG32	500024	100000	228047590	5.000240	0.002193
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RG32	570810	100000	126633550	5.708100	0.004508
+indexes/madrid_lines_RG32	774	100000	0	0.007740	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	2389457	100000	7304300	23.894570	0.327130
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	1147975	100000	4058090	11.479750	0.282886
+indexes/madrid_lines_RG32	796	100000	0	0.007960	inf
+indexes/madrid_lines_RG32	781	100000	0	0.007810	inf
+indexes/madrid_lines_RG32	781	100000	0	0.007810	inf
+indexes/madrid_lines_RG32	783	100000	0	0.007830	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+
+TTCTR (psi=128 lines=RRR64 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	948290	100000	7733090	9.482900	0.122628
+indexes/madrid_lines_RRR32	1280050	100000	7391950	12.800500	0.173168
+indexes/madrid_lines_RRR32	1041354	100000	7305750	10.413540	0.142539
+indexes/madrid_lines_RRR32	2030959	100000	7218110	20.309590	0.281370
+indexes/madrid_lines_RRR32	2116660	100000	249440	21.166600	8.485648
+indexes/madrid_lines_RRR32	1781917	100000	239320	17.819170	7.445750
+indexes/madrid_lines_RRR32	2846562	100000	235740	28.465620	12.075006
+indexes/madrid_lines_RRR32	2424964	100000	233590	24.249640	10.381283
+indexes/madrid_lines_RRR32	1925151	100000	249220	19.251510	7.724705
+indexes/madrid_lines_RRR32	2889069	100000	238360	28.890690	12.120612
+indexes/madrid_lines_RRR32	1538159	100000	236560	15.381590	6.502194
+indexes/madrid_lines_RRR32	2581194	100000	233700	25.811940	11.044904
+indexes/madrid_lines_RRR32	3212499	100000	247230	32.124990	12.993969
+indexes/madrid_lines_RRR32	2745209	100000	236570	27.452090	11.604214
+indexes/madrid_lines_RRR32	3103523	100000	234090	31.035230	13.257820
+indexes/madrid_lines_RRR32	2662668	100000	231990	26.626680	11.477512
+start x
+indexes/madrid_lines_RRR32	630098	100000	92130440	6.300980	0.006839
+indexes/madrid_lines_RRR32	853893	100000	63037510	8.538930	0.013546
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	2583459	100000	2960720	25.834590	0.872578
+indexes/madrid_lines_RRR32	1538057	100000	2027450	15.380570	0.758616
+indexes/madrid_lines_RRR32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR32	506255	100000	228047590	5.062550	0.002220
+indexes/madrid_lines_RRR32	782	100000	0	0.007820	inf
+indexes/madrid_lines_RRR32	572238	100000	126633550	5.722380	0.004519
+indexes/madrid_lines_RRR32	769	100000	0	0.007690	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	2790928	100000	7304300	27.909280	0.382094
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	1296166	100000	4058090	12.961660	0.319403
+indexes/madrid_lines_RRR32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+
+TTCTR (psi=128 lines=RRR64 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	954007	100000	7733090	9.540070	0.123367
+indexes/madrid_lines_RRR64	1272163	100000	7391950	12.721630	0.172101
+indexes/madrid_lines_RRR64	1042890	100000	7305750	10.428900	0.142749
+indexes/madrid_lines_RRR64	2029542	100000	7218110	20.295420	0.281174
+indexes/madrid_lines_RRR64	2132947	100000	249440	21.329470	8.550942
+indexes/madrid_lines_RRR64	1792863	100000	239320	17.928630	7.491488
+indexes/madrid_lines_RRR64	2924634	100000	235740	29.246340	12.406185
+indexes/madrid_lines_RRR64	2485156	100000	233590	24.851560	10.638966
+indexes/madrid_lines_RRR64	1948852	100000	249220	19.488520	7.819806
+indexes/madrid_lines_RRR64	2909161	100000	238360	29.091610	12.204904
+indexes/madrid_lines_RRR64	1553242	100000	236560	15.532420	6.565954
+indexes/madrid_lines_RRR64	2596567	100000	233700	25.965670	11.110685
+indexes/madrid_lines_RRR64	3298390	100000	247230	32.983900	13.341383
+indexes/madrid_lines_RRR64	2819369	100000	236570	28.193690	11.917695
+indexes/madrid_lines_RRR64	3190611	100000	234090	31.906110	13.629847
+indexes/madrid_lines_RRR64	2737248	100000	231990	27.372480	11.798991
+start x
+indexes/madrid_lines_RRR64	630577	100000	92130440	6.305770	0.006844
+indexes/madrid_lines_RRR64	846130	100000	63037510	8.461300	0.013423
+indexes/madrid_lines_RRR64	767	100000	0	0.007670	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	2645611	100000	2960720	26.456110	0.893570
+indexes/madrid_lines_RRR64	1561369	100000	2027450	15.613690	0.770115
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR64	500562	100000	228047590	5.005620	0.002195
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	571102	100000	126633550	5.711020	0.004510
+indexes/madrid_lines_RRR64	770	100000	0	0.007700	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	2900166	100000	7304300	29.001660	0.397049
+indexes/madrid_lines_RRR64	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR64	1320480	100000	4058090	13.204800	0.325394
+indexes/madrid_lines_RRR64	780	100000	0	0.007800	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR64	760	100000	0	0.007600	inf
+
+TTCTR (psi=128 lines=RRR64 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	950941	100000	7733090	9.509410	0.122970
+indexes/madrid_lines_RRR128	1274007	100000	7391950	12.740070	0.172351
+indexes/madrid_lines_RRR128	1042852	100000	7305750	10.428520	0.142744
+indexes/madrid_lines_RRR128	2032462	100000	7218110	20.324620	0.281578
+indexes/madrid_lines_RRR128	2193565	100000	249440	21.935650	8.793958
+indexes/madrid_lines_RRR128	1823542	100000	239320	18.235420	7.619681
+indexes/madrid_lines_RRR128	3113299	100000	235740	31.132990	13.206494
+indexes/madrid_lines_RRR128	2637241	100000	233590	26.372410	11.290042
+indexes/madrid_lines_RRR128	2008203	100000	249220	20.082030	8.057953
+indexes/madrid_lines_RRR128	2972746	100000	238360	29.727460	12.471665
+indexes/madrid_lines_RRR128	1587894	100000	236560	15.878940	6.712437
+indexes/madrid_lines_RRR128	2626792	100000	233700	26.267920	11.240017
+indexes/madrid_lines_RRR128	3518256	100000	247230	35.182560	14.230700
+indexes/madrid_lines_RRR128	3080112	100000	236570	30.801120	13.019876
+indexes/madrid_lines_RRR128	3389928	100000	234090	33.899280	14.481302
+indexes/madrid_lines_RRR128	2903589	100000	231990	29.035890	12.516009
+start x
+indexes/madrid_lines_RRR128	629797	100000	92130440	6.297970	0.006836
+indexes/madrid_lines_RRR128	847628	100000	63037510	8.476280	0.013446
+indexes/madrid_lines_RRR128	799	100000	0	0.007990	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	2782029	100000	2960720	27.820290	0.939646
+indexes/madrid_lines_RRR128	1617796	100000	2027450	16.177960	0.797946
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+end x
+indexes/madrid_lines_RRR128	513805	100000	228047590	5.138050	0.002253
+indexes/madrid_lines_RRR128	783	100000	0	0.007830	inf
+indexes/madrid_lines_RRR128	574850	100000	126633550	5.748500	0.004539
+indexes/madrid_lines_RRR128	770	100000	0	0.007700	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	3124623	100000	7304300	31.246230	0.427779
+indexes/madrid_lines_RRR128	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR128	1382911	100000	4058090	13.829110	0.340779
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+
+TTCTR (psi=128 lines=RRR128 times=RG32)
+xy
+indexes/madrid_lines_RG32	950143	100000	7733090	9.501430	0.122867
+indexes/madrid_lines_RG32	1320234	100000	7391950	13.202340	0.178604
+indexes/madrid_lines_RG32	1048002	100000	7305750	10.480020	0.143449
+indexes/madrid_lines_RG32	2345680	100000	7218110	23.456800	0.324971
+indexes/madrid_lines_RG32	2125887	100000	249440	21.258870	8.522639
+indexes/madrid_lines_RG32	1753701	100000	239320	17.537010	7.327850
+indexes/madrid_lines_RG32	2887193	100000	235740	28.871930	12.247361
+indexes/madrid_lines_RG32	2405262	100000	233590	24.052620	10.296939
+indexes/madrid_lines_RG32	1854840	100000	249220	18.548400	7.442581
+indexes/madrid_lines_RG32	3127095	100000	238360	31.270950	13.119210
+indexes/madrid_lines_RG32	1462416	100000	236560	14.624160	6.182009
+indexes/madrid_lines_RG32	2806269	100000	233700	28.062690	12.007997
+indexes/madrid_lines_RG32	3185751	100000	247230	31.857510	12.885778
+indexes/madrid_lines_RG32	2683257	100000	236570	26.832570	11.342338
+indexes/madrid_lines_RG32	3071951	100000	234090	30.719510	13.122948
+indexes/madrid_lines_RG32	2596324	100000	231990	25.963240	11.191534
+start x
+indexes/madrid_lines_RG32	630520	100000	92130440	6.305200	0.006844
+indexes/madrid_lines_RG32	891274	100000	63037510	8.912740	0.014139
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	2452439	100000	2960720	24.524390	0.828325
+indexes/madrid_lines_RG32	1452017	100000	2027450	14.520170	0.716179
+indexes/madrid_lines_RG32	780	100000	0	0.007800	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RG32	500001	100000	228047590	5.000010	0.002193
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	571844	100000	126633550	5.718440	0.004516
+indexes/madrid_lines_RG32	773	100000	0	0.007730	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	2399637	100000	7304300	23.996370	0.328524
+indexes/madrid_lines_RG32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RG32	1142859	100000	4058090	11.428590	0.281625
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+
+TTCTR (psi=128 lines=RRR128 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	949943	100000	7733090	9.499430	0.122841
+indexes/madrid_lines_RRR32	1321707	100000	7391950	13.217070	0.178804
+indexes/madrid_lines_RRR32	1047969	100000	7305750	10.479690	0.143444
+indexes/madrid_lines_RRR32	2391000	100000	7218110	23.910000	0.331250
+indexes/madrid_lines_RRR32	2201068	100000	249440	22.010680	8.824038
+indexes/madrid_lines_RRR32	1818535	100000	239320	18.185350	7.598759
+indexes/madrid_lines_RRR32	3080080	100000	235740	30.800800	13.065581
+indexes/madrid_lines_RRR32	2584619	100000	233590	25.846190	11.064767
+indexes/madrid_lines_RRR32	1957631	100000	249220	19.576310	7.855032
+indexes/madrid_lines_RRR32	3231512	100000	238360	32.315120	13.557275
+indexes/madrid_lines_RRR32	1548106	100000	236560	15.481060	6.544242
+indexes/madrid_lines_RRR32	2901863	100000	233700	29.018630	12.417043
+indexes/madrid_lines_RRR32	3454815	100000	247230	34.548150	13.974093
+indexes/madrid_lines_RRR32	2914765	100000	236570	29.147650	12.320941
+indexes/madrid_lines_RRR32	3344702	100000	234090	33.447020	14.288103
+indexes/madrid_lines_RRR32	2822787	100000	231990	28.227870	12.167710
+start x
+indexes/madrid_lines_RRR32	629855	100000	92130440	6.298550	0.006837
+indexes/madrid_lines_RRR32	894042	100000	63037510	8.940420	0.014183
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	2708835	100000	2960720	27.088350	0.914924
+indexes/madrid_lines_RRR32	1585397	100000	2027450	15.853970	0.781966
+indexes/madrid_lines_RRR32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR32	773	100000	0	0.007730	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	794	100000	0	0.007940	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+end x
+indexes/madrid_lines_RRR32	500010	100000	228047590	5.000100	0.002193
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	574866	100000	126633550	5.748660	0.004540
+indexes/madrid_lines_RRR32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	2834394	100000	7304300	28.343940	0.388045
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	1297170	100000	4058090	12.971700	0.319650
+indexes/madrid_lines_RRR32	786	100000	0	0.007860	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+
+TTCTR (psi=128 lines=RRR128 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	951562	100000	7733090	9.515620	0.123051
+indexes/madrid_lines_RRR64	1321285	100000	7391950	13.212850	0.178746
+indexes/madrid_lines_RRR64	1046937	100000	7305750	10.469370	0.143303
+indexes/madrid_lines_RRR64	2350802	100000	7218110	23.508020	0.325681
+indexes/madrid_lines_RRR64	2320314	100000	249440	23.203140	9.302093
+indexes/madrid_lines_RRR64	1833773	100000	239320	18.337730	7.662431
+indexes/madrid_lines_RRR64	3164521	100000	235740	31.645210	13.423776
+indexes/madrid_lines_RRR64	2658001	100000	233590	26.580010	11.378916
+indexes/madrid_lines_RRR64	1986108	100000	249220	19.861080	7.969296
+indexes/madrid_lines_RRR64	3253216	100000	238360	32.532160	13.648330
+indexes/madrid_lines_RRR64	1559660	100000	236560	15.596600	6.593084
+indexes/madrid_lines_RRR64	2914411	100000	233700	29.144110	12.470736
+indexes/madrid_lines_RRR64	3558252	100000	247230	35.582520	14.392477
+indexes/madrid_lines_RRR64	3001160	100000	236570	30.011600	12.686139
+indexes/madrid_lines_RRR64	3428033	100000	234090	34.280330	14.644081
+indexes/madrid_lines_RRR64	2904699	100000	231990	29.046990	12.520794
+start x
+indexes/madrid_lines_RRR64	629869	100000	92130440	6.298690	0.006837
+indexes/madrid_lines_RRR64	893233	100000	63037510	8.932330	0.014170
+indexes/madrid_lines_RRR64	767	100000	0	0.007670	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	2770547	100000	2960720	27.705470	0.935768
+indexes/madrid_lines_RRR64	1604065	100000	2027450	16.040650	0.791174
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	767	100000	0	0.007670	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+end x
+indexes/madrid_lines_RRR64	500158	100000	228047590	5.001580	0.002193
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	576325	100000	126633550	5.763250	0.004551
+indexes/madrid_lines_RRR64	774	100000	0	0.007740	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	2935796	100000	7304300	29.357960	0.401927
+indexes/madrid_lines_RRR64	780	100000	0	0.007800	inf
+indexes/madrid_lines_RRR64	1326515	100000	4058090	13.265150	0.326882
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+
+TTCTR (psi=128 lines=RRR128 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	949979	100000	7733090	9.499790	0.122846
+indexes/madrid_lines_RRR128	1321588	100000	7391950	13.215880	0.178787
+indexes/madrid_lines_RRR128	1047954	100000	7305750	10.479540	0.143442
+indexes/madrid_lines_RRR128	2344703	100000	7218110	23.447030	0.324836
+indexes/madrid_lines_RRR128	2273771	100000	249440	22.737710	9.115503
+indexes/madrid_lines_RRR128	1876045	100000	239320	18.760450	7.839065
+indexes/madrid_lines_RRR128	3342869	100000	235740	33.428690	14.180322
+indexes/madrid_lines_RRR128	2804228	100000	233590	28.042280	12.004915
+indexes/madrid_lines_RRR128	2044792	100000	249220	20.447920	8.204767
+indexes/madrid_lines_RRR128	3299430	100000	238360	32.994300	13.842213
+indexes/madrid_lines_RRR128	1590337	100000	236560	15.903370	6.722764
+indexes/madrid_lines_RRR128	2942520	100000	233700	29.425200	12.591014
+indexes/madrid_lines_RRR128	3759537	100000	247230	37.595370	15.206638
+indexes/madrid_lines_RRR128	3169796	100000	236570	31.697960	13.398977
+indexes/madrid_lines_RRR128	3625732	100000	234090	36.257320	15.488624
+indexes/madrid_lines_RRR128	3073759	100000	231990	30.737590	13.249532
+start x
+indexes/madrid_lines_RRR128	635911	100000	92130440	6.359110	0.006902
+indexes/madrid_lines_RRR128	891116	100000	63037510	8.911160	0.014136
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	2894727	100000	2960720	28.947270	0.977710
+indexes/madrid_lines_RRR128	1654818	100000	2027450	16.548180	0.816207
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR128	503480	100000	228047590	5.034800	0.002208
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	572940	100000	126633550	5.729400	0.004524
+indexes/madrid_lines_RRR128	769	100000	0	0.007690	inf
+indexes/madrid_lines_RRR128	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR128	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR128	3164180	100000	7304300	31.641800	0.433194
+indexes/madrid_lines_RRR128	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR128	1383501	100000	4058090	13.835010	0.340924
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	787	100000	0	0.007870	inf
+indexes/madrid_lines_RRR128	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR128	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+
+TTCTR (psi=512 lines=RG32 times=RG32)
+xy
+indexes/madrid_lines_RG32	2660398	100000	7733090	26.603980	0.344028
+indexes/madrid_lines_RG32	3249433	100000	7391950	32.494330	0.439591
+indexes/madrid_lines_RG32	2752680	100000	7305750	27.526800	0.376783
+indexes/madrid_lines_RG32	3645325	100000	7218110	36.453250	0.505025
+indexes/madrid_lines_RG32	3938415	100000	249440	39.384150	15.789027
+indexes/madrid_lines_RG32	3654026	100000	239320	36.540260	15.268369
+indexes/madrid_lines_RG32	4355068	100000	235740	43.550680	18.474031
+indexes/madrid_lines_RG32	4013428	100000	233590	40.134280	17.181506
+indexes/madrid_lines_RG32	3487108	100000	249220	34.871080	13.992087
+indexes/madrid_lines_RG32	4333048	100000	238360	43.330480	18.178587
+indexes/madrid_lines_RG32	3162947	100000	236560	31.629470	13.370591
+indexes/madrid_lines_RG32	4068485	100000	233700	40.684850	17.409007
+indexes/madrid_lines_RG32	4628830	100000	247230	46.288300	18.722768
+indexes/madrid_lines_RG32	4261575	100000	236570	42.615750	18.014013
+indexes/madrid_lines_RG32	4539801	100000	234090	45.398010	19.393400
+indexes/madrid_lines_RG32	4192928	100000	231990	41.929280	18.073745
+start x
+indexes/madrid_lines_RG32	1632278	100000	92130440	16.322780	0.017717
+indexes/madrid_lines_RG32	1863650	100000	63037510	18.636500	0.029564
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	3255058	100000	2960720	32.550580	1.099414
+indexes/madrid_lines_RG32	2402203	100000	2027450	24.022030	1.184840
+indexes/madrid_lines_RG32	784	100000	0	0.007840	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+end x
+indexes/madrid_lines_RG32	1404856	100000	228047590	14.048560	0.006160
+indexes/madrid_lines_RG32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RG32	1475633	100000	126633550	14.756330	0.011653
+indexes/madrid_lines_RG32	774	100000	0	0.007740	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	3239931	100000	7304300	32.399310	0.443565
+indexes/madrid_lines_RG32	779	100000	0	0.007790	inf
+indexes/madrid_lines_RG32	2037135	100000	4058090	20.371350	0.501994
+indexes/madrid_lines_RG32	781	100000	0	0.007810	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+
+TTCTR (psi=512 lines=RG32 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	2659820	100000	7733090	26.598200	0.343953
+indexes/madrid_lines_RRR32	3242288	100000	7391950	32.422880	0.438624
+indexes/madrid_lines_RRR32	2750791	100000	7305750	27.507910	0.376524
+indexes/madrid_lines_RRR32	3641869	100000	7218110	36.418690	0.504546
+indexes/madrid_lines_RRR32	4038150	100000	249440	40.381500	16.188863
+indexes/madrid_lines_RRR32	3735933	100000	239320	37.359330	15.610618
+indexes/madrid_lines_RRR32	4585740	100000	235740	45.857400	19.452532
+indexes/madrid_lines_RRR32	4217369	100000	233590	42.173690	18.054579
+indexes/madrid_lines_RRR32	3605604	100000	249220	36.056040	14.467555
+indexes/madrid_lines_RRR32	4446984	100000	238360	44.469840	18.656587
+indexes/madrid_lines_RRR32	3242863	100000	236560	32.428630	13.708416
+indexes/madrid_lines_RRR32	4169774	100000	233700	41.697740	17.842422
+indexes/madrid_lines_RRR32	4921731	100000	247230	49.217310	19.907499
+indexes/madrid_lines_RRR32	4515461	100000	236570	45.154610	19.087209
+indexes/madrid_lines_RRR32	4825334	100000	234090	48.253340	20.613157
+indexes/madrid_lines_RRR32	4442058	100000	231990	44.420580	19.147627
+start x
+indexes/madrid_lines_RRR32	1629334	100000	92130440	16.293340	0.017685
+indexes/madrid_lines_RRR32	1862968	100000	63037510	18.629680	0.029553
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	3530767	100000	2960720	35.307670	1.192537
+indexes/madrid_lines_RRR32	2544349	100000	2027450	25.443490	1.254950
+indexes/madrid_lines_RRR32	779	100000	0	0.007790	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR32	1402300	100000	228047590	14.023000	0.006149
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	1477137	100000	126633550	14.771370	0.011665
+indexes/madrid_lines_RRR32	773	100000	0	0.007730	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	3686634	100000	7304300	36.866340	0.504721
+indexes/madrid_lines_RRR32	781	100000	0	0.007810	inf
+indexes/madrid_lines_RRR32	2202686	100000	4058090	22.026860	0.542789
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+
+TTCTR (psi=512 lines=RG32 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	2674349	100000	7733090	26.743490	0.345832
+indexes/madrid_lines_RRR64	3248989	100000	7391950	32.489890	0.439531
+indexes/madrid_lines_RRR64	2752021	100000	7305750	27.520210	0.376692
+indexes/madrid_lines_RRR64	3641775	100000	7218110	36.417750	0.504533
+indexes/madrid_lines_RRR64	4064142	100000	249440	40.641420	16.293064
+indexes/madrid_lines_RRR64	3757316	100000	239320	37.573160	15.699967
+indexes/madrid_lines_RRR64	4672920	100000	235740	46.729200	19.822347
+indexes/madrid_lines_RRR64	4287866	100000	233590	42.878660	18.356377
+indexes/madrid_lines_RRR64	3748623	100000	249220	37.486230	15.041421
+indexes/madrid_lines_RRR64	4476550	100000	238360	44.765500	18.780626
+indexes/madrid_lines_RRR64	3265941	100000	236560	32.659410	13.805973
+indexes/madrid_lines_RRR64	4188444	100000	233700	41.884440	17.922311
+indexes/madrid_lines_RRR64	5025275	100000	247230	50.252750	20.326316
+indexes/madrid_lines_RRR64	4601648	100000	236570	46.016480	19.451528
+indexes/madrid_lines_RRR64	4928254	100000	234090	49.282540	21.052817
+indexes/madrid_lines_RRR64	4526503	100000	231990	45.265030	19.511630
+start x
+indexes/madrid_lines_RRR64	1628181	100000	92130440	16.281810	0.017673
+indexes/madrid_lines_RRR64	1864896	100000	63037510	18.648960	0.029584
+indexes/madrid_lines_RRR64	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	3581141	100000	2960720	35.811410	1.209551
+indexes/madrid_lines_RRR64	2561489	100000	2027450	25.614890	1.263404
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	789	100000	0	0.007890	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	789	100000	0	0.007890	inf
+end x
+indexes/madrid_lines_RRR64	1421992	100000	228047590	14.219920	0.006236
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	1476150	100000	126633550	14.761500	0.011657
+indexes/madrid_lines_RRR64	774	100000	0	0.007740	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR64	3793252	100000	7304300	37.932520	0.519318
+indexes/madrid_lines_RRR64	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR64	2237413	100000	4058090	22.374130	0.551346
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+
+TTCTR (psi=512 lines=RG32 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	2656710	100000	7733090	26.567100	0.343551
+indexes/madrid_lines_RRR128	3243892	100000	7391950	32.438920	0.438841
+indexes/madrid_lines_RRR128	2747402	100000	7305750	27.474020	0.376060
+indexes/madrid_lines_RRR128	3642183	100000	7218110	36.421830	0.504590
+indexes/madrid_lines_RRR128	4101896	100000	249440	41.018960	16.444419
+indexes/madrid_lines_RRR128	3782478	100000	239320	37.824780	15.805106
+indexes/madrid_lines_RRR128	4843361	100000	235740	48.433610	20.545351
+indexes/madrid_lines_RRR128	4425475	100000	233590	44.254750	18.945481
+indexes/madrid_lines_RRR128	3685223	100000	249220	36.852230	14.787028
+indexes/madrid_lines_RRR128	4513369	100000	238360	45.133690	18.935094
+indexes/madrid_lines_RRR128	3292443	100000	236560	32.924430	13.918004
+indexes/madrid_lines_RRR128	4218781	100000	233700	42.187810	18.052122
+indexes/madrid_lines_RRR128	5214854	100000	247230	52.148540	21.093128
+indexes/madrid_lines_RRR128	4759575	100000	236570	47.595750	20.119098
+indexes/madrid_lines_RRR128	5219730	100000	234090	52.197300	22.297962
+indexes/madrid_lines_RRR128	4688096	100000	231990	46.880960	20.208181
+start x
+indexes/madrid_lines_RRR128	1627636	100000	92130440	16.276360	0.017667
+indexes/madrid_lines_RRR128	1863703	100000	63037510	18.637030	0.029565
+indexes/madrid_lines_RRR128	774	100000	0	0.007740	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	3730553	100000	2960720	37.305530	1.260015
+indexes/madrid_lines_RRR128	2621915	100000	2027450	26.219150	1.293208
+indexes/madrid_lines_RRR128	782	100000	0	0.007820	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+end x
+indexes/madrid_lines_RRR128	1403360	100000	228047590	14.033600	0.006154
+indexes/madrid_lines_RRR128	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR128	1476562	100000	126633550	14.765620	0.011660
+indexes/madrid_lines_RRR128	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR128	4013948	100000	7304300	40.139480	0.549532
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	2280781	100000	4058090	22.807810	0.562033
+indexes/madrid_lines_RRR128	784	100000	0	0.007840	inf
+indexes/madrid_lines_RRR128	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR128	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR128	760	100000	0	0.007600	inf
+indexes/madrid_lines_RRR128	760	100000	0	0.007600	inf
+
+TTCTR (psi=512 lines=RRR32 times=RG32)
+xy
+indexes/madrid_lines_RG32	2749090	100000	7733090	27.490900	0.355497
+indexes/madrid_lines_RG32	3229547	100000	7391950	32.295470	0.436901
+indexes/madrid_lines_RG32	2754245	100000	7305750	27.542450	0.376997
+indexes/madrid_lines_RG32	3856195	100000	7218110	38.561950	0.534239
+indexes/madrid_lines_RG32	3967745	100000	249440	39.677450	15.906611
+indexes/madrid_lines_RG32	3756398	100000	239320	37.563980	15.696131
+indexes/madrid_lines_RG32	4506408	100000	235740	45.064080	19.116009
+indexes/madrid_lines_RG32	4137549	100000	233590	41.375490	17.712869
+indexes/madrid_lines_RG32	3518724	100000	249220	35.187240	14.118947
+indexes/madrid_lines_RG32	4603777	100000	238360	46.037770	19.314386
+indexes/madrid_lines_RG32	3169957	100000	236560	31.699570	13.400224
+indexes/madrid_lines_RG32	4315234	100000	233700	43.152340	18.464844
+indexes/madrid_lines_RG32	4815888	100000	247230	48.158880	19.479384
+indexes/madrid_lines_RG32	4397962	100000	236570	43.979620	18.590531
+indexes/madrid_lines_RG32	4703072	100000	234090	47.030720	20.090871
+indexes/madrid_lines_RG32	4326418	100000	231990	43.264180	18.649157
+start x
+indexes/madrid_lines_RG32	1737484	100000	92130440	17.374840	0.018859
+indexes/madrid_lines_RG32	1901490	100000	63037510	19.014900	0.030164
+indexes/madrid_lines_RG32	772	100000	0	0.007720	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	3321511	100000	2960720	33.215110	1.121859
+indexes/madrid_lines_RG32	2438533	100000	2027450	24.385330	1.202759
+indexes/madrid_lines_RG32	780	100000	0	0.007800	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	767	100000	0	0.007670	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+indexes/madrid_lines_RG32	763	100000	0	0.007630	inf
+end x
+indexes/madrid_lines_RG32	1400072	100000	228047590	14.000720	0.006139
+indexes/madrid_lines_RG32	769	100000	0	0.007690	inf
+indexes/madrid_lines_RG32	1473195	100000	126633550	14.731950	0.011634
+indexes/madrid_lines_RG32	771	100000	0	0.007710	inf
+indexes/madrid_lines_RG32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RG32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RG32	781	100000	0	0.007810	inf
+indexes/madrid_lines_RG32	785	100000	0	0.007850	inf
+indexes/madrid_lines_RG32	3272853	100000	7304300	32.728530	0.448072
+indexes/madrid_lines_RG32	780	100000	0	0.007800	inf
+indexes/madrid_lines_RG32	2042005	100000	4058090	20.420050	0.503194
+indexes/madrid_lines_RG32	774	100000	0	0.007740	inf
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	760	100000	0	0.007600	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+
+TTCTR (psi=512 lines=RRR32 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	2663608	100000	7733090	26.636080	0.344443
+indexes/madrid_lines_RRR32	3232400	100000	7391950	32.324000	0.437287
+indexes/madrid_lines_RRR32	2757393	100000	7305750	27.573930	0.377428
+indexes/madrid_lines_RRR32	3857891	100000	7218110	38.578910	0.534474
+indexes/madrid_lines_RRR32	4062962	100000	249440	40.629620	16.288334
+indexes/madrid_lines_RRR32	3737330	100000	239320	37.373300	15.616455
+indexes/madrid_lines_RRR32	4716210	100000	235740	47.162100	20.005981
+indexes/madrid_lines_RRR32	4319873	100000	233590	43.198730	18.493399
+indexes/madrid_lines_RRR32	3621359	100000	249220	36.213590	14.530772
+indexes/madrid_lines_RRR32	4699501	100000	238360	46.995010	19.715980
+indexes/madrid_lines_RRR32	3248388	100000	236560	32.483880	13.731772
+indexes/madrid_lines_RRR32	4402528	100000	233700	44.025280	18.838374
+indexes/madrid_lines_RRR32	5066555	100000	247230	50.665550	20.493286
+indexes/madrid_lines_RRR32	4634555	100000	236570	46.345550	19.590629
+indexes/madrid_lines_RRR32	4967915	100000	234090	49.679150	21.222244
+indexes/madrid_lines_RRR32	4557478	100000	231990	45.574780	19.645148
+start x
+indexes/madrid_lines_RRR32	1633209	100000	92130440	16.332090	0.017727
+indexes/madrid_lines_RRR32	1837615	100000	63037510	18.376150	0.029151
+indexes/madrid_lines_RRR32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	3544485	100000	2960720	35.444850	1.197170
+indexes/madrid_lines_RRR32	2638262	100000	2027450	26.382620	1.301271
+indexes/madrid_lines_RRR32	781	100000	0	0.007810	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR32	1399438	100000	228047590	13.994380	0.006137
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	1473583	100000	126633550	14.735830	0.011637
+indexes/madrid_lines_RRR32	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	3681223	100000	7304300	36.812230	0.503980
+indexes/madrid_lines_RRR32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR32	2196489	100000	4058090	21.964890	0.541262
+indexes/madrid_lines_RRR32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	760	100000	0	0.007600	inf
+
+TTCTR (psi=512 lines=RRR32 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	2658395	100000	7733090	26.583950	0.343769
+indexes/madrid_lines_RRR64	3229388	100000	7391950	32.293880	0.436879
+indexes/madrid_lines_RRR64	2753321	100000	7305750	27.533210	0.376870
+indexes/madrid_lines_RRR64	3854652	100000	7218110	38.546520	0.534025
+indexes/madrid_lines_RRR64	4063339	100000	249440	40.633390	16.289845
+indexes/madrid_lines_RRR64	3760768	100000	239320	37.607680	15.714391
+indexes/madrid_lines_RRR64	4792863	100000	235740	47.928630	20.331140
+indexes/madrid_lines_RRR64	4382775	100000	233590	43.827750	18.762682
+indexes/madrid_lines_RRR64	3649971	100000	249220	36.499710	14.645578
+indexes/madrid_lines_RRR64	4721993	100000	238360	47.219930	19.810342
+indexes/madrid_lines_RRR64	3264259	100000	236560	32.642590	13.798863
+indexes/madrid_lines_RRR64	4419758	100000	233700	44.197580	18.912101
+indexes/madrid_lines_RRR64	5160354	100000	247230	51.603540	20.872685
+indexes/madrid_lines_RRR64	4713419	100000	236570	47.134190	19.923993
+indexes/madrid_lines_RRR64	5058342	100000	234090	50.583420	21.608535
+indexes/madrid_lines_RRR64	4634575	100000	231990	46.345750	19.977477
+start x
+indexes/madrid_lines_RRR64	1628527	100000	92130440	16.285270	0.017676
+indexes/madrid_lines_RRR64	1841665	100000	63037510	18.416650	0.029215
+indexes/madrid_lines_RRR64	835	100000	0	0.008350	inf
+indexes/madrid_lines_RRR64	825	100000	0	0.008250	inf
+indexes/madrid_lines_RRR64	3610230	100000	2960720	36.102300	1.219376
+indexes/madrid_lines_RRR64	2564377	100000	2027450	25.643770	1.264829
+indexes/madrid_lines_RRR64	841	100000	0	0.008410	inf
+indexes/madrid_lines_RRR64	825	100000	0	0.008250	inf
+indexes/madrid_lines_RRR64	825	100000	0	0.008250	inf
+indexes/madrid_lines_RRR64	825	100000	0	0.008250	inf
+indexes/madrid_lines_RRR64	829	100000	0	0.008290	inf
+indexes/madrid_lines_RRR64	825	100000	0	0.008250	inf
+indexes/madrid_lines_RRR64	825	100000	0	0.008250	inf
+indexes/madrid_lines_RRR64	825	100000	0	0.008250	inf
+indexes/madrid_lines_RRR64	825	100000	0	0.008250	inf
+indexes/madrid_lines_RRR64	828	100000	0	0.008280	inf
+end x
+indexes/madrid_lines_RRR64	1403213	100000	228047590	14.032130	0.006153
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	1476425	100000	126633550	14.764250	0.011659
+indexes/madrid_lines_RRR64	773	100000	0	0.007730	inf
+indexes/madrid_lines_RRR64	768	100000	0	0.007680	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	3790150	100000	7304300	37.901500	0.518893
+indexes/madrid_lines_RRR64	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR64	2224716	100000	4058090	22.247160	0.548218
+indexes/madrid_lines_RRR64	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+
+TTCTR (psi=512 lines=RRR32 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	2664846	100000	7733090	26.648460	0.344603
+indexes/madrid_lines_RRR128	3232968	100000	7391950	32.329680	0.437363
+indexes/madrid_lines_RRR128	2755479	100000	7305750	27.554790	0.377166
+indexes/madrid_lines_RRR128	3859033	100000	7218110	38.590330	0.534632
+indexes/madrid_lines_RRR128	4107258	100000	249440	41.072580	16.465916
+indexes/madrid_lines_RRR128	3785306	100000	239320	37.853060	15.816923
+indexes/madrid_lines_RRR128	4966718	100000	235740	49.667180	21.068626
+indexes/madrid_lines_RRR128	4529834	100000	233590	45.298340	19.392243
+indexes/madrid_lines_RRR128	3699192	100000	249220	36.991920	14.843078
+indexes/madrid_lines_RRR128	4771197	100000	238360	47.711970	20.016769
+indexes/madrid_lines_RRR128	3297364	100000	236560	32.973640	13.938806
+indexes/madrid_lines_RRR128	4450885	100000	233700	44.508850	19.045293
+indexes/madrid_lines_RRR128	5364892	100000	247230	53.648920	21.700004
+indexes/madrid_lines_RRR128	4875560	100000	236570	48.755600	20.609376
+indexes/madrid_lines_RRR128	5249129	100000	234090	52.491290	22.423551
+indexes/madrid_lines_RRR128	4800235	100000	231990	48.002350	20.691560
+start x
+indexes/madrid_lines_RRR128	1640273	100000	92130440	16.402730	0.017804
+indexes/madrid_lines_RRR128	1839012	100000	63037510	18.390120	0.029173
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	3735363	100000	2960720	37.353630	1.261640
+indexes/madrid_lines_RRR128	2623142	100000	2027450	26.231420	1.293813
+indexes/madrid_lines_RRR128	780	100000	0	0.007800	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+end x
+indexes/madrid_lines_RRR128	1408551	100000	228047590	14.085510	0.006177
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	1474026	100000	126633550	14.740260	0.011640
+indexes/madrid_lines_RRR128	773	100000	0	0.007730	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR128	4010482	100000	7304300	40.104820	0.549058
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	2277362	100000	4058090	22.773620	0.561191
+indexes/madrid_lines_RRR128	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+
+TTCTR (psi=512 lines=RRR64 times=RG32)
+xy
+indexes/madrid_lines_RG32	2658664	100000	7733090	26.586640	0.343804
+indexes/madrid_lines_RG32	3247849	100000	7391950	32.478490	0.439376
+indexes/madrid_lines_RG32	2756259	100000	7305750	27.562590	0.377273
+indexes/madrid_lines_RG32	3999399	100000	7218110	39.993990	0.554078
+indexes/madrid_lines_RG32	3999391	100000	249440	39.993910	16.033479
+indexes/madrid_lines_RG32	3677368	100000	239320	36.773680	15.365903
+indexes/madrid_lines_RG32	4598582	100000	235740	45.985820	19.507008
+indexes/madrid_lines_RG32	4201827	100000	233590	42.018270	17.988043
+indexes/madrid_lines_RG32	3530726	100000	249220	35.307260	14.167105
+indexes/madrid_lines_RG32	4747087	100000	238360	47.470870	19.915619
+indexes/madrid_lines_RG32	3168435	100000	236560	31.684350	13.393790
+indexes/madrid_lines_RG32	4453057	100000	233700	44.530570	19.054587
+indexes/madrid_lines_RG32	4894872	100000	247230	48.948720	19.798859
+indexes/madrid_lines_RG32	4466919	100000	236570	44.669190	18.882018
+indexes/madrid_lines_RG32	4793022	100000	234090	47.930220	20.475125
+indexes/madrid_lines_RG32	4391002	100000	231990	43.910020	18.927549
+start x
+indexes/madrid_lines_RG32	1630076	100000	92130440	16.300760	0.017693
+indexes/madrid_lines_RG32	1859421	100000	63037510	18.594210	0.029497
+indexes/madrid_lines_RG32	772	100000	0	0.007720	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	3349676	100000	2960720	33.496760	1.131372
+indexes/madrid_lines_RG32	2427266	100000	2027450	24.272660	1.197201
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RG32	1401820	100000	228047590	14.018200	0.006147
+indexes/madrid_lines_RG32	767	100000	0	0.007670	inf
+indexes/madrid_lines_RG32	1475928	100000	126633550	14.759280	0.011655
+indexes/madrid_lines_RG32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	770	100000	0	0.007700	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	3274922	100000	7304300	32.749220	0.448355
+indexes/madrid_lines_RG32	782	100000	0	0.007820	inf
+indexes/madrid_lines_RG32	2043250	100000	4058090	20.432500	0.503500
+indexes/madrid_lines_RG32	780	100000	0	0.007800	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	772	100000	0	0.007720	inf
+
+TTCTR (psi=512 lines=RRR64 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	2660001	100000	7733090	26.600010	0.343976
+indexes/madrid_lines_RRR32	3249255	100000	7391950	32.492550	0.439567
+indexes/madrid_lines_RRR32	2757465	100000	7305750	27.574650	0.377438
+indexes/madrid_lines_RRR32	3998200	100000	7218110	39.982000	0.553912
+indexes/madrid_lines_RRR32	4082038	100000	249440	40.820380	16.364809
+indexes/madrid_lines_RRR32	3755791	100000	239320	37.557910	15.693594
+indexes/madrid_lines_RRR32	4819439	100000	235740	48.194390	20.443875
+indexes/madrid_lines_RRR32	4387917	100000	233590	43.879170	18.784695
+indexes/madrid_lines_RRR32	3638789	100000	249220	36.387890	14.600710
+indexes/madrid_lines_RRR32	4847163	100000	238360	48.471630	20.335472
+indexes/madrid_lines_RRR32	3263808	100000	236560	32.638080	13.796956
+indexes/madrid_lines_RRR32	4538087	100000	233700	45.380870	19.418430
+indexes/madrid_lines_RRR32	5170840	100000	247230	51.708400	20.915099
+indexes/madrid_lines_RRR32	4705130	100000	236570	47.051300	19.888955
+indexes/madrid_lines_RRR32	5062215	100000	234090	50.622150	21.625080
+indexes/madrid_lines_RRR32	4624940	100000	231990	46.249400	19.935946
+start x
+indexes/madrid_lines_RRR32	1630497	100000	92130440	16.304970	0.017698
+indexes/madrid_lines_RRR32	1855588	100000	63037510	18.555880	0.029436
+indexes/madrid_lines_RRR32	803	100000	0	0.008030	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	3583363	100000	2960720	35.833630	1.210301
+indexes/madrid_lines_RRR32	2547667	100000	2027450	25.476670	1.256587
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR32	1401056	100000	228047590	14.010560	0.006144
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	1481557	100000	126633550	14.815570	0.011700
+indexes/madrid_lines_RRR32	773	100000	0	0.007730	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	3702681	100000	7304300	37.026810	0.506918
+indexes/madrid_lines_RRR32	779	100000	0	0.007790	inf
+indexes/madrid_lines_RRR32	2199244	100000	4058090	21.992440	0.541941
+indexes/madrid_lines_RRR32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+
+TTCTR (psi=512 lines=RRR64 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	2660175	100000	7733090	26.601750	0.343999
+indexes/madrid_lines_RRR64	3248863	100000	7391950	32.488630	0.439514
+indexes/madrid_lines_RRR64	2757391	100000	7305750	27.573910	0.377428
+indexes/madrid_lines_RRR64	3999795	100000	7218110	39.997950	0.554133
+indexes/madrid_lines_RRR64	4101979	100000	249440	41.019790	16.444752
+indexes/madrid_lines_RRR64	3762483	100000	239320	37.624830	15.721557
+indexes/madrid_lines_RRR64	4894036	100000	235740	48.940360	20.760312
+indexes/madrid_lines_RRR64	4457184	100000	233590	44.571840	19.081228
+indexes/madrid_lines_RRR64	3679304	100000	249220	36.793040	14.763277
+indexes/madrid_lines_RRR64	4872379	100000	238360	48.723790	20.441261
+indexes/madrid_lines_RRR64	3267066	100000	236560	32.670660	13.810729
+indexes/madrid_lines_RRR64	4558684	100000	233700	45.586840	19.506564
+indexes/madrid_lines_RRR64	5265133	100000	247230	52.651330	21.296497
+indexes/madrid_lines_RRR64	4786449	100000	236570	47.864490	20.232696
+indexes/madrid_lines_RRR64	5153908	100000	234090	51.539080	22.016780
+indexes/madrid_lines_RRR64	4703673	100000	231990	47.036730	20.275327
+start x
+indexes/madrid_lines_RRR64	1631912	100000	92130440	16.319120	0.017713
+indexes/madrid_lines_RRR64	1856921	100000	63037510	18.569210	0.029457
+indexes/madrid_lines_RRR64	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	3659524	100000	2960720	36.595240	1.236025
+indexes/madrid_lines_RRR64	2572162	100000	2027450	25.721620	1.268669
+indexes/madrid_lines_RRR64	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR64	1401490	100000	228047590	14.014900	0.006146
+indexes/madrid_lines_RRR64	768	100000	0	0.007680	inf
+indexes/madrid_lines_RRR64	1476959	100000	126633550	14.769590	0.011663
+indexes/madrid_lines_RRR64	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	3808623	100000	7304300	38.086230	0.521422
+indexes/madrid_lines_RRR64	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR64	2225761	100000	4058090	22.257610	0.548475
+indexes/madrid_lines_RRR64	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+
+TTCTR (psi=512 lines=RRR64 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	2662816	100000	7733090	26.628160	0.344340
+indexes/madrid_lines_RRR128	3247510	100000	7391950	32.475100	0.439331
+indexes/madrid_lines_RRR128	2764599	100000	7305750	27.645990	0.378414
+indexes/madrid_lines_RRR128	4007757	100000	7218110	40.077570	0.555236
+indexes/madrid_lines_RRR128	4147709	100000	249440	41.477090	16.628083
+indexes/madrid_lines_RRR128	3797924	100000	239320	37.979240	15.869647
+indexes/madrid_lines_RRR128	5087567	100000	235740	50.875670	21.581263
+indexes/madrid_lines_RRR128	4611228	100000	233590	46.112280	19.740691
+indexes/madrid_lines_RRR128	3717295	100000	249220	37.172950	14.915717
+indexes/madrid_lines_RRR128	4919483	100000	238360	49.194830	20.638878
+indexes/madrid_lines_RRR128	3302541	100000	236560	33.025410	13.960691
+indexes/madrid_lines_RRR128	4588950	100000	233700	45.889500	19.636072
+indexes/madrid_lines_RRR128	5528491	100000	247230	55.284910	22.361732
+indexes/madrid_lines_RRR128	4948685	100000	236570	49.486850	20.918481
+indexes/madrid_lines_RRR128	5360596	100000	234090	53.605960	22.899722
+indexes/madrid_lines_RRR128	4865368	100000	231990	48.653680	20.972318
+start x
+indexes/madrid_lines_RRR128	1634934	100000	92130440	16.349340	0.017746
+indexes/madrid_lines_RRR128	1865851	100000	63037510	18.658510	0.029599
+indexes/madrid_lines_RRR128	783	100000	0	0.007830	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	3781894	100000	2960720	37.818940	1.277356
+indexes/madrid_lines_RRR128	2628861	100000	2027450	26.288610	1.296634
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	767	100000	0	0.007670	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR128	763	100000	0	0.007630	inf
+end x
+indexes/madrid_lines_RRR128	1403784	100000	228047590	14.037840	0.006156
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	1477945	100000	126633550	14.779450	0.011671
+indexes/madrid_lines_RRR128	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	4071364	100000	7304300	40.713640	0.557393
+indexes/madrid_lines_RRR128	776	100000	0	0.007760	inf
+indexes/madrid_lines_RRR128	2323455	100000	4058090	23.234550	0.572549
+indexes/madrid_lines_RRR128	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	794	100000	0	0.007940	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+
+TTCTR (psi=512 lines=RRR128 times=RG32)
+xy
+indexes/madrid_lines_RG32	2658309	100000	7733090	26.583090	0.343758
+indexes/madrid_lines_RG32	3288526	100000	7391950	32.885260	0.444879
+indexes/madrid_lines_RG32	2770581	100000	7305750	27.705810	0.379233
+indexes/madrid_lines_RG32	4325686	100000	7218110	43.256860	0.599282
+indexes/madrid_lines_RG32	4093385	100000	249440	40.933850	16.410299
+indexes/madrid_lines_RG32	3716839	100000	239320	37.168390	15.530833
+indexes/madrid_lines_RG32	4853818	100000	235740	48.538180	20.589709
+indexes/madrid_lines_RG32	4370394	100000	233590	43.703940	18.709679
+indexes/madrid_lines_RG32	3567484	100000	249220	35.674840	14.314598
+indexes/madrid_lines_RG32	5089640	100000	238360	50.896400	21.352744
+indexes/madrid_lines_RG32	3183540	100000	236560	31.835400	13.457643
+indexes/madrid_lines_RG32	4768634	100000	233700	47.686340	20.404938
+indexes/madrid_lines_RG32	5146250	100000	247230	51.462500	20.815637
+indexes/madrid_lines_RG32	4645503	100000	236570	46.455030	19.636907
+indexes/madrid_lines_RG32	5035907	100000	234090	50.359070	21.512696
+indexes/madrid_lines_RG32	4559246	100000	231990	45.592460	19.652770
+start x
+indexes/madrid_lines_RG32	1632876	100000	92130440	16.328760	0.017724
+indexes/madrid_lines_RG32	1902254	100000	63037510	19.022540	0.030177
+indexes/madrid_lines_RG32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	3468723	100000	2960720	34.687230	1.171581
+indexes/madrid_lines_RG32	2468488	100000	2027450	24.684880	1.217533
+indexes/madrid_lines_RG32	779	100000	0	0.007790	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	765	100000	0	0.007650	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RG32	1422490	100000	228047590	14.224900	0.006238
+indexes/madrid_lines_RG32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RG32	1485604	100000	126633550	14.856040	0.011732
+indexes/madrid_lines_RG32	773	100000	0	0.007730	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RG32	3312847	100000	7304300	33.128470	0.453547
+indexes/madrid_lines_RG32	776	100000	0	0.007760	inf
+indexes/madrid_lines_RG32	2151833	100000	4058090	21.518330	0.530258
+indexes/madrid_lines_RG32	775	100000	0	0.007750	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RG32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RG32	761	100000	0	0.007610	inf
+
+TTCTR (psi=512 lines=RRR128 times=RRR32)
+xy
+indexes/madrid_lines_RRR32	2663226	100000	7733090	26.632260	0.344394
+indexes/madrid_lines_RRR32	3365944	100000	7391950	33.659440	0.455353
+indexes/madrid_lines_RRR32	2764489	100000	7305750	27.644890	0.378399
+indexes/madrid_lines_RRR32	4316285	100000	7218110	43.162850	0.597980
+indexes/madrid_lines_RRR32	4174227	100000	249440	41.742270	16.734393
+indexes/madrid_lines_RRR32	3785722	100000	239320	37.857220	15.818661
+indexes/madrid_lines_RRR32	5051136	100000	235740	50.511360	21.426724
+indexes/madrid_lines_RRR32	4554849	100000	233590	45.548490	19.499332
+indexes/madrid_lines_RRR32	3673225	100000	249220	36.732250	14.738885
+indexes/madrid_lines_RRR32	5207074	100000	238360	52.070740	21.845419
+indexes/madrid_lines_RRR32	3257240	100000	236560	32.572400	13.769192
+indexes/madrid_lines_RRR32	4859219	100000	233700	48.592190	20.792550
+indexes/madrid_lines_RRR32	5422093	100000	247230	54.220930	21.931372
+indexes/madrid_lines_RRR32	4881436	100000	236570	48.814360	20.634214
+indexes/madrid_lines_RRR32	5298570	100000	234090	52.985700	22.634756
+indexes/madrid_lines_RRR32	4788118	100000	231990	47.881180	20.639329
+start x
+indexes/madrid_lines_RRR32	1629941	100000	92130440	16.299410	0.017692
+indexes/madrid_lines_RRR32	1904100	100000	63037510	19.041000	0.030206
+indexes/madrid_lines_RRR32	768	100000	0	0.007680	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	3695347	100000	2960720	36.953470	1.248124
+indexes/madrid_lines_RRR32	2581432	100000	2027450	25.814320	1.273241
+indexes/madrid_lines_RRR32	781	100000	0	0.007810	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR32	761	100000	0	0.007610	inf
+end x
+indexes/madrid_lines_RRR32	1401832	100000	228047590	14.018320	0.006147
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	1480926	100000	126633550	14.809260	0.011695
+indexes/madrid_lines_RRR32	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR32	774	100000	0	0.007740	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	3735775	100000	7304300	37.357750	0.511449
+indexes/madrid_lines_RRR32	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR32	2202978	100000	4058090	22.029780	0.542861
+indexes/madrid_lines_RRR32	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR32	762	100000	0	0.007620	inf
+
+TTCTR (psi=512 lines=RRR128 times=RRR64)
+xy
+indexes/madrid_lines_RRR64	2661813	100000	7733090	26.618130	0.344211
+indexes/madrid_lines_RRR64	3286631	100000	7391950	32.866310	0.444623
+indexes/madrid_lines_RRR64	2762945	100000	7305750	27.629450	0.378188
+indexes/madrid_lines_RRR64	4315055	100000	7218110	43.150550	0.597810
+indexes/madrid_lines_RRR64	4191900	100000	249440	41.919000	16.805244
+indexes/madrid_lines_RRR64	3801440	100000	239320	38.014400	15.884339
+indexes/madrid_lines_RRR64	5133815	100000	235740	51.338150	21.777445
+indexes/madrid_lines_RRR64	4617018	100000	233590	46.170180	19.765478
+indexes/madrid_lines_RRR64	3699542	100000	249220	36.995420	14.844483
+indexes/madrid_lines_RRR64	5213041	100000	238360	52.130410	21.870452
+indexes/madrid_lines_RRR64	3269852	100000	236560	32.698520	13.822506
+indexes/madrid_lines_RRR64	4877207	100000	233700	48.772070	20.869521
+indexes/madrid_lines_RRR64	5504716	100000	247230	55.047160	22.265566
+indexes/madrid_lines_RRR64	4953178	100000	236570	49.531780	20.937473
+indexes/madrid_lines_RRR64	5387966	100000	234090	53.879660	23.016643
+indexes/madrid_lines_RRR64	4866392	100000	231990	48.663920	20.976732
+start x
+indexes/madrid_lines_RRR64	1632553	100000	92130440	16.325530	0.017720
+indexes/madrid_lines_RRR64	1903042	100000	63037510	19.030420	0.030189
+indexes/madrid_lines_RRR64	771	100000	0	0.007710	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	3755883	100000	2960720	37.558830	1.268571
+indexes/madrid_lines_RRR64	2604459	100000	2027450	26.044590	1.284598
+indexes/madrid_lines_RRR64	782	100000	0	0.007820	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR64	763	100000	0	0.007630	inf
+indexes/madrid_lines_RRR64	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR64	1405618	100000	228047590	14.056180	0.006164
+indexes/madrid_lines_RRR64	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR64	1481375	100000	126633550	14.813750	0.011698
+indexes/madrid_lines_RRR64	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	3848887	100000	7304300	38.488870	0.526934
+indexes/madrid_lines_RRR64	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR64	2229651	100000	4058090	22.296510	0.549434
+indexes/madrid_lines_RRR64	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR64	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR64	761	100000	0	0.007610	inf
+
+TTCTR (psi=512 lines=RRR128 times=RRR128)
+xy
+indexes/madrid_lines_RRR128	2656966	100000	7733090	26.569660	0.343584
+indexes/madrid_lines_RRR128	3293161	100000	7391950	32.931610	0.445506
+indexes/madrid_lines_RRR128	2760283	100000	7305750	27.602830	0.377823
+indexes/madrid_lines_RRR128	4321422	100000	7218110	43.214220	0.598692
+indexes/madrid_lines_RRR128	4239014	100000	249440	42.390140	16.994123
+indexes/madrid_lines_RRR128	3925057	100000	239320	39.250570	16.400873
+indexes/madrid_lines_RRR128	5439360	100000	235740	54.393600	23.073556
+indexes/madrid_lines_RRR128	4771892	100000	233590	47.718920	20.428494
+indexes/madrid_lines_RRR128	3747892	100000	249220	37.478920	15.038488
+indexes/madrid_lines_RRR128	5263727	100000	238360	52.637270	22.083097
+indexes/madrid_lines_RRR128	3301725	100000	236560	33.017250	13.957241
+indexes/madrid_lines_RRR128	4905490	100000	233700	49.054900	20.990543
+indexes/madrid_lines_RRR128	5710485	100000	247230	57.104850	23.097864
+indexes/madrid_lines_RRR128	5123874	100000	236570	51.238740	21.659018
+indexes/madrid_lines_RRR128	5586338	100000	234090	55.863380	23.864061
+indexes/madrid_lines_RRR128	5032171	100000	231990	50.321710	21.691327
+start x
+indexes/madrid_lines_RRR128	1627430	100000	92130440	16.274300	0.017664
+indexes/madrid_lines_RRR128	1901835	100000	63037510	19.018350	0.030170
+indexes/madrid_lines_RRR128	769	100000	0	0.007690	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	3888911	100000	2960720	38.889110	1.313502
+indexes/madrid_lines_RRR128	2662482	100000	2027450	26.624820	1.313217
+indexes/madrid_lines_RRR128	778	100000	0	0.007780	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	766	100000	0	0.007660	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	762	100000	0	0.007620	inf
+end x
+indexes/madrid_lines_RRR128	1401200	100000	228047590	14.012000	0.006144
+indexes/madrid_lines_RRR128	772	100000	0	0.007720	inf
+indexes/madrid_lines_RRR128	1480863	100000	126633550	14.808630	0.011694
+indexes/madrid_lines_RRR128	773	100000	0	0.007730	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	764	100000	0	0.007640	inf
+indexes/madrid_lines_RRR128	4062399	100000	7304300	40.623990	0.556165
+indexes/madrid_lines_RRR128	777	100000	0	0.007770	inf
+indexes/madrid_lines_RRR128	2283063	100000	4058090	22.830630	0.562595
+indexes/madrid_lines_RRR128	775	100000	0	0.007750	inf
+indexes/madrid_lines_RRR128	765	100000	0	0.007650	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+indexes/madrid_lines_RRR128	761	100000	0	0.007610	inf
+
+
