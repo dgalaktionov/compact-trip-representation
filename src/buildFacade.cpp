@@ -1507,22 +1507,26 @@ int get_ends_with_x(void *index, TimeQuery *query) {
 	const auto start_time = query->time->h_start;
 	const auto end_time = query->time->h_end;
 	uint v = mapID(g, stopId, NODE);
-	uint pattern[2] = {v, 0};
+	uint pattern[2] = {0, v};
+	ulong n = 0;
 
-	countIntIndex(g->myicsa, pattern, 2, &numocc, &lu, &ru);
+	if ((query->subtype & (XY_LINE_END | XY_TIME_END)) == XY_TIME_END) {
+		query->subtype |= XY_LINE_END;
+		lines = g->stopLines->at(query->values[1]);
+	} else if (query->subtype & XY_LINE_END) {
+		lines.push_back(query->values[0]);
+	}
 
-	if (numocc && query->subtype) {
+	lu = selectStop(g, v);
+	ru = selectStop(g, v+1);
+	if (ru < g->n) ru--;
+	numocc = ru-lu+1;
+
+	if (query->subtype) {
 		numocc = 0;
-		pattern[1] = v;
-
-		if ((query->subtype & (XY_LINE_END | XY_TIME_END)) == XY_TIME_END) {
-			query->subtype |= XY_LINE_END;
-			lines = g->stopLines->at(query->values[1]);
-		} else if (query->subtype & XY_LINE_END) {
-			lines.push_back(query->values[0]);
-		}
 
 		for (const auto &line : lines) {
+			n = 0;
 			const auto jcodes = getJCodes(g, line, query->values[1], start_time, end_time);
 
 			for (const auto &stop : g->lineStops->at(line)) {
