@@ -34,7 +34,7 @@
  */
 
 #include "icsa.h"
-#include <sais.h>
+#include "../../libsais/sais-2.4.1/include/sais.h"
 
 
 int buildIntIndex (uint *aintVector, uint n, uint sigma, uint n_traj, uint *l, uint *times, char *build_options, void **index){
