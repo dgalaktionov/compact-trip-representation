@@ -72,17 +72,22 @@ ZSTDArray::ZSTDArray(const std::vector< std::vector<uint32_t> > *initialTimes, c
 		check(initialTimes);
 		std::cerr << "OK" << std::endl;
 	#endif
+
+	assert(pthread_mutex_init(&d_stream_lock, NULL) == 0);
 }
 
 ZSTDArray::~ZSTDArray() {
+	pthread_mutex_destroy(&d_stream_lock);
 	ZSTD_freeDStream(d_stream);
 }
 
 const void inline ZSTDArray::decompressFrame(ZSTD_outBuffer* output, ZSTD_inBuffer* input) {
 	output->pos = 0;
+	pthread_mutex_lock(&d_stream_lock);
 	ZSTD_initDStream(d_stream);
 	const auto zsize = ZSTD_decompressStream(d_stream, output, input);
 	assert(!ZSTD_isError((zsize)));
+	pthread_mutex_unlock(&d_stream_lock);
 }
 
 const size_t ZSTDArray::getSize() {
