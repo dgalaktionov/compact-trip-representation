@@ -7,7 +7,7 @@
 #include <iostream>
 #include <exception>
 #include <algorithm>
-
+#include <pthread.h>
 #include <zstd.h>
 #include <assert.h>
 
@@ -21,6 +21,7 @@ class ZSTDArray {
 		std::vector<uint32_t> lines_C;
 		std::vector< std::vector<uint32_t> > lines_D;
 		ZSTD_DStream * d_stream = ZSTD_createDStream();
+		pthread_mutex_t d_stream_lock;
 
 		const void decompressFrame(ZSTD_outBuffer* output, ZSTD_inBuffer* input);
 
