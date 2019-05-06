@@ -73,7 +73,8 @@ ZSTDArray::ZSTDArray(const std::vector< std::vector<uint32_t> > *initialTimes, c
 		std::cerr << "OK" << std::endl;
 	#endif
 
-	assert(pthread_mutex_init(&d_stream_lock, NULL) == 0);
+	const int mutexErr = pthread_mutex_init(&d_stream_lock, NULL);
+	assert(mutexErr == 0);
 }
 
 ZSTDArray::~ZSTDArray() {
