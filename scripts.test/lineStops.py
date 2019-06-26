@@ -31,37 +31,8 @@ def main(argv):
 			stops = [s.split("-")[1] for s in line.strip().split(",")]
 
 			if current_line in line_stops:
-				current_indices = []
-				last_i = 0
-
-				for stop in stops:
-					try:
-						i = line_stops[current_line].index(stop,last_i)
-						current_indices.append(i)
-						last_i = i
-					except ValueError:
-						current_indices.append(None)
-
-				if all(i is None for i in current_indices):
-					if len(stops) > len(line_stops[current_line]):
+				if len(stops) > len(line_stops[current_line]):
 						line_stops[current_line] = stops
-
-				elif None in current_indices:
-					k = 0
-					last_i = 0
-
-					for i in current_indices:
-						if i is None:
-							k += 1
-						else:
-							i += 1
-							stops[k:k+1] = line_stops[current_line][last_i:i]
-							k += i - last_i
-							last_i = i
-
-					stops.extend(line_stops[current_line][last_i:])
-					line_stops[current_line] = stops
-
 			else:
 				line_stops[current_line] = stops
 
