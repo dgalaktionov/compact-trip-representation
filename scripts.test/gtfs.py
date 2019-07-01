@@ -288,9 +288,23 @@ def load_subway(prefix, network):
 			st1.lines.add(line.id)
 			st2.lines.add(line.id)
 
+def load_stops(path, nStops=20000):
+	stops = [set()] * nStops
+
+	with open(path) as stopLines:
+		for textLine in stopLines:
+			splitLine = textLine.strip().split(": ")
+
+			if len(splitLine) > 1:
+				[stopStr, lineStr] = splitLine
+				stops[int(stopStr)] = set(lineStr.split(","))
+
+	return stops
+
+
 def main(argv):
-	#n_traj = 0
-	n_traj = 10000000
+	n_traj = 1000
+	#n_traj = 10000000
 	#change_probs = [0.50, 0.90, 0.95, 0.98, 1.0]
 	change_probs = [0.98, 0.98, 0.99, 1.0]
 	changes = collections.Counter()
@@ -300,6 +314,12 @@ def main(argv):
 	#network = parse_gtfs("madrid_bus.zip", "madrid_bus.dat", network=network)
 	network = load_gtfs("madrid_bus.dat")
 	tripsByStop = network.compute_trips_by_stop()
+
+	valid_stops = None
+
+	if len(argv) > 1:
+		valid_stops = load_stops(argv[1], len(network.stops)+1)
+
 	#load_subway("london", network)
 
 	#parse_gtfs("Madrid.zip", "madrid.dat")
@@ -311,13 +331,13 @@ def main(argv):
 
 	#print len(network.lines.keys())
 	#network.assign_freqs()
-	stops = network.stops.values()
 	stops_dict = {key: value+1 for value, key in enumerate(sorted(network.stops.keys()))}
 	tripsByDay = network.calculate_trips_by_day(stops_dict, days_cycle)
 	unused_stops = set(network.stops)
 	i = 0
 	max_waiting_time = 30*60
 	err = 0
+	skip_bad = 0
 
 	while i < n_traj:
 		current_day = getRandomDay()
@@ -377,6 +397,13 @@ def main(argv):
 						t = prev_t
 						prob_next = 1
 					else:
+						if valid_stops:
+							if current_line not in valid_stops[stops_dict[prev]]:
+								print("DAMN")
+								print((stops_dict[prev], current_line))
+								skip_bad += 1
+								break
+
 						(t, current_trip) = random.choice(possible_trips)
 						next_stops = [s for s in reversed(current_trip.stops) if s[1] > t]
 
@@ -387,6 +414,12 @@ def main(argv):
 						current_line = current_trip.get_line()
 						current_time = TTime(current_day, 0) + t
 						cur_changes += 1
+
+						if current_line not in valid_stops[stops_dict[next]]:
+								print("DAMN")
+								print((stops_dict[next], current_line))
+								skip_bad += 1
+								break
 
 						lines.append(current_line)
 						trajectory.append(next)
@@ -409,7 +442,7 @@ def main(argv):
 			times.append(tripsByDay[current_day.val()][(current_line, current_trip.start_time)])
 			lines.append(current_line)
 
-		if len(trajectory) % 2 == 1:
+		if len(trajectory) % 2 == 1 or any([]):
 			# Just discard this piece of shit
 			err += 1
 			continue
@@ -428,6 +461,8 @@ def main(argv):
 
 	if unused_stops:
 		sys.stderr.write("\nWARNING: " + str(len(unused_stops)) + " Unused stops\n")
+
+	sys.stderr.write("\nSKIPPED: " + str(skip_bad) + "\n")
 
 	sys.stderr.write("\nERRORS: " + str(err) + "\n")
 
