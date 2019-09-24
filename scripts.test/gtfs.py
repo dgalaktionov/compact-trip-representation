@@ -195,8 +195,13 @@ def parse_gtfs(file_in, file_out, file_freqs = None, network = Network()):
 	loader = transitfeed.Loader(file_in, problems = transitfeed.problems.ProblemReporter())
 	sched = loader.Load()
 
-	for t in sched.GetTripList():
+	for r in sched.GetRouteList():
+		mystr = "INSERT INTO line (id, short_name, long_name) VALUES ('%sd0', '%s', '%s');" % (r.route_id, r.route_short_name, r.route_long_name)
+		print(mystr.encode("utf-8"))
+		mystr = "INSERT INTO line (id, short_name, long_name) VALUES ('%sd1', '%s(R)', '%s (vuelta)';" % (r.route_id, r.route_short_name, r.route_long_name)
+		print(mystr.encode("utf-8"))
 
+	for t in sched.GetTripList():
 		days = sched.GetServicePeriod(t.service_id).day_of_week
 		trip = Trip(t.trip_id, t.route_id, t.direction_id, days)
 
@@ -303,15 +308,19 @@ def load_stops(path, nStops=20000):
 
 
 def main(argv):
-	n_traj = 1000
+	n_traj = 0
+	#n_traj = 1000
 	#n_traj = 10000000
 	#change_probs = [0.50, 0.90, 0.95, 0.98, 1.0]
 	change_probs = [0.98, 0.98, 0.99, 1.0]
 	changes = collections.Counter()
 	lengths = collections.Counter()
 
+	#print("BEGIN TRANSACTION;")
 	#network = parse_gtfs("madrid_emt.zip", None)
-	#network = parse_gtfs("madrid_bus.zip", "madrid_bus.dat", network=network)
+	#network = parse_gtfs("madrid_crtm.zip", "madrid_bus.dat", network=network)
+	#print("COMMIT;")
+	#sys.exit(0)
 	network = load_gtfs("madrid_bus.dat")
 	tripsByStop = network.compute_trips_by_stop()
 
